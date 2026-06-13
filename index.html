@@ -52,16 +52,16 @@ nav{position:fixed;top:0;left:0;right:0;width:100%;z-index:900;padding:18px var(
 nav.scrolled{background:transparent;}
 .n-avail{display:flex;align-items:center;gap:9px;background:#fff;padding:13px 22px;border-radius:100px;font-size:12px;font-weight:700;color:var(--dark);box-shadow:0 8px 28px rgba(14,8,4,.1);flex-shrink:0;white-space:nowrap;}
 .n-avail-dot{width:8px;height:8px;border-radius:50%;background:var(--g);animation:dotpulse 2s ease-in-out infinite;flex-shrink:0;}
-.n-center{display:flex;align-items:center;gap:2px;list-style:none;background:#fff;border-radius:100px;padding:8px;box-shadow:0 8px 28px rgba(14,8,4,.1);transition:transform .4s ease,opacity .4s ease;}
+.n-center{display:flex;align-items:center;gap:2px;list-style:none;background:#fff;border-radius:100px;padding:8px;box-shadow:0 8px 28px rgba(14,8,4,.1);}
+.n-avail,.n-talk{transition:transform .4s ease,opacity .4s ease;}
 .n-logo{display:flex;align-items:center;justify-content:center;width:38px;height:38px;background:var(--dark);border-radius:50%;flex-shrink:0;transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
 .n-logo:hover{transform:rotate(90deg);}
 .n-links{display:flex;align-items:center;gap:2px;list-style:none;}
 .n-links a{font-size:13px;font-weight:700;color:var(--dark);padding:10px 16px;border-radius:100px;transition:all .2s;letter-spacing:.01em;}
 .n-links a:hover{color:var(--o);background:rgba(14,8,4,.05);}
-.n-cta{background:var(--dark);color:#fff;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:800;display:flex;align-items:center;gap:8px;transition:all .25s;letter-spacing:.01em;white-space:nowrap;box-shadow:0 6px 18px rgba(14,8,4,.25);}
-.n-cta svg{color:var(--o);}
-.n-cta:hover{background:var(--o);color:#fff;transform:scale(1.04);}
-.n-cta:hover svg{color:#fff;}
+.n-cta{background:var(--o);color:#fff;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:800;display:flex;align-items:center;gap:8px;transition:all .25s;letter-spacing:.01em;white-space:nowrap;box-shadow:0 6px 20px rgba(240,78,26,.45);}
+.n-cta svg{color:#fff;}
+.n-cta:hover{background:var(--dark);transform:scale(1.04);box-shadow:0 8px 26px rgba(14,8,4,.3);}
 .n-talk{color:var(--dark);font-size:13px;font-weight:700;padding:13px 24px;border-radius:100px;border:1.5px solid rgba(14,8,4,.1);background:#fff;display:inline-flex;align-items:center;gap:7px;transition:all .25s;box-shadow:0 8px 28px rgba(14,8,4,.1);white-space:nowrap;}
 .n-talk:hover{border-color:var(--o);color:var(--o);}
 .n-ham{display:none;flex-direction:column;gap:5px;cursor:none;border:none;background:none;padding:4px;}
@@ -481,7 +481,7 @@ nav.scrolled{background:transparent;}
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#procesos">Proceso</a></li>
       <li><a href="#resultados">Resultados</a></li>
-      <li><a href="#contacto" class="n-cta">Reservar llamada <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
+      <li><a href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener" class="n-cta">Reservar llamada <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
     </ul>
   </div>
 
@@ -844,13 +844,18 @@ document.querySelectorAll('a,button,input,select').forEach(el=>{
 
 // NAV SCROLL
 const nav=document.getElementById('mainNav');
-const navCenter=document.querySelector('.n-center');
+const navAvail=document.querySelector('.n-avail');
+const navTalk=document.querySelector('.n-talk');
 window.addEventListener('scroll',()=>{
   nav.classList.toggle('scrolled',scrollY>50);
   const hide=scrollY>40;
-  navCenter.style.transform=hide?'translateY(120px)':'translateY(0)';
-  navCenter.style.opacity=hide?'0':'1';
-  navCenter.style.pointerEvents=hide?'none':'auto';
+  const offY=hide?-100:0;
+  navAvail.style.transform=`translateY(${offY}px)`;
+  navAvail.style.opacity=hide?'0':'1';
+  navAvail.style.pointerEvents=hide?'none':'auto';
+  navTalk.style.transform=`translateY(${offY}px)`;
+  navTalk.style.opacity=hide?'0':'1';
+  navTalk.style.pointerEvents=hide?'none':'auto';
 },{passive:true});
 
 // MOBILE MENU
