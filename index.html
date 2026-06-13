@@ -48,18 +48,24 @@ img,svg{display:block;}
 .wrap{max-width:var(--max-w);margin:0 auto;padding-inline:var(--px-desktop);}
 
 /* ─── NAV ─── */
-nav{position:fixed;top:0;left:0;right:0;width:100%;z-index:900;padding:14px var(--px-desktop);display:flex;align-items:center;justify-content:space-between;transition:all .3s;}
-nav.scrolled{background:rgba(248,244,236,.97);backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(14,8,4,.07);}
-.n-logo{display:flex;align-items:center;gap:9px;font-family:'Unbounded',sans-serif;font-size:17px;font-weight:900;letter-spacing:-.04em;}
-.n-logo-icon{width:32px;height:32px;background:var(--o);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
-.n-logo:hover .n-logo-icon{transform:rotate(90deg);}
-.n-links{display:flex;gap:2px;list-style:none;}
-.n-links a{font-size:11.5px;font-weight:700;color:rgba(14,8,4,.45);padding:7px 14px;border-radius:100px;transition:all .2s;letter-spacing:.01em;}
-.n-links a:hover{color:var(--dark);background:rgba(14,8,4,.06);}
-.n-cta{background:var(--dark);color:#fff;padding:9px 22px;border-radius:100px;font-size:11.5px;font-weight:800;display:flex;align-items:center;gap:8px;transition:all .25s;letter-spacing:.01em;}
-.n-cta:hover{background:var(--o);transform:scale(1.04);}
+nav{position:fixed;top:0;left:0;right:0;width:100%;z-index:900;padding:18px var(--px-desktop);display:flex;align-items:center;justify-content:space-between;transition:all .3s;gap:14px;}
+nav.scrolled{background:transparent;}
+.n-avail{display:flex;align-items:center;gap:9px;background:#fff;padding:13px 22px;border-radius:100px;font-size:12px;font-weight:700;color:var(--dark);box-shadow:0 8px 28px rgba(14,8,4,.1);flex-shrink:0;white-space:nowrap;}
+.n-avail-dot{width:8px;height:8px;border-radius:50%;background:var(--g);animation:dotpulse 2s ease-in-out infinite;flex-shrink:0;}
+.n-center{display:flex;align-items:center;gap:2px;list-style:none;background:#fff;border-radius:100px;padding:8px;box-shadow:0 8px 28px rgba(14,8,4,.1);}
+.n-logo{display:flex;align-items:center;justify-content:center;width:38px;height:38px;background:var(--dark);border-radius:50%;flex-shrink:0;transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
+.n-logo:hover{transform:rotate(90deg);}
+.n-links{display:flex;align-items:center;gap:2px;list-style:none;}
+.n-links a{font-size:13px;font-weight:700;color:var(--dark);padding:10px 16px;border-radius:100px;transition:all .2s;letter-spacing:.01em;}
+.n-links a:hover{color:var(--o);background:rgba(14,8,4,.05);}
+.n-cta{background:var(--o);color:#fff;padding:11px 24px;border-radius:100px;font-size:13px;font-weight:800;display:flex;align-items:center;gap:8px;transition:all .25s;letter-spacing:.01em;white-space:nowrap;}
+.n-cta:hover{background:var(--dark);transform:scale(1.04);}
 .n-ham{display:none;flex-direction:column;gap:5px;cursor:none;border:none;background:none;padding:4px;}
 .n-ham span{display:block;width:22px;height:2px;background:var(--dark);border-radius:2px;}
+
+@media(max-width:1100px){
+  .n-avail{display:none;}
+}
 
 /* ─── HERO ─── */
 .hero{min-height:70vh;width:100%;padding:80px var(--px-desktop) 56px;display:grid;grid-template-columns:55fr 45fr;gap:44px;align-items:center;position:relative;overflow:hidden;max-width:100%;}
@@ -456,22 +462,26 @@ nav.scrolled{background:rgba(248,244,236,.97);backdrop-filter:blur(20px);box-sha
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a href="#" class="n-logo">
-    <span class="n-logo-icon">
+  <div class="n-avail">
+    <span class="n-avail-dot"></span>
+    Disponible para trabajar juntos
+  </div>
+
+  <div class="n-center">
+    <a href="#" class="n-logo">
       <svg width="18" height="18" viewBox="0 0 100 100"><use href="#tivo"/></svg>
-    </span>
-    TIVO
-  </a>
-  <ul class="n-links">
-    <li><a href="#conocenos">Conócenos</a></li>
-    <li><a href="#trabajo">Trabajo</a></li>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#procesos">Procesos</a></li>
-    <li><a href="#resultados">Resultados</a></li>
-  </ul>
+    </a>
+    <ul class="n-links">
+      <li><a href="#conocenos">Conócenos</a></li>
+      <li><a href="#trabajo">Nuestro Trabajo</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#procesos">Proceso</a></li>
+      <li><a href="#resultados">Resultados</a></li>
+    </ul>
+  </div>
+
   <div style="display:flex;align-items:center;gap:7px;">
-    <a href="mailto:hola@wearetivo.com" style="font-size:11px;font-weight:700;color:rgba(14,8,4,.45);padding:9px 18px;border-radius:100px;border:1.5px solid rgba(14,8,4,.1);transition:all .2s;" onmouseenter="this.style.borderColor='var(--o)';this.style.color='var(--o)'" onmouseleave="this.style.borderColor='rgba(14,8,4,.1)';this.style.color='rgba(14,8,4,.45)'">hola@wearetivo.com</a>
-    <a href="#contacto" class="n-cta">Hablemos <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="#contacto" class="n-cta">Conversemos <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     <button class="n-ham" id="hamBtn"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -480,10 +490,11 @@ nav.scrolled{background:rgba(248,244,236,.97);backdrop-filter:blur(20px);box-sha
 <div id="mobMenu" style="display:none;position:fixed;inset:0;z-index:890;background:var(--dark);flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:24px;">
   <button id="mobX" style="position:absolute;top:20px;right:22px;font-size:20px;font-weight:900;color:rgba(234,217,184,.3);font-family:'Unbounded',sans-serif;border:none;background:none;cursor:none;">✕</button>
   <a href="#conocenos" onclick="closeMob()" style="font-family:'Unbounded',sans-serif;font-size:clamp(24px,6.5vw,48px);font-weight:900;letter-spacing:-.04em;color:var(--b);padding:7px 0;border-bottom:1px solid rgba(234,217,184,.07);width:100%;text-align:center;">Conócenos</a>
-  <a href="#trabajo" onclick="closeMob()" style="font-family:'Unbounded',sans-serif;font-size:clamp(24px,6.5vw,48px);font-weight:900;letter-spacing:-.04em;color:var(--b);padding:7px 0;border-bottom:1px solid rgba(234,217,184,.07);width:100%;text-align:center;">Trabajo</a>
+  <a href="#trabajo" onclick="closeMob()" style="font-family:'Unbounded',sans-serif;font-size:clamp(24px,6.5vw,48px);font-weight:900;letter-spacing:-.04em;color:var(--b);padding:7px 0;border-bottom:1px solid rgba(234,217,184,.07);width:100%;text-align:center;">Nuestro Trabajo</a>
   <a href="#servicios" onclick="closeMob()" style="font-family:'Unbounded',sans-serif;font-size:clamp(24px,6.5vw,48px);font-weight:900;letter-spacing:-.04em;color:var(--b);padding:7px 0;border-bottom:1px solid rgba(234,217,184,.07);width:100%;text-align:center;">Servicios</a>
-  <a href="#procesos" onclick="closeMob()" style="font-family:'Unbounded',sans-serif;font-size:clamp(24px,6.5vw,48px);font-weight:900;letter-spacing:-.04em;color:var(--b);padding:7px 0;border-bottom:1px solid rgba(234,217,184,.07);width:100%;text-align:center;">Procesos</a>
-  <a href="#contacto" onclick="closeMob()" style="font-family:'Unbounded',sans-serif;font-size:clamp(24px,6.5vw,48px);font-weight:900;letter-spacing:-.04em;color:var(--o);padding:7px 0;width:100%;text-align:center;">Hablemos →</a>
+  <a href="#procesos" onclick="closeMob()" style="font-family:'Unbounded',sans-serif;font-size:clamp(24px,6.5vw,48px);font-weight:900;letter-spacing:-.04em;color:var(--b);padding:7px 0;border-bottom:1px solid rgba(234,217,184,.07);width:100%;text-align:center;">Proceso</a>
+  <a href="#resultados" onclick="closeMob()" style="font-family:'Unbounded',sans-serif;font-size:clamp(24px,6.5vw,48px);font-weight:900;letter-spacing:-.04em;color:var(--b);padding:7px 0;border-bottom:1px solid rgba(234,217,184,.07);width:100%;text-align:center;">Resultados</a>
+  <a href="#contacto" onclick="closeMob()" style="font-family:'Unbounded',sans-serif;font-size:clamp(24px,6.5vw,48px);font-weight:900;letter-spacing:-.04em;color:var(--o);padding:7px 0;width:100%;text-align:center;">Conversemos →</a>
 </div>
 
 <!-- HERO -->
