@@ -58,8 +58,10 @@ nav.scrolled{background:transparent;}
 .n-links{display:flex;align-items:center;gap:2px;list-style:none;}
 .n-links a{font-size:13px;font-weight:700;color:var(--dark);padding:10px 16px;border-radius:100px;transition:all .2s;letter-spacing:.01em;}
 .n-links a:hover{color:var(--o);background:rgba(14,8,4,.05);}
-.n-cta{background:var(--dark);color:#fff;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:800;display:flex;align-items:center;gap:8px;transition:all .25s;letter-spacing:.01em;white-space:nowrap;}
-.n-cta:hover{background:var(--o);transform:scale(1.04);}
+.n-cta{background:var(--o);color:#fff;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:800;display:flex;align-items:center;gap:8px;transition:all .25s;letter-spacing:.01em;white-space:nowrap;box-shadow:0 6px 18px rgba(240,78,26,.3);}
+.n-cta:hover{background:var(--dark);transform:scale(1.04);}
+.n-talk{color:var(--dark);font-size:13px;font-weight:700;padding:13px 24px;border-radius:100px;border:1.5px solid rgba(14,8,4,.1);background:#fff;display:inline-flex;align-items:center;gap:7px;transition:all .25s;box-shadow:0 8px 28px rgba(14,8,4,.1);white-space:nowrap;}
+.n-talk:hover{border-color:var(--o);color:var(--o);}
 .n-ham{display:none;flex-direction:column;gap:5px;cursor:none;border:none;background:none;padding:4px;}
 .n-ham span{display:block;width:22px;height:2px;background:var(--dark);border-radius:2px;}
 
@@ -482,6 +484,7 @@ nav.scrolled{background:transparent;}
   </div>
 
   <div style="display:flex;align-items:center;gap:7px;">
+    <a href="#contacto" class="n-talk">Conversemos</a>
     <button class="n-ham" id="hamBtn"><span></span><span></span><span></span></button>
   </div>
 </nav>
