@@ -195,7 +195,7 @@ footer{
 
 /* ══ MÓVIL ══ */
 @media(max-width:768px){
-  html,body{height:auto;min-height:100dvh;}
+  html,body{height:auto;min-height:100dvh;overflow-x:hidden;}
 
   header{padding:16px 20px;}
   .pill{padding:7px 13px;}
@@ -213,16 +213,21 @@ footer{
   .panel{
     position:relative;inset:auto;
     width:100%;border-radius:16px;
+    overflow:hidden;
   }
-  .cd-wrap{padding:26px 14px 22px;}
+  .cd-wrap{padding:26px 10px 22px;width:100%;}
   .cd-label{margin-bottom:16px;font-size:8.5px;}
+  .cd-blocks{gap:5px;width:100%;}
+  .cd-block{min-width:0;}
   /* números grandes — protagonistas */
   .cd-num{
-    font-size:clamp(36px,11vw,56px);
-    padding:14px 4px;
+    font-size:clamp(22px,8.4vw,56px);
+    padding:14px 2px;
     border-radius:11px;
+    width:100%;
+    overflow:hidden;
   }
-  .cd-sep{font-size:clamp(26px,8vw,40px);padding-top:14px;}
+  .cd-sep{font-size:clamp(18px,6vw,40px);padding-top:14px;flex-shrink:0;}
   .cd-lbl{font-size:8.5px;}
   .wm{font-size:clamp(60px,22vw,110px);}
 
@@ -245,8 +250,8 @@ footer{
 
 @media(max-width:380px){
   .pill-txt{font-size:7.5px;letter-spacing:0;}
-  .cd-num{font-size:30px;padding:12px 4px;}
-  .cd-sep{font-size:22px;}
+  .cd-num{font-size:clamp(18px,7.6vw,30px);padding:12px 2px;}
+  .cd-sep{font-size:clamp(15px,5vw,22px);}
   .hl-dark,.hl-orange{font-size:1.9rem;}
 }
 </style>
