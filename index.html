@@ -5,775 +5,1340 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TIVO — Estudio Creativo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-@font-face{font-family:'Winking';src:url('Winking.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap;}
+/* ── TOKENS ──────────────────────────────────────────────────────── */
+:root {
+  /* TIVO Brand Colors */
+  --orange:   #F04E1A;
+  --purple:   #9B6FD4;
+  --beige:    #EAD9B8;
+  --pink:     #E8477A;
+  --lime:     #C4D400;
+  --green:    #4DBD74;
+  --blue:     #4DB8E8;
+  --yellow:   #F9C31F;
 
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html,body{width:100%;overflow-x:hidden;}
-:root{
-  --o:#F04E1A;
-  --p:#9B6FD4;
-  --b:#EAD9B8;
-  --pk:#E8477A;
-  --l:#C4D400;
-  --g:#4DBD74;
-  --bl:#4DB8E8;
-  --y:#F9C31F;
-  --dark:#0E0804;
-  --cream:#F8F4EC;
-  --white:#FFFFFF;
-  --fh:'Winking','Plus Jakarta Sans',sans-serif;
-  --fb:'Plus Jakarta Sans',sans-serif;
-  --t-display:clamp(2.8rem,5vw,5rem);
-  --t-h1:clamp(2rem,3.8vw,3.4rem);
-  --t-h2:clamp(1.75rem,3vw,2.75rem);
-  --t-h3:clamp(1.1rem,1.5vw,1.35rem);
-  --t-lead:clamp(.95rem,1.15vw,1.05rem);
-  --t-body:0.9375rem;
-  --t-sm:0.8125rem;
-  --t-label:0.6875rem;
-  --px:clamp(20px,5vw,72px);
-  --py-xl:clamp(72px,9vw,112px);
-  --py-lg:clamp(52px,6vw,80px);
-  --r-lg:24px;
-  --r-md:16px;
-  --r-sm:10px;
-  --r-pill:100px;
-  --sh-sm:0 2px 8px rgba(14,8,4,.05);
-  --sh-md:0 8px 28px rgba(14,8,4,.09);
-  --sh-lg:0 20px 56px rgba(14,8,4,.12);
-  --sh-o:0 6px 24px rgba(240,78,26,.26);
-}
-html{scroll-behavior:smooth;}
-body{background:var(--cream);color:var(--dark);font-family:var(--fb);font-size:var(--t-body);line-height:1.65;cursor:none;}
-a{text-decoration:none;color:inherit;}
-img,svg{display:block;}
-button{font-family:inherit;cursor:none;}
+  /* Neutrals — cream base de TIVO */
+  --bg:       #F8F4EC;
+  --white:    #FFFFFF;
+  --surface:  #F0EBE1;
+  --border:   rgba(14,8,4,0.12);
+  --border-soft: rgba(14,8,4,0.07);
+  --ink:      #0E0804;
+  --muted:    rgba(14,8,4,0.45);
+  --subtle:   rgba(14,8,4,0.28);
 
-/* ── WINKING UPPERCASE ENFORCEMENT ── */
-.fh-text, h1, h2, h3, .sec-h, .fc-h, .sd-h, .ps-h, .bc-name, .sc-title, .stat-n, .fg-logo {
-  font-family: var(--fh);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  /* Shadows */
+  --shadow-card: inset 0 -3px 4px 0 rgba(14,8,4,0.08);
+  --shadow-btn:  inset 0 -4px 4px 0 rgba(0,0,0,0.15);
+  --shadow-md:   0 8px 28px rgba(14,8,4,0.09);
+
+  /* Radii */
+  --r-xl: 32px;
+  --r-lg: 24px;
+  --r-md: 16px;
+  --r-sm:  8px;
+  --r-pill: 100px;
 }
 
-/* ── CURSOR ── */
-#cursor{position:fixed;z-index:9999;pointer-events:none;width:10px;height:10px;background:var(--o);border-radius:50%;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:multiply;}
-#cursor.on{width:44px;height:44px;background:var(--l);}
-#cur-r{position:fixed;z-index:9998;pointer-events:none;width:28px;height:28px;border:1.5px solid rgba(240,78,26,.2);border-radius:50%;transform:translate(-50%,-50%);}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
 
 /* ── COLOR STRIP ── */
-.cstrip{display:flex;height:4px;width:100%;position:fixed;top:0;left:0;z-index:1001;}
-.cs1{background:var(--o);flex:2.2}.cs2{background:var(--p);flex:1.8}.cs3{background:var(--b);flex:1.4}
-.cs4{background:var(--pk);flex:1.2}.cs5{background:var(--l);flex:2}.cs6{background:var(--g);flex:1.2}
-.cs7{background:var(--bl);flex:1}.cs8{background:var(--y);flex:.9}
-
-/* ── NAV ── */
-nav{position:fixed;top:4px;left:0;right:0;z-index:900;padding:14px var(--px);display:flex;align-items:center;justify-content:space-between;gap:16px;}
-.n-avail{display:flex;align-items:center;gap:8px;background:var(--white);padding:10px 20px;border-radius:var(--r-pill);font-family:var(--fb);font-size:var(--t-label);font-weight:600;color:rgba(14,8,4,.55);box-shadow:var(--sh-md);flex-shrink:0;white-space:nowrap;transition:transform .4s ease,opacity .4s ease;}
-.n-avail-dot{width:7px;height:7px;border-radius:50%;background:var(--g);animation:dotpulse 2s ease-in-out infinite;}
-@keyframes dotpulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.6);opacity:.4;}}
-.n-center{display:flex;align-items:center;gap:4px;background:var(--white);border-radius:var(--r-pill);padding:7px;box-shadow:var(--sh-md);}
-
-/* LOGO — orange bg, beige icon; hover: lime bg */
-.n-logo{width:36px;height:36px;background:var(--o);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .25s,transform .4s cubic-bezier(.34,1.56,.64,1);}
-.n-logo:hover{background:var(--l);transform:rotate(90deg);}
-.n-logo svg use{/* beige icon via SVG fill on symbol */}
-
-.n-links{display:flex;align-items:center;list-style:none;}
-.n-links a{font-family:var(--fb);font-size:var(--t-sm);font-weight:500;color:rgba(14,8,4,.6);padding:9px 14px;border-radius:var(--r-pill);transition:color .2s,background .2s;}
-.n-links a:hover{color:var(--o);background:rgba(14,8,4,.04);}
-
-/* CTA — naranja + beige; hover: lima + rosa */
-.n-cta{background:var(--o);color:var(--b);padding:10px 20px;border-radius:var(--r-pill);font-family:var(--fb);font-size:var(--t-sm);font-weight:700;display:flex;align-items:center;gap:7px;box-shadow:var(--sh-o);transition:background .25s,color .25s,transform .25s,box-shadow .25s;white-space:nowrap;}
-.n-cta:hover{background:var(--l);color:var(--pk);transform:scale(1.04);box-shadow:0 8px 24px rgba(196,212,0,.4);}
-
-.n-talk{display:inline-flex;align-items:center;gap:7px;color:var(--dark);font-family:var(--fb);font-size:var(--t-sm);font-weight:600;padding:10px 20px;border-radius:var(--r-pill);border:1.5px solid rgba(14,8,4,.1);background:var(--white);box-shadow:var(--sh-md);white-space:nowrap;flex-shrink:0;transition:transform .4s ease,opacity .4s ease,border-color .25s,color .25s,background .25s;}
-.n-talk:hover{border-color:var(--p);color:var(--white);background:var(--p);}
-.n-ham{display:none;flex-direction:column;gap:5px;border:none;background:none;padding:6px;}
-.n-ham span{display:block;width:22px;height:2px;background:var(--o);border-radius:2px;}
-
-/* ── MOBILE MENU ── */
-#mobMenu{display:none;position:fixed;inset:0;z-index:890;background:var(--o);flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:24px;}
-#mobMenu a{font-family:var(--fh);font-size:clamp(26px,7vw,48px);font-weight:700;color:var(--b);text-transform:uppercase;letter-spacing:.06em;padding:10px 0;border-bottom:1px solid rgba(234,217,184,.15);width:100%;text-align:center;transition:color .2s;}
-#mobMenu a:last-child{color:var(--l);border-bottom:none;}
-#mobMenu a:hover{color:var(--l);}
-#mobX{position:absolute;top:20px;right:22px;font-size:20px;font-weight:700;color:rgba(234,217,184,.6);font-family:var(--fb);border:none;background:none;transition:color .2s;}
-#mobX:hover{color:var(--b);}
-
-/* ═══════════════════════
-   HERO
-═══════════════════════ */
-.hero{
-  min-height:100vh;width:100%;
-  padding:calc(var(--px) + 96px) var(--px) 80px;
-  display:grid;grid-template-columns:1.05fr .95fr;
-  gap:clamp(32px,4vw,56px);align-items:center;
-  position:relative;overflow:hidden;
+.cstrip {
+  display: flex; height: 4px; width: 100%;
+  position: fixed; top: 0; left: 0; z-index: 1001;
 }
-.hero::before{
-  content:'';position:absolute;right:-12%;top:-18%;
-  width:55vw;height:55vw;max-width:680px;max-height:680px;
-  background:radial-gradient(ellipse at 60% 40%,rgba(196,212,0,.07) 0%,rgba(240,78,26,.05) 50%,transparent 72%);
-  border-radius:50%;animation:blobspin 34s linear infinite;pointer-events:none;
-}
-.hero::after{
-  content:'';position:absolute;left:-6%;bottom:-8%;
-  width:38vw;height:38vw;max-width:460px;max-height:460px;
-  background:radial-gradient(ellipse at 40% 60%,rgba(232,71,122,.05) 0%,transparent 70%);
-  border-radius:50%;pointer-events:none;
-}
-@keyframes blobspin{to{transform:rotate(360deg);}}
-.hero-l{position:relative;z-index:2;}
+.cs1{background:#F04E1A;flex:2.2}.cs2{background:#9B6FD4;flex:1.8}.cs3{background:#EAD9B8;flex:1.4}
+.cs4{background:#E8477A;flex:1.2}.cs5{background:#C4D400;flex:2}.cs6{background:#4DBD74;flex:1.2}
+.cs7{background:#4DB8E8;flex:1}.cs8{background:#F9C31F;flex:.9}
 
-/* eyebrow */
-.h-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--fb);font-size:var(--t-label);font-weight:700;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--o);margin-bottom:22px;
-}
-.h-dot{width:6px;height:6px;border-radius:50%;background:var(--o);animation:dotpulse 2s ease-in-out infinite;}
-
-/* h1 — UPPERCASE WINKING con tracking generoso */
-h1.h1{
-  font-family:var(--fh);
-  font-size:var(--t-display);
-  font-weight:700;
-  line-height:1.0;
-  letter-spacing:.05em;
-  color:var(--dark);
-  text-transform:uppercase;
-}
-/* la sub-frase es Plus Jakarta (no winking), lowercase está bien */
-.h1 .sm{
-  display:block;font-family:var(--fb);font-size:var(--t-body);
-  font-weight:400;color:rgba(14,8,4,.45);margin-top:14px;line-height:1.7;
-  letter-spacing:0;text-transform:none;
+/* ── NAV ────────────────────────────────────────────────────────── */
+.nav-wrap {
+  position: fixed;
+  top: 24px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--white);
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-card), 0 2px 16px rgba(0,0,0,0.08);
+  padding: 6px;
 }
 
-/* typing */
-.typing-wrap{
-  display:inline-flex;align-items:center;
-  background:var(--o);padding:9px 24px 11px;border-radius:14px;
-  overflow:hidden;position:relative;margin:18px 0 8px;
+.nav-logo-btn {
+  width: 39px; height: 39px;
+  background: var(--orange);
+  border-radius: var(--r-pill);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: rgba(255,255,255,0.3) 0 -2px 4px inset;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: background .25s, transform .4s cubic-bezier(.34,1.56,.64,1);
 }
-.typing-wrap::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.09),transparent);
-  animation:shimmer 2.8s ease-in-out infinite;
+.nav-logo-btn:hover { background: var(--lime); transform: rotate(90deg); }
+.nav-logo-btn svg { width: 18px; height: 18px; fill: var(--beige); }
+
+.nav-links {
+  display: flex; align-items: center; gap: 0;
+  height: 36px;
+  list-style: none;
+  overflow: hidden;
 }
-@keyframes shimmer{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
-#typing{font-family:var(--fb);font-size:clamp(.95rem,1.7vw,1.3rem);font-weight:700;color:var(--b);white-space:nowrap;position:relative;z-index:1;}
-.blink{display:inline-block;width:2px;height:1em;background:var(--b);margin-left:4px;vertical-align:middle;animation:bl .7s step-end infinite;}
-@keyframes bl{0%,100%{opacity:1;}50%{opacity:0;}}
 
-.h-tagline{font-family:var(--fb);font-size:var(--t-body);font-weight:500;color:rgba(14,8,4,.68);margin-top:12px;line-height:1.6;}
-.h-tagline em{color:var(--p);font-style:italic;}
-.h-sub{font-family:var(--fb);font-size:var(--t-sm);line-height:1.85;color:rgba(14,8,4,.44);max-width:440px;margin-top:8px;}
-.h-btns{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap;}
+.nav-links a {
+  display: flex; align-items: center; height: 100%;
+  padding: 0 14px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 600, "opsz" 92;
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--orange); }
 
-/* botones globales */
-.btn-primary{background:var(--o);color:var(--b);padding:13px 28px;border-radius:var(--r-pill);font-family:var(--fb);font-size:var(--t-sm);font-weight:700;display:inline-flex;align-items:center;gap:8px;box-shadow:var(--sh-o);transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s,background .25s,color .25s;}
-.btn-primary:hover{background:var(--l);color:var(--pk);transform:scale(1.05) translateY(-2px);box-shadow:0 16px 40px rgba(196,212,0,.35);}
-.btn-ghost-sm{color:var(--o);font-family:var(--fb);font-size:var(--t-sm);font-weight:600;padding:13px 22px;border-radius:var(--r-pill);border:1.5px solid var(--o);display:inline-flex;align-items:center;gap:7px;transition:border-color .25s,color .25s,background .25s;}
-.btn-ghost-sm:hover{border-color:var(--p);color:var(--white);background:var(--p);}
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 0 16px; height: 39px;
+  background: var(--orange);
+  color: var(--beige);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 650, "opsz" 92;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-btn), 0 6px 20px rgba(240,78,26,0.3);
+  transition: filter .2s, transform .2s, background .2s, color .2s;
+  white-space: nowrap;
+}
+.nav-cta:hover { background: var(--lime); color: var(--pink); filter: brightness(1.05); transform: translateY(-1px); }
 
-/* trust */
-.h-trust{display:flex;align-items:center;gap:14px;margin-top:34px;}
-.trust-avs{display:flex;}
-.tav{width:30px;height:30px;border-radius:50%;border:2.5px solid var(--cream);font-family:var(--fb);font-size:8px;font-weight:700;color:var(--white);display:flex;align-items:center;justify-content:center;margin-left:-8px;}
-.tav:first-child{margin-left:0;}
-.t1{background:var(--p)}.t2{background:var(--o)}.t3{background:var(--pk)}.t4{background:var(--bl)}
-.trust-txt{font-family:var(--fb);font-size:var(--t-sm);color:rgba(14,8,4,.4);line-height:1.5;}
-.trust-txt strong{color:var(--o);font-weight:700;}
-.trust-stars{color:var(--y);font-size:11px;display:block;margin-bottom:2px;}
+/* ── TICKER ──────────────────────────────────────────────────────── */
+.ticker {
+  background: var(--orange);
+  padding: 13px 0;
+  overflow: hidden;
+  user-select: none;
+}
+.ticker-inner {
+  display: flex; width: max-content;
+  animation: tick 32s linear infinite;
+}
+.ticker-inner:hover { animation-play-state: paused; }
+@keyframes tick { to { transform: translateX(-50%); } }
+.ti {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 0 20px;
+  white-space: nowrap;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 700, "opsz" 92;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(234,217,184,0.75);
+}
+.ti-sep { color: var(--beige); opacity: .6; }
 
-/* ── LEAD CARD ── */
-.hero-r{position:relative;z-index:2;}
-.lcard{background:var(--white);border-radius:var(--r-lg);box-shadow:var(--sh-lg);overflow:hidden;}
-.lcard-top{background:var(--o);padding:22px 26px 18px;position:relative;overflow:hidden;}
-.lcard-top::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 20px,rgba(255,255,255,.06) 20px,rgba(255,255,255,.06) 40px);pointer-events:none;}
-.lc-badge{display:inline-flex;align-items:center;gap:5px;background:var(--l);color:var(--dark);padding:4px 12px;border-radius:var(--r-pill);font-family:var(--fb);font-size:var(--t-label);font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;position:relative;z-index:1;}
-.lc-bdot{width:4px;height:4px;border-radius:50%;background:var(--pk);animation:dotpulse 1.8s ease-in-out infinite;}
-.lc-title{font-family:var(--fb);font-size:clamp(.88rem,1.1vw,.98rem);font-weight:700;color:var(--b);line-height:1.4;position:relative;z-index:1;}
-.lc-title span{color:var(--l);}
-.lc-sub{font-family:var(--fb);font-size:var(--t-sm);color:rgba(234,217,184,.65);margin-top:5px;line-height:1.6;position:relative;z-index:1;}
-.lcard-bens{display:flex;gap:8px;padding:14px 22px 0;}
-.lcard-ben{flex:1;background:rgba(14,8,4,.03);border:1.5px solid rgba(14,8,4,.07);border-radius:var(--r-sm);padding:10px 6px;text-align:center;transition:border-color .2s,background .2s;}
-.lcard-ben:hover{background:rgba(240,78,26,.07);border-color:rgba(240,78,26,.25);}
-.ben-i{font-size:16px;margin-bottom:4px;}
-.ben-t{font-family:var(--fb);font-size:var(--t-label);font-weight:600;color:rgba(14,8,4,.44);line-height:1.3;}
-.lcard-form{padding:16px 22px 20px;}
-.form-div{font-family:var(--fb);font-size:var(--t-label);font-weight:700;color:rgba(14,8,4,.28);text-align:center;display:flex;align-items:center;gap:8px;margin-bottom:12px;letter-spacing:.08em;text-transform:uppercase;}
-.form-div::before,.form-div::after{content:'';flex:1;height:1px;background:rgba(14,8,4,.07);}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;margin-bottom:10px;}
-.fg label{display:block;font-family:var(--fb);font-size:var(--t-label);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(14,8,4,.38);margin-bottom:4px;}
-.fg input,.fg select{width:100%;height:40px;background:var(--cream);border:1.5px solid rgba(14,8,4,.1);border-radius:var(--r-sm);padding:0 13px;font-family:var(--fb);font-size:var(--t-sm);color:var(--dark);outline:none;transition:border-color .2s,box-shadow .2s,background .2s;appearance:none;}
-.fg input:focus,.fg select:focus{border-color:var(--o);background:var(--white);box-shadow:0 0 0 3px rgba(240,78,26,.09);}
-.fg input::placeholder{color:rgba(14,8,4,.25);}
-.sw{position:relative;}
-.sw::after{content:'▾';position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:10px;color:rgba(14,8,4,.3);pointer-events:none;}
-.sw select{padding-right:28px;}
-.phone-row{display:flex;gap:6px;}
-.pfx{height:40px;padding:0 10px;background:var(--cream);border:1.5px solid rgba(14,8,4,.1);border-radius:var(--r-sm);font-family:var(--fb);font-size:var(--t-sm);font-weight:600;color:var(--dark);display:flex;align-items:center;gap:5px;white-space:nowrap;flex-shrink:0;}
-.pfx span{color:rgba(14,8,4,.45);}
-.prv{display:flex;align-items:flex-start;gap:8px;margin-top:10px;margin-bottom:12px;}
-.prv input[type="checkbox"]{width:15px;height:15px;margin-top:2px;flex-shrink:0;accent-color:var(--o);}
-.prv label{font-family:var(--fb);font-size:var(--t-sm);color:rgba(14,8,4,.35);line-height:1.6;}
-.prv label a{color:var(--o);text-decoration:underline;text-underline-offset:2px;}
-.btn-dl{width:100%;height:48px;background:var(--o);color:var(--b);border:none;border-radius:10px;font-family:var(--fb);font-size:var(--t-sm);font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:var(--sh-o);transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,background .25s,color .25s;}
-.btn-dl:hover{background:var(--l);color:var(--pk);transform:scale(1.02) translateY(-2px);box-shadow:0 14px 34px rgba(196,212,0,.35);}
-.btn-dl:disabled{background:var(--g);color:var(--white);transform:none;box-shadow:none;}
-.lcard-proof{display:flex;align-items:center;justify-content:center;gap:16px;padding:10px 22px 14px;border-top:1px solid rgba(14,8,4,.05);}
-.proof-i{display:flex;align-items:center;gap:5px;font-family:var(--fb);font-size:var(--t-label);font-weight:600;color:rgba(14,8,4,.32);}
+/* ── HERO ───────────────────────────────────────────────────────── */
+#home {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 180px 40px 140px;
+  position: relative; overflow: hidden;
+}
 
-/* ── TICKER ── */
-.ticker{background:var(--o);padding:14px 0;overflow:hidden;user-select:none;}
-.ticker-inner{display:flex;width:max-content;animation:tick 34s linear infinite;}
-.ticker-inner:hover{animation-play-state:paused;}
-@keyframes tick{to{transform:translateX(-50%);}}
-.ti{display:inline-flex;align-items:center;gap:14px;padding:0 22px;white-space:nowrap;font-family:var(--fb);font-size:var(--t-label);font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(234,217,184,.7);}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-bottom: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.hero-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--orange);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(240,78,26,.45); }
+  50%      { box-shadow: 0 0 0 6px rgba(240,78,26,0); }
+}
 
-/* ── STATS ── */
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);background:var(--white);border-top:1px solid rgba(14,8,4,.06);border-bottom:1px solid rgba(14,8,4,.06);}
-.stat{padding:40px 40px;border-right:1px solid rgba(14,8,4,.06);position:relative;overflow:hidden;transition:background .3s;}
-.stat:last-child{border-right:none;}
-.stat:hover{background:var(--cream);}
-.stat::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;transition:height .5s ease;}
-.stat:nth-child(1)::before{background:var(--o);}
-.stat:nth-child(2)::before{background:var(--p);}
-.stat:nth-child(3)::before{background:var(--pk);}
-.stat:nth-child(4)::before{background:var(--g);}
-.stat:hover::before{height:100%;}
-.stat-n{font-family:var(--fh);font-size:clamp(32px,3.5vw,54px);font-weight:700;line-height:1;color:var(--dark);text-transform:uppercase;letter-spacing:.03em;}
-.stat-n sup{font-size:.38em;color:var(--o);vertical-align:super;}
-.stat-l{font-family:var(--fb);font-size:var(--t-sm);color:rgba(14,8,4,.36);margin-top:8px;}
+.hero-h1 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: clamp(44px, 6vw, 68px);
+  line-height: 1.05;
+  letter-spacing: -.3px;
+  color: var(--ink);
+  max-width: 820px;
+  margin-bottom: 0;
+  position: relative; z-index: 2;
+}
 
-/* ── CLIENTS ── */
-.clients{background:var(--white);padding:48px var(--px);text-align:center;border-bottom:1px solid rgba(14,8,4,.06);}
-.cl-label{font-family:var(--fb);font-size:var(--t-label);font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(14,8,4,.22);margin-bottom:32px;}
-.cl-logos{display:flex;align-items:center;justify-content:center;gap:52px;flex-wrap:wrap;}
-.cl-name{font-family:var(--fh);font-size:clamp(13px,1.4vw,16px);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(14,8,4,.12);transition:color .3s;}
-.cl-name:hover{color:var(--o);}
+.typing-wrap {
+  display: inline-flex; align-items: center;
+  background: var(--orange);
+  padding: 10px 26px 12px;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  margin: 18px 0 8px;
+}
+.typing-wrap::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.09), transparent);
+  animation: shimmer 2.8s ease-in-out infinite;
+}
+@keyframes shimmer { 0%{transform:translateX(-100%);}100%{transform:translateX(100%);} }
+#typing {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 700, "opsz" 92;
+  font-size: clamp(18px, 2vw, 26px);
+  color: var(--beige);
+  white-space: nowrap;
+  position: relative; z-index: 1;
+}
+.blink {
+  display: inline-block; width: 2px; height: 1em;
+  background: var(--beige);
+  margin-left: 4px; vertical-align: middle;
+  animation: bl .7s step-end infinite;
+}
+@keyframes bl { 0%,100%{opacity:1;}50%{opacity:0;} }
 
-/* ── MARQUEE ── */
-.bigmq{overflow:hidden;padding:18px 0;background:var(--cream);border-top:1px solid rgba(14,8,4,.06);border-bottom:1px solid rgba(14,8,4,.06);}
-.bigmq-inner{display:flex;width:max-content;animation:tick 48s linear infinite;}
-.bm-item{font-family:var(--fh);font-size:clamp(40px,6vw,80px);font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:transparent;-webkit-text-stroke:1.5px rgba(14,8,4,.08);white-space:nowrap;padding:0 30px;transition:color .3s,-webkit-text-stroke .3s;}
-.bm-item:hover{color:var(--o);-webkit-text-stroke:0 transparent;}
-.bm-sep{color:var(--o);padding:0 8px;display:flex;align-items:center;font-size:26px;}
+.hero-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-top: 10px;
+}
+.hero-tagline em { color: var(--purple); font-style: italic; }
 
-/* ── SECCIONES BASE ── */
-.sec{padding:var(--py-xl) var(--px);}
-.sec-eye{display:inline-flex;align-items:center;gap:7px;font-family:var(--fb);font-size:var(--t-label);font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--o);margin-bottom:14px;}
-.sec-h{font-family:var(--fh);font-size:var(--t-h2);font-weight:700;line-height:1.06;color:var(--dark);text-transform:uppercase;letter-spacing:.04em;}
-.sec-h .em{color:var(--o);}
-.sec-h .emp{color:var(--p);}
-.sec-h .eml{color:var(--l);}
-.sec-sub{font-family:var(--fb);font-size:var(--t-body);color:rgba(14,8,4,.4);max-width:520px;margin-top:14px;line-height:1.8;}
+.hero-sub {
+  font-size: 16px;
+  color: var(--muted);
+  letter-spacing: -.2px;
+  margin-top: 6px;
+}
 
-/* ── CONÓCENOS ── */
-.sec-conocenos{display:grid;grid-template-columns:1fr 1fr;gap:clamp(44px,6vw,88px);align-items:start;background:var(--cream);position:relative;overflow:hidden;}
-.sec-conocenos::after{content:'';position:absolute;right:-100px;top:50%;transform:translateY(-50%);width:480px;height:480px;background:radial-gradient(ellipse,rgba(240,78,26,.04) 0%,transparent 68%);border-radius:50%;pointer-events:none;}
-.cn-quote{font-family:var(--fb);font-size:clamp(1rem,1.2vw,1.05rem);font-weight:500;font-style:italic;color:var(--dark);line-height:1.6;padding-left:20px;border-left:3px solid var(--o);margin-top:24px;}
-.cn-body{font-family:var(--fb);font-size:var(--t-body);line-height:1.85;color:rgba(14,8,4,.44);margin-top:18px;}
-.cn-body strong{color:var(--dark);font-weight:700;}
-.cn-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px;}
-.cn-tag{font-family:var(--fb);font-size:var(--t-label);font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:6px 14px;border-radius:var(--r-pill);border:1.5px solid rgba(14,8,4,.09);color:rgba(14,8,4,.35);transition:border-color .2s,color .2s;}
-.cn-tag:hover{border-color:var(--o);color:var(--o);}
-.cn-cards{display:flex;flex-direction:column;gap:10px;}
-.vc{background:var(--white);border-radius:var(--r-md);padding:20px;display:flex;gap:16px;align-items:flex-start;border:1.5px solid rgba(14,8,4,.06);transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s,border-color .35s;}
-.vc:hover{transform:translateX(8px);box-shadow:var(--sh-md);border-color:transparent;}
-.vc-o{background:var(--o);border-color:transparent;}
-.vc-p{background:var(--p);border-color:transparent;}
-.vc-l{background:var(--l);border-color:transparent;}
-.vc-ico{font-size:20px;flex-shrink:0;margin-top:1px;}
-.vc-t{font-family:var(--fb);font-size:var(--t-sm);font-weight:700;margin-bottom:4px;}
-.vc-o .vc-t,.vc-p .vc-t{color:var(--white);}
-.vc-l .vc-t,.vc:not(.vc-o):not(.vc-p):not(.vc-l) .vc-t{color:var(--dark);}
-.vc-d{font-family:var(--fb);font-size:var(--t-sm);line-height:1.65;}
-.vc-o .vc-d,.vc-p .vc-d{color:rgba(255,255,255,.65);}
-.vc-l .vc-d{color:rgba(14,8,4,.5);}
-.vc:not(.vc-o):not(.vc-p):not(.vc-l) .vc-d{color:rgba(14,8,4,.4);}
+.hero-cta-row {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 28px;
+  position: relative; z-index: 3;
+  flex-wrap: wrap; justify-content: center;
+}
 
-/* ── TRABAJO / BENTO ── */
-.sec-trabajo{background:var(--o);padding:var(--py-xl) var(--px);}
-.tj-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px;gap:20px;}
-.tj-head .sec-h{color:var(--b);}
-.tj-head .sec-eye{color:var(--b);}
-.tj-more{font-family:var(--fb);color:rgba(234,217,184,.7);font-size:var(--t-sm);font-weight:600;border:1.5px solid rgba(234,217,184,.25);padding:11px 22px;border-radius:var(--r-pill);display:flex;align-items:center;gap:8px;white-space:nowrap;flex-shrink:0;transition:color .25s,border-color .25s,gap .25s,background .25s;}
-.tj-more:hover{color:var(--o);border-color:var(--b);background:var(--b);gap:14px;}
-.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(10,44px);gap:10px;}
-.bc{border-radius:18px;overflow:hidden;position:relative;}
-.bc:hover .bc-fill{transform:scale(1.05);}
-.bc:hover .bc-arr{opacity:1;transform:scale(1) rotate(0deg);}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 26px; height: 46px;
+  background: var(--orange);
+  color: var(--beige);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 650, "opsz" 92;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-btn), 0 6px 24px rgba(240,78,26,.28);
+  transition: background .2s, color .2s, transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.btn-primary:hover { background: var(--lime); color: var(--pink); transform: scale(1.04) translateY(-2px); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 12px 22px; height: 46px;
+  background: transparent;
+  color: var(--orange);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 600, "opsz" 92;
+  font-size: 15px;
+  text-decoration: none;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--orange);
+  transition: border-color .2s, color .2s, background .2s;
+}
+.btn-ghost:hover { border-color: var(--purple); color: var(--white); background: var(--purple); }
+
+/* Trust row */
+.hero-trust {
+  display: flex; align-items: center; gap: 14px;
+  margin-top: 32px;
+  position: relative; z-index: 2;
+  justify-content: center;
+}
+.trust-avs { display: flex; }
+.tav {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 2.5px solid var(--bg);
+  font-family: 'Inter', sans-serif; font-size: 8px; font-weight: 700;
+  color: var(--white); display: flex; align-items: center; justify-content: center;
+  margin-left: -8px;
+}
+.tav:first-child { margin-left: 0; }
+.tv1{background:var(--purple)}.tv2{background:var(--orange)}.tv3{background:var(--pink)}.tv4{background:var(--blue)}
+.trust-txt { font-size: 13px; color: var(--muted); line-height: 1.5; }
+.trust-txt strong { color: var(--orange); font-weight: 700; }
+.trust-stars { color: var(--yellow); font-size: 11px; display: block; margin-bottom: 2px; }
+
+/* Decorative blobs */
+.cloud-l, .cloud-r {
+  position: absolute; pointer-events: none; z-index: 0;
+  border-radius: 50%; filter: blur(70px); opacity: .2;
+}
+.cloud-l { width: 480px; height: 300px; background: var(--lime); top: 15%; left: -14%; }
+.cloud-r { width: 420px; height: 280px; background: var(--purple); bottom: 15%; right: -12%; }
+
+/* ── STATS ROW ───────────────────────────────────────────────────── */
+.stats-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  background: var(--white);
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+}
+.stat {
+  padding: 40px;
+  border-right: 1px solid var(--border-soft);
+  position: relative; overflow: hidden;
+  transition: background .3s;
+}
+.stat:last-child { border-right: none; }
+.stat:hover { background: var(--bg); }
+.stat::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 3px; height: 0;
+  transition: height .5s ease;
+}
+.stat:nth-child(1)::before { background: var(--orange); }
+.stat:nth-child(2)::before { background: var(--purple); }
+.stat:nth-child(3)::before { background: var(--pink); }
+.stat:nth-child(4)::before { background: var(--green); }
+.stat:hover::before { height: 100%; }
+.stat-n {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: clamp(32px, 3.5vw, 52px);
+  line-height: 1; color: var(--ink);
+}
+.stat-n sup { font-size: .4em; color: var(--orange); vertical-align: super; }
+.stat-l {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; color: var(--muted); margin-top: 8px;
+}
+
+/* ── CLIENTS ────────────────────────────────────────────────────── */
+.clients {
+  background: var(--white);
+  padding: 44px 40px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-soft);
+}
+.cl-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--subtle); margin-bottom: 28px;
+}
+.cl-logos {
+  display: flex; align-items: center;
+  justify-content: center; gap: 48px; flex-wrap: wrap;
+}
+.cl-name {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 700, "opsz" 92;
+  font-size: 14px; letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(14,8,4,.14);
+  transition: color .3s;
+}
+.cl-name:hover { color: var(--orange); }
+
+/* ── BIG MARQUEE ────────────────────────────────────────────────── */
+.bigmq {
+  overflow: hidden; padding: 16px 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+}
+.bigmq-inner {
+  display: flex; width: max-content;
+  animation: tick 48s linear infinite;
+}
+.bm-item {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: clamp(38px, 5.5vw, 72px);
+  text-transform: uppercase; letter-spacing: .04em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(14,8,4,.08);
+  white-space: nowrap; padding: 0 28px;
+  transition: color .3s, -webkit-text-stroke .3s;
+}
+.bm-item:hover { color: var(--orange); -webkit-text-stroke: 0 transparent; }
+.bm-sep { color: var(--orange); padding: 0 6px; display: flex; align-items: center; font-size: 22px; }
+
+/* ── GENERIC SECTION ─────────────────────────────────────────────── */
+.section-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 88px 40px;
+  scroll-margin-top: 80px;
+}
+
+.section-title-wrap {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 16px; width: 100%; margin-bottom: 56px; text-align: center;
+}
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--orange);
+}
+.section-h2 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: clamp(38px, 4.5vw, 54px);
+  letter-spacing: -.3px;
+  line-height: 1.05;
+  color: var(--ink);
+}
+.section-h2 .em  { color: var(--orange); }
+.section-h2 .emp { color: var(--purple); }
+.section-h2 .eml { color: var(--lime); }
+.section-sub {
+  font-size: 17px; color: var(--muted);
+  letter-spacing: -.2px; line-height: 1.6;
+  max-width: 480px;
+}
+
+/* ── WORK (BENTO) ───────────────────────────────────────────────── */
+#trabajo { background: var(--orange); padding: 88px 40px; }
+.tj-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 36px; gap: 20px;
+  max-width: 1200px; margin-left: auto; margin-right: auto;
+}
+.tj-head .section-h2 { color: var(--beige); }
+.tj-head .section-eyebrow { color: var(--beige); }
+.tj-more {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 600, "opsz" 92;
+  color: rgba(234,217,184,.7);
+  font-size: 14px;
+  border: 1.5px solid rgba(234,217,184,.25);
+  padding: 10px 22px;
+  border-radius: var(--r-pill);
+  display: flex; align-items: center; gap: 8px;
+  white-space: nowrap; flex-shrink: 0;
+  text-decoration: none;
+  transition: color .25s, border-color .25s, background .25s, gap .25s;
+}
+.tj-more:hover { color: var(--orange); border-color: var(--beige); background: var(--beige); gap: 14px; }
+
+/* Bento grid */
+.bento {
+  max-width: 1200px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(10, 44px);
+  gap: 10px;
+}
+.bc { border-radius: var(--r-xl); overflow: hidden; position: relative; }
+.bc:hover .bc-fill { transform: scale(1.05); }
+.bc:hover .bc-arr { opacity: 1; transform: scale(1) rotate(0deg); }
 .bc1{grid-column:1/8;grid-row:1/7;}.bc2{grid-column:8/13;grid-row:1/5;}
 .bc3{grid-column:8/11;grid-row:5/11;}.bc4{grid-column:11/13;grid-row:5/9;}
 .bc5{grid-column:1/5;grid-row:7/11;}.bc6{grid-column:5/11;grid-row:7/11;}
-.bc-fill{position:absolute;inset:0;transition:transform .5s ease;}
-.bf1{background:linear-gradient(140deg,var(--p) 0%,var(--pk) 100%);}
-.bf2{background:linear-gradient(135deg,var(--l) 0%,var(--g) 100%);}
-.bf3{background:var(--bl);}
-.bf4{background:var(--y);}
-.bf5{background:linear-gradient(135deg,var(--pk) 0%,var(--p) 100%);}
-.bf6{background:linear-gradient(135deg,var(--g) 0%,var(--bl) 100%);}
-.bc-ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;background:linear-gradient(to top,rgba(14,8,4,.55) 0%,transparent 55%);}
-.bc-cat{font-family:var(--fb);font-size:var(--t-label);font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:5px;}
-.bc-name{font-family:var(--fh);font-size:clamp(13px,1.5vw,22px);font-weight:700;color:var(--white);line-height:1.1;text-transform:uppercase;letter-spacing:.04em;}
-.bc-arr{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:14px;opacity:0;transform:scale(.4) rotate(-30deg);transition:all .3s cubic-bezier(.34,1.56,.64,1);}
-.bc-ltr{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:130px;font-weight:700;color:rgba(255,255,255,.06);pointer-events:none;overflow:hidden;line-height:1;user-select:none;text-transform:uppercase;}
-
-/* ── SERVICIOS ── */
-.sec-servicios{background:var(--white);padding:var(--py-xl) var(--px);}
-.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px;}
-.sc{background:var(--cream);border-radius:var(--r-lg);padding:32px 26px 28px;position:relative;overflow:hidden;border:1.5px solid transparent;transition:transform .35s cubic-bezier(.34,1.56,.64,1),border-color .35s,box-shadow .35s;}
-.sc:hover{transform:translateY(-8px);border-color:var(--o);box-shadow:0 18px 52px rgba(14,8,4,.09);}
-.sc-n{position:absolute;top:14px;right:18px;font-family:var(--fh);font-size:62px;font-weight:700;color:rgba(14,8,4,.03);line-height:1;pointer-events:none;text-transform:uppercase;}
-.sc-chip{display:inline-flex;align-items:center;gap:5px;padding:5px 13px;border-radius:var(--r-pill);font-family:var(--fb);font-size:var(--t-label);font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:18px;}
-.chip-o{background:rgba(240,78,26,.1);color:var(--o);}.chip-p{background:rgba(155,111,212,.12);color:var(--p);}
-.chip-pk{background:rgba(232,71,122,.1);color:var(--pk);}.chip-l{background:rgba(196,212,0,.18);color:#4d5a00;}
-.chip-b{background:rgba(77,184,232,.12);color:#0d7aaa;}.chip-g{background:rgba(77,189,116,.12);color:#156630;}
-.sc-title{font-family:var(--fh);font-size:var(--t-h3);font-weight:700;color:var(--dark);margin-bottom:10px;line-height:1.2;text-transform:uppercase;letter-spacing:.04em;}
-.sc-desc{font-family:var(--fb);font-size:var(--t-sm);line-height:1.78;color:rgba(14,8,4,.42);}
-.sc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:18px;}
-.sc-tag{font-family:var(--fb);font-size:var(--t-label);font-weight:700;padding:4px 12px;border-radius:var(--r-pill);background:rgba(14,8,4,.05);color:rgba(14,8,4,.34);transition:all .2s;}
-.sc:hover .sc-tag{background:rgba(240,78,26,.07);color:var(--o);}
-.sc-dark{grid-column:span 3;background:var(--p);border-radius:var(--r-lg);padding:40px 50px;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;transition:box-shadow .3s;overflow:hidden;position:relative;}
-.sc-dark::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 22px,rgba(255,255,255,.05) 22px,rgba(255,255,255,.05) 44px);pointer-events:none;}
-.sc-dark:hover{box-shadow:0 28px 72px rgba(155,111,212,.38);}
-.sd-txt{position:relative;z-index:1;}
-.sd-chip{display:inline-flex;align-items:center;gap:5px;background:rgba(196,212,0,.2);color:var(--l);padding:4px 13px;border-radius:var(--r-pill);font-family:var(--fb);font-size:var(--t-label);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;}
-.sd-h{font-family:var(--fh);font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:700;color:var(--b);line-height:1.08;text-transform:uppercase;letter-spacing:.04em;}
-.sd-h span{color:var(--l);}
-.sd-p{font-family:var(--fb);font-size:var(--t-sm);color:rgba(234,217,184,.5);margin-top:12px;line-height:1.78;}
-.sd-cta{display:inline-flex;align-items:center;gap:8px;background:var(--l);color:var(--pk);padding:13px 28px;border-radius:var(--r-pill);font-family:var(--fb);font-size:var(--t-sm);font-weight:700;margin-top:20px;transition:transform .3s cubic-bezier(.34,1.56,.64,1),background .25s;}
-.sd-cta:hover{transform:scale(1.05);background:var(--b);}
-.sd-stats{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.mstat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px;}
-.mstat-n{font-family:var(--fh);font-size:clamp(22px,2.2vw,28px);font-weight:700;color:var(--white);text-transform:uppercase;}
-.mstat-n sup{font-size:.45em;color:var(--l);}
-.mstat-l{font-family:var(--fb);font-size:var(--t-label);color:rgba(255,255,255,.38);margin-top:4px;}
-.mstat.accent{background:var(--l);border-color:var(--l);}
-.mstat.accent .mstat-n{color:var(--dark);}
-.mstat.accent .mstat-n sup{color:var(--pk);}
-.mstat.accent .mstat-l{color:rgba(14,8,4,.5);}
-
-/* ── QUOTE ── */
-.quote-sec{background:var(--p);padding:var(--py-lg) var(--px);text-align:center;position:relative;overflow:hidden;}
-.quote-sec::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 20px,rgba(255,255,255,.04) 20px,rgba(255,255,255,.04) 40px);pointer-events:none;}
-.q-inner{position:relative;z-index:1;max-width:840px;margin:0 auto;}
-.q-h{font-family:var(--fh);font-size:clamp(1.8rem,4vw,3.4rem);font-weight:700;color:var(--b);line-height:1.08;text-transform:uppercase;letter-spacing:.04em;}
-.q-em{color:var(--l);}
-.q-it{font-family:var(--fb);font-style:italic;font-weight:400;font-size:.78em;color:rgba(234,217,184,.7);text-transform:none;letter-spacing:0;}
-.q-sub{font-family:var(--fb);font-size:var(--t-lead);color:rgba(234,217,184,.55);margin-top:18px;line-height:1.75;max-width:520px;margin-left:auto;margin-right:auto;}
-
-/* ── PROCESOS ── */
-.sec-procesos{background:var(--cream);padding:var(--py-xl) var(--px);}
-.process-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1.5px solid rgba(14,8,4,.07);border-radius:var(--r-lg);overflow:hidden;margin-top:48px;}
-.ps{padding:34px 26px;border-right:1.5px solid rgba(14,8,4,.07);position:relative;overflow:hidden;transition:background .3s;}
-.ps:last-child{border-right:none;}
-.ps:hover{background:var(--white);}
-.ps-tag{display:inline-block;font-family:var(--fb);font-size:var(--t-label);font-weight:700;letter-spacing:.07em;padding:5px 13px;border-radius:var(--r-pill);margin-bottom:20px;}
-.pt1{background:var(--o);color:var(--b);}.pt2{background:var(--p);color:var(--white);}
-.pt3{background:var(--pk);color:var(--white);}.pt4{background:var(--l);color:var(--dark);}
-.ps-h{font-family:var(--fh);font-size:clamp(14px,1.2vw,16px);font-weight:700;color:var(--dark);margin-bottom:10px;line-height:1.25;text-transform:uppercase;letter-spacing:.04em;}
-.ps-p{font-family:var(--fb);font-size:var(--t-sm);line-height:1.72;color:rgba(14,8,4,.4);}
-.ps-deco{position:absolute;bottom:8px;right:14px;font-family:var(--fh);font-size:54px;font-weight:700;color:rgba(14,8,4,.03);pointer-events:none;user-select:none;line-height:1;text-transform:uppercase;}
-
-/* ── MAPA ── */
-.sec-mapa{background:var(--white);padding:var(--py-xl) var(--px);}
-.mapa-head{margin-bottom:48px;}
-.mapa-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(36px,5vw,72px);align-items:start;}
-.mapa-wrap{background:var(--dark);border-radius:var(--r-lg);overflow:hidden;aspect-ratio:16/10;position:relative;}
-.mapa-wrap svg{width:100%;height:100%;}
-.cov-intro{font-family:var(--fb);font-size:var(--t-body);line-height:1.85;color:rgba(14,8,4,.42);margin-top:16px;}
-.cov-intro strong{color:var(--dark);font-weight:700;}
-.cov-cities{margin-top:32px;display:flex;flex-direction:column;gap:10px;}
-.cov-city{display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--cream);border-radius:14px;border:1.5px solid transparent;transition:border-color .25s,background .25s,transform .25s;}
-.cov-city:hover{border-color:var(--o);background:var(--white);transform:translateX(6px);}
-.cov-city-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.cov-city-info{flex:1;}
-.cov-city-name{font-family:var(--fh);font-size:var(--t-sm);font-weight:700;color:var(--dark);text-transform:uppercase;letter-spacing:.04em;}
-.cov-city-sub{font-family:var(--fb);font-size:var(--t-label);color:rgba(14,8,4,.36);margin-top:2px;}
-.cov-city-tag{font-family:var(--fb);font-size:var(--t-label);font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:var(--r-pill);}
-.tag-local{background:rgba(240,78,26,.1);color:var(--o);}.tag-lat{background:rgba(155,111,212,.12);color:var(--p);}.tag-us{background:rgba(196,212,0,.18);color:#4d5a00;}
-.cov-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px;}
-.cov-stat{background:var(--cream);border-radius:14px;padding:18px 22px;}
-.cov-stat-n{font-family:var(--fh);font-size:clamp(22px,2.4vw,30px);font-weight:700;color:var(--dark);text-transform:uppercase;}
-.cov-stat-n span{color:var(--o);}
-.cov-stat-l{font-family:var(--fb);font-size:var(--t-sm);color:rgba(14,8,4,.36);margin-top:4px;}
-
-/* ── TESTIMONIOS ── */
-.sec-testi{background:var(--cream);padding:var(--py-xl) var(--px);}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px;}
-.tc{border-radius:var(--r-lg);padding:32px;transition:transform .3s ease;}
-.tc:hover{transform:translateY(-6px);}
-.tc1{background:var(--p);}.tc2{background:var(--white);border:1.5px solid rgba(14,8,4,.07);}.tc3{background:var(--o);}
-.tc-stars{font-size:12px;letter-spacing:2px;margin-bottom:18px;}
-.tc1 .tc-stars,.tc3 .tc-stars{color:var(--l);}.tc2 .tc-stars{color:var(--o);}
-.tc-q{font-family:var(--fb);font-size:var(--t-body);font-style:italic;line-height:1.72;margin-bottom:22px;}
-.tc1 .tc-q,.tc3 .tc-q{color:rgba(255,255,255,.85);}.tc2 .tc-q{color:var(--dark);}
-.tc-auth{display:flex;align-items:center;gap:11px;}
-.tcav{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fb);font-size:var(--t-label);font-weight:700;flex-shrink:0;}
-.av1{background:var(--l);color:var(--dark);}.av2{background:var(--b);color:var(--dark);}.av3{background:var(--b);color:var(--dark);}
-.tc-nm{font-family:var(--fb);font-size:var(--t-sm);font-weight:700;}
-.tc-rl{font-family:var(--fb);font-size:var(--t-label);opacity:.42;margin-top:2px;}
-.tc1 .tc-nm,.tc1 .tc-rl,.tc3 .tc-nm,.tc3 .tc-rl{color:var(--white);}.tc2 .tc-nm{color:var(--dark);}
-
-/* ── FOOTER ── */
-.footer-cta{background:var(--dark);padding:var(--py-xl) var(--px) 0;position:relative;overflow:hidden;text-align:center;}
-.fc-deco{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.025;pointer-events:none;animation:blobspin 52s linear infinite;}
-.fc-inner{position:relative;z-index:1;max-width:700px;margin:0 auto 72px;}
-.fc-eye{color:var(--o);justify-content:center;margin-bottom:22px;}
-.fc-h{font-family:var(--fh);font-size:clamp(2.6rem,6vw,5.4rem);font-weight:700;line-height:.98;color:var(--b);text-transform:uppercase;letter-spacing:.04em;}
-.fc-h .fl{color:var(--l);}.fc-h .fo{color:var(--o);}
-.fc-sub{font-family:var(--fb);font-size:var(--t-lead);color:rgba(234,217,184,.32);margin:20px 0 34px;line-height:1.72;}
-.fc-btns{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;}
-.btn-fc{background:var(--o);color:var(--b);padding:15px 38px;border-radius:var(--r-pill);font-family:var(--fb);font-size:var(--t-sm);font-weight:700;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 32px rgba(240,78,26,.35);transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .25s,color .25s;}
-.btn-fc:hover{background:var(--l);color:var(--pk);transform:scale(1.06);}
-.btn-fc-g{color:rgba(234,217,184,.36);font-family:var(--fb);font-size:var(--t-sm);font-weight:600;border:1.5px solid rgba(234,217,184,.09);padding:15px 28px;border-radius:var(--r-pill);display:inline-flex;align-items:center;gap:7px;transition:color .25s,border-color .25s;}
-.btn-fc-g:hover{color:var(--b);border-color:rgba(234,217,184,.26);}
-.footer-grid{border-top:1px solid rgba(234,217,184,.06);padding:48px var(--px);display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:44px;align-items:start;background:var(--dark);}
-.fg-logo{font-family:var(--fh);font-size:20px;font-weight:700;color:var(--b);display:flex;align-items:center;gap:9px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.06em;}
-.fg-dot{width:7px;height:7px;border-radius:50%;background:var(--o);animation:dotpulse 2s ease-in-out infinite;}
-.fg-tag{font-family:var(--fb);font-size:var(--t-sm);color:rgba(234,217,184,.24);line-height:1.72;max-width:200px;}
-.fcol h4{font-family:var(--fb);font-size:var(--t-label);font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(234,217,184,.18);margin-bottom:16px;}
-.fcol ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
-.fcol ul a{font-family:var(--fb);font-size:var(--t-sm);color:rgba(234,217,184,.3);transition:color .2s;}
-.fcol ul a:hover{color:var(--o);}
-.footer-base{padding:16px var(--px) 26px;display:flex;align-items:center;justify-content:space-between;background:var(--dark);}
-.fb-copy{font-family:var(--fb);font-size:var(--t-label);color:rgba(234,217,184,.14);}
-.fb-soc{display:flex;gap:6px;}
-.fbs{width:32px;height:32px;border-radius:50%;border:1px solid rgba(234,217,184,.07);display:flex;align-items:center;justify-content:center;font-family:var(--fb);font-size:var(--t-label);font-weight:700;color:rgba(234,217,184,.28);transition:background .25s,border-color .25s,color .25s,transform .25s;}
-.fbs:hover{background:var(--o);border-color:var(--o);color:var(--white);transform:scale(1.12);}
-
-/* ── REVEAL ── */
-.rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
-.rv.show{opacity:1;transform:none;}
-.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}.rv.d4{transition-delay:.4s}
-
-/* form shake */
-@keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-5px);}40%{transform:translateX(5px);}60%{transform:translateX(-3px);}80%{transform:translateX(3px);}}
-
-/* ═══════════════ RESPONSIVE ═══════════════ */
-@media(max-width:1200px){.bento{grid-template-rows:repeat(10,38px);}}
-@media(max-width:1023px){
-  nav{padding:12px 24px;}
-  .n-links,.n-avail,.n-talk{display:none;}
-  .n-ham{display:flex;}
-  .hero{grid-template-columns:1fr;min-height:auto;padding:110px 24px 60px;gap:40px;}
-  .h-sub{max-width:100%;}
-  .sec-conocenos{grid-template-columns:1fr;gap:40px;}
-  .sec-conocenos::after{display:none;}
-  .bento{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:auto;}
-  .bc1,.bc2,.bc3,.bc4,.bc5,.bc6{grid-column:auto;grid-row:auto;aspect-ratio:4/3;}
-  .srv-grid{grid-template-columns:1fr 1fr;}
-  .sc-dark{grid-column:span 2;grid-template-columns:1fr;}
-  .process-grid{grid-template-columns:1fr 1fr;}
-  .ps{border-bottom:1.5px solid rgba(14,8,4,.07);}
-  .ps:nth-child(odd){border-right:1.5px solid rgba(14,8,4,.07);}
-  .ps:nth-child(even){border-right:none;}
-  .ps:last-child{border-bottom:none;}
-  .testi-grid{grid-template-columns:1fr 1fr;}
-  .tc:last-child{grid-column:span 2;}
-  .mapa-grid{grid-template-columns:1fr;}
-  .stats-row{grid-template-columns:1fr 1fr;}
-  .stat{border-bottom:1px solid rgba(14,8,4,.06);}
-  .stat:nth-child(2){border-right:none;}
-  .stat:nth-child(3){border-bottom:none;}
-  .stat:nth-child(4){border-right:none;border-bottom:none;}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:30px;padding:36px 24px;}
-  .footer-base,.footer-cta,.sec-mapa,.sec-servicios,.sec-testi,.sec-procesos,.sec-conocenos,.sec-trabajo,.quote-sec{padding-left:24px;padding-right:24px;}
-  .clients,.bigmq,.stats-row{padding-left:24px;padding-right:24px;}
-  .tj-head{flex-wrap:wrap;}
+.bc-fill { position: absolute; inset: 0; transition: transform .5s ease; }
+.bf1{background:linear-gradient(140deg,var(--purple) 0%,var(--pink) 100%);}
+.bf2{background:linear-gradient(135deg,var(--lime) 0%,var(--green) 100%);}
+.bf3{background:var(--blue);}
+.bf4{background:var(--yellow);}
+.bf5{background:linear-gradient(135deg,var(--pink) 0%,var(--purple) 100%);}
+.bf6{background:linear-gradient(135deg,var(--green) 0%,var(--blue) 100%);}
+.bc-ov {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 22px;
+  background: linear-gradient(to top, rgba(14,8,4,.55) 0%, transparent 55%);
 }
-@media(max-width:767px){
-  nav{padding:12px 20px;}
-  .hero{padding:96px 20px 52px;}
-  .form-grid{grid-template-columns:1fr;}
-  .srv-grid,.testi-grid{grid-template-columns:1fr;}
-  .sc-dark{grid-column:span 1;padding:28px 22px;}
-  .tc:last-child{grid-column:auto;}
-  .process-grid{grid-template-columns:1fr;}
-  .ps{border-right:none!important;border-bottom:1.5px solid rgba(14,8,4,.07)!important;}
-  .ps:last-child{border-bottom:none!important;}
-  .bento{grid-template-columns:1fr;}
-  .bc1,.bc2,.bc3,.bc4,.bc5,.bc6{aspect-ratio:5/3;}
-  .stats-row{grid-template-columns:1fr 1fr;}
-  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid rgba(14,8,4,.06);}
-  .stat:nth-child(1){border-right:1px solid rgba(14,8,4,.06);}
-  .stat:nth-child(3){border-right:1px solid rgba(14,8,4,.06);}
-  .stat:nth-child(2),.stat:nth-child(4){border-right:none;}
-  .stat{padding:26px 22px;}
-  .footer-grid{grid-template-columns:1fr;gap:24px;padding:30px 20px;}
-  .footer-base{flex-direction:column;gap:12px;text-align:center;padding:14px 20px 22px;}
-  .fc-btns,.h-btns{flex-direction:column;align-items:stretch;}
-  .btn-primary,.btn-ghost-sm,.btn-fc,.btn-fc-g{width:100%;justify-content:center;}
-  .tj-head{flex-direction:column;align-items:flex-start;gap:14px;}
-  .cov-stats{grid-template-columns:1fr 1fr;}
-  .cl-logos{gap:24px;}
-  .sec-conocenos,.sec-trabajo,.sec-servicios,.sec-procesos,.sec-mapa,.sec-testi{padding-left:20px;padding-right:20px;}
-  .quote-sec,.footer-cta{padding-left:20px;padding-right:20px;}
-  .stats-row,.clients,.bigmq{padding-left:20px;padding-right:20px;}
+.bc-cat {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(255,255,255,.6); margin-bottom: 4px;
 }
-@media(max-width:480px){
-  .stats-row{grid-template-columns:1fr;}
-  .stat{border-right:none!important;}
-  .stat:last-child{border-bottom:none!important;}
-  .cov-stats{grid-template-columns:1fr;}
+.bc-name {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: clamp(13px, 1.5vw, 22px);
+  color: var(--white); line-height: 1.1;
 }
-@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
+.bc-arr {
+  position: absolute; top: 16px; right: 16px;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,.15); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white); font-size: 14px;
+  opacity: 0; transform: scale(.4) rotate(-30deg);
+  transition: all .3s cubic-bezier(.34,1.56,.64,1);
+}
+.bc-ltr {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: 130px; color: rgba(255,255,255,.06);
+  pointer-events: none; overflow: hidden; user-select: none;
+}
+
+/* ── BENEFITS / CONÓCENOS ───────────────────────────────────────── */
+#conocenos { background: var(--bg); }
+
+.benefits-rows { display: flex; flex-direction: column; gap: 18px; }
+.benefits-row { display: flex; gap: 22px; flex-wrap: wrap; justify-content: center; }
+
+.bene-card {
+  background: var(--surface);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-card);
+  padding: 22px 22px 26px;
+  display: flex; flex-direction: column; gap: 10px;
+  flex: 1 0 280px; max-width: 340px;
+  position: relative;
+  border: 1.5px solid transparent;
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1), border-color .25s, box-shadow .25s;
+}
+.bene-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--orange);
+  box-shadow: 0 18px 48px rgba(14,8,4,.09);
+}
+.bene-card-title-row { display: flex; align-items: center; gap: 10px; }
+.bene-icon {
+  width: 34px; height: 34px; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; flex-shrink: 0;
+}
+.bene-h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 750, "opsz" 92;
+  font-size: 26px;
+  letter-spacing: -.2px; line-height: 1.3;
+  color: var(--ink); flex: 1;
+}
+.bene-divider {
+  width: 100%; height: 4px; opacity: .3;
+  background: repeating-linear-gradient(90deg, var(--ink) 0 3px, transparent 3px 11px);
+  border-radius: 2px;
+}
+.bene-p {
+  font-family: 'Inter', sans-serif; font-size: 15px;
+  color: var(--muted); line-height: 1.6; letter-spacing: -.1px;
+}
+
+/* ── SERVICIOS ───────────────────────────────────────────────────── */
+#servicios { background: var(--white); }
+
+.srv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.sc {
+  background: var(--surface);
+  border-radius: var(--r-xl);
+  padding: 30px 26px 28px;
+  position: relative; overflow: hidden;
+  border: 1.5px solid transparent;
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1), border-color .35s, box-shadow .35s;
+}
+.sc:hover { transform: translateY(-8px); border-color: var(--orange); box-shadow: 0 18px 52px rgba(14,8,4,.09); }
+.sc-n {
+  position: absolute; top: 12px; right: 16px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: 60px; color: rgba(14,8,4,.04);
+  line-height: 1; pointer-events: none;
+}
+.sc-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 13px; border-radius: var(--r-pill);
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.chip-o{background:rgba(240,78,26,.1);color:var(--orange);}
+.chip-p{background:rgba(155,111,212,.12);color:var(--purple);}
+.chip-pk{background:rgba(232,71,122,.1);color:var(--pink);}
+.chip-l{background:rgba(196,212,0,.18);color:#4d5a00;}
+.chip-b{background:rgba(77,184,232,.12);color:#0d7aaa;}
+.chip-g{background:rgba(77,189,116,.12);color:#156630;}
+.sc-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 750, "opsz" 92;
+  font-size: 22px; letter-spacing: -.2px;
+  color: var(--ink); margin-bottom: 10px; line-height: 1.2;
+}
+.sc-desc { font-size: 14px; line-height: 1.75; color: var(--muted); }
+.sc-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 16px; }
+.sc-tag {
+  font-size: 11px; font-weight: 600;
+  padding: 4px 11px; border-radius: var(--r-pill);
+  background: rgba(14,8,4,.05); color: var(--muted);
+  transition: all .2s;
+}
+.sc:hover .sc-tag { background: rgba(240,78,26,.07); color: var(--orange); }
+
+/* Dark service card */
+.sc-dark {
+  grid-column: span 3;
+  background: var(--purple);
+  border-radius: var(--r-xl);
+  padding: 40px 48px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 36px;
+  align-items: center;
+  transition: box-shadow .3s;
+  overflow: hidden; position: relative;
+  border: 1.5px solid transparent;
+}
+.sc-dark::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(-45deg, transparent, transparent 22px, rgba(255,255,255,.04) 22px, rgba(255,255,255,.04) 44px);
+  pointer-events: none;
+}
+.sc-dark:hover { box-shadow: 0 28px 72px rgba(155,111,212,.4); }
+.sd-txt { position: relative; z-index: 1; }
+.sd-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: rgba(196,212,0,.2); color: var(--lime);
+  padding: 4px 13px; border-radius: var(--r-pill);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.sd-h {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: clamp(22px, 2.5vw, 32px);
+  color: var(--beige); line-height: 1.1; margin-bottom: 12px;
+}
+.sd-h span { color: var(--lime); }
+.sd-p { font-size: 14px; color: rgba(234,217,184,.5); line-height: 1.75; }
+.sd-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--lime); color: var(--pink);
+  padding: 12px 26px; border-radius: var(--r-pill);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 650, "opsz" 92;
+  font-size: 15px; text-decoration: none;
+  margin-top: 20px;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), background .25s;
+}
+.sd-cta:hover { transform: scale(1.05); background: var(--beige); }
+.sd-stats { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.mstat {
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--r-md); padding: 18px;
+}
+.mstat-n {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: clamp(22px, 2.2vw, 28px); color: var(--white);
+}
+.mstat-n sup { font-size: .45em; color: var(--lime); }
+.mstat-l { font-size: 11px; color: rgba(255,255,255,.38); margin-top: 4px; }
+.mstat.accent { background: var(--lime); border-color: var(--lime); }
+.mstat.accent .mstat-n { color: var(--ink); }
+.mstat.accent .mstat-n sup { color: var(--pink); }
+.mstat.accent .mstat-l { color: rgba(14,8,4,.5); }
+
+/* ── QUOTE SECTION ──────────────────────────────────────────────── */
+.quote-section {
+  background: var(--purple);
+  padding: 88px 40px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.quote-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,255,255,.04) 20px, rgba(255,255,255,.04) 40px);
+  pointer-events: none;
+}
+.q-inner { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
+.q-h {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: clamp(32px, 5vw, 58px);
+  color: var(--beige); line-height: 1.08;
+}
+.q-em { color: var(--lime); }
+.q-it { font-style: italic; font-weight: 400; font-size: .76em; color: rgba(234,217,184,.7); }
+.q-sub {
+  font-size: 17px; color: rgba(234,217,184,.5);
+  margin-top: 20px; line-height: 1.75; max-width: 520px;
+  margin-left: auto; margin-right: auto;
+}
+
+/* ── PROCESS ────────────────────────────────────────────────────── */
+#procesos { background: var(--bg); }
+
+.process-cards { display: flex; flex-direction: column; gap: 8px; }
+.process-row { display: flex; gap: 22px; flex-wrap: wrap; justify-content: center; }
+
+.proc-card {
+  background: var(--surface);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-card);
+  padding: 22px 22px 26px;
+  flex: 1 0 280px; max-width: 336px;
+  display: flex; flex-direction: column; gap: 10px;
+  position: relative;
+  border: 1.5px solid transparent;
+  transition: transform .3s ease, border-color .25s;
+}
+.proc-card:hover { border-color: var(--orange); }
+.proc-step-tag {
+  display: inline-flex; align-items: center;
+  padding: 4px 13px; border-radius: var(--r-pill);
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  width: fit-content;
+}
+.pt1{background:var(--orange);color:var(--beige);}
+.pt2{background:var(--purple);color:var(--white);}
+.pt3{background:var(--pink);color:var(--white);}
+.pt4{background:var(--lime);color:var(--ink);}
+.proc-title-row { display: flex; align-items: center; gap: 8px; }
+.proc-icon {
+  width: 34px; height: 34px; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; flex-shrink: 0;
+}
+.proc-h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 750, "opsz" 92;
+  font-size: 26px; letter-spacing: -.2px; line-height: 1.3;
+  color: var(--ink);
+}
+.proc-divider {
+  width: 100%; height: 4px; opacity: .3;
+  background: repeating-linear-gradient(90deg, var(--ink) 0 3px, transparent 3px 11px);
+  border-radius: 2px;
+}
+.proc-p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+.proc-deco {
+  position: absolute; bottom: 8px; right: 14px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: 52px; color: rgba(14,8,4,.04);
+  pointer-events: none; line-height: 1;
+}
+
+/* ── TESTIMONIALS ───────────────────────────────────────────────── */
+#resultados { background: var(--bg); }
+
+.testi-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.tc {
+  border-radius: var(--r-xl);
+  padding: 30px 28px;
+  transition: transform .3s ease;
+}
+.tc:hover { transform: translateY(-6px); }
+.tc1{background:var(--purple);}
+.tc2{background:var(--white);border:1.5px solid var(--border-soft);}
+.tc3{background:var(--orange);}
+.tc-stars { font-size: 12px; letter-spacing: 2px; margin-bottom: 16px; }
+.tc1 .tc-stars, .tc3 .tc-stars { color: var(--lime); }
+.tc2 .tc-stars { color: var(--orange); }
+.tc-q { font-size: 15px; font-style: italic; line-height: 1.75; margin-bottom: 22px; }
+.tc1 .tc-q, .tc3 .tc-q { color: rgba(255,255,255,.85); }
+.tc2 .tc-q { color: var(--ink); }
+.tc-auth { display: flex; align-items: center; gap: 11px; }
+.tcav {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+  flex-shrink: 0;
+}
+.av1{background:var(--lime);color:var(--ink);}
+.av2{background:var(--beige);color:var(--ink);}
+.av3{background:var(--beige);color:var(--ink);}
+.tc-nm { font-size: 14px; font-weight: 600; }
+.tc-rl { font-size: 12px; opacity: .45; margin-top: 2px; }
+.tc1 .tc-nm, .tc1 .tc-rl, .tc3 .tc-nm, .tc3 .tc-rl { color: var(--white); }
+.tc2 .tc-nm { color: var(--ink); }
+
+/* ── CONTACT ────────────────────────────────────────────────────── */
+#contact { background: var(--bg); }
+
+.contact-form-wrap {
+  max-width: 840px; width: 100%;
+  background: var(--white);
+  border-radius: 40px;
+  box-shadow: var(--shadow-card), 0 4px 24px rgba(14,8,4,.08);
+  padding: 14px 24px 18px;
+  display: flex; gap: 24px;
+  position: relative;
+}
+.contact-left-panel { display: flex; flex-direction: column; gap: 12px; flex: 1 0 1px; }
+.contact-textarea-wrap { flex: 1 0 1px; display: flex; flex-direction: column; }
+textarea.contact-ta {
+  flex: 1; width: 100%;
+  background: rgba(14,8,4,.03);
+  border: 2px solid rgba(14,8,4,.1);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  padding: 16px 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px; color: var(--ink);
+  line-height: 1.6; resize: none; outline: none;
+  min-height: 220px;
+  transition: border-color .15s;
+}
+textarea.contact-ta:focus { border-color: var(--orange); }
+textarea.contact-ta::placeholder { color: var(--subtle); }
+.contact-divider {
+  width: 2px; background: rgba(14,8,4,.07);
+  border-radius: 10px; flex-shrink: 0;
+}
+.contact-right-panel {
+  display: flex; flex-direction: column;
+  gap: 28px; flex: 0 0 auto; width: 280px;
+  justify-content: space-between; padding: 10px 0;
+}
+.contact-stamp-area {
+  display: flex; justify-content: flex-end; align-items: flex-start;
+  height: 120px; transform: rotate(3deg);
+}
+.stamp-box {
+  width: 100px; height: 112px;
+  background: var(--orange);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(240,78,26,.3);
+  display: flex; align-items: center; justify-content: center;
+}
+.stamp-inner {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: 28px; color: var(--beige);
+  text-align: center; line-height: 1.1;
+}
+.contact-fields { display: flex; flex-direction: column; gap: 10px; }
+.contact-input, .contact-select {
+  width: 100%; height: 44px;
+  background: rgba(14,8,4,.03);
+  border: 2px solid rgba(14,8,4,.1);
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-card);
+  padding: 0 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px; color: var(--ink);
+  outline: none; transition: border-color .15s;
+  appearance: none;
+}
+.contact-input:focus, .contact-select:focus { border-color: var(--orange); }
+.contact-input::placeholder { color: var(--subtle); }
+.contact-select { color: var(--subtle); }
+.contact-select option { color: var(--ink); background: var(--white); }
+.contact-send-btn {
+  width: 100%; height: 44px;
+  background: var(--orange);
+  color: var(--beige);
+  border: none;
+  border-radius: var(--r-pill);
+  box-shadow: inset 0 -4px 4px rgba(0,0,0,.15), 0 6px 20px rgba(240,78,26,.28);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 650, "opsz" 92;
+  font-size: 17px;
+  cursor: pointer;
+  transition: background .2s, color .2s, transform .2s;
+}
+.contact-send-btn:hover { background: var(--lime); color: var(--pink); transform: translateY(-1px); }
+
+/* ── FAQ ────────────────────────────────────────────────────────── */
+#faq { background: var(--white); }
+
+.faq-list { display: flex; flex-direction: column; gap: 3px; max-width: 980px; width: 100%; }
+.faq-item {
+  background: var(--bg);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.faq-q {
+  width: 100%; background: none; border: none;
+  text-align: left; cursor: pointer;
+  padding: 14px 18px 6px 24px;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 700, "opsz" 92;
+  font-size: 18px; color: var(--ink);
+  letter-spacing: -.1px; line-height: 1.5;
+}
+.faq-icon {
+  width: 28px; height: 28px; flex-shrink: 0;
+  border-radius: 50%; background: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .25s, background .25s;
+}
+.faq-icon svg { width: 12px; height: 12px; fill: white; }
+.faq-item.open .faq-icon { transform: rotate(45deg); background: var(--orange); }
+.faq-a {
+  display: none;
+  padding: 0 24px 16px;
+  font-size: 15px; color: var(--muted);
+  line-height: 1.65;
+}
+.faq-item.open .faq-a { display: block; }
+
+/* ── FOOTER ─────────────────────────────────────────────────────── */
+.footer-wrap {
+  background: var(--ink);
+  position: relative; overflow: hidden;
+}
+.footer-cta-section {
+  text-align: center;
+  padding: 96px 40px 80px;
+  position: relative; z-index: 1;
+}
+.footer-eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 24px;
+}
+.footer-h2 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: .98; color: var(--beige);
+  margin-bottom: 20px;
+}
+.footer-h2 .fl { color: var(--lime); }
+.footer-h2 .fo { color: var(--orange); }
+.footer-sub {
+  font-size: 17px; color: rgba(234,217,184,.35);
+  margin: 0 auto 36px; line-height: 1.72;
+  max-width: 520px;
+}
+.footer-cta-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; flex-wrap: wrap;
+}
+.btn-footer-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 36px; height: 48px;
+  background: var(--orange);
+  color: var(--beige);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 650, "opsz" 92;
+  font-size: 17px; text-decoration: none;
+  border-radius: var(--r-pill);
+  box-shadow: 0 8px 32px rgba(240,78,26,.35);
+  transition: background .2s, color .2s, transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.btn-footer-cta:hover { background: var(--lime); color: var(--pink); transform: scale(1.05); }
+.btn-footer-secondary {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 14px 28px; height: 48px;
+  background: transparent;
+  color: rgba(234,217,184,.4);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 600, "opsz" 92;
+  font-size: 16px; text-decoration: none;
+  border-radius: var(--r-pill);
+  border: 1.5px solid rgba(234,217,184,.1);
+  transition: color .2s, border-color .2s;
+}
+.btn-footer-secondary:hover { color: var(--beige); border-color: rgba(234,217,184,.28); }
+
+/* Footer grid */
+.footer-grid {
+  border-top: 1px solid rgba(234,217,184,.07);
+  padding: 48px 40px;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 44px; align-items: start;
+}
+.fg-logo {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: 20px; color: var(--beige);
+  display: flex; align-items: center; gap: 9px;
+  margin-bottom: 12px;
+}
+.fg-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); animation: pulse 2s infinite; }
+.fg-tag { font-size: 13px; color: rgba(234,217,184,.24); line-height: 1.72; max-width: 200px; }
+.fcol h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(234,217,184,.18); margin-bottom: 14px;
+}
+.fcol ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.fcol ul a { font-size: 13px; color: rgba(234,217,184,.3); text-decoration: none; transition: color .2s; }
+.fcol ul a:hover { color: var(--orange); }
+
+/* Footer base */
+.footer-base {
+  padding: 16px 40px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.fb-copy { font-size: 11px; color: rgba(234,217,184,.15); }
+.fb-soc { display: flex; gap: 6px; }
+.fbs {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid rgba(234,217,184,.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+  color: rgba(234,217,184,.3); text-decoration: none;
+  transition: background .25s, border-color .25s, color .25s, transform .25s;
+}
+.fbs:hover { background: var(--orange); border-color: var(--orange); color: var(--white); transform: scale(1.12); }
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .nav-wrap { top: 12px; left: 12px; right: 12px; transform: none; justify-content: space-between; }
+  #home { padding: 140px 32px 72px; }
+  .bento { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: none; grid-auto-rows: auto; }
+  .bc1,.bc2,.bc3,.bc4,.bc5,.bc6 { grid-column: auto; grid-row: auto; aspect-ratio: 4/3; }
+  .section-wrap { padding: 64px 32px; }
+  .srv-grid { grid-template-columns: 1fr 1fr; }
+  .sc-dark { grid-column: span 2; grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr 1fr; }
+  .tc:last-child { grid-column: span 2; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .stat { border-bottom: 1px solid var(--border-soft); }
+  .stat:nth-child(2){ border-right: none; }
+  .stat:nth-child(3){ border-bottom: none; }
+  .stat:nth-child(4){ border-right: none; border-bottom: none; }
+  .contact-form-wrap { flex-direction: column; }
+  .contact-right-panel { width: 100%; }
+  .contact-divider { display: none; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; padding: 36px 32px; }
+  .footer-base { padding: 16px 32px 26px; }
+  .footer-cta-section { padding: 80px 32px 64px; }
+  #trabajo { padding: 88px 32px; }
+  .tj-head { flex-wrap: wrap; }
+  .quote-section { padding: 72px 32px; }
+  .clients { padding: 40px 32px; }
+}
+@media (max-width: 767px) {
+  .nav-links { display: none; }
+  #home { padding: 110px 20px 52px; }
+  .bento { grid-template-columns: 1fr; }
+  .bc1,.bc2,.bc3,.bc4,.bc5,.bc6 { aspect-ratio: 5/3; }
+  .srv-grid, .testi-grid { grid-template-columns: 1fr; }
+  .sc-dark { grid-column: span 1; padding: 28px 22px; }
+  .tc:last-child { grid-column: auto; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .stat:nth-child(1),.stat:nth-child(2){ border-bottom: 1px solid var(--border-soft); }
+  .stat:nth-child(1){ border-right: 1px solid var(--border-soft); }
+  .stat:nth-child(3){ border-right: 1px solid var(--border-soft); }
+  .stat:nth-child(2),.stat:nth-child(4){ border-right: none; }
+  .stat { padding: 28px 22px; }
+  .section-wrap { padding: 56px 20px; }
+  .benefits-row { flex-direction: column; align-items: stretch; }
+  .bene-card, .proc-card { max-width: 100%; flex: none; }
+  .process-row { flex-direction: column; }
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; padding: 30px 20px; }
+  .footer-base { flex-direction: column; gap: 12px; text-align: center; padding: 14px 20px 22px; }
+  .footer-cta-row { flex-direction: column; align-items: stretch; }
+  .btn-footer-cta, .btn-footer-secondary { width: 100%; justify-content: center; }
+  .footer-cta-section { padding: 64px 20px; }
+  #trabajo { padding: 72px 20px; }
+  .tj-head { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .quote-section { padding: 64px 20px; }
+  .clients { padding: 36px 20px; }
+  .bigmq { display: none; }
+  .hero-cta-row { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+}
+@media (max-width: 480px) {
+  .stats-row { grid-template-columns: 1fr; }
+  .stat { border-right: none !important; }
+  .stat:last-child { border-bottom: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, .ticker-inner, .bigmq-inner { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
 </style>
 </head>
 <body>
-<div id="cursor"></div>
-<div id="cur-r"></div>
 
+<!-- COLOR STRIP -->
 <div class="cstrip">
   <div class="cs1"></div><div class="cs2"></div><div class="cs3"></div><div class="cs4"></div>
   <div class="cs5"></div><div class="cs6"></div><div class="cs7"></div><div class="cs8"></div>
 </div>
 
-<!-- LOGO SVG — icono beige sobre fondo naranja -->
-<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
-  <symbol id="tivo-logo" viewBox="0 0 100 100">
-    <rect x="45.5" y="14" width="9" height="32" rx="4.5" fill="#EAD9B8" transform="rotate(0,50,50)"/>
-    <rect x="45.5" y="14" width="9" height="32" rx="4.5" fill="#EAD9B8" transform="rotate(30,50,50)"/>
-    <rect x="45.5" y="14" width="9" height="32" rx="4.5" fill="#EAD9B8" transform="rotate(60,50,50)"/>
-    <rect x="45.5" y="14" width="9" height="32" rx="4.5" fill="#EAD9B8" transform="rotate(90,50,50)"/>
-    <rect x="45.5" y="14" width="9" height="32" rx="4.5" fill="#EAD9B8" transform="rotate(120,50,50)"/>
-    <rect x="45.5" y="14" width="9" height="32" rx="4.5" fill="#EAD9B8" transform="rotate(150,50,50)"/>
-    <rect x="14" y="44" width="34" height="9" rx="4.5" fill="#C4D400"/>
-    <rect x="14" y="14" width="9" height="39" rx="4.5" fill="#C4D400"/>
-  </symbol>
-</svg>
-
 <!-- NAV -->
-<nav id="mainNav">
-  <div class="n-avail">
-    <span class="n-avail-dot"></span>
-    Disponible para trabajar juntos
-  </div>
-  <div class="n-center">
-    <!-- Logo → link al perfil de Drive de TIVO -->
-    <a href="https://drive.google.com/drive/folders/YOUR_TIVO_FOLDER_ID" target="_blank" rel="noopener" class="n-logo">
-      <svg width="18" height="18" viewBox="0 0 100 100"><use href="#tivo-logo"/></svg>
-    </a>
-    <ul class="n-links">
-      <li><a href="#conocenos">Conócenos</a></li>
-      <li><a href="#trabajo">Trabajo</a></li>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#procesos">Proceso</a></li>
-      <li><a href="#resultados">Resultados</a></li>
-      <li>
-        <a href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener" class="n-cta">
-          Reservar llamada
-          <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div style="display:flex;align-items:center;gap:8px;">
-    <a href="#contacto" class="n-talk">Conversemos</a>
-    <button class="n-ham" id="hamBtn" aria-label="Menú"><span></span><span></span><span></span></button>
-  </div>
-</nav>
-
-<!-- MOBILE MENU -->
-<div id="mobMenu">
-  <button id="mobX" aria-label="Cerrar">✕</button>
-  <a href="#conocenos" onclick="closeMob()">Conócenos</a>
-  <a href="#trabajo" onclick="closeMob()">Trabajo</a>
-  <a href="#servicios" onclick="closeMob()">Servicios</a>
-  <a href="#procesos" onclick="closeMob()">Proceso</a>
-  <a href="#resultados" onclick="closeMob()">Resultados</a>
-  <a href="#contacto" onclick="closeMob()">Conversemos →</a>
+<div class="nav-wrap">
+  <a href="#home" class="nav-logo-btn" aria-label="TIVO Inicio">
+    <!-- TIVO icon: sun/star motif en beige sobre naranja -->
+    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="10" r="3.5" fill="#EAD9B8"/>
+      <rect x="9.1" y="1" width="1.8" height="4" rx=".9" fill="#EAD9B8"/>
+      <rect x="9.1" y="15" width="1.8" height="4" rx=".9" fill="#EAD9B8"/>
+      <rect x="1" y="9.1" width="4" height="1.8" rx=".9" fill="#EAD9B8"/>
+      <rect x="15" y="9.1" width="4" height="1.8" rx=".9" fill="#EAD9B8"/>
+      <rect x="9.1" y="1" width="1.8" height="4" rx=".9" fill="#EAD9B8" transform="rotate(45,10,10)"/>
+      <rect x="9.1" y="15" width="1.8" height="4" rx=".9" fill="#EAD9B8" transform="rotate(45,10,10)"/>
+      <rect x="1" y="9.1" width="4" height="1.8" rx=".9" fill="#EAD9B8" transform="rotate(45,10,10)"/>
+      <rect x="15" y="9.1" width="4" height="1.8" rx=".9" fill="#EAD9B8" transform="rotate(45,10,10)"/>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#conocenos">Conócenos</a></li>
+    <li><a href="#trabajo">Trabajo</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#procesos">Proceso</a></li>
+    <li><a href="#resultados">Resultados</a></li>
+  </ul>
+  <a href="https://calendar.app.google/qaXPyL2TNogRK9uF8" class="nav-cta" target="_blank" rel="noopener">
+    Reservar llamada
+    <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
 </div>
 
 <!-- HERO -->
-<section class="hero" id="inicio">
-  <div class="hero-l">
-    <div class="h-eyebrow"><span class="h-dot"></span>Estudio creativo &amp; aliado estratégico</div>
-    <h1 class="h1">
-      En TIVO,<br>usamos herramientas.
-      <span class="sm">Pero lo que construye una marca es</span>
-    </h1>
-    <div class="typing-wrap">
-      <span id="typing"></span><span class="blink"></span>
-    </div>
-    <p class="h-tagline">La <em>intención humana</em> detrás de cada decisión.</p>
-    <p class="h-sub">Somos el estudio que transforma ideas en marcas que la gente no puede ignorar. Estrategia, diseño y resultados reales.</p>
-    <div class="h-btns">
-      <a href="#trabajo" class="btn-primary">Ver nuestro trabajo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-      <a href="#conocenos" class="btn-ghost-sm">Conócenos <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
-    <div class="h-trust">
-      <div class="trust-avs">
-        <div class="tav t1">ML</div><div class="tav t2">CR</div>
-        <div class="tav t3">AS</div><div class="tav t4">+</div>
-      </div>
-      <div class="trust-txt">
-        <span class="trust-stars">★★★★★</span>
-        <span><strong>+80 marcas</strong> confían en nosotros</span>
-      </div>
-    </div>
+<header id="home">
+  <div class="cloud-l"></div>
+  <div class="cloud-r"></div>
+
+  <div class="hero-eyebrow">
+    <span class="hero-dot"></span>
+    Estudio creativo &amp; aliado estratégico
   </div>
 
-  <div class="hero-r">
-    <div class="lcard">
-      <div class="lcard-top">
-        <div class="lc-badge"><span class="lc-bdot"></span>Descarga gratuita</div>
-        <div class="lc-title">Guía: Cómo construir una marca que la gente <span>no olvide</span></div>
-        <p class="lc-sub">Estrategia, visual y acción. Todo lo que necesitas en una guía práctica.</p>
-      </div>
-      <div class="lcard-bens">
-        <div class="lcard-ben"><div class="ben-i">📋</div><div class="ben-t">Checklist branding</div></div>
-        <div class="lcard-ben"><div class="ben-i">🎯</div><div class="ben-t">Estrategia visual</div></div>
-        <div class="lcard-ben"><div class="ben-i">🚀</div><div class="ben-t">Plan de acción</div></div>
-      </div>
-      <div class="lcard-form">
-        <div class="form-div">Completa tus datos</div>
-        <div class="form-grid">
-          <div class="fg"><label for="f-nombre">Nombre</label><input id="f-nombre" type="text" placeholder="Tu nombre" autocomplete="given-name"></div>
-          <div class="fg"><label for="f-email">Correo electrónico</label><input id="f-email" type="email" placeholder="tu@correo.com" autocomplete="email"></div>
-          <div class="fg"><label for="f-tel">Teléfono</label><div class="phone-row"><div class="pfx">🇨🇴 <span>+57</span></div><input id="f-tel" type="tel" placeholder="300 000 0000" style="flex:1;"></div></div>
-          <div class="fg"><label for="f-etapa">Etapa de tu marca</label><div class="sw"><select id="f-etapa"><option value="" disabled selected>Selecciona</option><option>Empezando desde cero</option><option>Quiero mejorarla</option><option>Quiero escalarla</option><option>Soy agencia</option></select></div></div>
-        </div>
-        <div class="prv">
-          <input type="checkbox" id="prv">
-          <label for="prv">Acepto los <a href="#">términos</a> y la <a href="#">política de privacidad</a>. TIVO no comparte tu información.</label>
-        </div>
-        <button class="btn-dl" type="button" id="formBtn">
-          Descargar guía gratis
-          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 4v12M8 14l4 4 4-4M4 18h16"/></svg>
-        </button>
-      </div>
-      <div class="lcard-proof">
-        <div class="proof-i"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% seguro</div>
-        <div class="proof-i"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Sin spam</div>
-        <div class="proof-i"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Entrega inmediata</div>
-      </div>
+  <h1 class="hero-h1">
+    En TIVO, usamos<br>herramientas. Lo que<br>realmente construye es
+  </h1>
+  <div class="typing-wrap">
+    <span id="typing"></span><span class="blink"></span>
+  </div>
+  <p class="hero-tagline">La <em>intención humana</em> detrás de cada decisión.</p>
+  <p class="hero-sub">Transformamos ideas en marcas que la gente no puede ignorar.</p>
+
+  <div class="hero-cta-row">
+    <a href="#trabajo" class="btn-primary">
+      Ver nuestro trabajo
+      <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+    </a>
+    <a href="#conocenos" class="btn-ghost">
+      Conócenos
+      <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+  <div class="hero-trust">
+    <div class="trust-avs">
+      <div class="tav tv1">ML</div>
+      <div class="tav tv2">CR</div>
+      <div class="tav tv3">AS</div>
+      <div class="tav tv4">+</div>
+    </div>
+    <div class="trust-txt">
+      <span class="trust-stars">★★★★★</span>
+      <span><strong>+80 marcas</strong> confían en nosotros</span>
     </div>
   </div>
-</section>
+</header>
 
 <!-- TICKER -->
-<div class="ticker"><div class="ticker-inner">
-  <span class="ti">Identidad Visual <span style="color:var(--b)">✦</span></span>
-  <span class="ti">Branding <span style="color:var(--l)">✦</span></span>
-  <span class="ti">Marketing <span style="color:var(--b)">✦</span></span>
-  <span class="ti">Redes Sociales <span style="color:var(--l)">✦</span></span>
-  <span class="ti">Diseño Web <span style="color:var(--b)">✦</span></span>
-  <span class="ti">Editorial <span style="color:var(--l)">✦</span></span>
-  <span class="ti">Ilustración <span style="color:var(--b)">✦</span></span>
-  <span class="ti">Video & Animación <span style="color:var(--l)">✦</span></span>
-  <span class="ti">Modelado 3D <span style="color:var(--b)">✦</span></span>
-  <span class="ti">Identidad Visual <span style="color:var(--l)">✦</span></span>
-  <span class="ti">Branding <span style="color:var(--b)">✦</span></span>
-  <span class="ti">Marketing <span style="color:var(--l)">✦</span></span>
-  <span class="ti">Redes Sociales <span style="color:var(--b)">✦</span></span>
-  <span class="ti">Diseño Web <span style="color:var(--l)">✦</span></span>
-  <span class="ti">Editorial <span style="color:var(--b)">✦</span></span>
-  <span class="ti">Ilustración <span style="color:var(--l)">✦</span></span>
-  <span class="ti">Video & Animación <span style="color:var(--b)">✦</span></span>
-  <span class="ti">Modelado 3D <span style="color:var(--l)">✦</span></span>
-</div></div>
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ti">Identidad Visual <span class="ti-sep">✦</span></span>
+    <span class="ti">Branding <span class="ti-sep">✦</span></span>
+    <span class="ti">Marketing <span class="ti-sep">✦</span></span>
+    <span class="ti">Redes Sociales <span class="ti-sep">✦</span></span>
+    <span class="ti">Diseño Web <span class="ti-sep">✦</span></span>
+    <span class="ti">Editorial <span class="ti-sep">✦</span></span>
+    <span class="ti">Ilustración <span class="ti-sep">✦</span></span>
+    <span class="ti">Video & Animación <span class="ti-sep">✦</span></span>
+    <span class="ti">Modelado 3D <span class="ti-sep">✦</span></span>
+    <span class="ti">Identidad Visual <span class="ti-sep">✦</span></span>
+    <span class="ti">Branding <span class="ti-sep">✦</span></span>
+    <span class="ti">Marketing <span class="ti-sep">✦</span></span>
+    <span class="ti">Redes Sociales <span class="ti-sep">✦</span></span>
+    <span class="ti">Diseño Web <span class="ti-sep">✦</span></span>
+    <span class="ti">Editorial <span class="ti-sep">✦</span></span>
+    <span class="ti">Ilustración <span class="ti-sep">✦</span></span>
+    <span class="ti">Video & Animación <span class="ti-sep">✦</span></span>
+    <span class="ti">Modelado 3D <span class="ti-sep">✦</span></span>
+  </div>
+</div>
 
 <!-- STATS -->
 <div class="stats-row">
-  <div class="stat rv"><div class="stat-n" id="s1">0<sup>+</sup></div><div class="stat-l">Proyectos entregados</div></div>
-  <div class="stat rv d1"><div class="stat-n" id="s2">0<sup>M+</sup></div><div class="stat-l">Personas alcanzadas</div></div>
-  <div class="stat rv d2"><div class="stat-n" id="s3">0<sup>%</sup></div><div class="stat-l">Satisfacción de clientes</div></div>
-  <div class="stat rv d3"><div class="stat-n" id="s4">0<sup>+</sup></div><div class="stat-l">Años de experiencia</div></div>
+  <div class="stat"><div class="stat-n" id="s1">0<sup>+</sup></div><div class="stat-l">Proyectos entregados</div></div>
+  <div class="stat"><div class="stat-n" id="s2">0<sup>M+</sup></div><div class="stat-l">Personas alcanzadas</div></div>
+  <div class="stat"><div class="stat-n" id="s3">0<sup>%</sup></div><div class="stat-l">Satisfacción de clientes</div></div>
+  <div class="stat"><div class="stat-n" id="s4">0<sup>+</sup></div><div class="stat-l">Años de experiencia</div></div>
 </div>
 
 <!-- CLIENTS -->
-<div class="clients rv">
+<div class="clients">
   <p class="cl-label">Marcas que han confiado en nosotros</p>
   <div class="cl-logos">
-    <span class="cl-name">BEGO</span><span class="cl-name">ARCO CAFÉ</span>
-    <span class="cl-name">SEMILLA</span><span class="cl-name">MAREA</span>
-    <span class="cl-name">NÚCLEO</span><span class="cl-name">KINFOLK</span>
+    <span class="cl-name">BEGO</span>
+    <span class="cl-name">ARCO CAFÉ</span>
+    <span class="cl-name">SEMILLA</span>
+    <span class="cl-name">MAREA</span>
+    <span class="cl-name">NÚCLEO</span>
+    <span class="cl-name">KINFOLK</span>
   </div>
 </div>
 
-<!-- MARQUEE -->
-<div class="bigmq"><div class="bigmq-inner">
-  <span class="bm-item">BRANDING</span><span class="bm-sep">✦</span>
-  <span class="bm-item">IDENTIDAD</span><span class="bm-sep">✦</span>
-  <span class="bm-item">ESTRATEGIA</span><span class="bm-sep">✦</span>
-  <span class="bm-item">DISEÑO WEB</span><span class="bm-sep">✦</span>
-  <span class="bm-item">EDITORIAL</span><span class="bm-sep">✦</span>
-  <span class="bm-item">MOTION</span><span class="bm-sep">✦</span>
-  <span class="bm-item">BRANDING</span><span class="bm-sep">✦</span>
-  <span class="bm-item">IDENTIDAD</span><span class="bm-sep">✦</span>
-  <span class="bm-item">ESTRATEGIA</span><span class="bm-sep">✦</span>
-  <span class="bm-item">DISEÑO WEB</span><span class="bm-sep">✦</span>
-  <span class="bm-item">EDITORIAL</span><span class="bm-sep">✦</span>
-  <span class="bm-item">MOTION</span><span class="bm-sep">✦</span>
-</div></div>
+<!-- BIG MARQUEE -->
+<div class="bigmq">
+  <div class="bigmq-inner">
+    <span class="bm-item">BRANDING</span><span class="bm-sep">✦</span>
+    <span class="bm-item">IDENTIDAD</span><span class="bm-sep">✦</span>
+    <span class="bm-item">ESTRATEGIA</span><span class="bm-sep">✦</span>
+    <span class="bm-item">DISEÑO WEB</span><span class="bm-sep">✦</span>
+    <span class="bm-item">EDITORIAL</span><span class="bm-sep">✦</span>
+    <span class="bm-item">MOTION</span><span class="bm-sep">✦</span>
+    <span class="bm-item">BRANDING</span><span class="bm-sep">✦</span>
+    <span class="bm-item">IDENTIDAD</span><span class="bm-sep">✦</span>
+    <span class="bm-item">ESTRATEGIA</span><span class="bm-sep">✦</span>
+    <span class="bm-item">DISEÑO WEB</span><span class="bm-sep">✦</span>
+    <span class="bm-item">EDITORIAL</span><span class="bm-sep">✦</span>
+    <span class="bm-item">MOTION</span><span class="bm-sep">✦</span>
+  </div>
+</div>
 
-<!-- CONÓCENOS -->
-<section class="sec sec-conocenos" id="conocenos">
-  <div class="cn-left rv">
-    <div class="sec-eye"><svg width="11" height="11" viewBox="0 0 100 100"><use href="#tivo-logo"/></svg> Conócenos</div>
-    <h2 class="sec-h">¿Y si el branding<br>no terminara<br>en <span class="em">un logo?</span></h2>
-    <blockquote class="cn-quote">"Lo que realmente construye una marca sigue siendo la intención humana."</blockquote>
-    <p class="cn-body">En TIVO usamos herramientas. <strong>Pero lo que realmente construye una marca sigue siendo la intención humana.</strong> Somos un equipo apasionado por el diseño con propósito: cada proyecto es una oportunidad de crear algo que trascienda lo visual y conecte de verdad.</p>
-    <p class="cn-body">Si quieres <strong>construir algo propio</strong>, conecta con nosotros.</p>
-    <div class="cn-tags">
-      <span class="cn-tag">Branding</span><span class="cn-tag">Estrategia</span><span class="cn-tag">Identidad</span>
-      <span class="cn-tag">Digital</span><span class="cn-tag">Editorial</span><span class="cn-tag">3D & Motion</span>
+<!-- CONÓCENOS / BENEFITS -->
+<div class="section-wrap" id="conocenos">
+  <div class="section-title-wrap">
+    <div class="section-eyebrow">
+      <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>
+      Conócenos
+    </div>
+    <h2 class="section-h2">¿Y si el branding<br>no terminara en <span class="em">un logo?</span></h2>
+    <p class="section-sub">En TIVO, cada proyecto es una oportunidad de crear algo que trascienda lo visual y conecte de verdad.</p>
+  </div>
+  <div class="benefits-rows">
+    <div class="benefits-row">
+      <div class="bene-card">
+        <div class="bene-card-title-row">
+          <div class="bene-icon" style="background:rgba(240,78,26,.12);">🎯</div>
+          <h3 class="bene-h3">Estrategia primero</h3>
+        </div>
+        <div class="bene-divider"></div>
+        <p class="bene-p">Antes de diseñar una sola línea, entendemos tu negocio, tu audiencia y tus metas reales. El diseño sigue a la estrategia, nunca al revés.</p>
+      </div>
+      <div class="bene-card">
+        <div class="bene-card-title-row">
+          <div class="bene-icon" style="background:rgba(155,111,212,.12);">✨</div>
+          <h3 class="bene-h3">Diseño con alma</h3>
+        </div>
+        <div class="bene-divider"></div>
+        <p class="bene-p">Cada decisión visual tiene una razón de ser. Nada es decorativo por accidente en nuestro trabajo. Cookie-cutter? No en TIVO.</p>
+      </div>
+    </div>
+    <div class="benefits-row">
+      <div class="bene-card">
+        <div class="bene-card-title-row">
+          <div class="bene-icon" style="background:rgba(196,212,0,.18);">↗</div>
+          <h3 class="bene-h3">Resultados reales</h3>
+        </div>
+        <div class="bene-divider"></div>
+        <p class="bene-p">Medimos el impacto. Las marcas que construimos crecen y conectan de verdad con su audiencia, más allá de lo visual.</p>
+      </div>
+      <div class="bene-card">
+        <div class="bene-card-title-row">
+          <div class="bene-icon" style="background:rgba(77,189,116,.12);">🤝</div>
+          <h3 class="bene-h3">Aliados, no proveedores</h3>
+        </div>
+        <div class="bene-divider"></div>
+        <p class="bene-p">Trabajamos contigo, no para ti. Tu éxito es el nuestro. Siempre presentes, siempre comprometidos con el resultado final.</p>
+      </div>
     </div>
   </div>
-  <div class="cn-cards rv d2">
-    <div class="vc vc-o"><div class="vc-ico">🎯</div><div><div class="vc-t">Estrategia primero</div><div class="vc-d">Antes de diseñar una sola línea, entendemos tu negocio, tu audiencia y tus metas reales.</div></div></div>
-    <div class="vc vc-p"><div class="vc-ico">✨</div><div><div class="vc-t">Diseño con alma</div><div class="vc-d">Cada decisión visual tiene una razón de ser. Nada es decorativo por accidente en nuestro trabajo.</div></div></div>
-    <div class="vc"><div class="vc-ico">🚀</div><div><div class="vc-t">Resultados reales</div><div class="vc-d">Medimos el impacto. Las marcas que construimos crecen y conectan de verdad con su audiencia.</div></div></div>
-    <div class="vc vc-l"><div class="vc-ico">🤝</div><div><div class="vc-t">Aliados, no proveedores</div><div class="vc-d">Trabajamos contigo, no para ti. Tu éxito es el nuestro. Siempre presentes, siempre comprometidos.</div></div></div>
-  </div>
-</section>
+</div>
 
-<!-- TRABAJO -->
-<section class="sec-trabajo" id="trabajo">
-  <div class="tj-head rv">
+<!-- TRABAJO / BENTO -->
+<section id="trabajo">
+  <div class="tj-head">
     <div>
-      <div class="sec-eye"><svg width="11" height="11" viewBox="0 0 100 100"><use href="#tivo-logo"/></svg> Nuestro trabajo</div>
-      <h2 class="sec-h">Lo que hacemos<br>habla por sí <span style="color:var(--l);">solo.</span></h2>
+      <div class="section-eyebrow" style="margin-bottom:10px;">
+        <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>
+        Nuestro trabajo
+      </div>
+      <h2 class="section-h2">Lo que hacemos<br>habla por sí <span class="eml">solo.</span></h2>
     </div>
     <a href="#" class="tj-more">Ver todo el trabajo →</a>
   </div>
-  <div class="bento rv d1">
+  <div class="bento">
     <div class="bc bc1"><div class="bc-fill bf1"></div><div class="bc-ltr">B</div><div class="bc-arr">↗</div><div class="bc-ov"><div class="bc-cat">Branding & Identidad</div><div class="bc-name">BEGO Guacamole</div></div></div>
     <div class="bc bc2"><div class="bc-fill bf2"></div><div class="bc-ltr">M</div><div class="bc-arr">↗</div><div class="bc-ov"><div class="bc-cat">Diseño Editorial</div><div class="bc-name">Marea Magazine</div></div></div>
     <div class="bc bc3"><div class="bc-fill bf3"></div><div class="bc-arr">↗</div><div class="bc-ov"><div class="bc-cat">Web</div><div class="bc-name">Núcleo Studio</div></div></div>
-    <div class="bc bc4" style="display:flex;align-items:center;justify-content:center;"><div class="bc-fill bf4"></div><svg width="40" height="40" viewBox="0 0 100 100" style="position:relative;z-index:1;opacity:.35"><use href="#tivo-logo"/></svg></div>
+    <div class="bc bc4" style="display:flex;align-items:center;justify-content:center;"><div class="bc-fill bf4"></div><span style="position:relative;z-index:1;font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:800;color:rgba(14,8,4,.18);">T</span></div>
     <div class="bc bc5"><div class="bc-fill bf5"></div><div class="bc-ltr">A</div><div class="bc-arr">↗</div><div class="bc-ov"><div class="bc-cat">Redes Sociales</div><div class="bc-name">Arco Café</div></div></div>
     <div class="bc bc6"><div class="bc-fill bf6"></div><div class="bc-ltr">S</div><div class="bc-arr">↗</div><div class="bc-ov"><div class="bc-cat">Packaging & Branding</div><div class="bc-name">Semilla Orgánico</div></div></div>
   </div>
 </section>
 
 <!-- SERVICIOS -->
-<section class="sec-servicios" id="servicios">
-  <div class="rv">
-    <div class="sec-eye"><svg width="11" height="11" viewBox="0 0 100 100"><use href="#tivo-logo"/></svg> Servicios</div>
-    <h2 class="sec-h">Lo que <span class="emp">hacemos</span><br>por tu marca</h2>
-    <p class="sec-sub">Todo lo que tu marca necesita para crecer, conectar y destacar. Sin compromisos innecesarios.</p>
+<div class="section-wrap" id="servicios">
+  <div class="section-title-wrap">
+    <div class="section-eyebrow">
+      <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>
+      Servicios
+    </div>
+    <h2 class="section-h2">Lo que <span class="emp">hacemos</span><br>por tu marca</h2>
+    <p class="section-sub">Todo lo que necesitas para crecer, conectar y destacar. Sin compromisos innecesarios.</p>
   </div>
   <div class="srv-grid">
-    <div class="sc rv d1"><div class="sc-n">01</div><div class="sc-chip chip-o">🎨 Identidad</div><h3 class="sc-title">Identidad Visual</h3><p class="sc-desc">Logos, paletas, tipografías y sistemas visuales completos que hacen que tu marca se reconozca al instante y nunca se olvide.</p><div class="sc-tags"><span class="sc-tag">Logo</span><span class="sc-tag">Brand System</span><span class="sc-tag">Guidelines</span></div></div>
-    <div class="sc rv d2"><div class="sc-n">02</div><div class="sc-chip chip-p">📱 Social</div><h3 class="sc-title">Redes Sociales</h3><p class="sc-desc">Contenido visual que para el scroll. Estrategia, diseño y plantillas para que tu marca brille en Instagram, TikTok y más.</p><div class="sc-tags"><span class="sc-tag">Contenido</span><span class="sc-tag">Estrategia</span><span class="sc-tag">Templates</span></div></div>
-    <div class="sc rv d3"><div class="sc-n">03</div><div class="sc-chip chip-b">🌐 Digital</div><h3 class="sc-title">Diseño Web</h3><p class="sc-desc">Sitios que no son solo bonitos: son experiencias que convierten. Diseño + desarrollo para presencias digitales que impactan.</p><div class="sc-tags"><span class="sc-tag">UI/UX</span><span class="sc-tag">Desarrollo</span><span class="sc-tag">Landing</span></div></div>
-    <div class="sc rv d1"><div class="sc-n">04</div><div class="sc-chip chip-pk">📖 Editorial</div><h3 class="sc-title">Editorial</h3><p class="sc-desc">Revistas, catálogos, lookbooks y publicaciones que hacen que la gente quiera quedarse hasta el final.</p><div class="sc-tags"><span class="sc-tag">Print</span><span class="sc-tag">Digital</span><span class="sc-tag">Catálogo</span></div></div>
-    <div class="sc rv d2"><div class="sc-n">05</div><div class="sc-chip chip-l">🎬 Motion</div><h3 class="sc-title">Video & Animación</h3><p class="sc-desc">Motion graphics, animaciones y contenido audiovisual que le da vida y movimiento a tu identidad de marca.</p><div class="sc-tags"><span class="sc-tag">Motion</span><span class="sc-tag">Reels</span><span class="sc-tag">Animación</span></div></div>
-    <div class="sc rv d3"><div class="sc-n">06</div><div class="sc-chip chip-g">✏️ Ilustración</div><h3 class="sc-title">Ilustración & 3D</h3><p class="sc-desc">Ilustraciones únicas y modelado 3D que le dan un carácter visual irrepetible a tu marca y productos.</p><div class="sc-tags"><span class="sc-tag">Ilustración</span><span class="sc-tag">3D</span><span class="sc-tag">Mockup</span></div></div>
-    <div class="sc-dark rv d1">
+    <div class="sc"><div class="sc-n">01</div><div class="sc-chip chip-o">🎨 Identidad</div><h3 class="sc-title">Identidad Visual</h3><p class="sc-desc">Logos, paletas, tipografías y sistemas visuales completos que hacen que tu marca se reconozca al instante y nunca se olvide.</p><div class="sc-tags"><span class="sc-tag">Logo</span><span class="sc-tag">Brand System</span><span class="sc-tag">Guidelines</span></div></div>
+    <div class="sc"><div class="sc-n">02</div><div class="sc-chip chip-p">📱 Social</div><h3 class="sc-title">Redes Sociales</h3><p class="sc-desc">Contenido visual que para el scroll. Estrategia, diseño y plantillas para que tu marca brille en Instagram, TikTok y más.</p><div class="sc-tags"><span class="sc-tag">Contenido</span><span class="sc-tag">Estrategia</span><span class="sc-tag">Templates</span></div></div>
+    <div class="sc"><div class="sc-n">03</div><div class="sc-chip chip-b">🌐 Digital</div><h3 class="sc-title">Diseño Web</h3><p class="sc-desc">Sitios que no son solo bonitos: son experiencias que convierten. Diseño + desarrollo para presencias digitales que impactan.</p><div class="sc-tags"><span class="sc-tag">UI/UX</span><span class="sc-tag">Desarrollo</span><span class="sc-tag">Landing</span></div></div>
+    <div class="sc"><div class="sc-n">04</div><div class="sc-chip chip-pk">📖 Editorial</div><h3 class="sc-title">Editorial</h3><p class="sc-desc">Revistas, catálogos, lookbooks y publicaciones que hacen que la gente quiera quedarse hasta el final.</p><div class="sc-tags"><span class="sc-tag">Print</span><span class="sc-tag">Digital</span><span class="sc-tag">Catálogo</span></div></div>
+    <div class="sc"><div class="sc-n">05</div><div class="sc-chip chip-l">🎬 Motion</div><h3 class="sc-title">Video & Animación</h3><p class="sc-desc">Motion graphics, animaciones y contenido audiovisual que le da vida y movimiento a tu identidad de marca.</p><div class="sc-tags"><span class="sc-tag">Motion</span><span class="sc-tag">Reels</span><span class="sc-tag">Animación</span></div></div>
+    <div class="sc"><div class="sc-n">06</div><div class="sc-chip chip-g">✏️ Ilustración</div><h3 class="sc-title">Ilustración & 3D</h3><p class="sc-desc">Ilustraciones únicas y modelado 3D que le dan un carácter visual irrepetible a tu marca y productos.</p><div class="sc-tags"><span class="sc-tag">Ilustración</span><span class="sc-tag">3D</span><span class="sc-tag">Mockup</span></div></div>
+    <div class="sc-dark">
       <div class="sd-txt">
         <div class="sd-chip">✦ Alianza estratégica</div>
         <h3 class="sd-h">¿Tu marca necesita<br>un <span>equipo completo?</span></h3>
         <p class="sd-p">Trabajamos como tu departamento creativo in-house. Estrategia, diseño, contenido y desarrollo bajo una sola visión.</p>
-        <a href="#contacto" class="sd-cta">Hablemos <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        <a href="#contacto" class="sd-cta">
+          Hablemos
+          <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
       </div>
       <div class="sd-stats">
         <div class="mstat"><div class="mstat-n">+80<sup>✦</sup></div><div class="mstat-l">Proyectos</div></div>
@@ -783,207 +1348,352 @@ h1.h1{
       </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- QUOTE -->
-<div class="quote-sec">
-  <div class="q-inner rv">
+<div class="quote-section">
+  <div class="q-inner">
     <p class="q-h">Tener un buen producto<br><span class="q-it">ya no es</span> <span class="q-em">suficiente.</span></p>
     <p class="q-sub">Tu marca es lo que hace que la gente te elija, te recuerde y te recomiende. Eso es exactamente lo que construimos contigo.</p>
   </div>
 </div>
 
-<!-- PROCESOS -->
-<section class="sec-procesos" id="procesos">
-  <div class="rv">
-    <div class="sec-eye"><svg width="11" height="11" viewBox="0 0 100 100"><use href="#tivo-logo"/></svg> Procesos</div>
-    <h2 class="sec-h">Simple, <span class="emp">claro</span><br>y sin rodeos.</h2>
-    <p class="sec-sub">Sin pasos innecesarios, sin complicaciones. Solo un proceso enfocado en resultados concretos.</p>
-  </div>
-  <div class="process-grid rv d1">
-    <div class="ps"><div class="ps-tag pt1">01 — Descubrimiento</div><h4 class="ps-h">Nos conocemos</h4><p class="ps-p">Cuanto más sepamos de ti, mejor. Exploramos tu negocio, tus metas y tu audiencia antes de tomar cualquier decisión creativa.</p><div class="ps-deco">01</div></div>
-    <div class="ps"><div class="ps-tag pt2">02 — Exploración</div><h4 class="ps-h">Exploramos</h4><p class="ps-p">Investigamos, benchmarkeamos y encontramos la dirección creativa que tiene algo real que decir. Nada genérico.</p><div class="ps-deco">02</div></div>
-    <div class="ps"><div class="ps-tag pt3">03 — Diseño</div><h4 class="ps-h">Diseñamos</h4><p class="ps-p">Ejecutamos con obsesión por el detalle. Presentamos, iteramos y refinamos hasta que quede exactamente como debe ser.</p><div class="ps-deco">03</div></div>
-    <div class="ps"><div class="ps-tag pt4">04 — Entrega</div><h4 class="ps-h">Lanzamos</h4><p class="ps-p">Entregamos todo listo para usar y te acompañamos en el lanzamiento. No te dejamos solo con un ZIP y suerte.</p><div class="ps-deco">04</div></div>
-  </div>
-</section>
-
-<!-- COBERTURA -->
-<section class="sec-mapa" id="cobertura">
-  <div class="mapa-head rv">
-    <div class="sec-eye"><svg width="11" height="11" viewBox="0 0 100 100"><use href="#tivo-logo"/></svg> Cobertura</div>
-    <h2 class="sec-h">Bogotá en el centro,<br>el mundo como <span class="em">canvas.</span></h2>
-    <p class="sec-sub">Trabajamos desde Bogotá con marcas en Colombia, Latinoamérica y Estados Unidos. La creatividad no tiene fronteras.</p>
-  </div>
-  <div class="mapa-grid rv d1">
-    <div class="mapa-wrap">
-      <svg viewBox="0 0 560 520" xmlns="http://www.w3.org/2000/svg">
-        <defs><pattern id="mgrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="rgba(234,217,184,.06)"/></pattern></defs>
-        <rect width="560" height="520" fill="#0E0804"/><rect width="560" height="520" fill="url(#mgrid)"/>
-        <path d="M190 60 L220 55 L260 60 L285 70 L300 90 L310 110 L305 135 L295 155 L300 175 L310 195 L315 220 L310 250 L305 275 L295 300 L285 325 L270 350 L255 375 L240 395 L225 415 L210 435 L200 455 L192 470 L188 460 L182 445 L175 430 L168 415 L162 400 L158 385 L155 368 L152 350 L150 330 L150 308 L148 285 L145 262 L142 240 L140 218 L140 196 L143 175 L148 155 L155 135 L160 115 L165 95 L172 75 L182 62 Z" fill="rgba(240,78,26,.08)" stroke="rgba(240,78,26,.2)" stroke-width="1.5"/>
-        <path d="M165 60 L185 58 L192 62 L188 72 L180 80 L170 88 L160 92 L150 88 L140 80 L132 70 L138 60 L150 55 Z" fill="rgba(234,217,184,.04)" stroke="rgba(234,217,184,.09)" stroke-width="1"/>
-        <path d="M132 70 L125 62 L115 55 L105 50 L95 52 L88 60 L85 72 L88 82 L98 88 L108 86 L118 80 L128 78 Z" fill="rgba(234,217,184,.04)" stroke="rgba(234,217,184,.08)" stroke-width="1"/>
-        <path d="M85 72 L78 65 L70 58 L62 54 L55 56 L50 64 L52 74 L58 80 L66 82 L74 78 L80 72 Z" fill="rgba(234,217,184,.04)" stroke="rgba(234,217,184,.07)" stroke-width="1"/>
-        <line x1="223" y1="175" x2="118" y2="82" stroke="rgba(196,212,0,.35)" stroke-width="1.2" stroke-dasharray="4 3"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="2s" repeatCount="indefinite"/></line>
-        <line x1="223" y1="175" x2="235" y2="415" stroke="rgba(155,111,212,.35)" stroke-width="1.2" stroke-dasharray="4 3"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="2.8s" repeatCount="indefinite"/></line>
-        <line x1="223" y1="175" x2="198" y2="395" stroke="rgba(77,184,232,.35)" stroke-width="1.2" stroke-dasharray="4 3"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="2.4s" repeatCount="indefinite"/></line>
-        <line x1="223" y1="175" x2="72" y2="72" stroke="rgba(232,71,122,.35)" stroke-width="1.2" stroke-dasharray="4 3"><animate attributeName="stroke-dashoffset" from="0" to="-28" dur="3.2s" repeatCount="indefinite"/></line>
-        <g><circle cx="223" cy="175" r="16" fill="rgba(240,78,26,.1)"><animate attributeName="r" values="10;18;10" dur="2.5s" repeatCount="indefinite"/><animate attributeName="opacity" values=".15;0;.15" dur="2.5s" repeatCount="indefinite"/></circle><circle cx="223" cy="175" r="7" fill="rgba(240,78,26,.2)"/><circle cx="223" cy="175" r="4.5" fill="#F04E1A"/><text x="232" y="171" font-family="sans-serif" font-size="9" fill="rgba(234,217,184,.72)" font-weight="700">Bogotá</text><text x="232" y="181" font-family="sans-serif" font-size="8" fill="rgba(234,217,184,.36)">HQ</text></g>
-        <g><circle cx="210" cy="152" r="3.5" fill="#F04E1A" opacity=".75"/><text x="217" y="155" font-family="sans-serif" font-size="8" fill="rgba(234,217,184,.5)">Medellín</text></g>
-        <g><circle cx="196" cy="195" r="3.5" fill="#F04E1A" opacity=".75"/><text x="203" y="198" font-family="sans-serif" font-size="8" fill="rgba(234,217,184,.5)">Cali</text></g>
-        <g><circle cx="118" cy="82" r="9" fill="rgba(196,212,0,.1)"><animate attributeName="r" values="5;10;5" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".2;0;.2" dur="3s" repeatCount="indefinite"/></circle><circle cx="118" cy="82" r="3.5" fill="#C4D400"/><text x="124" y="85" font-family="sans-serif" font-size="8" fill="rgba(234,217,184,.5)">Miami</text></g>
-        <g><circle cx="72" cy="72" r="3.5" fill="#E8477A" opacity=".65"/><text x="78" y="75" font-family="sans-serif" font-size="8" fill="rgba(234,217,184,.42)">CDMX</text></g>
-        <g><circle cx="235" cy="415" r="3.5" fill="#9B6FD4" opacity=".75"/><text x="241" y="418" font-family="sans-serif" font-size="8" fill="rgba(234,217,184,.42)">Bs. Aires</text></g>
-        <g><circle cx="198" cy="395" r="3.5" fill="#4DB8E8" opacity=".75"/><text x="204" y="398" font-family="sans-serif" font-size="8" fill="rgba(234,217,184,.42)">Santiago</text></g>
-        <g><circle cx="192" cy="275" r="3" fill="rgba(234,217,184,.45)"/><text x="198" y="278" font-family="sans-serif" font-size="8" fill="rgba(234,217,184,.32)">Lima</text></g>
-        <text x="28" y="498" font-family="sans-serif" font-size="8" fill="rgba(234,217,184,.14)" font-weight="600" letter-spacing="2">TIVO — COBERTURA CREATIVA</text>
-      </svg>
+<!-- PROCESO -->
+<div class="section-wrap" id="procesos">
+  <div class="section-title-wrap">
+    <div class="section-eyebrow">
+      <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>
+      Proceso
     </div>
-    <div>
-      <p class="cov-intro">Nuestra base está en Bogotá, pero nuestros proyectos se extienden por toda la región. <strong>Trabajamos de forma remota sin perder la conexión humana</strong> que hace grande a cada marca.</p>
-      <div class="cov-cities">
-        <div class="cov-city"><div class="cov-city-dot" style="background:var(--o);box-shadow:0 0 0 3px rgba(240,78,26,.2);"></div><div class="cov-city-info"><div class="cov-city-name">Bogotá, Colombia</div><div class="cov-city-sub">Sede principal · Estudio creativo</div></div><div class="cov-city-tag tag-local">HQ</div></div>
-        <div class="cov-city"><div class="cov-city-dot" style="background:var(--p);"></div><div class="cov-city-info"><div class="cov-city-name">Colombia</div><div class="cov-city-sub">Medellín, Cali, Barranquilla</div></div><div class="cov-city-tag tag-local">Local</div></div>
-        <div class="cov-city"><div class="cov-city-dot" style="background:var(--l);"></div><div class="cov-city-info"><div class="cov-city-name">Latinoamérica</div><div class="cov-city-sub">México · Argentina · Chile · Perú</div></div><div class="cov-city-tag tag-lat">LATAM</div></div>
-        <div class="cov-city"><div class="cov-city-dot" style="background:var(--bl);"></div><div class="cov-city-info"><div class="cov-city-name">Estados Unidos</div><div class="cov-city-sub">Miami · Nueva York · Los Ángeles</div></div><div class="cov-city-tag tag-us">US</div></div>
+    <h2 class="section-h2">Simple, <span class="emp">claro</span><br>y sin rodeos.</h2>
+    <p class="section-sub">Sin pasos innecesarios. Solo un proceso enfocado en resultados concretos.</p>
+  </div>
+  <div class="process-cards">
+    <div class="process-row">
+      <div class="proc-card">
+        <div class="proc-step-tag pt1">01 — Descubrimiento</div>
+        <div class="proc-title-row">
+          <div class="proc-icon" style="background:rgba(240,78,26,.12);">📞</div>
+          <h3 class="proc-h3">Nos conocemos</h3>
+        </div>
+        <div class="proc-divider"></div>
+        <p class="proc-p">Cuanto más sepamos de ti, mejor. Exploramos tu negocio, tus metas y tu audiencia antes de tomar cualquier decisión creativa.</p>
+        <div class="proc-deco">01</div>
       </div>
-      <div class="cov-stats">
-        <div class="cov-stat"><div class="cov-stat-n">8<span>+</span></div><div class="cov-stat-l">Países con presencia</div></div>
-        <div class="cov-stat"><div class="cov-stat-n">3M<span>+</span></div><div class="cov-stat-l">Personas alcanzadas</div></div>
-        <div class="cov-stat"><div class="cov-stat-n">100<span>%</span></div><div class="cov-stat-l">Trabajo remoto listo</div></div>
-        <div class="cov-stat"><div class="cov-stat-n">6<span>+</span></div><div class="cov-stat-l">Años de experiencia</div></div>
+      <div class="proc-card">
+        <div class="proc-step-tag pt2">02 — Exploración</div>
+        <div class="proc-title-row">
+          <div class="proc-icon" style="background:rgba(155,111,212,.12);">🎨</div>
+          <h3 class="proc-h3">Exploramos</h3>
+        </div>
+        <div class="proc-divider"></div>
+        <p class="proc-p">Investigamos, benchmarkeamos y encontramos la dirección creativa que tiene algo real que decir. Nada genérico, nada de plantillas.</p>
+        <div class="proc-deco">02</div>
+      </div>
+    </div>
+    <div class="process-row">
+      <div class="proc-card">
+        <div class="proc-step-tag pt3">03 — Diseño</div>
+        <div class="proc-title-row">
+          <div class="proc-icon" style="background:rgba(232,71,122,.1);">⚡</div>
+          <h3 class="proc-h3">Diseñamos</h3>
+        </div>
+        <div class="proc-divider"></div>
+        <p class="proc-p">Ejecutamos con obsesión por el detalle. Presentamos, iteramos y refinamos hasta que quede exactamente como debe ser.</p>
+        <div class="proc-deco">03</div>
+      </div>
+      <div class="proc-card">
+        <div class="proc-step-tag pt4">04 — Entrega</div>
+        <div class="proc-title-row">
+          <div class="proc-icon" style="background:rgba(196,212,0,.18);">🚀</div>
+          <h3 class="proc-h3">Lanzamos</h3>
+        </div>
+        <div class="proc-divider"></div>
+        <p class="proc-p">Entregamos todo listo para usar y te acompañamos en el lanzamiento. No te dejamos solo con un ZIP y buena suerte.</p>
+        <div class="proc-deco">04</div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- TESTIMONIOS -->
-<section class="sec-testi" id="resultados">
-  <div class="rv">
-    <div class="sec-eye"><svg width="11" height="11" viewBox="0 0 100 100"><use href="#tivo-logo"/></svg> Resultados</div>
-    <h2 class="sec-h">Nuestros clientes<br>hablan por <span class="em">nosotros.</span></h2>
-    <p class="sec-sub">Las marcas que construimos generan impacto real. No solo visualmente — en ventas, alcance y reconocimiento.</p>
+<div class="section-wrap" id="resultados">
+  <div class="section-title-wrap">
+    <div class="section-eyebrow">
+      <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>
+      Resultados
+    </div>
+    <h2 class="section-h2">Nuestros clientes<br>hablan por <span class="em">nosotros.</span></h2>
+    <p class="section-sub">Las marcas que construimos generan impacto real — en ventas, alcance y reconocimiento.</p>
   </div>
   <div class="testi-grid">
-    <div class="tc tc1 rv d1"><div class="tc-stars">★★★★★</div><p class="tc-q">"El resultado superó todo lo que imaginamos. TIVO entendió nuestra visión desde el primer día y la llevaron a un nivel que no esperábamos. Ahora nuestra marca habla sola."</p><div class="tc-auth"><div class="tcav av1">ML</div><div><div class="tc-nm">María L. Torres</div><div class="tc-rl">Fundadora — Semilla Studio</div></div></div></div>
-    <div class="tc tc2 rv d2"><div class="tc-stars">★★★★★</div><p class="tc-q">"Entienden el negocio antes de diseñar. No solo es bonito — funciona, vende y conecta con nuestra gente. La mejor inversión que hemos hecho en la marca."</p><div class="tc-auth"><div class="tcav av2">CR</div><div><div class="tc-nm">Camilo R. Mora</div><div class="tc-rl">CEO — Arco Café</div></div></div></div>
-    <div class="tc tc3 rv d3"><div class="tc-stars">★★★★★</div><p class="tc-q">"TIVO le dio a nuestra marca la identidad que siempre soñamos. Una experiencia visual completa que va mucho más allá del logo. Profundamente recomendados."</p><div class="tc-auth"><div class="tcav av3">AS</div><div><div class="tc-nm">Ana S. Ríos</div><div class="tc-rl">Directora — BEGO Foods</div></div></div></div>
+    <div class="tc tc1"><div class="tc-stars">★★★★★</div><p class="tc-q">"El resultado superó todo lo que imaginamos. TIVO entendió nuestra visión desde el primer día y la llevaron a un nivel que no esperábamos. Ahora nuestra marca habla sola."</p><div class="tc-auth"><div class="tcav av1">ML</div><div><div class="tc-nm">María L. Torres</div><div class="tc-rl">Fundadora — Semilla Studio</div></div></div></div>
+    <div class="tc tc2"><div class="tc-stars">★★★★★</div><p class="tc-q">"Entienden el negocio antes de diseñar. No solo es bonito — funciona, vende y conecta con nuestra gente. La mejor inversión que hemos hecho en la marca."</p><div class="tc-auth"><div class="tcav av2">CR</div><div><div class="tc-nm">Camilo R. Mora</div><div class="tc-rl">CEO — Arco Café</div></div></div></div>
+    <div class="tc tc3"><div class="tc-stars">★★★★★</div><p class="tc-q">"TIVO le dio a nuestra marca la identidad que siempre soñamos. Una experiencia visual completa que va mucho más allá del logo. Profundamente recomendados."</p><div class="tc-auth"><div class="tcav av3">AS</div><div><div class="tc-nm">Ana S. Ríos</div><div class="tc-rl">Directora — BEGO Foods</div></div></div></div>
   </div>
-</section>
+</div>
+
+<!-- CONTACT -->
+<div class="section-wrap" id="contacto">
+  <div class="section-title-wrap">
+    <div class="section-eyebrow">
+      <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>
+      Conversemos
+    </div>
+    <h2 class="section-h2">¿Tienes un<br>proyecto en mente?</h2>
+    <p class="section-sub">Cuéntanos todo. Sin formularios eternos, sin compromisos — solo una conversación honesta.</p>
+  </div>
+  <div style="display:flex;justify-content:center;width:100%;">
+    <form class="contact-form-wrap" onsubmit="handleSubmit(event)">
+      <div class="contact-left-panel">
+        <div class="contact-textarea-wrap">
+          <textarea class="contact-ta" name="Message" placeholder="Cuéntanos sobre tu proyecto, marca o idea…" required></textarea>
+        </div>
+      </div>
+      <div class="contact-divider"></div>
+      <div class="contact-right-panel">
+        <div class="contact-stamp-area">
+          <div class="stamp-box">
+            <div class="stamp-inner">TI<br>VO</div>
+          </div>
+        </div>
+        <div class="contact-fields">
+          <input class="contact-input" type="text" name="Name" placeholder="Nombre" required>
+          <input class="contact-input" type="email" name="Email" placeholder="Correo electrónico" required>
+          <select class="contact-select" name="Service" required>
+            <option value="" disabled selected>¿Qué necesitas?</option>
+            <option>Identidad Visual</option>
+            <option>Redes Sociales</option>
+            <option>Diseño Web</option>
+            <option>Editorial</option>
+            <option>Alianza estratégica</option>
+            <option>Otro</option>
+          </select>
+          <button type="submit" class="contact-send-btn">Enviar mensaje</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section-wrap" id="faq">
+  <div class="section-title-wrap">
+    <div class="section-eyebrow">
+      <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>
+      Preguntas frecuentes
+    </div>
+    <h2 class="section-h2">Todo lo que<br>quieres <span class="em">saber.</span></h2>
+    <p class="section-sub">Si algo no está aquí, puedes escribirnos directamente.</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item open">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        ¿Cómo puedo empezar a trabajar con TIVO?
+        <span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span>
+      </button>
+      <div class="faq-a">Agenda una llamada, llena el formulario de arriba o escríbenos directamente a wearetivo@gmail.com. Lo que te sea más cómodo — lo importante es que empecemos a conversar.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        ¿Qué servicio es el más adecuado para mi marca?
+        <span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span>
+      </button>
+      <div class="faq-a">Depende de la etapa en que está tu marca. Si estás empezando, la Identidad Visual es el punto de partida. Si ya tienes marca y quieres escalar, las Redes Sociales o la Alianza Estratégica pueden ser el mejor camino. Cuéntanos y te orientamos.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        ¿Trabajan con marcas fuera de Colombia?
+        <span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span>
+      </button>
+      <div class="faq-a">Absolutamente. Trabajamos de forma remota con marcas en Colombia, toda Latinoamérica y Estados Unidos. La creatividad no tiene fronteras y tampoco nuestros proyectos.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        ¿Cuántas revisiones incluye el proceso?
+        <span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span>
+      </button>
+      <div class="faq-a">No contamos revisiones. Nuestro objetivo es entregar algo que ames. Iteramos hasta que quede exactamente como debe ser — dentro de un proceso claro y honesto.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        ¿Qué herramientas y software usan?
+        <span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span>
+      </button>
+      <div class="faq-a">Figma para diseño, Framer para web, Adobe Creative Suite para producción, Blender para 3D, After Effects para motion. Usamos las herramientas correctas para cada proyecto — no las de moda.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        ¿Qué pasa si no me gusta el resultado?
+        <span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span>
+      </button>
+      <div class="faq-a">No ofrecemos reembolsos porque cada proyecto implica tiempo y trabajo real, pero sí nos comprometemos a ajustar y refinar hasta que estés satisfecho. Ese es nuestro trato.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        ¿Pueden ayudarme con branding desde cero?
+        <span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span>
+      </button>
+      <div class="faq-a">Es lo que más nos apasiona. Acompañarte en la construcción de algo desde cero, con propósito y con visión, es el tipo de proyecto que nos hace madrugar con ganas.</div>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
-<div id="contacto" style="background:var(--dark);">
-  <section class="footer-cta">
-    <svg class="fc-deco" width="480" height="480" viewBox="0 0 100 100"><use href="#tivo-logo"/></svg>
-    <div class="fc-inner rv">
-      <div class="sec-eye fc-eye"><svg width="11" height="11" viewBox="0 0 100 100"><use href="#tivo-logo"/></svg> ¿Listo para construir algo propio?</div>
-      <h2 class="fc-h">Hagamos algo<br><span class="fl">increíble</span><br><span class="fo">juntos.</span></h2>
-      <p class="fc-sub">Sin formularios eternos, sin compromisos. Solo una conversación honesta entre creativos sobre lo que quieres construir.</p>
-      <div class="fc-btns">
-        <a href="mailto:wearetivo@gmail.com" class="btn-fc">wearetivo@gmail.com <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-        <a href="https://instagram.com/wearetivo" target="_blank" rel="noopener" class="btn-fc-g">@wearetivo →</a>
-      </div>
+<footer id="footer" class="footer-wrap">
+  <div class="footer-cta-section">
+    <div class="footer-eyebrow">
+      <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="currentColor"/></svg>
+      ¿Listo para construir algo propio?
     </div>
-  </section>
+    <h2 class="footer-h2">
+      Hagamos algo<br>
+      <span class="fl">increíble</span><br>
+      <span class="fo">juntos.</span>
+    </h2>
+    <p class="footer-sub">Sin formularios eternos, sin compromisos. Solo una conversación honesta entre creativos sobre lo que quieres construir.</p>
+    <div class="footer-cta-row">
+      <a href="mailto:wearetivo@gmail.com" class="btn-footer-cta">
+        wearetivo@gmail.com
+        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <a href="https://instagram.com/wearetivo" target="_blank" rel="noopener" class="btn-footer-secondary">
+        @wearetivo →
+      </a>
+    </div>
+  </div>
   <div class="footer-grid">
     <div>
       <div class="fg-logo"><span class="fg-dot"></span>TIVO</div>
       <p class="fg-tag">Estudio Creativo & Aliado Estratégico. Bogotá, Colombia.</p>
     </div>
-    <div class="fcol"><h4>Servicios</h4><ul><li><a href="#">Identidad Visual</a></li><li><a href="#">Redes Sociales</a></li><li><a href="#">Diseño Web</a></li><li><a href="#">Editorial</a></li><li><a href="#">Video & Motion</a></li></ul></div>
-    <div class="fcol"><h4>Estudio</h4><ul><li><a href="#">Conócenos</a></li><li><a href="#">Nuestro trabajo</a></li><li><a href="#">Procesos</a></li><li><a href="#">Blog</a></li></ul></div>
-    <div class="fcol"><h4>Contacto</h4><ul><li><a href="mailto:wearetivo@gmail.com">wearetivo@gmail.com</a></li><li><a href="https://instagram.com/wearetivo" target="_blank">Instagram</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Behance</a></li></ul></div>
+    <div class="fcol"><h4>Servicios</h4><ul>
+      <li><a href="#">Identidad Visual</a></li>
+      <li><a href="#">Redes Sociales</a></li>
+      <li><a href="#">Diseño Web</a></li>
+      <li><a href="#">Editorial</a></li>
+      <li><a href="#">Video & Motion</a></li>
+    </ul></div>
+    <div class="fcol"><h4>Estudio</h4><ul>
+      <li><a href="#conocenos">Conócenos</a></li>
+      <li><a href="#trabajo">Nuestro trabajo</a></li>
+      <li><a href="#procesos">Proceso</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul></div>
+    <div class="fcol"><h4>Contacto</h4><ul>
+      <li><a href="mailto:wearetivo@gmail.com">wearetivo@gmail.com</a></li>
+      <li><a href="https://instagram.com/wearetivo" target="_blank">Instagram</a></li>
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">Behance</a></li>
+    </ul></div>
   </div>
   <div class="footer-base">
     <span class="fb-copy">© 2026 TIVO Studio — Bogotá, Colombia ✦</span>
     <div class="fb-soc">
-      <a class="fbs" href="#" aria-label="Instagram">IG</a>
+      <a class="fbs" href="https://instagram.com/wearetivo" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
       <a class="fbs" href="#" aria-label="LinkedIn">LI</a>
       <a class="fbs" href="#" aria-label="Behance">BE</a>
     </div>
   </div>
-</div>
+</footer>
 
 <script>
-// CURSOR
-const cur=document.getElementById('cursor'),ring=document.getElementById('cur-r');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-(function rl(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(rl);})();
-document.querySelectorAll('a,button,input,select,.cl-name,.cn-tag,.bm-item').forEach(el=>{
-  el.addEventListener('mouseenter',()=>cur.classList.add('on'));
-  el.addEventListener('mouseleave',()=>cur.classList.remove('on'));
-});
-
-// NAV SCROLL
-const navAvail=document.querySelector('.n-avail'),navTalk=document.querySelector('.n-talk');
-window.addEventListener('scroll',()=>{
-  const hide=window.scrollY>60;
-  [navAvail,navTalk].forEach(el=>{
-    if(!el)return;
-    el.style.transform=hide?'translateY(-80px)':'translateY(0)';
-    el.style.opacity=hide?'0':'1';
-    el.style.pointerEvents=hide?'none':'auto';
-  });
-},{passive:true});
-
-// MOBILE MENU
-const mob=document.getElementById('mobMenu');
-document.getElementById('hamBtn').addEventListener('click',()=>{mob.style.display=mob.style.display==='flex'?'none':'flex';});
-document.getElementById('mobX').addEventListener('click',()=>{mob.style.display='none';});
-function closeMob(){mob.style.display='none';}
-
-// TYPING
-const phrases=['la intención humana.','la estrategia creativa.','el diseño con alma.','la conexión real.','las decisiones correctas.','la visión de marca.'];
-let pi=0,ci=0,deleting=false,pausing=false;
-const tel=document.getElementById('typing');
-function type(){
-  if(pausing){setTimeout(type,1900);pausing=false;return;}
-  const ph=phrases[pi];
-  if(!deleting){tel.textContent=ph.slice(0,++ci);if(ci===ph.length){deleting=true;pausing=true;setTimeout(type,100);return;}setTimeout(type,62);}
-  else{tel.textContent=ph.slice(0,--ci);if(ci===0){deleting=false;pi=(pi+1)%phrases.length;setTimeout(type,400);return;}setTimeout(type,36);}
+// ── TYPING EFFECT ──────────────────────────────
+const phrases = [
+  'la intención humana.',
+  'la estrategia creativa.',
+  'el diseño con alma.',
+  'la conexión real.',
+  'las decisiones correctas.',
+  'la visión de marca.'
+];
+let pi = 0, ci = 0, deleting = false, pausing = false;
+const tel = document.getElementById('typing');
+function type() {
+  if (pausing) { setTimeout(type, 1800); pausing = false; return; }
+  const ph = phrases[pi];
+  if (!deleting) {
+    tel.textContent = ph.slice(0, ++ci);
+    if (ci === ph.length) { deleting = true; pausing = true; setTimeout(type, 100); return; }
+    setTimeout(type, 62);
+  } else {
+    tel.textContent = ph.slice(0, --ci);
+    if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(type, 380); return; }
+    setTimeout(type, 36);
+  }
 }
 type();
 
-// REVEAL
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});},{threshold:.07,rootMargin:'0px 0px -24px 0px'});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-
-// COUNTERS
-const targets=[80,3,100,6],ids=['s1','s2','s3','s4'],sups=['<sup>+</sup>','<sup>M+</sup>','<sup>%</sup>','<sup>+</sup>'];
-let animated=false;
-const sObs=new IntersectionObserver(e=>{
-  if(e[0].isIntersecting&&!animated){
-    animated=true;
-    ids.forEach((id,i)=>{const el=document.getElementById(id);let v=0;const run=()=>{v+=targets[i]/55;if(v>=targets[i]){el.innerHTML=targets[i]+sups[i];return;}el.innerHTML=Math.round(v)+sups[i];requestAnimationFrame(run);};run();});
+// ── STAT COUNTERS ──────────────────────────────
+const targets = [80, 3, 100, 6];
+const ids     = ['s1', 's2', 's3', 's4'];
+const sups    = ['<sup>+</sup>', '<sup>M+</sup>', '<sup>%</sup>', '<sup>+</sup>'];
+let animated  = false;
+const sObs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting && !animated) {
+    animated = true;
+    ids.forEach((id, i) => {
+      const el = document.getElementById(id);
+      let v = 0;
+      const run = () => {
+        v += targets[i] / 55;
+        if (v >= targets[i]) { el.innerHTML = targets[i] + sups[i]; return; }
+        el.innerHTML = Math.round(v) + sups[i];
+        requestAnimationFrame(run);
+      };
+      run();
+    });
   }
-},{threshold:.3});
-const sr=document.querySelector('.stats-row');if(sr)sObs.observe(sr);
+}, { threshold: .3 });
+const sr = document.querySelector('.stats-row');
+if (sr) sObs.observe(sr);
 
-// BENTO TILT
-document.querySelectorAll('.bc').forEach(c=>{
-  c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();const x=((e.clientX-r.left)/r.width-.5)*10;const y=((e.clientY-r.top)/r.height-.5)*10;c.style.transform=`perspective(900px) rotateY(${x}deg) rotateX(${-y}deg) scale(1.02)`;});
-  c.addEventListener('mouseleave',()=>{c.style.transform='';});
+// ── FAQ ACCORDION ──────────────────────────────
+function toggleFaq(btn) {
+  btn.closest('.faq-item').classList.toggle('open');
+}
+
+// ── CONTACT FORM ───────────────────────────────
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.contact-send-btn');
+  const orig = btn.textContent;
+  btn.textContent = '✓ Mensaje enviado';
+  btn.style.background = 'var(--green)';
+  btn.style.color = 'var(--white)';
+  setTimeout(() => {
+    btn.textContent = orig;
+    btn.style.background = '';
+    btn.style.color = '';
+  }, 3000);
+}
+
+// ── BENTO TILT ─────────────────────────────────
+document.querySelectorAll('.bc').forEach(c => {
+  c.addEventListener('mousemove', e => {
+    const r = c.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width - .5) * 10;
+    const y = ((e.clientY - r.top) / r.height - .5) * 10;
+    c.style.transform = `perspective(900px) rotateY(${x}deg) rotateX(${-y}deg) scale(1.02)`;
+  });
+  c.addEventListener('mouseleave', () => { c.style.transform = ''; });
 });
 
-// FORM
-document.getElementById('formBtn').addEventListener('click',function(){
-  const nombre=document.getElementById('f-nombre').value.trim();
-  const email=document.getElementById('f-email').value.trim();
-  const privOk=document.getElementById('prv').checked;
-  if(!nombre||!email||!privOk){
-    this.style.animation='shake .35s ease';
-    setTimeout(()=>{this.style.animation='';},350);
-    ['f-nombre','f-email'].forEach(id=>{
-      const el=document.getElementById(id);
-      if(!el.value.trim()){el.style.borderColor='var(--pk)';el.style.boxShadow='0 0 0 3px rgba(232,71,122,.1)';el.addEventListener('input',()=>{el.style.borderColor='';el.style.boxShadow='';},{once:true});}
-    });
-    return;
-  }
-  this.innerHTML='¡Enviado! Revisa tu correo ✓';
-  this.style.background='var(--g)';
-  this.style.color='var(--white)';
-  this.disabled=true;
+// ── SCROLL REVEAL ──────────────────────────────
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: .07, rootMargin: '0px 0px -24px 0px' });
+
+document.querySelectorAll('.bene-card, .sc, .proc-card, .tc, .stat, .bc').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(18px)';
+  el.style.transition = 'opacity .65s ease, transform .65s ease';
+  revealObs.observe(el);
 });
 </script>
 </body>
