@@ -11,14 +11,22 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #F7F5F0;
-    --dark: #1A1A18;
-    --accent: #2D2D2A;
-    --green: #4CAF6A;
-    --text-muted: #888880;
-    --border: #E0DDD5;
-    --card-bg: #EFECE6;
-    --white: #ffffff;
+    /* Paleta extraída de la imagen */
+    --orange:    #E8532A;   /* naranja-rojo — protagonista #1 */
+    --green:     #5BBF6A;   /* verde fluorescente — protagonista #2 */
+    --yellow:    #D4D94A;   /* amarillo-lima */
+    --lavender:  #9B85C4;   /* lila/lavanda */
+    --magenta:   #E83E7A;   /* rosa magenta */
+    --amber:     #F5B942;   /* naranja-amarillo */
+
+    /* Neutros */
+    --bg:        #0F0F0D;   /* fondo negro cálido */
+    --surface:   #1A1A16;   /* superficies elevadas */
+    --card:      #222219;   /* cards */
+    --border:    rgba(255,255,255,0.08);
+    --white:     #FFFFFF;
+    --muted:     rgba(255,255,255,0.40);
+
     --radius: 16px;
     --radius-sm: 8px;
   }
@@ -28,13 +36,13 @@
   body {
     font-family: 'Inter', sans-serif;
     background: var(--bg);
-    color: var(--dark);
+    color: var(--white);
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
   }
 
-  /* NAV */
+  /* ── NAV ─────────────────────────────────── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -43,8 +51,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 18px 40px;
-    background: rgba(247,245,240,0.85);
-    backdrop-filter: blur(12px);
+    background: rgba(15,15,13,0.88);
+    backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
   }
 
@@ -52,10 +60,12 @@
     font-family: 'Playfair Display', serif;
     font-size: 20px;
     font-weight: 700;
-    color: var(--dark);
+    color: var(--white);
     text-decoration: none;
     letter-spacing: -0.5px;
   }
+
+  .nav-logo span { color: var(--orange); }
 
   .nav-links {
     display: flex;
@@ -65,15 +75,14 @@
   }
 
   .nav-links a {
-    color: var(--dark);
+    color: var(--muted);
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
-    opacity: 0.7;
-    transition: opacity 0.2s;
+    transition: color 0.2s;
   }
 
-  .nav-links a:hover { opacity: 1; }
+  .nav-links a:hover { color: var(--white); }
 
   .btn {
     display: inline-flex;
@@ -82,29 +91,38 @@
     padding: 10px 22px;
     border-radius: 50px;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: none;
     cursor: pointer;
     border: none;
     transition: all 0.2s;
   }
 
-  .btn-dark {
-    background: var(--dark);
+  .btn-orange {
+    background: var(--orange);
     color: var(--white);
   }
+  .btn-orange:hover { filter: brightness(1.1); transform: translateY(-1px); }
 
-  .btn-dark:hover { background: #333; transform: translateY(-1px); }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--dark);
-    border: 1.5px solid var(--dark);
+  .btn-green {
+    background: var(--green);
+    color: #0F0F0D;
   }
+  .btn-green:hover { filter: brightness(1.1); transform: translateY(-1px); }
 
-  .btn-outline:hover { background: var(--dark); color: var(--white); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    border: 1.5px solid var(--border);
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--white); color: var(--white); }
 
-  /* HERO */
+  /* ── HERO ────────────────────────────────── */
   #home {
     padding-top: 100px;
     min-height: 100vh;
@@ -117,66 +135,73 @@
     overflow: hidden;
   }
 
-  .available-badge {
+  /* Glow blobs en background */
+  #home::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,83,42,0.18) 0%, transparent 70%);
+    top: 10%; left: -10%;
+    pointer-events: none;
+  }
+  #home::after {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(91,191,106,0.14) 0%, transparent 70%);
+    top: 20%; right: -8%;
+    pointer-events: none;
+  }
+
+  .hero-tag {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
+    background: rgba(91,191,106,0.12);
+    border: 1px solid rgba(91,191,106,0.35);
     border-radius: 50px;
     padding: 6px 16px;
-    font-size: 13px;
-    font-weight: 500;
-    margin-bottom: 28px;
-    color: var(--dark);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
   }
 
   .available-dot {
-    width: 8px; height: 8px;
+    width: 7px; height: 7px;
     border-radius: 50%;
     background: var(--green);
     animation: pulse 2s infinite;
   }
 
   @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-
-  .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 50px;
-    padding: 5px 14px;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-    letter-spacing: 0.5px;
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(91,191,106,0.5); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 5px rgba(91,191,106,0); }
   }
 
   h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(44px, 7vw, 90px);
     font-weight: 700;
-    line-height: 1.08;
+    line-height: 1.06;
     letter-spacing: -2px;
-    color: var(--dark);
-    max-width: 800px;
+    color: var(--white);
+    max-width: 820px;
     margin-bottom: 20px;
   }
 
   h1 em {
     font-style: italic;
-    color: var(--text-muted);
+    color: var(--orange);
   }
 
   .hero-sub {
     font-size: 17px;
-    color: var(--text-muted);
+    color: var(--muted);
     margin-bottom: 36px;
     max-width: 420px;
   }
@@ -184,8 +209,23 @@
   .hero-cta-row {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 60px;
+    gap: 14px;
+    margin-bottom: 64px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .available-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(91,191,106,0.1);
+    border: 1px solid rgba(91,191,106,0.25);
+    border-radius: 50px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--green);
   }
 
   .hero-images {
@@ -193,16 +233,18 @@
     max-width: 900px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 14px;
     padding: 0 24px;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-img {
     border-radius: var(--radius);
     overflow: hidden;
     aspect-ratio: 16/9;
-    background: var(--card-bg);
-    position: relative;
+    background: var(--card);
+    border: 1px solid var(--border);
   }
 
   .hero-img img {
@@ -210,11 +252,12 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    opacity: 0.9;
   }
 
   .hero-img:first-child { grid-column: span 2; aspect-ratio: 21/9; }
 
-  /* SECTION GENERIC */
+  /* ── SECTION GENERIC ─────────────────────── */
   section {
     padding: 100px 40px;
     max-width: 1100px;
@@ -223,11 +266,10 @@
 
   .section-eyebrow {
     display: inline-block;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: var(--text-muted);
     margin-bottom: 16px;
   }
 
@@ -237,28 +279,32 @@
     font-weight: 700;
     letter-spacing: -1.5px;
     line-height: 1.1;
-    color: var(--dark);
+    color: var(--white);
     margin-bottom: 16px;
   }
 
-  h2 em { font-style: italic; color: var(--text-muted); }
+  h2 em { font-style: italic; }
 
   .section-sub {
-    color: var(--text-muted);
+    color: var(--muted);
     font-size: 17px;
     max-width: 480px;
     margin-bottom: 56px;
   }
 
-  /* WHY SECTION */
+  /* ── WHY — fondo lavanda oscuro ──────────── */
   #why {
-    background: var(--card-bg);
+    background: #18162A;
     max-width: 100%;
-    border-radius: 0;
     padding: 100px 40px;
+    border-top: 1px solid rgba(155,133,196,0.2);
+    border-bottom: 1px solid rgba(155,133,196,0.2);
   }
 
   #why .inner { max-width: 1100px; margin: 0 auto; }
+
+  #why .section-eyebrow { color: var(--lavender); }
+  #why h2 em { color: var(--lavender); }
 
   .why-grid {
     display: grid;
@@ -267,19 +313,20 @@
     margin-top: 48px;
     border-radius: var(--radius);
     overflow: hidden;
-    border: 2px solid var(--border);
   }
 
   .why-card {
-    background: var(--bg);
+    background: #1E1B2F;
+    border: 1px solid rgba(155,133,196,0.15);
     padding: 40px;
-    border: 1px solid var(--border);
+    transition: background 0.2s;
   }
+
+  .why-card:hover { background: #231F38; }
 
   .why-icon {
     width: 44px; height: 44px;
     border-radius: 10px;
-    background: var(--dark);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -287,16 +334,15 @@
     font-size: 20px;
   }
 
-  .why-card h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    letter-spacing: -0.3px;
-  }
+  .why-card:nth-child(1) .why-icon { background: rgba(232,83,42,0.15); }
+  .why-card:nth-child(2) .why-icon { background: rgba(91,191,106,0.15); }
+  .why-card:nth-child(3) .why-icon { background: rgba(245,185,66,0.15); }
+  .why-card:nth-child(4) .why-icon { background: rgba(155,133,196,0.15); }
 
-  .why-card p { color: var(--text-muted); font-size: 15px; line-height: 1.65; }
+  .why-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+  .why-card p { color: var(--muted); font-size: 15px; line-height: 1.65; }
 
-  /* ABOUT */
+  /* ── ABOUT ───────────────────────────────── */
   .about-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -304,12 +350,9 @@
     align-items: start;
   }
 
-  .about-text p {
-    color: var(--text-muted);
-    font-size: 16px;
-    line-height: 1.75;
-    margin-bottom: 16px;
-  }
+  #about .section-eyebrow { color: var(--amber); }
+  #about h2 em { color: var(--amber); }
+  #about .about-text p { color: var(--muted); font-size: 16px; line-height: 1.75; margin-bottom: 16px; }
 
   .photo-grid {
     display: grid;
@@ -320,48 +363,67 @@
   .photo-item {
     border-radius: var(--radius-sm);
     overflow: hidden;
-    background: var(--card-bg);
+    background: var(--card);
+    border: 1px solid var(--border);
   }
 
   .photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
   .photo-item:nth-child(1) { aspect-ratio: 4/5; }
   .photo-item:nth-child(2) { aspect-ratio: 3/4; }
   .photo-item:nth-child(3) { aspect-ratio: 1/1; grid-column: span 2; }
 
-  /* PROCESS */
-  #process { background: var(--dark); max-width: 100%; padding: 100px 40px; }
+  /* ── PROCESS — fondo naranja ─────────────── */
+  #process {
+    background: var(--orange);
+    max-width: 100%;
+    padding: 100px 40px;
+  }
+
   #process .inner { max-width: 1100px; margin: 0 auto; }
+
+  #process .section-eyebrow { color: rgba(255,255,255,0.55); }
   #process h2 { color: var(--white); }
-  #process .section-sub { color: rgba(255,255,255,0.45); }
+  #process h2 em { color: rgba(255,255,255,0.45); }
+  #process .section-sub { color: rgba(255,255,255,0.55); }
 
   .steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: 16px;
     margin-top: 48px;
   }
 
   .step {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.18);
     border-radius: var(--radius);
-    padding: 32px 28px;
+    padding: 32px 24px;
+    backdrop-filter: blur(4px);
   }
 
   .step-num {
-    font-size: 12px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.3);
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.4);
     letter-spacing: 2px;
     margin-bottom: 20px;
   }
 
-  .step h3 { color: var(--white); font-size: 17px; font-weight: 600; margin-bottom: 12px; }
-  .step p { color: rgba(255,255,255,0.45); font-size: 14px; line-height: 1.7; }
+  .step h3 { color: var(--white); font-size: 17px; font-weight: 600; margin-bottom: 10px; }
+  .step p { color: rgba(255,255,255,0.55); font-size: 14px; line-height: 1.7; }
 
-  /* PRICING */
-  #pricing { }
+  /* ── PRICING — fondo verde ───────────────── */
+  #pricing-wrap {
+    background: var(--green);
+    max-width: 100%;
+    padding: 100px 40px;
+  }
+
+  #pricing { max-width: 1100px; margin: 0 auto; padding: 0; }
+
+  #pricing .section-eyebrow { color: rgba(0,0,0,0.45); }
+  #pricing h2 { color: #0F0F0D; }
+  #pricing h2 em { color: rgba(0,0,0,0.35); }
 
   .pricing-grid {
     display: grid;
@@ -371,23 +433,26 @@
   }
 
   .price-card {
-    background: var(--card-bg);
-    border: 1.5px solid var(--border);
+    background: #0F0F0D;
+    border: 1.5px solid rgba(0,0,0,0.15);
     border-radius: var(--radius);
     padding: 40px;
     position: relative;
     transition: transform 0.2s, box-shadow 0.2s;
   }
 
-  .price-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+  .price-card:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0,0,0,0.25); }
 
-  .price-card.popular { border-color: var(--dark); background: var(--dark); color: var(--white); }
+  .price-card.popular {
+    background: var(--orange);
+    border-color: transparent;
+  }
 
   .popular-badge {
     position: absolute;
-    top: -12px; left: 32px;
-    background: var(--green);
-    color: var(--white);
+    top: -13px; left: 32px;
+    background: var(--yellow);
+    color: #0F0F0D;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 1px;
@@ -396,8 +461,8 @@
     border-radius: 50px;
   }
 
-  .price-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .price-card.popular h3 { color: rgba(255,255,255,0.6); }
+  .price-card h3 { font-size: 15px; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
+  .price-card.popular h3 { color: rgba(255,255,255,0.65); }
 
   .price-amount {
     font-family: 'Playfair Display', serif;
@@ -406,40 +471,31 @@
     letter-spacing: -2px;
     margin: 12px 0 6px;
     line-height: 1;
+    color: var(--white);
   }
 
   .price-card.popular .price-amount { color: var(--white); }
 
-  .price-from {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-bottom: 28px;
-  }
+  .price-from { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+  .price-card.popular .price-from { color: rgba(255,255,255,0.5); }
 
-  .price-card.popular .price-from { color: rgba(255,255,255,0.4); }
-
-  .price-features {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+  .price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 
   .price-features li {
     display: flex;
     align-items: center;
     gap: 10px;
     font-size: 14px;
-    color: var(--text-muted);
+    color: var(--muted);
   }
 
-  .price-card.popular .price-features li { color: rgba(255,255,255,0.6); }
+  .price-card.popular .price-features li { color: rgba(255,255,255,0.7); }
 
   .price-features li::before {
     content: '✓';
     width: 20px; height: 20px;
     border-radius: 50%;
-    background: rgba(76,175,106,0.15);
+    background: rgba(91,191,106,0.18);
     color: var(--green);
     display: flex;
     align-items: center;
@@ -449,15 +505,25 @@
     flex-shrink: 0;
   }
 
-  .pricing-note {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 14px;
-    margin-top: 24px;
+  .price-card.popular .price-features li::before {
+    background: rgba(255,255,255,0.2);
+    color: var(--white);
   }
 
-  /* CONTACT */
-  #contact { background: var(--card-bg); max-width: 100%; padding: 100px 40px; }
+  .pricing-note {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 14px;
+    color: rgba(0,0,0,0.45);
+  }
+
+  /* ── CONTACT — fondo magenta ─────────────── */
+  #contact {
+    background: var(--magenta);
+    max-width: 100%;
+    padding: 100px 40px;
+  }
+
   #contact .inner {
     max-width: 1100px;
     margin: 0 auto;
@@ -467,8 +533,24 @@
     align-items: start;
   }
 
-  .contact-left h2 { margin-bottom: 16px; }
-  .contact-left p { color: var(--text-muted); font-size: 16px; line-height: 1.7; }
+  #contact .section-eyebrow { color: rgba(255,255,255,0.55); }
+  #contact h2 { color: var(--white); }
+  #contact h2 em { color: rgba(255,255,255,0.4); }
+  #contact .contact-left p { color: rgba(255,255,255,0.65); font-size: 16px; line-height: 1.7; }
+
+  .available-badge-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+    margin-top: 20px;
+  }
 
   .contact-form { display: flex; flex-direction: column; gap: 14px; }
 
@@ -476,54 +558,66 @@
 
   .form-field { display: flex; flex-direction: column; gap: 6px; }
 
-  .form-field label { font-size: 13px; font-weight: 500; color: var(--dark); }
+  .form-field label { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.8); }
 
   .form-field input,
   .form-field textarea,
   .form-field select {
-    background: var(--bg);
-    border: 1.5px solid var(--border);
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.2);
     border-radius: var(--radius-sm);
     padding: 12px 16px;
     font-size: 14px;
     font-family: inherit;
-    color: var(--dark);
+    color: var(--white);
     outline: none;
     transition: border-color 0.2s;
     width: 100%;
   }
 
+  .form-field input::placeholder,
+  .form-field textarea::placeholder { color: rgba(255,255,255,0.35); }
+
   .form-field input:focus,
   .form-field textarea:focus,
-  .form-field select:focus { border-color: var(--dark); }
+  .form-field select:focus { border-color: rgba(255,255,255,0.6); }
 
   .form-field textarea { resize: vertical; min-height: 100px; }
 
+  .form-field select option { background: var(--magenta); }
+
   .form-submit {
-    background: var(--dark);
+    background: #0F0F0D;
     color: var(--white);
     border: none;
     border-radius: 50px;
     padding: 14px 32px;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
+    transition: all 0.2s;
     align-self: flex-start;
     margin-top: 6px;
+    font-family: inherit;
   }
 
-  .form-submit:hover { background: #333; transform: translateY(-1px); }
+  .form-submit:hover { background: var(--orange); transform: translateY(-1px); }
 
-  /* FAQ */
-  .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 2px; }
+  /* ── FAQ ─────────────────────────────────── */
+  #faq .section-eyebrow { color: var(--magenta); }
+  #faq h2 em { color: var(--magenta); }
+
+  .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 3px; }
 
   .faq-item {
     border: 1.5px solid var(--border);
     border-radius: var(--radius-sm);
     overflow: hidden;
-    background: var(--bg);
+    background: var(--card);
+    transition: border-color 0.2s;
   }
+
+  .faq-item.open { border-color: rgba(232,83,42,0.4); }
 
   .faq-q {
     width: 100%;
@@ -533,7 +627,7 @@
     padding: 20px 24px;
     font-size: 15px;
     font-weight: 500;
-    color: var(--dark);
+    color: var(--white);
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -542,54 +636,69 @@
     font-family: inherit;
   }
 
-  .faq-q:hover { background: var(--card-bg); }
-
-  .faq-icon { font-size: 20px; color: var(--text-muted); flex-shrink: 0; transition: transform 0.2s; }
+  .faq-icon { font-size: 22px; color: var(--orange); flex-shrink: 0; transition: transform 0.25s; }
   .faq-item.open .faq-icon { transform: rotate(45deg); }
 
   .faq-a {
     display: none;
     padding: 0 24px 20px;
     font-size: 14px;
-    color: var(--text-muted);
+    color: var(--muted);
     line-height: 1.7;
   }
 
   .faq-item.open .faq-a { display: block; }
 
-  /* CTA */
+  /* ── CTA — fondo amarillo-lima ───────────── */
   .cta-section {
-    background: var(--dark);
+    background: var(--yellow);
     max-width: 100%;
     padding: 100px 40px;
     text-align: center;
   }
 
-  .cta-section h2 { color: var(--white); margin-bottom: 20px; }
-  .cta-section p { color: rgba(255,255,255,0.45); font-size: 17px; margin-bottom: 36px; }
+  .cta-section h2 { color: #0F0F0D; }
+  .cta-section h2 em { color: rgba(0,0,0,0.35); font-style: italic; }
+  .cta-section > p { color: rgba(0,0,0,0.5); font-size: 17px; margin-bottom: 36px; }
 
   .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
-  .btn-white { background: var(--white); color: var(--dark); }
-  .btn-white:hover { background: #f0f0f0; }
-
-  .btn-ghost {
-    background: transparent;
-    color: rgba(255,255,255,0.6);
-    border: 1.5px solid rgba(255,255,255,0.2);
-    padding: 10px 22px;
+  .btn-dark-solid {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
     border-radius: 50px;
     font-size: 14px;
+    font-weight: 600;
     text-decoration: none;
+    background: #0F0F0D;
+    color: var(--white);
     transition: all 0.2s;
   }
 
-  .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+  .btn-dark-solid:hover { background: var(--orange); transform: translateY(-1px); }
 
-  /* FOOTER */
+  .btn-outline-dark {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    background: transparent;
+    color: #0F0F0D;
+    border: 2px solid rgba(0,0,0,0.3);
+    transition: all 0.2s;
+  }
+
+  .btn-outline-dark:hover { border-color: #0F0F0D; background: rgba(0,0,0,0.06); }
+
+  /* ── FOOTER ──────────────────────────────── */
   footer {
-    background: var(--dark);
-    border-top: 1px solid rgba(255,255,255,0.08);
+    background: #0F0F0D;
+    border-top: 1px solid var(--border);
     padding: 32px 40px;
     display: flex;
     justify-content: space-between;
@@ -604,10 +713,12 @@
     font-weight: 700;
   }
 
-  footer p { color: rgba(255,255,255,0.3); font-size: 13px; }
+  footer .logo span { color: var(--orange); }
+
+  footer p { color: rgba(255,255,255,0.25); font-size: 13px; }
 
   footer a.x-link {
-    color: rgba(255,255,255,0.4);
+    color: var(--muted);
     text-decoration: none;
     font-size: 13px;
     transition: color 0.2s;
@@ -615,16 +726,13 @@
 
   footer a.x-link:hover { color: var(--white); }
 
-  /* MOBILE */
+  /* ── RESPONSIVE ──────────────────────────── */
   @media (max-width: 768px) {
     nav { padding: 14px 20px; }
     .nav-links { display: none; }
-
     section { padding: 70px 20px; }
-    #why, #process, #contact, .cta-section { padding: 70px 20px; }
-
+    #why, #process, #contact, .cta-section, #pricing-wrap { padding: 70px 20px; }
     h1 { font-size: 42px; letter-spacing: -1.5px; }
-
     .why-grid { grid-template-columns: 1fr; }
     .about-layout { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr 1fr; }
@@ -641,14 +749,14 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#home" class="nav-logo">zenwood</a>
+  <a href="#home" class="nav-logo">zen<span>wood</span></a>
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#why">Why</a></li>
+    <li><a href="#pricing-wrap">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="https://cal.com/zenwood/intro" class="btn btn-dark" target="_blank">Book a call</a>
+  <a href="https://cal.com/zenwood/intro" class="btn btn-orange" target="_blank">Book a call</a>
 </nav>
 
 <!-- HERO -->
@@ -660,7 +768,8 @@
   <h1>Need a cool website?<br><em>I've got you covered</em></h1>
   <p class="hero-sub">Designing and building sites for startups and founders</p>
   <div class="hero-cta-row">
-    <a href="https://cal.com/zenwood/intro" class="btn btn-dark" target="_blank">Book a call</a>
+    <a href="https://cal.com/zenwood/intro" class="btn btn-orange" target="_blank">Book a call</a>
+    <a href="#why" class="btn btn-green">See my work</a>
     <div class="available-badge"><span class="available-dot"></span> available</div>
   </div>
   <div class="hero-images">
@@ -716,7 +825,7 @@
       <p>I like to keep things zen (pun intended), making the whole design process smooth and stress-free for both of us. It's all about creating great websites without the headaches.</p>
       <p>Here are some snapshots from my life so you can put a face to the name:</p>
       <br>
-      <a href="https://cal.com/zenwood/intro" class="btn btn-dark" target="_blank">Book a call</a>
+      <a href="https://cal.com/zenwood/intro" class="btn btn-orange" target="_blank">Book a call</a>
     </div>
     <div class="photo-grid">
       <div class="photo-item">
@@ -735,7 +844,7 @@
 <!-- PROCESS -->
 <div id="process">
   <div class="inner">
-    <span class="section-eyebrow" style="color:rgba(255,255,255,0.3);">How I work</span>
+    <span class="section-eyebrow">How I work</span>
     <h2>We'll go with a 4-step plan.<br><em>Smooth ride to your new website.</em></h2>
     <p class="section-sub">I'll handle the details so you can enjoy the journey.</p>
     <div class="steps">
@@ -764,39 +873,41 @@
 </div>
 
 <!-- PRICING -->
-<section id="pricing">
-  <span class="section-eyebrow">Pricing</span>
-  <h2>No hidden fees, no subscription.<br><em>Let's keep it simple!</em></h2>
-  <div class="pricing-grid">
-    <div class="price-card popular">
-      <div class="popular-badge">Popular</div>
-      <h3>Landing page</h3>
-      <div class="price-from">Starting at</div>
-      <div class="price-amount">$3,000</div>
-      <br>
-      <ul class="price-features">
-        <li>Framer design &amp; build</li>
-        <li>Responsive design</li>
-        <li>Dedicated Slack channel</li>
-        <li>Meeting free (optional)</li>
-        <li>Ready in 2 weeks</li>
-        <li>Regular updates</li>
-      </ul>
+<div id="pricing-wrap">
+  <section id="pricing">
+    <span class="section-eyebrow">Pricing</span>
+    <h2>No hidden fees, no subscription.<br><em>Let's keep it simple!</em></h2>
+    <div class="pricing-grid">
+      <div class="price-card popular">
+        <div class="popular-badge">Popular</div>
+        <h3>Landing page</h3>
+        <div class="price-from">Starting at</div>
+        <div class="price-amount">$3,000</div>
+        <br>
+        <ul class="price-features">
+          <li>Framer design &amp; build</li>
+          <li>Responsive design</li>
+          <li>Dedicated Slack channel</li>
+          <li>Meeting free (optional)</li>
+          <li>Ready in 2 weeks</li>
+          <li>Regular updates</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3>Multiple pages</h3>
+        <div class="price-from">Starting at</div>
+        <div class="price-amount">$4,000</div>
+        <br>
+        <ul class="price-features">
+          <li>Every benefit of landing page</li>
+          <li>Ready in 2–6 weeks</li>
+          <li>CMS integration</li>
+        </ul>
+      </div>
     </div>
-    <div class="price-card">
-      <h3>Multiple pages</h3>
-      <div class="price-from">Starting at</div>
-      <div class="price-amount">$4,000</div>
-      <br>
-      <ul class="price-features">
-        <li>Every benefit of landing page</li>
-        <li>Ready in 2–6 weeks</li>
-        <li>CMS integration</li>
-      </ul>
-    </div>
-  </div>
-  <p class="pricing-note">Can't find what you're looking for? Custom solutions are also available!</p>
-</section>
+    <p class="pricing-note">Can't find what you're looking for? Custom solutions are also available!</p>
+  </section>
+</div>
 
 <!-- CONTACT -->
 <div id="contact">
@@ -805,9 +916,8 @@
       <span class="section-eyebrow">Say hello</span>
       <h2>Not into meetings?<br><em>Leave me a message.</em></h2>
       <p>Not into meetings? Leave me a message below, and I'll shoot you an email in no time!</p>
-      <br>
-      <div class="available-badge" style="width:fit-content;">
-        <span class="available-dot"></span> available for projects
+      <div class="available-badge-white">
+        <span class="available-dot" style="background:#fff;"></span> available for projects
       </div>
     </div>
     <form class="contact-form" onsubmit="handleSubmit(event)">
@@ -846,52 +956,31 @@
   <p class="section-sub">Got questions? I've got the answers.</p>
   <div class="faq-list">
     <div class="faq-item open">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        How can I get started?
-        <span class="faq-icon">+</span>
-      </button>
+      <button class="faq-q" onclick="toggleFaq(this)">How can I get started?<span class="faq-icon">+</span></button>
       <div class="faq-a">Schedule an intro call, fill out the form above, shoot me an email, or slide into my DMs on X. Whatever floats your boat.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        Which design package should I choose?
-        <span class="faq-icon">+</span>
-      </button>
+      <button class="faq-q" onclick="toggleFaq(this)">Which design package should I choose?<span class="faq-icon">+</span></button>
       <div class="faq-a">Go for the Landing Page package if you need a one-pager, or the Multi-Page package for something more extensive. Don't sweat the choice too much, we can always adjust as we go.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        I already have a design. Can you develop it?
-        <span class="faq-icon">+</span>
-      </button>
+      <button class="faq-q" onclick="toggleFaq(this)">I already have a design. Can you develop it?<span class="faq-icon">+</span></button>
       <div class="faq-a">While I usually handle both design and development, I'm open to bringing an existing design to life in Framer if it's a good fit. Drop me a line and let's see if we can make it work!</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        I already have a website. Can you redesign it?
-        <span class="faq-icon">+</span>
-      </button>
+      <button class="faq-q" onclick="toggleFaq(this)">I already have a website. Can you redesign it?<span class="faq-icon">+</span></button>
       <div class="faq-a">Absolutely! Redesigns are my jam. Don't hesitate to hit me up with these projects!</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        How many revisions do I get?
-        <span class="faq-icon">+</span>
-      </button>
+      <button class="faq-q" onclick="toggleFaq(this)">How many revisions do I get?<span class="faq-icon">+</span></button>
       <div class="faq-a">I'm not big on counting revisions. My aim is to deliver a website that you'll love. We'll keep at it until it feels just right — within reason, of course.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        What design software do you use?
-        <span class="faq-icon">+</span>
-      </button>
+      <button class="faq-q" onclick="toggleFaq(this)">What design software do you use?<span class="faq-icon">+</span></button>
       <div class="faq-a">I mainly use Figma for design and Framer for design and development. Photoshop and Illustrator are a must for certain tasks. For generating unique images, Midjourney is my go-to.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        Can you help me with branding?
-        <span class="faq-icon">+</span>
-      </button>
+      <button class="faq-q" onclick="toggleFaq(this)">Can you help me with branding?<span class="faq-icon">+</span></button>
       <div class="faq-a">A solid brand can make all the difference for your startup. I started out in brand and logo design before web design stole my heart, so I'd love to help you polish your brand while we build your dream website.</div>
     </div>
   </div>
@@ -899,36 +988,37 @@
 
 <!-- CTA -->
 <div class="cta-section">
-  <h2>Got a killer idea?<br><em style="color:rgba(255,255,255,0.4)">Let's bring it to life!</em></h2>
+  <h2>Got a killer idea?<br><em>Let's bring it to life!</em></h2>
   <p>Ready to build something great together?</p>
   <div class="cta-buttons">
-    <a href="https://cal.com/zenwood/intro" class="btn btn-white" target="_blank">Book a call</a>
-    <a href="mailto:hey@zenwood.studio" class="btn-ghost">Send an email</a>
-    <a href="https://x.com/ui_zsolt" class="btn-ghost" target="_blank">Follow on X</a>
+    <a href="https://cal.com/zenwood/intro" class="btn-dark-solid" target="_blank">Book a call</a>
+    <a href="mailto:hey@zenwood.studio" class="btn-outline-dark">Send an email</a>
+    <a href="https://x.com/ui_zsolt" class="btn-outline-dark" target="_blank">Follow on X</a>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <a href="#home" class="logo">zenwood</a>
+  <a href="#home" class="logo">zen<span>wood</span></a>
   <p>© Zenwood Studio 2026</p>
   <a href="https://x.com/ui_zsolt" class="x-link" target="_blank">Follow on X →</a>
 </footer>
 
 <script>
   function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
-    item.classList.toggle('open');
+    btn.closest('.faq-item').classList.toggle('open');
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     const btn = e.target.querySelector('.form-submit');
     btn.textContent = '✓ Sent! I\'ll be in touch.';
-    btn.style.background = '#4CAF6A';
+    btn.style.background = '#5BBF6A';
+    btn.style.color = '#0F0F0D';
     setTimeout(() => {
       btn.textContent = 'Send →';
       btn.style.background = '';
+      btn.style.color = '';
     }, 3000);
   }
 </script>
