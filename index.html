@@ -44,20 +44,28 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .cs4{background:#E8477A;flex:1.2}.cs5{background:#C4D400;flex:2}.cs6{background:#4DBD74;flex:1.2}
 .cs7{background:#4DB8E8;flex:1}.cs8{background:#F9C31F;flex:.9}
 
-.nav-wrap { position: fixed; top: 24px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; align-items: center; gap: 18px; background: var(--white); border-radius: var(--r-pill); box-shadow: var(--shadow-card), 0 2px 16px rgba(0,0,0,0.08); padding: 6px; }
+/* ══════════════════════════════════════
+   NAV — desktop pill centrado
+══════════════════════════════════════ */
+.nav-wrap {
+  position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+  z-index: 200;
+  display: flex; align-items: center; gap: 18px;
+  background: var(--white); border-radius: var(--r-pill);
+  box-shadow: var(--shadow-card), 0 2px 16px rgba(0,0,0,0.08);
+  padding: 6px;
+  white-space: nowrap;
+}
 
-/* ── NAV LOGO con dos PNGs y giro en hover ── */
+/* Logo con dos imágenes y giro */
 .nav-logo-btn {
-  width: 39px; height: 39px;
-  border-radius: 50%;
+  width: 39px; height: 39px; border-radius: 50%;
   text-decoration: none; flex-shrink: 0;
-  background: transparent;
-  overflow: hidden; position: relative;
-  display: flex; align-items: center; justify-content: center;
+  background: transparent; overflow: hidden;
+  position: relative; display: flex; align-items: center; justify-content: center;
 }
 .nav-logo-btn img {
-  width: 100%; height: 100%;
-  object-fit: cover; border-radius: 50%;
+  width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
   position: absolute; inset: 0;
   transition: opacity .3s ease, transform .4s cubic-bezier(.34,1.56,.64,1);
 }
@@ -66,12 +74,90 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .nav-logo-btn:hover .logo-default { opacity: 0; transform: rotate(90deg); }
 .nav-logo-btn:hover .logo-hover   { opacity: 1; transform: rotate(0deg); }
 
-.nav-links { display: flex; align-items: center; gap: 0; height: 36px; list-style: none; overflow: hidden; }
-.nav-links a { display: flex; align-items: center; height: 100%; padding: 0 14px; font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 600, "opsz" 92; font-size: 14px; color: var(--ink); text-decoration: none; white-space: nowrap; transition: color .2s; }
+.nav-links { display: flex; align-items: center; gap: 0; height: 36px; list-style: none; }
+.nav-links a {
+  display: flex; align-items: center; height: 100%; padding: 0 14px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 600, "opsz" 92;
+  font-size: 14px; color: var(--ink); text-decoration: none;
+  white-space: nowrap; transition: color .2s;
+}
 .nav-links a:hover { color: var(--orange); }
-.nav-cta { display: inline-flex; align-items: center; gap: 6px; padding: 0 16px; height: 39px; background: var(--orange); color: var(--beige); font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 650, "opsz" 92; font-size: 14px; text-decoration: none; border-radius: var(--r-pill); box-shadow: var(--shadow-btn), 0 6px 20px rgba(240,78,26,0.3); transition: filter .2s, transform .2s, background .2s, color .2s; white-space: nowrap; }
+
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 0 16px; height: 39px;
+  background: var(--orange); color: var(--beige);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 650, "opsz" 92;
+  font-size: 14px; text-decoration: none; border-radius: var(--r-pill);
+  box-shadow: var(--shadow-btn), 0 6px 20px rgba(240,78,26,0.3);
+  transition: filter .2s, transform .2s, background .2s, color .2s;
+  white-space: nowrap; flex-shrink: 0;
+}
 .nav-cta:hover { background: var(--lime); color: var(--pink); filter: brightness(1.05); transform: translateY(-1px); }
 
+/* Hamburguesa — oculto en desktop */
+.nav-ham {
+  display: none;
+  flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer;
+  padding: 6px; flex-shrink: 0;
+}
+.nav-ham span {
+  display: block; width: 22px; height: 2px;
+  background: var(--ink); border-radius: 2px;
+  transition: transform .3s ease, opacity .3s ease;
+}
+/* Cruz cuando está abierto */
+.nav-ham.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-ham.open span:nth-child(2) { opacity: 0; }
+.nav-ham.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ══════════════════════════════════════
+   MENÚ MÓVIL — panel desplegable
+══════════════════════════════════════ */
+#mobMenu {
+  display: none;
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 190;
+  background: var(--orange);
+  flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 0;
+  padding: 80px 32px 48px;
+}
+#mobMenu.open { display: flex; }
+
+#mobMenu a {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: clamp(32px, 8vw, 52px);
+  color: var(--beige);
+  text-decoration: none;
+  padding: 14px 0;
+  width: 100%; text-align: center;
+  border-bottom: 1px solid rgba(234,217,184,.12);
+  transition: color .2s;
+  letter-spacing: -.3px;
+}
+#mobMenu a:last-child { border-bottom: none; color: var(--lime); }
+#mobMenu a:hover { color: var(--white); }
+
+/* Cerrar (X) dentro del menú móvil */
+#mobClose {
+  position: absolute; top: 20px; right: 20px;
+  background: rgba(234,217,184,.15); border: none;
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--beige); font-size: 18px;
+  transition: background .2s;
+}
+#mobClose:hover { background: rgba(234,217,184,.28); }
+
+/* ══════════════════════════════════════
+   RESTO DE ESTILOS (sin cambios)
+══════════════════════════════════════ */
 .ticker { background: var(--orange); padding: 13px 0; overflow: hidden; user-select: none; }
 .ticker-inner { display: flex; width: max-content; animation: tick 32s linear infinite; }
 .ticker-inner:hover { animation-play-state: paused; }
@@ -317,8 +403,19 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 .fbs { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(234,217,184,.08); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: rgba(234,217,184,.3); text-decoration: none; transition: background .25s, border-color .25s, color .25s, transform .25s; }
 .fbs:hover { background: var(--orange); border-color: var(--orange); color: var(--white); transform: scale(1.12); }
 
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
 @media (max-width: 1023px) {
-  .nav-wrap { top: 12px; left: 12px; right: 12px; transform: none; justify-content: space-between; }
+  /* Nav pasa a barra ancha en tablet/móvil */
+  .nav-wrap {
+    top: 12px; left: 12px; right: 12px;
+    transform: none;
+    justify-content: space-between;
+  }
+  .nav-links { display: none; } /* se ocultan en tablet/móvil */
+  .nav-ham { display: flex; } /* aparece la hamburguesa */
+
   #home { padding: 140px 32px 72px; }
   .portfolio-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
   #trabajo { padding: 72px 32px; }
@@ -343,7 +440,6 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .clients { padding: 40px 32px; }
 }
 @media (max-width: 767px) {
-  .nav-links { display: none; }
   #home { padding: 110px 20px 52px; }
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   #trabajo { padding: 56px 20px; }
@@ -390,8 +486,8 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   <div class="cs5"></div><div class="cs6"></div><div class="cs7"></div><div class="cs8"></div>
 </div>
 
+<!-- NAV -->
 <div class="nav-wrap">
-  <!-- ✅ DOS PNGs: naranja normal, morado en hover, con giro -->
   <a href="#home" class="nav-logo-btn" aria-label="TIVO Inicio">
     <img class="logo-default"
       src="https://raw.githubusercontent.com/wearetivo/wearetivo/14e747307c606efe7bec0935988299107f446a28/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO.png"
@@ -411,6 +507,21 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
     Reservar llamada
     <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
   </a>
+  <!-- Hamburguesa — solo visible en móvil/tablet -->
+  <button class="nav-ham" id="hamBtn" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+
+<!-- MENÚ MÓVIL -->
+<div id="mobMenu">
+  <button id="mobClose" aria-label="Cerrar menú">✕</button>
+  <a href="#conocenos" onclick="closeMob()">Conócenos</a>
+  <a href="#trabajo" onclick="closeMob()">Nuestro Trabajo</a>
+  <a href="#servicios" onclick="closeMob()">Servicios</a>
+  <a href="#procesos" onclick="closeMob()">Proceso</a>
+  <a href="#resultados" onclick="closeMob()">Resultados</a>
+  <a href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener" onclick="closeMob()">Reservar llamada →</a>
 </div>
 
 <header id="home">
@@ -507,7 +618,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   </div>
 </div>
 
-<section id="Nuestro trabajo">
+<section id="trabajo">
   <div class="tj-head">
     <div>
       <div class="section-eyebrow" style="margin-bottom:10px;"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>Nuestro trabajo</div>
@@ -670,6 +781,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 </footer>
 
 <script>
+// TYPING
 const phrases=['la intención humana.','la estrategia creativa.','el diseño con alma.','la conexión real.','las decisiones correctas.','la visión de marca.'];
 let pi=0,ci=0,deleting=false,pausing=false;
 const tel=document.getElementById('typing');
@@ -681,6 +793,7 @@ function type(){
 }
 type();
 
+// COUNTERS
 const targets=[80,3,100,6],ids=['s1','s2','s3','s4'],sups=['<sup>+</sup>','<sup>M+</sup>','<sup>%</sup>','<sup>+</sup>'];
 let animated=false;
 const sObs=new IntersectionObserver(entries=>{
@@ -691,8 +804,10 @@ const sObs=new IntersectionObserver(entries=>{
 },{threshold:.3});
 const sr=document.querySelector('.stats-row');if(sr)sObs.observe(sr);
 
+// FAQ
 function toggleFaq(btn){btn.closest('.faq-item').classList.toggle('open');}
 
+// CONTACT FORM
 function handleSubmit(e){
   e.preventDefault();
   const btn=e.target.querySelector('.contact-send-btn');
@@ -702,6 +817,31 @@ function handleSubmit(e){
   setTimeout(()=>{btn.textContent='Enviar mensaje';btn.style.background='';btn.style.color='';},3000);
 }
 
+// HAMBURGUESA
+const hamBtn = document.getElementById('hamBtn');
+const mobMenu = document.getElementById('mobMenu');
+const mobClose = document.getElementById('mobClose');
+
+function openMob() {
+  mobMenu.classList.add('open');
+  hamBtn.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMob() {
+  mobMenu.classList.remove('open');
+  hamBtn.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+hamBtn.addEventListener('click', () => {
+  mobMenu.classList.contains('open') ? closeMob() : openMob();
+});
+mobClose.addEventListener('click', closeMob);
+
+// Cerrar con Escape
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeMob(); });
+
+// REVEAL
 const revealObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
 },{threshold:.07,rootMargin:'0px 0px -24px 0px'});
