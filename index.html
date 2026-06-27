@@ -484,6 +484,57 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 @media (prefers-reduced-motion: reduce) {
   *, .ticker-inner, .bigmq-inner { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* ══════════════════════════════════════
+   SIDE PILLS — solo desktop, desaparecen al scroll
+══════════════════════════════════════ */
+.side-pill {
+  position: fixed;
+  top: 24px;
+  z-index: 199;
+  display: flex; align-items: center; gap: 9px;
+  background: var(--white);
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-card), 0 2px 16px rgba(0,0,0,0.08);
+  padding: 6px 18px 6px 10px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 600, "opsz" 92;
+  font-size: 13px;
+  color: var(--ink);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: opacity .35s ease, transform .35s ease;
+}
+.side-pill.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+}
+
+/* Pill izquierda — disponibles */
+.side-pill-left  { left: 40px; cursor: default; }
+
+/* Punto verde pulsante */
+.avail-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--lime);
+  flex-shrink: 0;
+  animation: pulse-lime 2s infinite;
+}
+@keyframes pulse-lime {
+  0%,100% { box-shadow: 0 0 0 0 rgba(196,212,0,.55); }
+  50%      { box-shadow: 0 0 0 6px rgba(196,212,0,0); }
+}
+
+/* Pill derecha — Conversemos */
+.side-pill-right { right: 40px; padding: 6px 18px; cursor: pointer; transition: opacity .35s ease, transform .35s ease, background .2s, color .2s; }
+.side-pill-right:hover { background: var(--orange); color: var(--beige); }
+
+/* Ocultar en tablet/móvil */
+@media (max-width: 1023px) {
+  .side-pill { display: none; }
+}
+
 </style>
 </head>
 <body>
@@ -492,6 +543,16 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   <div class="cs1"></div><div class="cs2"></div><div class="cs3"></div><div class="cs4"></div>
   <div class="cs5"></div><div class="cs6"></div><div class="cs7"></div><div class="cs8"></div>
 </div>
+
+
+<!-- SIDE PILLS -->
+<div class="side-pill side-pill-left" id="pillLeft">
+  <span class="avail-dot"></span>
+  Disponibles para trabajar juntos
+</div>
+<a href="#contacto" class="side-pill side-pill-right" id="pillRight">
+  Conversemos
+</a>
 
 <!-- NAV -->
 <div class="nav-wrap">
@@ -822,6 +883,25 @@ function handleSubmit(e){
   btn.style.color='var(--white)';
   setTimeout(()=>{btn.textContent='Enviar mensaje';btn.style.background='';btn.style.color='';},3000);
 }
+
+
+// SIDE PILLS — ocultar al hacer scroll
+const pillLeft  = document.getElementById('pillLeft');
+const pillRight = document.getElementById('pillRight');
+let pillsVisible = true;
+
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY > 80;
+  if (scrolled && pillsVisible) {
+    pillLeft.classList.add('hide');
+    pillRight.classList.add('hide');
+    pillsVisible = false;
+  } else if (!scrolled && !pillsVisible) {
+    pillLeft.classList.remove('hide');
+    pillRight.classList.remove('hide');
+    pillsVisible = true;
+  }
+}, { passive: true });
 
 // HAMBURGUESA
 const hamBtn = document.getElementById('hamBtn');
