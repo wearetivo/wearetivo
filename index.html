@@ -45,7 +45,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .cs7{background:#4DB8E8;flex:1}.cs8{background:#F9C31F;flex:.9}
 
 /* ══════════════════════════════════════
-   NAV — wrapper full width flex
+   NAV
 ══════════════════════════════════════ */
 .nav-wrap {
   position: fixed; top: 24px; left: 0; right: 0;
@@ -53,10 +53,9 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
   display: flex; align-items: center; justify-content: center;
   gap: 12px;
   padding: 0 40px;
-  pointer-events: none; /* el wrapper no intercepta clicks */
+  pointer-events: none;
 }
 
-/* El pill central */
 .nav-center-pill {
   display: flex; align-items: center; gap: 4px;
   background: var(--white); border-radius: var(--r-pill);
@@ -66,7 +65,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
   white-space: nowrap;
 }
 
-/* Logo con dos imágenes y giro */
 .nav-logo-btn {
   width: 39px; height: 39px; border-radius: 50%;
   text-decoration: none; flex-shrink: 0;
@@ -126,7 +124,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .nav-ham.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ══════════════════════════════════════
-   SIDE PILLS — dentro del nav-wrap flex
+   SIDE PILLS
 ══════════════════════════════════════ */
 .side-pill {
   display: flex; align-items: center; gap: 9px;
@@ -166,39 +164,56 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 }
 
 /* ══════════════════════════════════════
-   MENÚ MÓVIL
+   MENÚ MÓVIL — POPUP
 ══════════════════════════════════════ */
 #mobMenu {
   display: none;
-  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  position: fixed;
+  top: 80px;
+  left: auto;
+  right: 16px;
+  width: 260px;
   z-index: 190;
-  background: var(--orange);
+  background: var(--white);
+  border-radius: var(--r-xl);
+  box-shadow: 0 8px 40px rgba(14,8,4,0.14);
   flex-direction: column;
-  align-items: center; justify-content: center;
+  align-items: stretch;
   gap: 0;
-  padding: 80px 32px 48px;
+  padding: 8px;
+  overflow: hidden;
+  /* animación de entrada */
+  transform-origin: top right;
+  animation: none;
 }
-#mobMenu.open { display: flex; }
+#mobMenu.open {
+  display: flex;
+  animation: popIn .2s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(.92) translateY(-8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
 #mobMenu a {
   font-family: 'Bricolage Grotesque', sans-serif;
-  font-variation-settings: "wght" 800, "opsz" 92;
-  font-size: clamp(32px, 8vw, 52px);
-  color: var(--beige); text-decoration: none;
-  padding: 14px 0; width: 100%; text-align: center;
-  border-bottom: 1px solid rgba(234,217,184,.12);
-  transition: color .2s; letter-spacing: -.3px;
+  font-variation-settings: "wght" 700, "opsz" 92;
+  font-size: 18px;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 13px 18px;
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid var(--border-soft);
+  border-radius: var(--r-md);
+  transition: background .15s, color .15s;
+  letter-spacing: -.2px;
 }
-#mobMenu a:last-child { border-bottom: none; color: var(--lime); }
-#mobMenu a:hover { color: var(--white); }
-#mobClose {
-  position: absolute; top: 20px; right: 20px;
-  background: rgba(234,217,184,.15); border: none;
-  width: 40px; height: 40px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; color: var(--beige); font-size: 18px;
-  transition: background .2s;
+#mobMenu a:last-child {
+  border-bottom: none;
+  color: var(--orange);
 }
-#mobClose:hover { background: rgba(234,217,184,.28); }
+#mobMenu a:hover { background: var(--bg); color: var(--orange); }
 
 /* ══════════════════════════════════════
    TICKER
@@ -494,11 +509,16 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
    RESPONSIVE
 ══════════════════════════════════════ */
 @media (max-width: 1023px) {
-  .nav-wrap { top: 14px; padding: 0 16px; justify-content: space-between; }
+  .nav-wrap { top: 14px; padding: 0 16px; justify-content: center; }
   .nav-links { display: none; }
-  .nav-cta  { display: none; }
+  .nav-cta  { display: inline-flex; }
   .nav-ham  { display: flex; }
   .side-pill { display: none; }
+
+  .nav-center-pill {
+    width: 100%;
+    justify-content: space-between;
+  }
 
   #home { padding: 140px 32px 72px; }
   .portfolio-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
@@ -570,16 +590,12 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   <div class="cs5"></div><div class="cs6"></div><div class="cs7"></div><div class="cs8"></div>
 </div>
 
-<!-- NAV — wrapper full width con pills laterales dentro -->
 <div class="nav-wrap">
-
-  <!-- Pill izquierdo -->
   <div class="side-pill side-pill-left" id="pillLeft">
     <span class="avail-dot"></span>
     Disponibles para trabajar juntos
   </div>
 
-  <!-- Pill central -->
   <div class="nav-center-pill">
     <a href="#home" class="nav-logo-btn" aria-label="TIVO Inicio">
       <img class="logo-default"
@@ -604,22 +620,19 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
     </button>
   </div>
 
-  <!-- Pill derecho -->
   <a href="#contacto" class="side-pill side-pill-right" id="pillRight">
     Conversemos
   </a>
-
 </div>
 
-<!-- MENÚ MÓVIL -->
+<!-- MENÚ MÓVIL — POPUP -->
 <div id="mobMenu">
-  <button id="mobClose" aria-label="Cerrar menú">✕</button>
   <a href="#conocenos" onclick="closeMob()">Conócenos</a>
   <a href="#trabajo" onclick="closeMob()">Nuestro Trabajo</a>
   <a href="#servicios" onclick="closeMob()">Servicios</a>
   <a href="#procesos" onclick="closeMob()">Proceso</a>
   <a href="#resultados" onclick="closeMob()">Resultados</a>
-  <a href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener" onclick="closeMob()">Reservar llamada</a>
+  <a href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener" onclick="closeMob()">Reservar llamada ↗</a>
 </div>
 
 <header id="home">
@@ -935,11 +948,30 @@ window.addEventListener('scroll', () => {
 // HAMBURGUESA
 const hamBtn = document.getElementById('hamBtn');
 const mobMenu = document.getElementById('mobMenu');
-const mobClose = document.getElementById('mobClose');
-function openMob() { mobMenu.classList.add('open'); hamBtn.classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeMob() { mobMenu.classList.remove('open'); hamBtn.classList.remove('open'); document.body.style.overflow = ''; }
-hamBtn.addEventListener('click', () => { mobMenu.classList.contains('open') ? closeMob() : openMob(); });
-mobClose.addEventListener('click', closeMob);
+
+function openMob() {
+  mobMenu.classList.add('open');
+  hamBtn.classList.add('open');
+}
+function closeMob() {
+  mobMenu.classList.remove('open');
+  hamBtn.classList.remove('open');
+}
+
+hamBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  mobMenu.classList.contains('open') ? closeMob() : openMob();
+});
+
+// Cerrar al tocar fuera
+document.addEventListener('click', (e) => {
+  if (mobMenu.classList.contains('open') &&
+      !mobMenu.contains(e.target) &&
+      !hamBtn.contains(e.target)) {
+    closeMob();
+  }
+});
+
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeMob(); });
 
 // REVEAL
