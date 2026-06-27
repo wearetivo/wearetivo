@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="https://raw.githubusercontent.com/wearetivo/wearetivo/main/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO.png">
+<link rel="icon" href="https://raw.githubusercontent.com/wearetivo/wearetivo/14e747307c606efe7bec0935988299107f446a28/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO.png">
 <title>TIVO — Estudio Creativo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,6 +45,8 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .cs7{background:#4DB8E8;flex:1}.cs8{background:#F9C31F;flex:.9}
 
 .nav-wrap { position: fixed; top: 24px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; align-items: center; gap: 18px; background: var(--white); border-radius: var(--r-pill); box-shadow: var(--shadow-card), 0 2px 16px rgba(0,0,0,0.08); padding: 6px; }
+
+/* ── NAV LOGO con dos PNGs y giro en hover ── */
 .nav-logo-btn {
   width: 39px; height: 39px;
   border-radius: 50%;
@@ -63,6 +65,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .nav-logo-btn .logo-hover   { opacity: 0; transform: rotate(-90deg); }
 .nav-logo-btn:hover .logo-default { opacity: 0; transform: rotate(90deg); }
 .nav-logo-btn:hover .logo-hover   { opacity: 1; transform: rotate(0deg); }
+
 .nav-links { display: flex; align-items: center; gap: 0; height: 36px; list-style: none; overflow: hidden; }
 .nav-links a { display: flex; align-items: center; height: 100%; padding: 0 14px; font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 600, "opsz" 92; font-size: 14px; color: var(--ink); text-decoration: none; white-space: nowrap; transition: color .2s; }
 .nav-links a:hover { color: var(--orange); }
@@ -142,87 +145,25 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .section-h2 .eml { color: var(--lime); }
 .section-sub { font-size: 17px; color: var(--muted); letter-spacing: -.2px; line-height: 1.6; max-width: 480px; }
 
-/* ══════════════════════════════════════════
-   PORTFOLIO GRID
-══════════════════════════════════════════ */
 #trabajo { background: var(--orange); padding: 88px 40px; }
 .tj-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; gap: 20px; max-width: 1200px; margin-left: auto; margin-right: auto; }
 .tj-head .section-h2 { color: var(--beige); }
 .tj-head .section-eyebrow { color: var(--beige); }
 .tj-more { font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 600, "opsz" 92; color: rgba(234,217,184,.7); font-size: 14px; border: 1.5px solid rgba(234,217,184,.25); padding: 10px 22px; border-radius: var(--r-pill); display: flex; align-items: center; gap: 8px; white-space: nowrap; flex-shrink: 0; text-decoration: none; transition: color .25s, border-color .25s, background .25s, gap .25s; }
 .tj-more:hover { color: var(--orange); border-color: var(--beige); background: var(--beige); gap: 14px; }
-
 .portfolio-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-
-/* Tarjeta */
-.pj-card {
-  display: block;
-  text-decoration: none;
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  position: relative;
-  aspect-ratio: 4/3;
-  background: rgba(234,217,184,.1);
-}
-
-/* Imagen */
-.pj-card img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-  transition: transform .5s ease;
-}
+.pj-card { display: block; text-decoration: none; border-radius: var(--r-lg); overflow: hidden; position: relative; aspect-ratio: 4/3; background: rgba(234,217,184,.1); }
+.pj-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
 .pj-card:hover img { transform: scale(1.06); }
-
-/* Overlay con nombre — solo visible en hover */
-.pj-overlay {
-  position: absolute; inset: 0;
-  background: rgba(14,8,4,.72);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  padding: 20px;
-  opacity: 0;
-  transition: opacity .3s ease;
-  text-align: center;
-}
+.pj-overlay { position: absolute; inset: 0; background: rgba(14,8,4,.72); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity .3s ease; text-align: center; }
 .pj-card:hover .pj-overlay { opacity: 1; }
-
-.pj-arrow {
-  width: 40px; height: 40px;
-  background: var(--orange);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; color: var(--white);
-  margin-bottom: 14px;
-  transform: scale(.6) rotate(-30deg);
-  transition: transform .35s cubic-bezier(.34,1.56,.64,1);
-  flex-shrink: 0;
-}
+.pj-arrow { width: 40px; height: 40px; background: var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--white); margin-bottom: 14px; transform: scale(.6) rotate(-30deg); transition: transform .35s cubic-bezier(.34,1.56,.64,1); flex-shrink: 0; }
 .pj-card:hover .pj-arrow { transform: scale(1) rotate(0deg); }
-
-.pj-name {
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-variation-settings: "wght" 700, "opsz" 92;
-  font-size: clamp(11px, 1.1vw, 14px);
-  color: var(--beige);
-  line-height: 1.4;
-  letter-spacing: .02em;
-  text-transform: uppercase;
-}
-
-/* Próximamente */
-.pj-soon {
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 10px;
-  aspect-ratio: 4/3;
-  border-radius: var(--r-lg);
-  border: 2px dashed rgba(234,217,184,.2);
-  background: rgba(234,217,184,.06);
-}
+.pj-name { font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 700, "opsz" 92; font-size: clamp(11px, 1.1vw, 14px); color: var(--beige); line-height: 1.4; letter-spacing: .02em; text-transform: uppercase; }
+.pj-soon { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; aspect-ratio: 4/3; border-radius: var(--r-lg); border: 2px dashed rgba(234,217,184,.2); background: rgba(234,217,184,.06); }
 .pj-soon-icon { font-size: 28px; color: rgba(234,217,184,.25); animation: pulse 2s infinite; }
 .pj-soon-label { font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 600, "opsz" 92; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(234,217,184,.28); }
 
-/* ── BENEFITS ── */
 #conocenos { background: var(--bg); }
 .benefits-rows { display: flex; flex-direction: column; gap: 18px; }
 .benefits-row { display: flex; gap: 22px; flex-wrap: wrap; justify-content: center; }
@@ -234,7 +175,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .bene-divider { width: 100%; height: 4px; opacity: .3; background: repeating-linear-gradient(90deg, var(--ink) 0 3px, transparent 3px 11px); border-radius: 2px; }
 .bene-p { font-family: 'Inter', sans-serif; font-size: 15px; color: var(--muted); line-height: 1.6; letter-spacing: -.1px; }
 
-/* ── SERVICIOS ── */
 #servicios { background: var(--white); }
 .srv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .sc { background: var(--surface); border-radius: var(--r-xl); padding: 30px 26px 28px; position: relative; overflow: hidden; border: 1.5px solid transparent; transition: transform .35s cubic-bezier(.34,1.56,.64,1), border-color .35s, box-shadow .35s; }
@@ -377,7 +317,6 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 .fbs { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(234,217,184,.08); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: rgba(234,217,184,.3); text-decoration: none; transition: background .25s, border-color .25s, color .25s, transform .25s; }
 .fbs:hover { background: var(--orange); border-color: var(--orange); color: var(--white); transform: scale(1.12); }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 1023px) {
   .nav-wrap { top: 12px; left: 12px; right: 12px; transform: none; justify-content: space-between; }
   #home { padding: 140px 32px 72px; }
@@ -452,18 +391,14 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 </div>
 
 <div class="nav-wrap">
+  <!-- ✅ DOS PNGs: naranja normal, morado en hover, con giro -->
   <a href="#home" class="nav-logo-btn" aria-label="TIVO Inicio">
-    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="10" cy="10" r="3.5" fill="#EAD9B8"/>
-      <rect x="9.1" y="1" width="1.8" height="4" rx=".9" fill="#EAD9B8"/>
-      <rect x="9.1" y="15" width="1.8" height="4" rx=".9" fill="#EAD9B8"/>
-      <rect x="1" y="9.1" width="4" height="1.8" rx=".9" fill="#EAD9B8"/>
-      <rect x="15" y="9.1" width="4" height="1.8" rx=".9" fill="#EAD9B8"/>
-      <rect x="9.1" y="1" width="1.8" height="4" rx=".9" fill="#EAD9B8" transform="rotate(45,10,10)"/>
-      <rect x="9.1" y="15" width="1.8" height="4" rx=".9" fill="#EAD9B8" transform="rotate(45,10,10)"/>
-      <rect x="1" y="9.1" width="4" height="1.8" rx=".9" fill="#EAD9B8" transform="rotate(45,10,10)"/>
-      <rect x="15" y="9.1" width="4" height="1.8" rx=".9" fill="#EAD9B8" transform="rotate(45,10,10)"/>
-    </svg>
+    <img class="logo-default"
+      src="https://raw.githubusercontent.com/wearetivo/wearetivo/14e747307c606efe7bec0935988299107f446a28/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO.png"
+      alt="TIVO">
+    <img class="logo-hover"
+      src="https://raw.githubusercontent.com/wearetivo/wearetivo/14e747307c606efe7bec0935988299107f446a28/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20GLOBAL.png"
+      alt="TIVO Global">
   </a>
   <ul class="nav-links">
     <li><a href="#conocenos">Conócenos</a></li>
@@ -554,7 +489,6 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   <span class="bm-item">MOTION</span><span class="bm-sep">✦</span>
 </div></div>
 
-<!-- CONÓCENOS -->
 <div class="section-wrap" id="conocenos">
   <div class="section-title-wrap">
     <div class="section-eyebrow"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>Conócenos</div>
@@ -573,153 +507,34 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     TRABAJO — grilla 4×4, solo hover
-══════════════════════════════════ -->
 <section id="trabajo">
   <div class="tj-head">
     <div>
-      <div class="section-eyebrow" style="margin-bottom:10px;">
-        <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>
-        Nuestro trabajo
-      </div>
+      <div class="section-eyebrow" style="margin-bottom:10px;"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>Nuestro trabajo</div>
       <h2 class="section-h2">Lo que hacemos<br>habla por sí <span class="eml">solo.</span></h2>
     </div>
     <a href="https://www.behance.net/wearetivo" target="_blank" rel="noopener" class="tj-more">Ver todo en Behance →</a>
   </div>
-
   <div class="portfolio-grid">
-
-    <a href="https://www.behance.net/gallery/249543997/ESTADIA" target="_blank" rel="noopener" class="pj-card">
-      <img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/ESTADIA.png" alt="ESTADÍA" loading="lazy">
-      <div class="pj-overlay">
-        <span class="pj-arrow">↗</span>
-        <span class="pj-name">ESTADÍA</span>
-      </div>
-    </a>
-
-    <a href="https://www.behance.net/gallery/248368755/AL-CAPRICHO-RESTAURANTE-DEBILIDAD-POR-LO-EXQUISITO" target="_blank" rel="noopener" class="pj-card">
-      <img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/AL%20CAPRICHO.png" alt="AL CAPRICHO RESTAURANTE" loading="lazy">
-      <div class="pj-overlay">
-        <span class="pj-arrow">↗</span>
-        <span class="pj-name">AL CAPRICHO RESTAURANTE — DEBILIDAD POR LO EXQUISITO</span>
-      </div>
-    </a>
-
-    <a href="https://www.behance.net/gallery/248022121/GALAXY-WATCH-8-CLASSIC-PRODUCT-KEY-VISUAL" target="_blank" rel="noopener" class="pj-card">
-      <img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/SAMSUNG.png" alt="GALAXY WATCH 8 CLASSIC" loading="lazy">
-      <div class="pj-overlay">
-        <span class="pj-arrow">↗</span>
-        <span class="pj-name">GALAXY WATCH 8 CLASSIC PRODUCT KEY VISUAL</span>
-      </div>
-    </a>
-
-    <a href="https://www.behance.net/gallery/247381563/SCALE-FASTR" target="_blank" rel="noopener" class="pj-card">
-      <img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/SCALE%20FASTER.png" alt="SCALE FASTR" loading="lazy">
-      <div class="pj-overlay">
-        <span class="pj-arrow">↗</span>
-        <span class="pj-name">SCALE FASTR</span>
-      </div>
-    </a>
-
-    <a href="https://www.behance.net/gallery/237092823/DISENO-STAND-Y-PENDON-PUBLICITARIO-CAMFEST-COINSENDA" target="_blank" rel="noopener" class="pj-card">
-      <img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/COINSENDA.png" alt="COINSENDA CAMFEST" loading="lazy">
-      <div class="pj-overlay">
-        <span class="pj-arrow">↗</span>
-        <span class="pj-name">DISEÑO STAND Y PENDÓN PUBLICITARIO "CAMFEST" COINSENDA</span>
-      </div>
-    </a>
-
-    <a href="https://www.behance.net/gallery/228988899/PLAUSMETIC" target="_blank" rel="noopener" class="pj-card">
-      <img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/PLAUSMETIC.png" alt="PLAUSMETIC" loading="lazy">
-      <div class="pj-overlay">
-        <span class="pj-arrow">↗</span>
-        <span class="pj-name">PLAUSMETIC</span>
-      </div>
-    </a>
-
-    <a href="https://www.behance.net/gallery/206641103/THE-JUSECO-COMPANY" target="_blank" rel="noopener" class="pj-card">
-      <img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/JUSECO.png" alt="THE JUSECO COMPANY" loading="lazy">
-      <div class="pj-overlay">
-        <span class="pj-arrow">↗</span>
-        <span class="pj-name">THE JUSECO COMPANY</span>
-      </div>
-    </a>
-
-    <a href="https://www.behance.net/gallery/200820607/UNIVERSIDAD-SANTO-TOMAS-PRACTICAS-EMPRESARIALES" target="_blank" rel="noopener" class="pj-card">
-      <img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/UNIVERSIDAD%20SANTO%20TOMAS.png" alt="UNIVERSIDAD SANTO TOMÁS" loading="lazy">
-      <div class="pj-overlay">
-        <span class="pj-arrow">↗</span>
-        <span class="pj-name">UNIVERSIDAD SANTO TOMÁS</span>
-      </div>
-    </a>
-
-    <a href="https://www.behance.net/gallery/199732291/MANGUIFERA-RAICES-QUE-TRANSFORMAN" target="_blank" rel="noopener" class="pj-card">
-      <img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/MANGUIFERA.png" alt="MANGUIFERA" loading="lazy">
-      <div class="pj-overlay">
-        <span class="pj-arrow">↗</span>
-        <span class="pj-name">MANGUIFERA — RAÍCES QUE TRANSFORMAN</span>
-      </div>
-    </a>
-
-    <a href="https://www.behance.net/gallery/198111023/ARABICA-PROPUESTA-CAFE-BUENDIA" target="_blank" rel="noopener" class="pj-card">
-      <img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/ARABICA.jpg" alt="ARÁBICA" loading="lazy">
-      <div class="pj-overlay">
-        <span class="pj-arrow">↗</span>
-        <span class="pj-name">ARÁBICA — PROPUESTA CAFÉ BUENDÍA</span>
-      </div>
-    </a>
-
-    <a href="https://www.behance.net/gallery/187614749/MAILING-Y-CAMPANA-SOSTENIBILIDAD-CARACOL-RADIO" target="_blank" rel="noopener" class="pj-card">
-      <img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/CARACOL%20RADIO.png" alt="CARACOL RADIO" loading="lazy">
-      <div class="pj-overlay">
-        <span class="pj-arrow">↗</span>
-        <span class="pj-name">MAILING Y CAMPAÑA SOSTENIBILIDAD — CARACOL RADIO</span>
-      </div>
-    </a>
-
-    <a href="https://www.behance.net/gallery/187283533/DISENO-STAND-PUBLICITARIO-EVENTO-DE-PROMOCION-ADECCO" target="_blank" rel="noopener" class="pj-card">
-      <img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/ADECCO.png" alt="ADECCO" loading="lazy">
-      <div class="pj-overlay">
-        <span class="pj-arrow">↗</span>
-        <span class="pj-name">DISEÑO STAND PUBLICITARIO "EVENTO DE PROMOCIÓN" ADECCO</span>
-      </div>
-    </a>
-
-    <a href="https://www.behance.net/gallery/174934573/REGALARTE-SONRISAS" target="_blank" rel="noopener" class="pj-card">
-      <img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/REGALARTE%20SONRISAS.png" alt="REGALARTE SONRISAS" loading="lazy">
-      <div class="pj-overlay">
-        <span class="pj-arrow">↗</span>
-        <span class="pj-name">REGALARTE SONRISAS</span>
-      </div>
-    </a>
-
-    <a href="https://www.behance.net/gallery/174407229/FILTROS-EFECTOS-DESAFIO-THE-BOX-2023" target="_blank" rel="noopener" class="pj-card">
-      <img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/DESAFIO%20THE%20BOX.png" alt="DESAFÍO THE BOX" loading="lazy">
-      <div class="pj-overlay">
-        <span class="pj-arrow">↗</span>
-        <span class="pj-name">FILTROS — EFECTOS DESAFÍO THE BOX 2023</span>
-      </div>
-    </a>
-
-    <a href="https://www.behance.net/gallery/174350027/BEGO-EL-MEJOR-SABOR-DE-NUESTRAS-MONTANAS" target="_blank" rel="noopener" class="pj-card">
-      <img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/BEGO.png" alt="BEGO" loading="lazy">
-      <div class="pj-overlay">
-        <span class="pj-arrow">↗</span>
-        <span class="pj-name">BEGO "EL MEJOR SABOR DE NUESTRAS MONTAÑAS"</span>
-      </div>
-    </a>
-
-    <!-- 16 — Próximamente -->
-    <div class="pj-soon">
-      <span class="pj-soon-icon">✦</span>
-      <span class="pj-soon-label">Próximamente</span>
-    </div>
-
+    <a href="https://www.behance.net/gallery/249543997/ESTADIA" target="_blank" rel="noopener" class="pj-card"><img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/ESTADIA.png" alt="ESTADÍA" loading="lazy"><div class="pj-overlay"><span class="pj-arrow">↗</span><span class="pj-name">ESTADÍA</span></div></a>
+    <a href="https://www.behance.net/gallery/248368755/AL-CAPRICHO-RESTAURANTE-DEBILIDAD-POR-LO-EXQUISITO" target="_blank" rel="noopener" class="pj-card"><img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/AL%20CAPRICHO.png" alt="AL CAPRICHO RESTAURANTE" loading="lazy"><div class="pj-overlay"><span class="pj-arrow">↗</span><span class="pj-name">AL CAPRICHO RESTAURANTE</span></div></a>
+    <a href="https://www.behance.net/gallery/248022121/GALAXY-WATCH-8-CLASSIC-PRODUCT-KEY-VISUAL" target="_blank" rel="noopener" class="pj-card"><img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/SAMSUNG.png" alt="GALAXY WATCH 8 CLASSIC" loading="lazy"><div class="pj-overlay"><span class="pj-arrow">↗</span><span class="pj-name">GALAXY WATCH 8 CLASSIC</span></div></a>
+    <a href="https://www.behance.net/gallery/247381563/SCALE-FASTR" target="_blank" rel="noopener" class="pj-card"><img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/SCALE%20FASTER.png" alt="SCALE FASTR" loading="lazy"><div class="pj-overlay"><span class="pj-arrow">↗</span><span class="pj-name">SCALE FASTR</span></div></a>
+    <a href="https://www.behance.net/gallery/237092823/DISENO-STAND-Y-PENDON-PUBLICITARIO-CAMFEST-COINSENDA" target="_blank" rel="noopener" class="pj-card"><img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/COINSENDA.png" alt="COINSENDA CAMFEST" loading="lazy"><div class="pj-overlay"><span class="pj-arrow">↗</span><span class="pj-name">COINSENDA CAMFEST</span></div></a>
+    <a href="https://www.behance.net/gallery/228988899/PLAUSMETIC" target="_blank" rel="noopener" class="pj-card"><img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/PLAUSMETIC.png" alt="PLAUSMETIC" loading="lazy"><div class="pj-overlay"><span class="pj-arrow">↗</span><span class="pj-name">PLAUSMETIC</span></div></a>
+    <a href="https://www.behance.net/gallery/206641103/THE-JUSECO-COMPANY" target="_blank" rel="noopener" class="pj-card"><img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/JUSECO.png" alt="THE JUSECO COMPANY" loading="lazy"><div class="pj-overlay"><span class="pj-arrow">↗</span><span class="pj-name">THE JUSECO COMPANY</span></div></a>
+    <a href="https://www.behance.net/gallery/200820607/UNIVERSIDAD-SANTO-TOMAS-PRACTICAS-EMPRESARIALES" target="_blank" rel="noopener" class="pj-card"><img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/UNIVERSIDAD%20SANTO%20TOMAS.png" alt="UNIVERSIDAD SANTO TOMÁS" loading="lazy"><div class="pj-overlay"><span class="pj-arrow">↗</span><span class="pj-name">UNIVERSIDAD SANTO TOMÁS</span></div></a>
+    <a href="https://www.behance.net/gallery/199732291/MANGUIFERA-RAICES-QUE-TRANSFORMAN" target="_blank" rel="noopener" class="pj-card"><img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/MANGUIFERA.png" alt="MANGUIFERA" loading="lazy"><div class="pj-overlay"><span class="pj-arrow">↗</span><span class="pj-name">MANGUIFERA</span></div></a>
+    <a href="https://www.behance.net/gallery/198111023/ARABICA-PROPUESTA-CAFE-BUENDIA" target="_blank" rel="noopener" class="pj-card"><img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/ARABICA.jpg" alt="ARÁBICA" loading="lazy"><div class="pj-overlay"><span class="pj-arrow">↗</span><span class="pj-name">ARÁBICA</span></div></a>
+    <a href="https://www.behance.net/gallery/187614749/MAILING-Y-CAMPANA-SOSTENIBILIDAD-CARACOL-RADIO" target="_blank" rel="noopener" class="pj-card"><img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/CARACOL%20RADIO.png" alt="CARACOL RADIO" loading="lazy"><div class="pj-overlay"><span class="pj-arrow">↗</span><span class="pj-name">CARACOL RADIO</span></div></a>
+    <a href="https://www.behance.net/gallery/187283533/DISENO-STAND-PUBLICITARIO-EVENTO-DE-PROMOCION-ADECCO" target="_blank" rel="noopener" class="pj-card"><img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/ADECCO.png" alt="ADECCO" loading="lazy"><div class="pj-overlay"><span class="pj-arrow">↗</span><span class="pj-name">ADECCO</span></div></a>
+    <a href="https://www.behance.net/gallery/174934573/REGALARTE-SONRISAS" target="_blank" rel="noopener" class="pj-card"><img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/REGALARTE%20SONRISAS.png" alt="REGALARTE SONRISAS" loading="lazy"><div class="pj-overlay"><span class="pj-arrow">↗</span><span class="pj-name">REGALARTE SONRISAS</span></div></a>
+    <a href="https://www.behance.net/gallery/174407229/FILTROS-EFECTOS-DESAFIO-THE-BOX-2023" target="_blank" rel="noopener" class="pj-card"><img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/DESAFIO%20THE%20BOX.png" alt="DESAFÍO THE BOX" loading="lazy"><div class="pj-overlay"><span class="pj-arrow">↗</span><span class="pj-name">DESAFÍO THE BOX</span></div></a>
+    <a href="https://www.behance.net/gallery/174350027/BEGO-EL-MEJOR-SABOR-DE-NUESTRAS-MONTANAS" target="_blank" rel="noopener" class="pj-card"><img src="https://raw.githubusercontent.com/wearetivo/wearetivo/main/BEGO.png" alt="BEGO" loading="lazy"><div class="pj-overlay"><span class="pj-arrow">↗</span><span class="pj-name">BEGO</span></div></a>
+    <div class="pj-soon"><span class="pj-soon-icon">✦</span><span class="pj-soon-label">Próximamente</span></div>
   </div>
 </section>
 
-<!-- SERVICIOS -->
 <div class="section-wrap" id="servicios">
   <div class="section-title-wrap">
     <div class="section-eyebrow"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>Servicios</div>
@@ -757,7 +572,6 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   </div>
 </div>
 
-<!-- PROCESO -->
 <div class="section-wrap" id="procesos">
   <div class="section-title-wrap">
     <div class="section-eyebrow"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>Proceso</div>
@@ -776,7 +590,6 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   </div>
 </div>
 
-<!-- TESTIMONIOS -->
 <div class="section-wrap" id="resultados">
   <div class="section-title-wrap">
     <div class="section-eyebrow"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>Resultados</div>
@@ -790,7 +603,6 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   </div>
 </div>
 
-<!-- CONTACT -->
 <div class="section-wrap" id="contacto">
   <div class="section-title-wrap">
     <div class="section-eyebrow"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>Conversemos</div>
@@ -814,7 +626,6 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   </div>
 </div>
 
-<!-- FAQ -->
 <div class="section-wrap" id="faq">
   <div class="section-title-wrap">
     <div class="section-eyebrow"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>Preguntas frecuentes</div>
@@ -832,7 +643,6 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer id="footer" class="footer-wrap">
   <div class="footer-cta-section">
     <div class="footer-eyebrow"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="currentColor"/></svg>¿Listo para construir algo propio?</div>
