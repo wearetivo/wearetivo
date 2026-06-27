@@ -123,6 +123,14 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .nav-ham.open span:nth-child(2) { opacity: 0; }
 .nav-ham.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Grupo CTA + Hamburguesa en mobile */
+.nav-mobile-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
 /* ══════════════════════════════════════
    SIDE PILLS
 ══════════════════════════════════════ */
@@ -211,7 +219,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 }
 #mobMenu a:last-child {
   border-bottom: none;
-  color: var(--orange);
 }
 #mobMenu a:hover { background: var(--bg); color: var(--orange); }
 
@@ -612,12 +619,14 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
       <li><a href="#procesos">Proceso</a></li>
       <li><a href="#resultados">Resultados</a></li>
     </ul>
-    <a href="https://calendar.app.google/qaXPyL2TNogRK9uF8" class="nav-cta" target="_blank" rel="noopener">
-      Reservar llamada
-    </a>
-    <button class="nav-ham" id="hamBtn" aria-label="Menú">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-mobile-actions">
+      <a href="https://calendar.app.google/qaXPyL2TNogRK9uF8" class="nav-cta" target="_blank" rel="noopener">
+        Reservar llamada
+      </a>
+      <button class="nav-ham" id="hamBtn" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 
   <a href="#contacto" class="side-pill side-pill-right" id="pillRight">
@@ -632,7 +641,6 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   <a href="#servicios" onclick="closeMob()">Servicios</a>
   <a href="#procesos" onclick="closeMob()">Proceso</a>
   <a href="#resultados" onclick="closeMob()">Resultados</a>
-  <a href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener" onclick="closeMob()">Reservar llamada ↗</a>
 </div>
 
 <header id="home">
