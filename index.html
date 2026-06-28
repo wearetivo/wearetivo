@@ -44,9 +44,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .cs4{background:#E8477A;flex:1.2}.cs5{background:#C4D400;flex:2}.cs6{background:#4DBD74;flex:1.2}
 .cs7{background:#4DB8E8;flex:1}.cs8{background:#F9C31F;flex:.9}
 
-/* ══════════════════════════════════════
-   NAV
-══════════════════════════════════════ */
 .nav-wrap {
   position: fixed; top: 24px; left: 0; right: 0;
   z-index: 200;
@@ -98,9 +95,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .avail-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--lime); flex-shrink: 0; animation: pulse-lime 2s infinite; }
 @keyframes pulse-lime { 0%,100% { box-shadow: 0 0 0 0 rgba(196,212,0,.55); } 50% { box-shadow: 0 0 0 6px rgba(196,212,0,0); } }
 
-/* ══════════════════════════════════════
-   MENÚ MÓVIL
-══════════════════════════════════════ */
 #mobMenu { display: none; position: fixed; top: 80px; right: 16px; width: 260px; z-index: 190; background: var(--white); border-radius: var(--r-xl); box-shadow: 0 8px 40px rgba(14,8,4,0.14); flex-direction: column; align-items: stretch; gap: 0; padding: 8px; overflow: hidden; transform-origin: top right; }
 #mobMenu.open { display: flex; animation: popIn .2s cubic-bezier(.34,1.56,.64,1); }
 @keyframes popIn { from { opacity: 0; transform: scale(.92) translateY(-8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
@@ -108,9 +102,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 #mobMenu a:last-child { border-bottom: none; }
 #mobMenu a:hover { background: var(--bg); color: var(--orange); }
 
-/* ══════════════════════════════════════
-   TICKER
-══════════════════════════════════════ */
 .ticker { background: var(--orange); padding: 13px 0; overflow: hidden; user-select: none; }
 .ticker-inner { display: flex; width: max-content; animation: tick 32s linear infinite; }
 .ticker-inner:hover { animation-play-state: paused; }
@@ -118,9 +109,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .ti { display: inline-flex; align-items: center; gap: 12px; padding: 0 20px; white-space: nowrap; font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 700, "opsz" 92; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: rgba(234,217,184,0.75); }
 .ti-sep { color: var(--beige); opacity: .6; }
 
-/* ══════════════════════════════════════
-   HERO — LAYOUT SPLIT (izquierda + derecha)
-══════════════════════════════════════ */
 #home {
   min-height: 100vh;
   display: grid;
@@ -132,11 +120,9 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
   overflow: hidden;
 }
 
-/* blobs de fondo */
 #home::before { content: ''; position: absolute; left: -8%; top: 10%; width: 420px; height: 260px; background: radial-gradient(ellipse, rgba(196,212,0,.14) 0%, transparent 70%); border-radius: 50%; filter: blur(60px); pointer-events: none; }
 #home::after  { content: ''; position: absolute; right: -6%; bottom: 8%; width: 360px; height: 240px; background: radial-gradient(ellipse, rgba(155,111,212,.12) 0%, transparent 70%); border-radius: 50%; filter: blur(60px); pointer-events: none; }
 
-/* Columna izquierda */
 .hero-left { display: flex; flex-direction: column; align-items: flex-start; text-align: left; position: relative; z-index: 2; }
 
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--orange); }
@@ -171,9 +157,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .trust-txt strong { color: var(--orange); font-weight: 700; }
 .trust-stars { color: var(--yellow); font-size: 11px; display: block; margin-bottom: 2px; }
 
-/* ══════════════════════════════════════
-   LEAD MAGNET CARD — columna derecha
-══════════════════════════════════════ */
 .hero-right { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; }
 
 .lm-card {
@@ -185,7 +168,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
   max-width: 420px;
 }
 
-/* Header de la card */
 .lm-header {
   background: var(--ink);
   padding: 28px 28px 24px;
@@ -223,7 +205,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
   position: relative; z-index: 1;
 }
 
-/* Bullets de valor */
 .lm-bullets {
   display: flex; flex-direction: column; gap: 8px;
   padding: 18px 28px 0;
@@ -238,7 +219,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
   font-size: 14px; flex-shrink: 0;
 }
 
-/* Formulario */
 .lm-form { padding: 18px 28px 24px; display: flex; flex-direction: column; gap: 10px; }
 
 .lm-divider {
@@ -270,7 +250,34 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 }
 .lm-input::placeholder { color: var(--subtle); }
 
-.lm-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+/* Fila teléfono: indicativo + número */
+.lm-tel-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 8px;
+}
+.lm-select {
+  height: 44px;
+  background: var(--surface);
+  border: 1.5px solid var(--border-soft);
+  border-radius: 12px;
+  padding: 0 10px 0 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; color: var(--ink);
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%230E0804' stroke-opacity='.35' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 26px;
+  transition: border-color .15s, background-color .15s, box-shadow .15s;
+}
+.lm-select:focus {
+  border-color: var(--orange);
+  background-color: var(--white);
+  box-shadow: 0 0 0 3px rgba(240,78,26,.09);
+}
 
 .lm-btn {
   width: 100%; height: 48px;
@@ -295,9 +302,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 }
 .lm-privacy a { color: var(--orange); text-decoration: underline; text-underline-offset: 2px; }
 
-/* ══════════════════════════════════════
-   STATS
-══════════════════════════════════════ */
 .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--white); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); }
 .stat { padding: 40px; border-right: 1px solid var(--border-soft); position: relative; overflow: hidden; transition: background .3s; }
 .stat:last-child { border-right: none; }
@@ -505,9 +509,6 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 .fbs { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(234,217,184,.08); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: rgba(234,217,184,.3); text-decoration: none; transition: background .25s, border-color .25s, color .25s, transform .25s; }
 .fbs:hover { background: var(--orange); border-color: var(--orange); color: var(--white); transform: scale(1.12); }
 
-/* ══════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════ */
 @media (max-width: 1023px) {
   .nav-wrap { top: 14px; padding: 0 16px; justify-content: center; }
   .nav-links { display: none; }
@@ -515,15 +516,12 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .nav-ham  { display: flex; }
   .side-pill { display: none; }
   .nav-center-pill { width: 100%; justify-content: space-between; }
-
-  /* Hero apilado en tablet */
   #home { grid-template-columns: 1fr; padding: 120px 32px 64px; gap: 40px; text-align: center; }
   .hero-left { align-items: center; }
   .hero-sub { text-align: center; max-width: 100%; }
   .hero-cta-row { justify-content: center; }
   .hero-trust { justify-content: center; }
   .lm-card { max-width: 480px; }
-
   .portfolio-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
   #trabajo { padding: 72px 32px; }
   .tj-head { flex-wrap: wrap; margin-bottom: 32px; }
@@ -576,7 +574,8 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .bigmq { display: none; }
   .hero-cta-row { flex-direction: column; align-items: stretch; }
   .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
-  .lm-row { grid-template-columns: 1fr; }
+  /* En móvil la fila del teléfono se apila */
+  .lm-tel-row { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
   .stats-row { grid-template-columns: 1fr; }
@@ -630,12 +629,8 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   <a href="#resultados" onclick="closeMob()">Resultados</a>
 </div>
 
-<!-- ══════════════════════════════════════
-     HERO — izquierda + card derecha
-══════════════════════════════════════ -->
+<!-- HERO -->
 <header id="home">
-
-  <!-- COLUMNA IZQUIERDA -->
   <div class="hero-left">
     <div class="hero-eyebrow"><span class="hero-dot"></span>Estudio creativo &amp; aliado estratégico</div>
     <h1 class="hero-h1">En TIVO, usamos<br>herramientas. Lo que<br>realmente construye es</h1>
@@ -661,15 +656,12 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   <!-- COLUMNA DERECHA — Lead Magnet Card -->
   <div class="hero-right">
     <div class="lm-card">
-
-      <!-- Header oscuro -->
       <div class="lm-header">
         <div class="lm-badge"><span class="lm-badge-dot"></span>Descarga gratuita</div>
         <div class="lm-title">El mapa secreto de las marcas que la gente <span>no puede ignorar</span></div>
         <p class="lm-subtitle">PDF visual con los patrones que tienen las marcas más deseadas del mundo. Gratis, para ti.</p>
       </div>
 
-      <!-- Bullets de valor -->
       <div class="lm-bullets">
         <div class="lm-bullet">
           <div class="lm-bullet-icon" style="background:rgba(196,212,0,.15);">🗺️</div>
@@ -685,26 +677,48 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
         </div>
       </div>
 
-      <!-- Formulario -->
       <div class="lm-form" id="lmForm">
         <div class="lm-divider">Déjanos tus datos</div>
         <input class="lm-input" type="text" id="lm-nombre" placeholder="Tu nombre" autocomplete="given-name">
         <input class="lm-input" type="email" id="lm-email" placeholder="tu@correo.com" autocomplete="email">
-        <input class="lm-input" type="tel" id="lm-tel" placeholder="Número de teléfono" autocomplete="tel">
-        <div class="lm-row">
-          <input class="lm-input" type="text" id="lm-ciudad" placeholder="Ciudad">
-          <input class="lm-input" type="text" id="lm-pais" placeholder="País">
+        <!-- Fila teléfono: indicativo + número -->
+        <div class="lm-tel-row">
+          <select class="lm-select lm-input" id="lm-indicativo" aria-label="Indicativo telefónico">
+            <option value="+57">🇨🇴 +57</option>
+            <option value="+1">🇺🇸 +1</option>
+            <option value="+52">🇲🇽 +52</option>
+            <option value="+54">🇦🇷 +54</option>
+            <option value="+56">🇨🇱 +56</option>
+            <option value="+51">🇵🇪 +51</option>
+            <option value="+593">🇪🇨 +593</option>
+            <option value="+58">🇻🇪 +58</option>
+            <option value="+55">🇧🇷 +55</option>
+            <option value="+502">🇬🇹 +502</option>
+            <option value="+503">🇸🇻 +503</option>
+            <option value="+504">🇭🇳 +504</option>
+            <option value="+505">🇳🇮 +505</option>
+            <option value="+506">🇨🇷 +506</option>
+            <option value="+507">🇵🇦 +507</option>
+            <option value="+53">🇨🇺 +53</option>
+            <option value="+1-809">🇩🇴 +1-809</option>
+            <option value="+34">🇪🇸 +34</option>
+            <option value="+44">🇬🇧 +44</option>
+            <option value="+49">🇩🇪 +49</option>
+            <option value="+33">🇫🇷 +33</option>
+            <option value="+39">🇮🇹 +39</option>
+            <option value="+61">🇦🇺 +61</option>
+          </select>
+          <input class="lm-input" type="tel" id="lm-tel" placeholder="Número de teléfono" autocomplete="tel-national">
         </div>
+        <input class="lm-input" type="text" id="lm-ciudad" placeholder="Ciudad">
         <button class="lm-btn" id="lmBtn" type="button" onclick="handleLM()">
           Descargar gratis
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 4v12M8 14l4 4 4-4M4 18h16"/></svg>
         </button>
         <p class="lm-privacy">Sin spam. Tus datos están seguros con TIVO. <a href="#">Política de privacidad</a></p>
       </div>
-
     </div>
   </div>
-
 </header>
 
 <!-- TICKER -->
@@ -990,19 +1004,17 @@ function handleSubmit(e){
 }
 
 // LEAD MAGNET FORM
-// ⬇️ Cuando tengas el PDF, reemplaza PDF_URL con el link directo de descarga
-const PDF_URL = '#'; // <-- PON AQUÍ EL LINK DEL PDF CUANDO LO TENGAS
+const PDF_URL = '#';
 
 function handleLM() {
-  const nombre = document.getElementById('lm-nombre').value.trim();
-  const email  = document.getElementById('lm-email').value.trim();
-  const tel    = document.getElementById('lm-tel').value.trim();
-  const ciudad = document.getElementById('lm-ciudad').value.trim();
-  const pais   = document.getElementById('lm-pais').value.trim();
-  const btn    = document.getElementById('lmBtn');
+  const nombre     = document.getElementById('lm-nombre').value.trim();
+  const email      = document.getElementById('lm-email').value.trim();
+  const indicativo = document.getElementById('lm-indicativo').value;
+  const telNum     = document.getElementById('lm-tel').value.trim();
+  const ciudad     = document.getElementById('lm-ciudad').value.trim();
+  const btn        = document.getElementById('lmBtn');
 
   if (!nombre || !email) {
-    // Shake suave en campos vacíos
     ['lm-nombre','lm-email'].forEach(id => {
       const el = document.getElementById(id);
       if (!el.value.trim()) {
@@ -1014,19 +1026,18 @@ function handleLM() {
     return;
   }
 
-  // Aquí puedes enviar los datos a tu CRM, Mailchimp, etc.
-  // Por ahora simula éxito y abre el PDF
+  // Número completo disponible: indicativo + telNum
+  const telefonoCompleto = telNum ? indicativo + ' ' + telNum : '';
+
   btn.textContent = '✓ Descargando...';
   btn.disabled = true;
   btn.style.background = 'var(--green)';
   btn.style.color = 'var(--white)';
 
-  // Abre el PDF (cuando lo tengas listo)
   if (PDF_URL !== '#') {
     window.open(PDF_URL, '_blank');
   }
 
-  // Reemplaza el formulario por mensaje de éxito
   setTimeout(() => {
     document.getElementById('lmForm').innerHTML = `
       <div style="text-align:center;padding:24px 0;">
@@ -1077,4 +1088,3 @@ document.querySelectorAll('.bene-card,.sc,.proc-card,.tc,.stat,.pj-card').forEac
 </script>
 </body>
 </html>
-HTMLEOF
