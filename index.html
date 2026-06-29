@@ -91,7 +91,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .side-pill.hide { opacity: 0; pointer-events: none; transform: translateY(-6px); }
 .side-pill-left { cursor: default; margin-right: 20px; }
 .side-pill-right { cursor: pointer; margin-left: 20px; transition: opacity .35s ease, transform .35s ease, background .2s, color .2s; }
-.side-pill-right:hover { background: var(--blue); color: var(--beige); }
+.side-pill-right:hover { background: var(--orange); color: var(--beige); }
 .avail-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--lime); flex-shrink: 0; animation: pulse-lime 2s infinite; }
 @keyframes pulse-lime { 0%,100% { box-shadow: 0 0 0 0 rgba(196,212,0,.55); } 50% { box-shadow: 0 0 0 6px rgba(196,212,0,0); } }
 
@@ -130,9 +130,9 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(40px, 5vw, 80px);
-  align-items: center;
+  align-items: stretch;
   width: 100%;
-  max-width: 1100px; /* igual al ancho efectivo del nav centrado */
+  max-width: 1100px;
 }
 
 .hero-left { display: flex; flex-direction: column; align-items: flex-start; text-align: left; position: relative; z-index: 2; }
@@ -169,23 +169,28 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .trust-txt strong { color: var(--orange); font-weight: 700; }
 .trust-stars { color: var(--yellow); font-size: 11px; display: block; margin-bottom: 2px; }
 
-.hero-right { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; }
+.hero-right { position: relative; z-index: 2; display: flex; align-items: stretch; justify-content: flex-end; }
 
+/* ══════════════════════════════════════
+   LEAD MAGNET CARD — proporciones desktop
+══════════════════════════════════════ */
 .lm-card {
   background: var(--white);
-  border-radius: 28px;
+  border-radius: 24px;
   box-shadow: 0 24px 64px rgba(14,8,4,.12), 0 4px 16px rgba(14,8,4,.06);
   overflow: hidden;
   width: 100%;
-  max-width: 420px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
 .lm-header {
   background: var(--ink);
-  padding: 28px 28px 24px;
+  padding: 18px 22px 14px;
   position: relative;
   overflow: hidden;
-  text-align: center; /* centrar todo el contenido del header */
+  flex-shrink: 0;
 }
 .lm-header::before {
   content: '';
@@ -193,94 +198,95 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
   background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,255,255,.015) 20px, rgba(255,255,255,.015) 40px);
   pointer-events: none;
 }
-
 .lm-badge {
-  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  display: inline-flex; align-items: center; gap: 7px;
   background: transparent; color: rgba(234,217,184,.5);
   padding: 0;
   font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
   letter-spacing: .04em; text-transform: none;
-  margin-bottom: 12px; position: relative; z-index: 1;
+  margin-bottom: 10px; position: relative; z-index: 1;
   font-style: italic;
 }
 .lm-badge-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--lime); flex-shrink: 0; animation: pulse 1.8s infinite; }
 
-/* Hook — CON caja, centrado */
 .lm-hook {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-variation-settings: "wght" 800, "opsz" 92;
-  font-size: clamp(18px, 2.2vw, 22px);
+  font-size: clamp(14px, 1.4vw, 17px);
   color: var(--white);
   line-height: 1.2;
   letter-spacing: -.2px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   position: relative; z-index: 1;
-  /* la caja se mantiene */
   background: rgba(196,212,0,.08);
   border: 1.5px solid rgba(196,212,0,.3);
   border-left: 4px solid var(--lime);
-  border-radius: 12px;
-  padding: 14px 16px;
-  text-align: left; /* dentro de la caja, texto a la izquierda */
+  border-radius: 10px;
+  padding: 9px 13px;
 }
 .lm-hook span { color: var(--lime); }
 
-/* Título del mapa — SIN caja, centrado */
+.lm-title-wrap {
+  position: relative; z-index: 1;
+  background: rgba(255,255,255,.05);
+  border: 1.5px solid rgba(196,212,0,.25);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  border-left: 4px solid var(--lime);
+}
 .lm-title {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-variation-settings: "wght" 800, "opsz" 92;
-  font-size: clamp(22px, 2.8vw, 30px);
+  font-size: clamp(17px, 1.7vw, 21px);
   color: var(--white);
   line-height: 1.1;
   letter-spacing: -.3px;
-  position: relative; z-index: 1;
-  /* sin background, sin border, sin padding */
-  margin-bottom: 10px;
 }
 .lm-title span { color: var(--lime); }
 .lm-title-line { display: block; }
-
 .lm-subtitle {
   font-family: 'Inter', sans-serif;
-  font-size: 12px; color: rgba(234,217,184,.4);
-  margin-top: 10px; line-height: 1.6;
+  font-size: 11px; color: rgba(234,217,184,.4);
+  margin-top: 5px; line-height: 1.4;
   position: relative; z-index: 1;
 }
 
 .lm-bullets {
-  display: flex; flex-direction: column; gap: 8px;
-  padding: 18px 28px 0;
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 10px 22px 0;
+  flex-shrink: 0;
 }
 .lm-bullet {
-  display: flex; align-items: center; gap: 10px;
-  font-family: 'Inter', sans-serif; font-size: 13px; color: var(--muted);
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Inter', sans-serif; font-size: 12px; color: var(--muted);
 }
 .lm-bullet-icon {
-  width: 28px; height: 28px; border-radius: 8px;
+  width: 22px; height: 22px; border-radius: 6px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 14px; flex-shrink: 0;
+  font-size: 11px; flex-shrink: 0;
 }
 
-.lm-form { padding: 18px 28px 24px; display: flex; flex-direction: column; gap: 10px; }
+.lm-form { padding: 10px 22px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; justify-content: space-between; }
 
 .lm-divider {
   display: flex; align-items: center; gap: 10px;
-  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700;
   letter-spacing: .1em; text-transform: uppercase;
-  color: var(--subtle); margin-bottom: 2px;
+  color: var(--subtle); margin-bottom: 0;
 }
 .lm-divider::before, .lm-divider::after {
   content: ''; flex: 1; height: 1px; background: var(--border-soft);
 }
 
 .lm-input {
-  width: 100%; height: 44px;
+  width: 100%; height: 38px;
   background: var(--surface);
   border: 1.5px solid var(--border-soft);
-  border-radius: 12px;
-  padding: 0 16px;
+  border-radius: 9px;
+  padding: 0 13px;
   font-family: 'Inter', sans-serif;
-  font-size: 14px; color: var(--ink);
+  font-size: 13px; color: var(--ink);
   outline: none;
   transition: border-color .15s, background .15s, box-shadow .15s;
   appearance: none;
@@ -311,7 +317,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 }
 .lm-field-icon {
   position: absolute;
-  left: 14px;
+  left: 12px;
   display: flex;
   align-items: center;
   color: var(--subtle);
@@ -319,38 +325,43 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
   z-index: 1;
 }
 .lm-with-icon {
-  padding-left: 38px !important;
+  padding-left: 34px !important;
 }
 
 .lm-tel-row {
   display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 8px;
+  grid-template-columns: 100px 1fr;
+  gap: 6px;
 }
 
 .lm-btn {
-  width: 100%; height: 48px;
+  width: 100%; height: 42px;
   background: var(--orange); color: var(--beige);
-  border: none; border-radius: 12px;
+  border: none; border-radius: 9px;
   font-family: 'Bricolage Grotesque', sans-serif;
   font-variation-settings: "wght" 700, "opsz" 92;
-  font-size: 15px; cursor: pointer;
+  font-size: 14px; cursor: pointer;
   box-shadow: 0 6px 24px rgba(240,78,26,.3);
   transition: background .2s, color .2s, transform .25s cubic-bezier(.34,1.56,.64,1), opacity .2s;
-  margin-top: 4px;
+  margin-top: 2px;
   display: flex; align-items: center; justify-content: center; gap: 8px;
 }
 .lm-btn:hover:not(:disabled) { background: var(--lime); color: var(--ink); transform: scale(1.02) translateY(-2px); }
 .lm-btn:disabled { opacity: .35; cursor: not-allowed; transform: none; box-shadow: none; }
+.lm-btn:not(:disabled) { animation: btnReady .35s cubic-bezier(.34,1.56,.64,1); }
+@keyframes btnReady { from { transform: scale(.97); } to { transform: scale(1); } }
 
 .lm-privacy {
   font-family: 'Inter', sans-serif;
-  font-size: 11px; color: var(--subtle);
-  text-align: center; margin-top: 4px;
-  line-height: 1.5;
+  font-size: 10px; color: var(--subtle);
+  text-align: center; margin-top: 2px;
+  line-height: 1.4;
 }
 .lm-privacy a { color: var(--orange); text-decoration: underline; text-underline-offset: 2px; }
 
+/* ══════════════════════════════════════
+   REST OF STYLES
+══════════════════════════════════════ */
 .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--white); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); }
 .stat { padding: 40px; border-right: 1px solid var(--border-soft); position: relative; overflow: hidden; transition: background .3s; }
 .stat:last-child { border-right: none; }
@@ -390,8 +401,8 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .tj-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; gap: 20px; max-width: 1200px; margin-left: auto; margin-right: auto; }
 .tj-head .section-h2 { color: var(--beige); }
 .tj-head .section-eyebrow { color: var(--beige); }
-.tj-more { font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 600, "opsz" 92; color: rgba(234,217,184,.7); font-size: 14px; border: 1.5px solid rgba(234,217,184,.25); padding: 10px 22px; border-radius: var(--r-pill); display: flex; align-items: center; gap: 8px; white-space: nowrap; flex-shrink: 0; text-decoration: none; transition: color .25s, border-color .25s, background .25s, gap .25s; }
-.tj-more:hover { color: var(--orange); border-color: var(--beige); background: var(--beige); gap: 14px; }
+.tj-more { font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 600, "opsz" 92; color: rgba(234,217,184,.7); font-size: 14px; border: 1.5px solid rgba(234,217,184,.25); padding: 10px 22px; border-radius: var(--r-pill); display: flex; align-items: center; gap: 8px; white-space: nowrap; flex-shrink: 0; text-decoration: none; transition: color .25s, border-color .25s, background .25s; }
+.tj-more:hover { color: var(--orange); border-color: var(--beige); background: var(--beige); }
 .portfolio-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .pj-card { display: block; text-decoration: none; border-radius: var(--r-lg); overflow: hidden; position: relative; aspect-ratio: 4/3; background: rgba(234,217,184,.1); }
 .pj-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
@@ -520,7 +531,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 .contact-select { color: var(--subtle); }
 .contact-select option { color: var(--ink); background: var(--white); }
 .contact-send-btn { width: 100%; height: 44px; background: var(--orange); color: var(--beige); border: none; border-radius: var(--r-pill); box-shadow: inset 0 -4px 4px rgba(0,0,0,.15), 0 6px 20px rgba(240,78,26,.28); font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 650, "opsz" 92; font-size: 17px; cursor: pointer; transition: background .2s, color .2s, transform .2s; }
-.contact-send-btn:hover { background: var(--lime); color: var(--pink); transform: translateY(-1px); }
+.contact-send-btn:hover { background: var(--lime); color: var(--ink); transform: translateY(-1px); }
 
 #faq { background: var(--white); }
 .faq-list { display: flex; flex-direction: column; gap: 3px; max-width: 980px; width: 100%; }
@@ -541,7 +552,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 .footer-sub { font-size: 17px; color: rgba(234,217,184,.35); margin: 0 auto 36px; line-height: 1.72; max-width: 520px; }
 .footer-cta-row { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
 .btn-footer-cta { display: inline-flex; align-items: center; gap: 8px; padding: 14px 36px; height: 48px; background: var(--orange); color: var(--beige); font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 650, "opsz" 92; font-size: 17px; text-decoration: none; border-radius: var(--r-pill); box-shadow: 0 8px 32px rgba(240,78,26,.35); transition: background .2s, color .2s, transform .3s cubic-bezier(.34,1.56,.64,1); }
-.btn-footer-cta:hover { background: var(--lime); color: var(--pink); transform: scale(1.05); }
+.btn-footer-cta:hover { background: var(--lime); color: var(--ink); transform: scale(1.05); }
 .btn-footer-secondary { display: inline-flex; align-items: center; gap: 7px; padding: 14px 28px; height: 48px; background: transparent; color: rgba(234,217,184,.4); font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 600, "opsz" 92; font-size: 16px; text-decoration: none; border-radius: var(--r-pill); border: 1.5px solid rgba(234,217,184,.1); transition: color .2s, border-color .2s; }
 .btn-footer-secondary:hover { color: var(--beige); border-color: rgba(234,217,184,.28); }
 .footer-grid { border-top: 1px solid rgba(234,217,184,.07); padding: 48px 40px; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 44px; align-items: start; }
@@ -558,9 +569,6 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 .fbs { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(234,217,184,.08); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: rgba(234,217,184,.3); text-decoration: none; transition: background .25s, border-color .25s, color .25s, transform .25s; }
 .fbs:hover { background: var(--orange); border-color: var(--orange); color: var(--white); transform: scale(1.12); }
 
-/* ══════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════ */
 @media (max-width: 1023px) {
   .nav-wrap { top: 14px; padding: 0 16px; justify-content: center; }
   .nav-links { display: none; }
@@ -568,15 +576,24 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .nav-ham  { display: flex; }
   .side-pill { display: none; }
   .nav-center-pill { width: 100%; justify-content: space-between; }
-
-  #home { padding: 120px 32px 64px; }
-  .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  #home { grid-template-columns: 1fr; padding: 120px 32px 64px; gap: 40px; text-align: center; }
   .hero-left { align-items: center; }
   .hero-sub { text-align: center; max-width: 100%; }
   .hero-cta-row { justify-content: center; }
   .hero-trust { justify-content: center; }
+  /* En tablet/móvil la card recupera tamaños normales */
   .lm-card { max-width: 480px; }
-
+  .lm-header { padding: 24px 24px 20px; }
+  .lm-hook { font-size: clamp(16px, 3.5vw, 20px); padding: 12px 15px; margin-bottom: 14px; border-radius: 12px; }
+  .lm-title { font-size: clamp(20px, 4.5vw, 26px); }
+  .lm-title-wrap { padding: 14px 16px; margin-bottom: 10px; border-radius: 12px; }
+  .lm-bullets { padding: 16px 24px 0; gap: 8px; }
+  .lm-bullet { font-size: 13px; }
+  .lm-bullet-icon { width: 28px; height: 28px; }
+  .lm-form { padding: 16px 24px 20px; gap: 10px; }
+  .lm-input { height: 44px; border-radius: 12px; font-size: 14px; }
+  .lm-btn { height: 48px; border-radius: 12px; font-size: 15px; }
+  .lm-privacy { font-size: 11px; }
   .portfolio-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
   #trabajo { padding: 72px 32px; }
   .tj-head { flex-wrap: wrap; margin-bottom: 32px; }
@@ -687,34 +704,33 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 <header id="home">
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="hero-eyebrow"><span class="hero-dot"></span>Estudio creativo &amp; aliado estratégico</div>
-      <h1 class="hero-h1">En TIVO, usamos<br>herramientas. Lo que<br>realmente construye es</h1>
-      <div class="typing-wrap"><span id="typing"></span><span class="blink"></span></div>
-      <p class="hero-tagline">La <em>intención humana</em> detrás de cada decisión.</p>
-      <p class="hero-sub">Transformamos ideas en marcas que la gente no puede ignorar. Estrategia, diseño y resultados reales.</p>
-      <div class="hero-cta-row">
-        <a href="#trabajo" class="btn-primary">Ver nuestro trabajo →</a>
-        <a href="#conocenos" class="btn-ghost">Conócenos</a>
+    <div class="hero-eyebrow"><span class="hero-dot"></span>Estudio creativo &amp; aliado estratégico</div>
+    <h1 class="hero-h1">En TIVO, usamos<br>herramientas. Lo que<br>realmente construye es</h1>
+    <div class="typing-wrap"><span id="typing"></span><span class="blink"></span></div>
+    <p class="hero-tagline">La <em>intención humana</em> detrás de cada decisión.</p>
+    <p class="hero-sub">Transformamos ideas en marcas que la gente no puede ignorar. Estrategia, diseño y resultados reales.</p>
+    <div class="hero-cta-row">
+      <a href="#trabajo" class="btn-primary">Ver nuestro trabajo</a>
+      <a href="#conocenos" class="btn-ghost">Conócenos</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-avs">
+        <div class="tav tv1">ML</div><div class="tav tv2">CR</div>
+        <div class="tav tv3">AS</div><div class="tav tv4">+</div>
       </div>
-      <div class="hero-trust">
-        <div class="trust-avs">
-          <div class="tav tv1">ML</div><div class="tav tv2">CR</div>
-          <div class="tav tv3">AS</div><div class="tav tv4">+</div>
-        </div>
-        <div class="trust-txt">
-          <span class="trust-stars">★★★★★</span>
-          <span><strong>+80 marcas</strong> confían en nosotros</span>
-        </div>
+      <div class="trust-txt">
+        <span class="trust-stars">★★★★★</span>
+        <span><strong>+80 marcas</strong> confían en nosotros</span>
       </div>
     </div>
+  </div>
 
-    <!-- CARD DERECHA -->
-    <div class="hero-right">
-      <div class="lm-card">
-        <div class="lm-header">
-          <!-- Hook CON caja -->
-          <div class="lm-hook">¿Por qué algunas marcas<br>son <span>imposibles de ignorar?</span></div>
-          <!-- Título SIN caja, centrado -->
+  <!-- COLUMNA DERECHA — Lead Magnet Card -->
+  <div class="hero-right">
+    <div class="lm-card">
+      <div class="lm-header">
+        <div class="lm-hook">¿Por qué algunas marcas<br>son <span>imposibles de ignorar?</span></div>
+        <div class="lm-title-wrap">
           <div class="lm-title">
             <span class="lm-title-line">El mapa secreto</span>
             <span class="lm-title-line">de las marcas que</span>
@@ -722,60 +738,61 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
           </div>
           <p class="lm-subtitle">Un PDF visual con los patrones que tienen las marcas más deseadas del mundo. Para ti.</p>
         </div>
+      </div>
 
-        <div class="lm-bullets">
-          <div class="lm-bullet">
-            <div class="lm-bullet-icon" style="background:rgba(196,212,0,.15);">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7a8700" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            </div>
-            Los patrones visuales de las marcas más icónicas
+      <div class="lm-bullets">
+        <div class="lm-bullet">
+          <div class="lm-bullet-icon" style="background:rgba(196,212,0,.15);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7a8700" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
           </div>
-          <div class="lm-bullet">
-            <div class="lm-bullet-icon" style="background:rgba(240,78,26,.1);">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F04E1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            </div>
-            Aplicable a tu marca desde el primer día
-          </div>
-          <div class="lm-bullet">
-            <div class="lm-bullet-icon" style="background:rgba(155,111,212,.1);">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9B6FD4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>
-            </div>
-            Sin tecnicismos, directo al grano
-          </div>
+          Los patrones visuales de las marcas más icónicas
         </div>
-
-        <div class="lm-form" id="lmForm">
-          <div class="lm-divider">Cuéntanos un poco de ti para enviártelo 💌</div>
-          <input class="lm-input" type="text" id="lm-nombre" placeholder="Tu nombre" autocomplete="given-name">
-          <input class="lm-input" type="email" id="lm-email" placeholder="tu@correo.com" autocomplete="email">
-          <div class="lm-tel-row">
-            <input class="lm-input" type="text" id="lm-indicativo" placeholder="+57" autocomplete="tel-country-code" maxlength="7">
-            <input class="lm-input" type="tel" id="lm-tel" placeholder="Número de teléfono" autocomplete="tel-national">
+        <div class="lm-bullet">
+          <div class="lm-bullet-icon" style="background:rgba(240,78,26,.1);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F04E1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
-          <div class="lm-field-wrap">
-            <span class="lm-field-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-            </span>
-            <select class="lm-input lm-etapa lm-with-icon" id="lm-etapa">
-              <option value="" disabled selected>¿En qué etapa está tu marca?</option>
-              <option value="nueva">Nueva — estoy empezando</option>
-              <option value="crecimiento">En crecimiento — ya tengo algo</option>
-              <option value="establecida">Establecida — quiero escalar</option>
-            </select>
+          Aplicable a tu marca desde el primer día
+        </div>
+        <div class="lm-bullet">
+          <div class="lm-bullet-icon" style="background:rgba(155,111,212,.1);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9B6FD4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>
           </div>
-          <div class="lm-field-wrap">
-            <span class="lm-field-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-            </span>
-            <input class="lm-input lm-with-icon" type="text" id="lm-redes" placeholder="Tu Instagram, Web o TikTok">
-          </div>
-          <button class="lm-btn" id="lmBtn" type="button" onclick="handleLM()" disabled>
-            Quiero mi PDF gratis
-          </button>
-          <p class="lm-privacy">Sin spam. Tus datos están seguros con TIVO. <a href="#">Política de privacidad</a></p>
+          Sin tecnicismos, directo al grano
         </div>
       </div>
+
+      <div class="lm-form" id="lmForm">
+        <div class="lm-divider">Cuéntanos un poco de ti para enviártelo 💌</div>
+        <input class="lm-input" type="text" id="lm-nombre" placeholder="Tu nombre" autocomplete="given-name">
+        <input class="lm-input" type="email" id="lm-email" placeholder="tu@correo.com" autocomplete="email">
+        <div class="lm-tel-row">
+          <input class="lm-input" type="text" id="lm-indicativo" placeholder="+57" autocomplete="tel-country-code" maxlength="7">
+          <input class="lm-input" type="tel" id="lm-tel" placeholder="Número de teléfono" autocomplete="tel-national">
+        </div>
+        <div class="lm-field-wrap">
+          <span class="lm-field-icon">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          </span>
+          <select class="lm-input lm-etapa lm-with-icon" id="lm-etapa">
+            <option value="" disabled selected>¿En qué etapa está tu marca?</option>
+            <option value="nueva">Nueva — estoy empezando</option>
+            <option value="crecimiento">En crecimiento — ya tengo algo</option>
+            <option value="establecida">Establecida — quiero escalar</option>
+          </select>
+        </div>
+        <div class="lm-field-wrap">
+          <span class="lm-field-icon">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          </span>
+          <input class="lm-input lm-with-icon" type="text" id="lm-redes" placeholder="Tu Instagram, Web o TikTok">
+        </div>
+        <button class="lm-btn" id="lmBtn" type="button" onclick="handleLM()" disabled>
+          Quiero mi PDF gratis
+        </button>
+        <p class="lm-privacy">Sin spam. Tus datos están seguros con TIVO. <a href="#">Política de privacidad</a></p>
+      </div>
     </div>
+  </div>
   </div>
 </header>
 
@@ -1057,81 +1074,60 @@ function handleSubmit(e){
   setTimeout(()=>{btn.textContent='Enviar mensaje';btn.style.background='';btn.style.color='';},3000);
 }
 
+// LEAD MAGNET
 const PDF_URL = '#';
 const indEl = document.getElementById('lm-indicativo');
 indEl.addEventListener('focus', () => { if (!indEl.value) indEl.value = '+'; });
-indEl.addEventListener('blur', () => {
-  let v = indEl.value.trim();
-  if (!v || v === '+') { indEl.value = ''; return; }
-  v = v.replace(/[^\d+]/g, '');
-  if (!v.startsWith('+')) v = '+' + v;
-  indEl.value = v;
-});
-indEl.addEventListener('input', () => {
-  let v = indEl.value.replace(/[^\d+]/g, '');
-  if (v.indexOf('+') > 0) v = '+' + v.replace(/\+/g, '');
-  indEl.value = v;
-});
-
-const etapaEl = document.getElementById("lm-etapa");
-etapaEl.addEventListener("change", () => { etapaEl.classList.add("selected"); checkForm(); });
-
-const lmFields = ['lm-nombre','lm-email','lm-tel'];
-function checkForm() {
-  const nombre = document.getElementById('lm-nombre').value.trim();
-  const email  = document.getElementById('lm-email').value.trim();
-  const tel2   = document.getElementById('lm-tel').value.trim();
-  const valid  = nombre.length > 0 && /\S+@\S+\.\S+/.test(email) && tel2.length > 0;
-  document.getElementById('lmBtn').disabled = !valid;
+indEl.addEventListener('blur', () => { let v=indEl.value.trim(); if(!v||v==='+'){indEl.value='';return;} v=v.replace(/[^\d+]/g,''); if(!v.startsWith('+'))v='+'+v; indEl.value=v; });
+indEl.addEventListener('input', () => { let v=indEl.value.replace(/[^\d+]/g,''); if(v.indexOf('+')>0)v='+'+v.replace(/\+/g,''); indEl.value=v; });
+const etapaEl=document.getElementById("lm-etapa");
+etapaEl.addEventListener("change",()=>{etapaEl.classList.add("selected");checkForm();});
+const lmFields=['lm-nombre','lm-email','lm-tel'];
+function checkForm(){
+  const nombre=document.getElementById('lm-nombre').value.trim();
+  const email=document.getElementById('lm-email').value.trim();
+  const tel=document.getElementById('lm-tel').value.trim();
+  const valid=nombre.length>0&&/\S+@\S+\.\S+/.test(email)&&tel.length>0;
+  document.getElementById('lmBtn').disabled=!valid;
 }
-lmFields.forEach(id => { document.getElementById(id).addEventListener('input', checkForm); });
-
-function handleLM() {
-  const nombre = document.getElementById('lm-nombre').value.trim();
-  const email  = document.getElementById('lm-email').value.trim();
-  const btn    = document.getElementById('lmBtn');
-  if (!nombre || !email) return;
-  btn.textContent = '✓ Descargando...';
-  btn.disabled = true;
-  btn.style.background = 'var(--green)';
-  btn.style.color = 'var(--white)';
-  if (PDF_URL !== '#') window.open(PDF_URL, '_blank');
-  setTimeout(() => {
-    document.getElementById('lmForm').innerHTML = `
-      <div style="text-align:center;padding:24px 0;">
-        <div style="font-size:40px;margin-bottom:12px;">🎉</div>
-        <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;color:var(--ink);margin-bottom:8px;">¡Listo, ${nombre}!</p>
-        <p style="font-family:'Inter',sans-serif;font-size:14px;color:var(--muted);line-height:1.6;">Tu descarga está en camino. Revisa tu correo <strong>${email}</strong> en los próximos minutos.</p>
-      </div>`;
-  }, 800);
+lmFields.forEach(id=>{document.getElementById(id).addEventListener('input',checkForm);});
+function handleLM(){
+  const nombre=document.getElementById('lm-nombre').value.trim();
+  const email=document.getElementById('lm-email').value.trim();
+  const btn=document.getElementById('lmBtn');
+  if(!nombre||!email){return;}
+  btn.textContent='✓ Descargando...';
+  btn.disabled=true;
+  btn.style.background='var(--green)';
+  btn.style.color='var(--white)';
+  if(PDF_URL!=='#'){window.open(PDF_URL,'_blank');}
+  setTimeout(()=>{
+    document.getElementById('lmForm').innerHTML=`<div style="text-align:center;padding:24px 0;"><div style="font-size:40px;margin-bottom:12px;">🎉</div><p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;color:var(--ink);margin-bottom:8px;">¡Listo, ${nombre}!</p><p style="font-family:'Inter',sans-serif;font-size:14px;color:var(--muted);line-height:1.6;">Tu descarga está en camino. Revisa tu correo <strong>${email}</strong> en los próximos minutos.</p></div>`;
+  },800);
 }
 
-const pillLeft  = document.getElementById('pillLeft');
-const pillRight = document.getElementById('pillRight');
-let pillsVisible = true;
-window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY > 80;
-  if (scrolled && pillsVisible) { pillLeft?.classList.add('hide'); pillRight?.classList.add('hide'); pillsVisible = false; }
-  else if (!scrolled && !pillsVisible) { pillLeft?.classList.remove('hide'); pillRight?.classList.remove('hide'); pillsVisible = true; }
-}, { passive: true });
+// PILLS scroll
+const pillLeft=document.getElementById('pillLeft');
+const pillRight=document.getElementById('pillRight');
+let pillsVisible=true;
+window.addEventListener('scroll',()=>{
+  const scrolled=window.scrollY>80;
+  if(scrolled&&pillsVisible){pillLeft?.classList.add('hide');pillRight?.classList.add('hide');pillsVisible=false;}
+  else if(!scrolled&&!pillsVisible){pillLeft?.classList.remove('hide');pillRight?.classList.remove('hide');pillsVisible=true;}
+},{passive:true});
 
-const hamBtn  = document.getElementById('hamBtn');
-const mobMenu = document.getElementById('mobMenu');
-function openMob()  { mobMenu.classList.add('open'); hamBtn.classList.add('open'); }
-function closeMob() { mobMenu.classList.remove('open'); hamBtn.classList.remove('open'); }
-hamBtn.addEventListener('click', e => { e.stopPropagation(); mobMenu.classList.contains('open') ? closeMob() : openMob(); });
-document.addEventListener('click', e => { if(mobMenu.classList.contains('open') && !mobMenu.contains(e.target) && !hamBtn.contains(e.target)) closeMob(); });
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeMob(); });
+// HAMBURGUESA
+const hamBtn=document.getElementById('hamBtn');
+const mobMenu=document.getElementById('mobMenu');
+function openMob(){mobMenu.classList.add('open');hamBtn.classList.add('open');}
+function closeMob(){mobMenu.classList.remove('open');hamBtn.classList.remove('open');}
+hamBtn.addEventListener('click',e=>{e.stopPropagation();mobMenu.classList.contains('open')?closeMob():openMob();});
+document.addEventListener('click',e=>{if(mobMenu.classList.contains('open')&&!mobMenu.contains(e.target)&&!hamBtn.contains(e.target))closeMob();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMob();});
 
-const revealObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
-},{threshold:.07,rootMargin:'0px 0px -24px 0px'});
-document.querySelectorAll('.bene-card,.sc,.proc-card,.tc,.stat,.pj-card').forEach(el=>{
-  el.style.opacity='0';
-  el.style.transform='translateY(18px)';
-  el.style.transition='opacity .65s ease, transform .65s ease';
-  revealObs.observe(el);
-});
+// REVEAL
+const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:.07,rootMargin:'0px 0px -24px 0px'});
+document.querySelectorAll('.bene-card,.sc,.proc-card,.tc,.stat,.pj-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .65s ease, transform .65s ease';revealObs.observe(el);});
 </script>
 </body>
 </html>
