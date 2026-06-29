@@ -143,7 +143,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 
 .hero-h1 { font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 800, "opsz" 92; font-size: clamp(36px, 4.5vw, 62px); line-height: 1.05; letter-spacing: -.3px; color: var(--ink); margin-bottom: 0; }
 
-.typing-wrap { display: inline-flex; align-items: center; background: var(--orange); padding: 12px 28px 14px; border-radius: 18px; overflow: hidden; position: relative; margin: 18px 0 8px; }
+.typing-wrap { display: inline-flex; align-items: center; background: var(--orange); padding: 12px 28px 14px; border-radius: 18px; overflow: hidden; position: relative; margin: 18px 0 8px; min-height: 72px; }
 .typing-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,.09), transparent); animation: shimmer 2.8s ease-in-out infinite; }
 @keyframes shimmer { 0%{transform:translateX(-100%);}100%{transform:translateX(100%);} }
 #typing { font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 700, "opsz" 92; font-size: clamp(28px, 3.2vw, 46px); color: var(--beige); white-space: nowrap; position: relative; z-index: 1; }
@@ -700,7 +700,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   <div class="hero-inner">
     <div class="hero-left">
     <div class="hero-eyebrow"><span class="hero-dot"></span>Estudio creativo &amp; aliado estratégico</div>
-    <h1 class="hero-h1">En TIVO, usamos herramientas.<br>Lo que realmente construye es</h1>
+    <h1 class="hero-h1">En TIVO, usamos herramientas,<br>pero&nbsp;…</h1>
     <div class="typing-wrap"><span id="typing"></span><span class="blink"></span></div>
     <p class="hero-tagline">La <em>intención humana</em> detrás de cada decisión.</p>
     <p class="hero-sub">Transformamos ideas en marcas que la gente no puede ignorar. Estrategia, diseño y resultados reales.</p>
