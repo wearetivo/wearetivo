@@ -701,7 +701,9 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
     <div class="hero-left">
     <div class="hero-eyebrow"><span class="hero-dot"></span>Estudio creativo &amp; aliado estratégico</div>
     <h1 class="hero-h1">En TIVO usamos<br><span style="white-space:nowrap">herramientas, pero...</span><br>Lo que realmente<br>construye es:</h1>
-    <div class="typing-wrap"><span id="typing"></span><span class="blink"></span></div>
+    <div style="height:80px;display:flex;align-items:center;">
+      <div class="typing-wrap"><span id="typing"></span><span class="blink"></span></div>
+    </div>
     <p class="hero-tagline">La <em>intención humana</em> detrás de cada decisión.</p>
     <p class="hero-sub">Transformamos ideas en marcas que la gente no puede ignorar. Estrategia, diseño y resultados reales.</p>
     <div class="hero-cta-row">
@@ -1125,4 +1127,4 @@ const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIn
 document.querySelectorAll('.bene-card,.sc,.proc-card,.tc,.stat,.pj-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .65s ease, transform .65s ease';revealObs.observe(el);});
 </script>
 </body>
-</html>v
+</html>
