@@ -141,7 +141,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 
 /* typing-container: altura fija para que lo de abajo no se mueva */
 .typing-container { display: flex; align-items: center; margin: 18px 0 8px; }
-.typing-wrap { display: inline-flex; align-items: center; background: var(--orange); padding: 12px 28px 14px; border-radius: 18px; overflow: hidden; position: relative; min-height: 72px; }
+.typing-wrap { display: inline-flex; align-items: center; background: var(--orange); padding: 12px 28px 14px; border-radius: 18px; overflow: hidden; position: relative; height: 76px; }
 .typing-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,.09), transparent); animation: shimmer 2.8s ease-in-out infinite; }
 @keyframes shimmer { 0%{transform:translateX(-100%);}100%{transform:translateX(100%);} }
 #typing { font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 700, "opsz" 92; font-size: clamp(28px, 3.2vw, 46px); color: var(--beige); white-space: nowrap; position: relative; z-index: 1; }
@@ -185,6 +185,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
+  text-align: center;
 }
 .lm-header::before {
   content: '';
@@ -204,7 +205,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
   position: relative; z-index: 1;
   background: rgba(196,212,0,.08);
   border: 1.5px solid rgba(196,212,0,.3);
-  border-left: 4px solid var(--lime);
+  border-bottom: 3px solid var(--lime);
   border-radius: 10px;
   padding: 10px 14px;
 }
@@ -223,7 +224,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .lm-title-line { display: block; }
 .lm-subtitle {
   font-family: 'Inter', sans-serif;
-  font-size: 11px; color: rgba(234,217,184,.4);
+  font-size: 11px; color: rgba(234,217,184,.75);
   line-height: 1.5;
   position: relative; z-index: 1;
 }
@@ -679,11 +680,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
       <div class="lm-card">
         <div class="lm-header">
           <div class="lm-hook">¿Por qué algunas marcas<br>son <span>imposibles de ignorar?</span></div>
-          <div class="lm-title">
-            <span class="lm-title-line">El mapa secreto</span>
-            <span class="lm-title-line">de las marcas que</span>
-            <span class="lm-title-line">la gente <span>no puede ignorar</span></span>
-          </div>
+          <div class="lm-title">El mapa secreto de las marcas que<br>la gente <span>no puede ignorar</span></div>
           <p class="lm-subtitle">Un PDF visual con los patrones que tienen las marcas más deseadas del mundo. Para ti.</p>
         </div>
 
@@ -1052,4 +1049,3 @@ document.querySelectorAll('.bene-card,.sc,.proc-card,.tc,.stat,.pj-card').forEac
 </script>
 </body>
 </html>
-HTMLEOF
