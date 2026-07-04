@@ -111,7 +111,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .ti-sep { color: var(--beige); opacity: .6; }
 
 /* ═══════════════════════════════════
-   HERO — layout original del doc4
+   HERO — DESKTOP (sin tocar)
 ═══════════════════════════════════ */
 #home {
   min-height: 100vh;
@@ -139,7 +139,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(240,78,26,.45); } 50% { box-shadow: 0 0 0 6px rgba(240,78,26,0); } }
 .hero-h1 { font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 800, "opsz" 92; font-size: clamp(36px, 4.5vw, 62px); line-height: 1.05; letter-spacing: -.3px; color: var(--ink); margin-bottom: 0; }
 
-/* typing-container: altura fija para que lo de abajo no se mueva */
 .typing-container { display: flex; align-items: center; margin: 18px 0 8px; }
 .typing-wrap { display: inline-flex; align-items: center; background: var(--orange); padding: 12px 28px 14px; border-radius: 18px; overflow: hidden; position: relative; height: 76px; }
 .typing-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,.09), transparent); animation: shimmer 2.8s ease-in-out infinite; }
@@ -152,9 +151,9 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .hero-tagline em { color: var(--purple); font-style: italic; }
 .hero-sub { font-size: 15px; color: var(--muted); letter-spacing: -.1px; margin-top: 6px; max-width: 460px; line-height: 1.65; }
 .hero-cta-row { display: flex; align-items: center; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
-.btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 26px; height: 46px; background: var(--orange); color: var(--beige); font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 650, "opsz" 92; font-size: 15px; text-decoration: none; border-radius: var(--r-pill); box-shadow: var(--shadow-btn), 0 6px 24px rgba(240,78,26,.28); transition: background .2s, color .2s, transform .3s cubic-bezier(.34,1.56,.64,1); }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 26px; height: 46px; background: var(--orange); color: var(--beige); font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 650, "opsz" 92; font-size: 15px; text-decoration: none; border-radius: var(--r-pill); box-shadow: var(--shadow-btn), 0 6px 24px rgba(240,78,26,.28); transition: background .2s, color .2s, transform .3s cubic-bezier(.34,1.56,.64,1); white-space: nowrap; }
 .btn-primary:hover { background: var(--lime); color: var(--ink); transform: scale(1.04) translateY(-2px); }
-.btn-ghost { display: inline-flex; align-items: center; gap: 7px; padding: 12px 22px; height: 46px; background: transparent; color: var(--orange); font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 600, "opsz" 92; font-size: 15px; text-decoration: none; border-radius: var(--r-pill); border: 1.5px solid var(--orange); transition: border-color .2s, color .2s, background .2s; }
+.btn-ghost { display: inline-flex; align-items: center; gap: 7px; padding: 12px 22px; height: 46px; background: transparent; color: var(--orange); font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 600, "opsz" 92; font-size: 15px; text-decoration: none; border-radius: var(--r-pill); border: 1.5px solid var(--orange); transition: border-color .2s, color .2s, background .2s; white-space: nowrap; }
 .btn-ghost:hover { border-color: var(--purple); color: var(--white); background: var(--purple); }
 .hero-trust { display: flex; align-items: center; gap: 14px; margin-top: 32px; }
 .trust-avs { display: flex; }
@@ -167,7 +166,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .hero-right { position: relative; z-index: 2; display: flex; align-items: stretch; justify-content: flex-end; }
 
 /* ═══════════════════════════════════
-   LEAD MAGNET CARD
+   LEAD MAGNET CARD — DESKTOP (sin tocar)
 ═══════════════════════════════════ */
 .lm-card {
   background: var(--white);
@@ -193,7 +192,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
   background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,255,255,.015) 20px, rgba(255,255,255,.015) 40px);
   pointer-events: none;
 }
-/* Hook — pregunta con caja resaltada */
 .lm-hook {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-variation-settings: "wght" 800, "opsz" 92;
@@ -293,7 +291,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .lm-privacy a { color: var(--orange); text-decoration: underline; text-underline-offset: 2px; }
 
 /* ═══════════════════════════════════
-   RESTO DE ESTILOS (sin cambios)
+   RESTO DE ESTILOS DESKTOP (sin tocar)
 ═══════════════════════════════════ */
 .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--white); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); }
 .stat { padding: 40px; border-right: 1px solid var(--border-soft); position: relative; overflow: hidden; transition: background .3s; }
@@ -477,10 +475,12 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 .fbs { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(234,217,184,.08); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: rgba(234,217,184,.3); text-decoration: none; transition: background .25s, border-color .25s, color .25s, transform .25s; }
 .fbs:hover{background:var(--orange);border-color:var(--orange);color:var(--white);transform:scale(1.12);}
 
-/* ═══════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — TABLET (max-width: 1023px)
+   Solo se tocan hero + popup. El resto permanece igual al original.
+═══════════════════════════════════════════════════════════════ */
 @media (max-width: 1023px) {
+  /* — NAV (original, sin cambios) — */
   .nav-wrap { top: 14px; padding: 0 16px; justify-content: center; }
   .nav-links { display: none; }
   .nav-cta  { display: inline-flex; }
@@ -488,31 +488,133 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .side-pill { display: none; }
   .nav-center-pill { width: 100%; justify-content: space-between; }
 
-  #home { padding: 100px 24px 52px; min-height: auto; }
-  .hero-inner { grid-template-columns: 1fr; gap: 28px; text-align: center; }
-  .hero-left { align-items: center; }
-  .hero-h1 { text-align: center; }
-  .hero-sub { text-align: center; max-width: 100%; }
-  .hero-cta-row { justify-content: center; }
+  /* — HERO — */
+  #home {
+    padding: 100px 24px 52px;
+    min-height: auto;
+    /* En tablet mantenemos el grid pero con una sola columna
+       para que el popup baje debajo del texto */
+  }
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+    align-items: center;
+  }
+  .hero-left {
+    align-items: center;
+  }
+
+  /* Título: tamaño fluido que nunca rompa las dos líneas clave */
+  .hero-h1 {
+    font-size: clamp(32px, 5.5vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -.3px;
+    /* Forzamos word-break normal para respetar los <br> del HTML */
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
+    text-align: center;
+  }
+  /* Respetamos los saltos de línea tal como están en el HTML */
+  .hero-h1 br { display: inline; }
+
+  /* Typing: contenedor flexible que escala sin desbordarse */
+  .typing-container {
+    justify-content: center;
+    width: 100%;
+  }
+  .typing-wrap {
+    /* Altura fija solo en desktop; en tablet dejamos que crezca */
+    height: auto;
+    min-height: 60px;
+    padding: 12px 22px 14px;
+    border-radius: 16px;
+    /* El ancho máximo evita desborde pero crece hasta ocupar el contenedor */
+    max-width: 100%;
+    width: auto;
+    display: inline-flex;
+  }
+  #typing {
+    /* Tamaño escalado al viewport; nunca mayor que en desktop */
+    font-size: clamp(22px, 5vw, 40px);
+    white-space: nowrap;
+  }
+
+  /* Tagline y sub */
+  .hero-tagline { font-size: 15px; text-align: center; }
+  .hero-sub     { font-size: 15px; text-align: center; max-width: 100%; }
+
+  /* Botones: fila horizontal, sin wrap, texto en 1 línea */
+  .hero-cta-row {
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .btn-primary,
+  .btn-ghost {
+    white-space: nowrap;
+    font-size: 15px;
+    padding: 12px 22px;
+    height: 46px;
+    flex: 0 1 auto;
+    width: auto;
+  }
+
+  /* Trust */
   .hero-trust { justify-content: center; }
-  .typing-container { justify-content: center; }
-  .typing-wrap { padding: 10px 20px 12px; }
-  #typing { font-size: clamp(20px, 4vw, 30px); }
 
-  .lm-card { max-width: 520px; border-radius: 20px; }
-  .lm-header { padding: 20px 22px 16px; }
-  .lm-hook { font-size: 20px; padding: 10px 14px; margin-bottom: 12px; }
-  .lm-title { font-size: 20px; }
-  .lm-subtitle { font-size: 12px; }
-  .lm-bullets { padding: 12px 22px 0; gap: 7px; }
-  .lm-bullet { font-size: 13px; }
-  .lm-bullet-icon { width: 26px; height: 26px; }
-  .lm-form { padding: 12px 22px 16px; gap: 8px; }
-  .lm-input { height: 42px; border-radius: 10px; font-size: 14px; }
-  .lm-btn { height: 44px; border-radius: 10px; font-size: 14px; }
-  .lm-privacy { font-size: 11px; }
+  /* Popup (card derecha) — centrada, ancho generoso */
+  .hero-right {
+    justify-content: center;
+    width: 100%;
+  }
+  .lm-card {
+    max-width: 480px;
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  /* Header del popup */
+  .lm-header { padding: 18px 20px 14px; }
+  .lm-hook {
+    font-size: clamp(18px, 3.5vw, 22px);
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    line-height: 1.25;
+    border-radius: 9px;
+  }
+  .lm-title {
+    font-size: clamp(16px, 3vw, 20px);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  /* Subtítulo: contraste blanco (se lee mejor en oscuro) */
+  .lm-subtitle {
+    font-size: 12px;
+    color: rgba(255,255,255,.88);
+    margin-top: 4px;
+    line-height: 1.55;
+  }
+
+  /* Bullets */
+  .lm-bullets { padding: 10px 20px 0; gap: 6px; }
+  .lm-bullet  { font-size: 12px; gap: 8px; }
+  .lm-bullet-icon { width: 22px; height: 22px; }
+
+  /* Formulario */
+  .lm-form { padding: 10px 20px 14px; gap: 7px; }
   .lm-divider { font-size: 10px; }
+  .lm-input   { height: 40px; font-size: 13px; border-radius: 9px; }
+  .lm-etapa   { padding-right: 30px; }
+  .lm-with-icon { padding-left: 32px !important; }
+  .lm-field-icon { left: 11px; }
+  .lm-tel-row { grid-template-columns: 82px 1fr; gap: 6px; }
+  .lm-btn     { height: 42px; font-size: 14px; border-radius: 9px; margin-top: 2px; }
+  .lm-privacy { font-size: 10px; }
 
+  /* ── Resto de secciones (original, sin cambios) ── */
   .portfolio-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
   #trabajo { padding: 72px 32px; }
   .tj-head { flex-wrap: wrap; margin-bottom: 32px; }
@@ -536,43 +638,146 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .clients { padding: 40px 32px; }
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — MOBILE (max-width: 767px)
+   Solo se tocan hero + popup.
+═══════════════════════════════════════════════════════════════ */
 @media (max-width: 767px) {
-  #home { padding: 88px 18px 40px; }
-  /* Título en 2 líneas: ocultamos los <br> y dejamos fluir el texto */
-  .hero-h1 { font-size: clamp(22px, 5.5vw, 30px); line-height: 1.1; letter-spacing: -.3px; }
-  .hero-h1 br { display: none; }
-  .hero-h1 span { white-space: normal; }
-  .typing-container { margin: 14px 0 8px; justify-content: center; }
-  /* typing misma jerarquía que h1 */
-  .typing-wrap { padding: 10px 20px 12px; border-radius: 14px; min-height: auto; }
-  #typing { font-size: clamp(20px, 5.5vw, 28px); }
-  .hero-tagline { font-size: 14px; }
-  .hero-sub { font-size: 14px; }
-  /* Botones en la misma fila */
-  .hero-cta-row { margin-top: 20px; gap: 10px; flex-direction: row; align-items: center; flex-wrap: wrap; }
-  .btn-primary, .btn-ghost { width: auto; flex: 1; min-width: 130px; justify-content: center; font-size: 14px; padding: 12px 16px; height: 44px; }
-  .hero-trust { margin-top: 22px; }
 
-  .lm-card { max-width: 100%; border-radius: 16px; }
-  .lm-header { padding: 16px 18px 14px; }
-  .lm-hook { font-size: 18px; padding: 9px 13px; margin-bottom: 10px; border-radius: 8px; line-height: 1.25; }
-  /* Título popup en 2 líneas y más grande */
-  .lm-title { font-size: 20px; line-height: 1.15; }
-  /* Subtítulo blanco y legible */
-  .lm-subtitle { font-size: 13px; margin-top: 6px; color: rgba(255,255,255,.85); }
-  .lm-bullets { padding: 8px 16px 0; gap: 5px; }
-  .lm-bullet { font-size: 12px; gap: 7px; }
+  /* — HERO — */
+  #home { padding: 88px 18px 40px; }
+
+  /* Título en dos líneas tal como dice el brief:
+     "En TIVO usamos herramientas, pero..."
+     "Lo que realmente construye es:"
+     Respetamos los <br> y solo escalamos el tamaño. */
+  .hero-h1 {
+    font-size: clamp(24px, 6.5vw, 34px);
+    line-height: 1.1;
+    letter-spacing: -.25px;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
+    text-align: center;
+  }
+  .hero-h1 br { display: inline; }
+
+  /* Typing: se adapta al ancho sin desbordar */
+  .typing-container {
+    justify-content: center;
+    width: 100%;
+    margin: 14px 0 8px;
+  }
+  .typing-wrap {
+    height: auto;
+    min-height: 54px;
+    padding: 10px 18px 12px;
+    border-radius: 14px;
+    max-width: calc(100vw - 36px); /* nunca más ancho que la pantalla */
+    width: auto;
+    display: inline-flex;
+    overflow: hidden;
+  }
+  #typing {
+    /* clamp: mínimo 20px, fluido 5.5vw, máximo 30px */
+    font-size: clamp(20px, 5.5vw, 30px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Tagline: "La intención humana detrás de cada decisión."
+     Forzamos que quepa en 2 líneas máximo con balance */
+  .hero-tagline {
+    font-size: 14px;
+    text-align: center;
+    max-width: 300px;  /* ancla para evitar huérfanas */
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.55;
+  }
+  .hero-sub {
+    font-size: 14px;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  /* Botones: misma fila, texto en 1 línea siempre */
+  .hero-cta-row {
+    margin-top: 20px;
+    gap: 8px;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .btn-primary,
+  .btn-ghost {
+    white-space: nowrap;
+    flex: 0 1 auto;
+    width: auto;
+    font-size: 14px;
+    padding: 0 18px;
+    height: 44px;
+  }
+
+  .hero-trust { margin-top: 22px; justify-content: center; }
+
+  /* Card popup — ocupa todo el ancho disponible */
+  .hero-right {
+    justify-content: center;
+    width: 100%;
+  }
+  .lm-card {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 16px;
+  }
+
+  /* Header del popup: misma jerarquía que desktop */
+  .lm-header { padding: 16px 16px 12px; }
+
+  /* Hook: mismo protagonismo que en desktop, nunca más pequeño */
+  .lm-hook {
+    font-size: clamp(17px, 5vw, 22px);
+    padding: 9px 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    line-height: 1.25;
+  }
+
+  /* Título del popup: legible y con peso visual similar al desktop */
+  .lm-title {
+    font-size: clamp(16px, 4.5vw, 20px);
+    line-height: 1.2;
+    margin-bottom: 5px;
+  }
+
+  /* Subtítulo: contraste blanco (petición explícita del brief) */
+  .lm-subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,.92);
+    margin-top: 5px;
+    line-height: 1.55;
+  }
+
+  /* Bullets */
+  .lm-bullets { padding: 8px 14px 0; gap: 5px; }
+  .lm-bullet  { font-size: 12px; gap: 7px; }
   .lm-bullet-icon { width: 20px; height: 20px; border-radius: 5px; }
-  .lm-form { padding: 8px 16px 14px; gap: 6px; }
+
+  /* Formulario */
+  .lm-form { padding: 8px 14px 12px; gap: 6px; }
   .lm-divider { font-size: 9px; }
-  .lm-input { height: 38px; font-size: 13px; padding: 0 11px; border-radius: 8px; }
-  .lm-etapa { padding-right: 28px; }
+  .lm-input   { height: 38px; font-size: 13px; padding: 0 11px; border-radius: 8px; }
+  .lm-etapa   { padding-right: 26px; background-position: right 12px center; }
   .lm-with-icon { padding-left: 30px !important; }
   .lm-field-icon { left: 10px; }
-  .lm-tel-row { grid-template-columns: 75px 1fr; gap: 5px; }
-  .lm-btn { height: 40px; font-size: 13px; border-radius: 8px; margin-top: 1px; }
+  .lm-tel-row { grid-template-columns: 72px 1fr; gap: 5px; }
+  .lm-btn     { height: 40px; font-size: 13px; border-radius: 8px; margin-top: 1px; }
   .lm-privacy { font-size: 10px; }
 
+  /* ── Resto de secciones (original, sin cambios) ── */
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   #trabajo { padding: 56px 20px; }
   .tj-head { flex-direction: column; align-items: flex-start; gap: 14px; }
@@ -600,13 +805,51 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .bigmq { display: none; }
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — MOBILE PEQUEÑO (max-width: 480px)
+═══════════════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
+  /* — HERO — */
+  #home { padding: 80px 14px 36px; }
+
+  .hero-h1 {
+    font-size: clamp(22px, 6vw, 30px);
+    line-height: 1.1;
+  }
+  .hero-h1 br { display: inline; }
+
+  /* Typing: máximo contenible en pantallas muy pequeñas */
+  .typing-wrap {
+    max-width: calc(100vw - 28px);
+    padding: 9px 14px 11px;
+  }
+  #typing {
+    /* En pantallas <360px permitimos reducir a 18px */
+    font-size: clamp(18px, 7vw, 26px);
+  }
+
+  /* Botones apilados solo cuando no caben en fila */
+  .hero-cta-row {
+    flex-wrap: wrap;
+  }
+  .btn-primary,
+  .btn-ghost {
+    flex: 1 1 130px;
+    min-width: 0;
+    justify-content: center;
+    font-size: 14px;
+    padding: 0 14px;
+  }
+
+  /* Stats */
   .stats-row { grid-template-columns: 1fr; }
   .stat { border-right: none !important; }
   .stat:last-child { border-bottom: none !important; }
-  #home { padding: 80px 16px 36px; }
-  .hero-h1 { font-size: clamp(20px, 5vw, 28px); }
-  #typing { font-size: clamp(30px, 7vw, 40px); }
+
+  /* Popup en pantalla muy pequeña */
+  .lm-hook  { font-size: clamp(16px, 5vw, 20px); }
+  .lm-title { font-size: clamp(15px, 4.5vw, 18px); }
+  .lm-subtitle { font-size: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -660,7 +903,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   <div class="hero-inner">
     <div class="hero-left">
       <div class="hero-eyebrow"><span class="hero-dot"></span>Estudio creativo &amp; aliado estratégico</div>
-      <h1 class="hero-h1">En TIVO usamos<br><span style="white-space:nowrap">herramientas, pero...</span><br>Lo que realmente<br>construye es:</h1>
+      <h1 class="hero-h1">En TIVO usamos<br>herramientas, pero...<br>Lo que realmente<br>construye es:</h1>
       <div class="typing-container">
         <div class="typing-wrap"><span id="typing"></span><span class="blink"></span></div>
       </div>
