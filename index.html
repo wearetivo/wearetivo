@@ -538,21 +538,26 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 
 @media (max-width: 767px) {
   #home { padding: 88px 18px 40px; }
-  .hero-h1 { font-size: clamp(26px, 6.5vw, 38px); line-height: 1.08; }
-  .typing-container { margin: 12px 0 6px; justify-content: center; }
-  .typing-wrap { padding: 9px 16px 11px; border-radius: 13px; }
-  #typing { font-size: clamp(22px, 5vw, 28px); }
+  /* Título en 2 líneas, mucho más grande */
+  .hero-h1 { font-size: clamp(38px, 9vw, 52px); line-height: 1.05; letter-spacing: -.5px; }
+  .typing-container { margin: 14px 0 8px; justify-content: center; }
+  /* typing igual de grande que el h1 para mantener jerarquía */
+  .typing-wrap { padding: 12px 20px 14px; border-radius: 16px; min-height: 68px; }
+  #typing { font-size: clamp(32px, 7.5vw, 44px); }
   .hero-tagline { font-size: 14px; }
   .hero-sub { font-size: 14px; }
-  .hero-cta-row { margin-top: 20px; gap: 8px; flex-direction: column; align-items: stretch; }
-  .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+  /* Botones en la misma fila */
+  .hero-cta-row { margin-top: 20px; gap: 10px; flex-direction: row; align-items: center; flex-wrap: nowrap; }
+  .btn-primary, .btn-ghost { width: auto; flex: 1; justify-content: center; font-size: 14px; padding: 12px 16px; }
   .hero-trust { margin-top: 22px; }
 
   .lm-card { max-width: 100%; border-radius: 16px; }
-  .lm-header { padding: 14px 16px 12px; }
-  .lm-hook { font-size: 17px; padding: 8px 11px; margin-bottom: 8px; border-radius: 8px; line-height: 1.25; }
-  .lm-title { font-size: 17px; }
-  .lm-subtitle { font-size: 11px; margin-top: 5px; }
+  .lm-header { padding: 16px 18px 14px; }
+  .lm-hook { font-size: 18px; padding: 9px 13px; margin-bottom: 10px; border-radius: 8px; line-height: 1.25; }
+  /* Título popup en 2 líneas y más grande */
+  .lm-title { font-size: 20px; line-height: 1.15; }
+  /* Subtítulo blanco y legible */
+  .lm-subtitle { font-size: 13px; margin-top: 6px; color: rgba(255,255,255,.85); }
   .lm-bullets { padding: 8px 16px 0; gap: 5px; }
   .lm-bullet { font-size: 12px; gap: 7px; }
   .lm-bullet-icon { width: 20px; height: 20px; border-radius: 5px; }
@@ -598,8 +603,8 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .stat { border-right: none !important; }
   .stat:last-child { border-bottom: none !important; }
   #home { padding: 80px 16px 36px; }
-  .hero-h1 { font-size: clamp(24px, 6vw, 32px); }
-  #typing { font-size: clamp(20px, 4.5vw, 24px); }
+  .hero-h1 { font-size: clamp(36px, 8.5vw, 48px); }
+  #typing { font-size: clamp(30px, 7vw, 40px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
