@@ -399,7 +399,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 @media (max-width: 767px) {
   #home { padding: 88px 18px 40px; }
   /* Título en 2 líneas: ocultamos los <br> y dejamos fluir el texto */
-  .hero-h1 { font-size: clamp(22px, 5.5vw, 30px); line-height: 1.1; letter-spacing: -.3px; }
+  .hero-h1 { font-size: clamp(22px, 5.5vw, 30px); word-break: keep-all; overflow-wrap: break-word; line-height: 1.1; letter-spacing: -.3px; }
   .hero-h1 br { display: none; }
   .hero-h1 span { white-space: normal; }
   .typing-container { margin: 14px 0 8px; justify-content: center; }
@@ -455,6 +455,10 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   *, .ticker-inner, .bigmq-inner { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
 
+
+
+/* Título hero — separación visual entre bloque 1 y bloque 2 */
+.hero-h1-line2 { display: block; margin-top: 0.15em; }
 
 /* Stars alineadas con +80 marcas */
 .trust-txt { display: flex; flex-direction: column; align-items: flex-start; }
@@ -547,7 +551,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   <div class="hero-inner hero-centered">
     <div class="hero-left">
       <div class="hero-eyebrow"><span class="hero-dot"></span>Estudio creativo &amp; aliado estratégico</div>
-      <h1 class="hero-h1">En TIVO, usamos herramientas,<br>pero...<br>Lo que realmente construye es:</h1>
+      <h1 class="hero-h1">En TIVO, usamos<br>herramientas, pero...<br><span class="hero-h1-line2">Lo que realmente construye es:</span></h1>
       <div class="typing-container">
         <div class="typing-wrap"><span id="typing"></span><span class="blink"></span></div>
       </div>
