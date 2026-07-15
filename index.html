@@ -92,7 +92,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .side-pill.hide { opacity: 0; pointer-events: none; transform: translateY(-6px); }
 .side-pill-left { cursor: default; margin-right: 20px; }
 .side-pill-right { cursor: pointer; margin-left: 20px; transition: opacity .35s ease, transform .35s ease, background .2s, color .2s; }
-.side-pill-right:hover { background: var(--blue); color: var(--beige); }
+.side-pill-right:hover { background: var(--blue); color: var(--ink); }
 .avail-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--lime); flex-shrink: 0; animation: pulse-lime 2s infinite; }
 @keyframes pulse-lime { 0%,100% { box-shadow: 0 0 0 0 rgba(196,212,0,.55); } 50% { box-shadow: 0 0 0 6px rgba(196,212,0,0); } }
 
@@ -455,6 +455,17 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   *, .ticker-inner, .bigmq-inner { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
 
+
+/* Stars alineadas con +80 marcas */
+.trust-txt { display: flex; flex-direction: column; align-items: flex-start; }
+.trust-stars-row { display: flex; align-items: center; margin-bottom: 2px; }
+
+/* hero-sub segunda línea con espaciado */
+.hero-sub-2 { display: block; margin-top: 6px; }
+
+/* Limitar ancho del hero-sub en web */
+.hero-centered .hero-sub { max-width: 420px; }
+
 /* ── HERO CENTRADO (una columna) ── */
 .hero-centered {
   display: flex !important;
@@ -536,12 +547,12 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   <div class="hero-inner hero-centered">
     <div class="hero-left">
       <div class="hero-eyebrow"><span class="hero-dot"></span>Estudio creativo &amp; aliado estratégico</div>
-      <h1 class="hero-h1">En TIVO, usamos herramientas, pero...<br>Lo que realmente construye es:</h1>
+      <h1 class="hero-h1">En TIVO, usamos herramientas,<br>pero...<br>Lo que realmente construye es:</h1>
       <div class="typing-container">
         <div class="typing-wrap"><span id="typing"></span><span class="blink"></span></div>
       </div>
       <p class="hero-tagline">La <em>intención humana</em> detrás de cada decisión.</p>
-      <p class="hero-sub">Transformamos ideas en marcas que la gente no puede ignorar. Estrategia, diseño y resultados reales.</p>
+      <p class="hero-sub">Transformamos ideas en marcas que la gente no puede ignorar.<br><span class="hero-sub-2">Estrategia, diseño y resultados reales.</span></p>
       <div class="hero-cta-row">
         <a href="#trabajo" class="btn-primary">Ver nuestro trabajo</a>
         <a href="#conocenos" class="btn-ghost">Conócenos</a>
@@ -552,7 +563,8 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
           <div class="tav tv3">AS</div><div class="tav tv4">+</div>
         </div>
         <div class="trust-txt">
-          <span><span class="trust-stars">★★★★★</span> <strong>+80 marcas</strong> confían en nosotros</span>
+          <div class="trust-stars-row"><span class="trust-stars">★★★★★</span></div>
+          <span><strong>+80 marcas</strong> confían en nosotros</span>
         </div>
       </div>
     </div>
