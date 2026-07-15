@@ -365,7 +365,6 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   #home { padding: 100px 24px 52px; min-height: auto; }
   .hero-inner { grid-template-columns: 1fr; gap: 28px; text-align: center; }
   .hero-left { align-items: center; }
-  .hero-h1 { text-align: center; }
   .hero-sub { text-align: center; max-width: 100%; }
   .hero-cta-row { justify-content: center; }
   .hero-trust { justify-content: center; }
@@ -397,15 +396,16 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 }
 
 @media (max-width: 767px) {
+  /* Hero h1 móvil — una sola regla limpia */
+  .hero-h1 { font-size: clamp(26px, 7vw, 34px) !important; line-height: 1.15; text-align: center; overflow-wrap: break-word; word-break: normal; max-width: 100%; }
+  #typing { font-size: clamp(26px, 7vw, 34px) !important; white-space: nowrap; }
+  .typing-wrap { width: auto; max-width: 90vw; height: auto; justify-content: center; }
+
   #home { padding: 88px 18px 40px; }
   /* Título en 2 líneas: ocultamos los <br> y dejamos fluir el texto */
-  .hero-h1 { font-size: clamp(22px, 5.5vw, 30px); word-break: keep-all; overflow-wrap: break-word; line-height: 1.1; letter-spacing: -.3px; }
-  .hero-h1 br { display: none; }
-  .hero-h1 span { white-space: normal; }
   .typing-container { margin: 14px 0 8px; justify-content: center; }
   /* typing misma jerarquía que h1 */
   .typing-wrap { padding: 10px 20px 12px; border-radius: 14px; min-height: auto; }
-  #typing { font-size: clamp(20px, 5.5vw, 28px); }
   .hero-tagline { font-size: 14px; }
   .hero-sub { font-size: 14px; }
   /* Botones en la misma fila */
@@ -447,7 +447,6 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .stat { border-right: none !important; }
   .stat:last-child { border-bottom: none !important; }
   #home { padding: 80px 16px 36px; }
-  .hero-h1 { font-size: clamp(20px, 5vw, 28px); }
   #typing { font-size: clamp(30px, 7vw, 40px); }
 }
 
