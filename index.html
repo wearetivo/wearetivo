@@ -396,6 +396,10 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 }
 
 @media (max-width: 767px) {
+  /* En móvil, quitar los saltos de línea del h1 para que fluya natural */
+  .hero-h1 br { display: none; }
+  .hero-h1-line2 { display: inline; }
+
   .nav-ham { display: flex !important; }
   .nav-links { display: none !important; }
   /* Hero h1 móvil — una sola regla limpia */
@@ -871,13 +875,40 @@ window.addEventListener('scroll',()=>{
 },{passive:true});
 
 // HAMBURGUESA
-const hamBtn=document.getElementById('hamBtn');
-const mobMenu=document.getElementById('mobMenu');
-function openMob(){mobMenu.classList.add('open');hamBtn.classList.add('open');}
-function closeMob(){mobMenu.classList.remove('open');hamBtn.classList.remove('open');}
-hamBtn.addEventListener('click',e=>{e.stopPropagation();mobMenu.classList.contains('open')?closeMob():openMob();});
-document.addEventListener('click',e=>{if(mobMenu.classList.contains('open')&&!mobMenu.contains(e.target)&&!hamBtn.contains(e.target))closeMob();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMob();});
+const hamBtn = document.getElementById('hamBtn');
+const mobMenu = document.getElementById('mobMenu');
+
+function openMob() {
+  mobMenu.style.display = 'flex';
+  mobMenu.classList.add('open');
+  hamBtn.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMob() {
+  mobMenu.style.display = 'none';
+  mobMenu.classList.remove('open');
+  hamBtn.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+hamBtn.addEventListener('click', function(e) {
+  e.stopPropagation();
+  if (mobMenu.classList.contains('open')) {
+    closeMob();
+  } else {
+    openMob();
+  }
+});
+
+document.addEventListener('click', function(e) {
+  if (mobMenu.classList.contains('open') && !mobMenu.contains(e.target) && !hamBtn.contains(e.target)) {
+    closeMob();
+  }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeMob();
+});
 
 // REVEAL
 const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:.07,rootMargin:'0px 0px -24px 0px'});
