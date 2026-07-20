@@ -543,6 +543,43 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 .hero-centered .hero-trust {
   justify-content: center;
 }
+
+/* ── STATS TITLE ── */
+.stats-title-wrap {
+  background: var(--ink);
+  padding: 56px 40px 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+}
+.stats-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.05;
+  color: var(--white);
+  max-width: 580px;
+}
+.stats-title-em {
+  color: var(--lime);
+  font-style: italic;
+  font-variation-settings: "wght" 400, "opsz" 92;
+}
+.stats-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: rgba(255,255,255,.4);
+  max-width: 260px;
+  line-height: 1.65;
+  padding-top: 8px;
+  flex-shrink: 0;
+}
+@media (max-width: 767px) {
+  .stats-title-wrap { flex-direction: column; gap: 16px; padding: 40px 20px 28px; }
+  .stats-desc { max-width: 100%; }
+  .stats-title { font-size: clamp(28px, 8vw, 42px); }
+}
 </style>
 </head>
 <body>
@@ -626,9 +663,13 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 </div>
 
 <!-- STATS -->
+<div class="stats-title-wrap">
+  <h2 class="stats-title">Estrategia que se traduce en <em class="stats-title-em">resultados.</em></h2>
+
+</div>
 <div class="stats-row">
   <div class="stat"><div class="stat-n" id="s1"><span class="plus-prefix">+</span>90</div><div class="stat-l">Proyectos entregados satisfactoriamente</div></div>
-  <div class="stat"><div class="stat-n" id="s2"><span class="plus-prefix">+</span>80<sup>marcas</sup></div><div class="stat-l">Marcas que confían en TIVO</div></div>
+  <div class="stat"><div class="stat-n" id="s2"><span class="plus-prefix">+</span>80</div><div class="stat-l">Marcas que confían en TIVO</div></div>
   <div class="stat"><div class="stat-n" id="s3">100<sup>%</sup></div><div class="stat-l">Satisfacción de clientes</div></div>
   <div class="stat"><div class="stat-n" id="s4"><span class="plus-prefix">+</span>6</div><div class="stat-l">Años de experiencia</div></div>
 </div>
@@ -854,7 +895,7 @@ const sObs=new IntersectionObserver(entries=>{
   if(entries[0].isIntersecting&&!animated){
     animated=true;
     ids.forEach((id,i)=>{const el=document.getElementById(id);let v=0;const run=()=>{v+=targets[i]/55;const pfx = (i===2) ? '' : '<span class="plus-prefix">+</span>';
-      const sfx_map = ['','<sup>marcas</sup>','<sup>%</sup>',''];
+      const sfx_map = ['','','<sup>%</sup>',''];
       if(v>=targets[i]){el.innerHTML=pfx+targets[i]+sfx_map[i];return;}el.innerHTML=pfx+Math.round(v)+sfx_map[i];requestAnimationFrame(run);};run();});
   }
 },{threshold:.3});
