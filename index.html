@@ -397,6 +397,55 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 .fbs:hover{background:var(--orange);border-color:var(--orange);color:var(--white);transform:scale(1.12);}
 
 /* ═══════════════════════════════════
+   COBERTURA (países que han confiado en nosotros)
+═══════════════════════════════════ */
+.cov-grid {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  max-width: 1120px;
+  margin: 0 auto;
+  text-align: left;
+}
+.cov-card {
+  border-radius: var(--r-xl);
+  padding: 24px 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow-card);
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+}
+.cov-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card), 0 18px 40px rgba(14,8,4,.14); }
+.cov-card-head { display: flex; align-items: center; gap: 10px; }
+.cov-flag { font-size: 22px; line-height: 1; }
+.cov-card-title { font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 750, "opsz" 92; font-size: 19px; letter-spacing: -.2px; color: var(--white); }
+.cov-divider { width: 100%; height: 3px; opacity: .35; background: repeating-linear-gradient(90deg, rgba(255,255,255,.9) 0 3px, transparent 3px 11px); border-radius: 2px; }
+.cov-countries { display: flex; flex-direction: column; gap: 8px; }
+.cov-country { display: flex; align-items: center; gap: 9px; background: rgba(255,255,255,.16); border-radius: var(--r-pill); padding: 8px 14px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: var(--white); }
+.cov-country .flag { font-size: 15px; line-height: 1; }
+.cov1 { background: var(--orange); }
+.cov2 { background: var(--blue); }
+.cov3 { background: var(--green); }
+.cov4 { background: var(--purple); }
+.cov-strip {
+  position: relative; z-index: 1;
+  margin-top: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--ink);
+  color: var(--beige);
+  padding: 12px 28px;
+  border-radius: var(--r-pill);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 650, "opsz" 92;
+  font-size: 14px;
+}
+.cov-strip .dot-lime { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); flex-shrink: 0; animation: pulse-lime 2s infinite; }
+
+/* ═══════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════ */
 @media (max-width: 1023px) {
@@ -439,6 +488,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .quote-section { padding: 72px 32px; }
   .clients { padding: 56px 32px; }
   .cl-logos { gap: 34px; }
+  .cov-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 767px) {
@@ -494,6 +544,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .cl-mark { width: 34px; height: 34px; font-size: 13px; }
   .cl-name { font-size: 16px; }
   .bigmq { display: none; }
+  .cov-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
@@ -669,10 +720,10 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track ticker-left">
-    <span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Branding</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Marketing</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Branding</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Marketing</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Branding</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Marketing</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span>
+    <span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Branding</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Marketing</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span>
   </div>
   <div class="ticker-track ticker-right">
-    <span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Branding</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Marketing</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Branding</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Marketing</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span>
+    <span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span>
   </div>
 </div>
 
@@ -688,18 +739,46 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   <div class="stat"><div class="stat-n" id="s4"><span class="plus-prefix">+</span>6</div><div class="stat-l">Años de experiencia</div></div>
 </div>
 
-<!-- CLIENTS -->
+<!-- COBERTURA -->
 <div class="clients">
-  <p class="cl-label">Marcas que han confiado en nosotros</p>
+  <p class="cl-label">Países que han confiado en nosotros</p>
   <p class="cl-sub">Historias convertidas en casos reales.</p>
-  <div class="cl-logos">
-    <div class="cl-item"><span class="cl-mark cl-m1">B</span><span class="cl-name">BEGO</span></div>
-    <div class="cl-item"><span class="cl-mark cl-m2">A</span><span class="cl-name">ARCO CAFÉ</span></div>
-    <div class="cl-item"><span class="cl-mark cl-m3">S</span><span class="cl-name">SEMILLA</span></div>
-    <div class="cl-item"><span class="cl-mark cl-m4">M</span><span class="cl-name">MAREA</span></div>
-    <div class="cl-item"><span class="cl-mark cl-m5">N</span><span class="cl-name">NÚCLEO</span></div>
-    <div class="cl-item"><span class="cl-mark cl-m6">K</span><span class="cl-name">KINFOLK</span></div>
+  <div class="cov-grid">
+    <div class="cov-card cov1">
+      <div class="cov-card-head"><span class="cov-flag">🌎</span><h3 class="cov-card-title">Latinoamérica</h3></div>
+      <div class="cov-divider"></div>
+      <div class="cov-countries">
+        <div class="cov-country"><span class="flag">🇨🇴</span>Colombia</div>
+        <div class="cov-country"><span class="flag">🇵🇪</span>Perú</div>
+        <div class="cov-country"><span class="flag">🇦🇷</span>Argentina</div>
+      </div>
+    </div>
+    <div class="cov-card cov2">
+      <div class="cov-card-head"><span class="cov-flag">🌎</span><h3 class="cov-card-title">Norteamérica</h3></div>
+      <div class="cov-divider"></div>
+      <div class="cov-countries">
+        <div class="cov-country"><span class="flag">🇲🇽</span>México</div>
+        <div class="cov-country"><span class="flag">🇺🇸</span>Estados Unidos</div>
+      </div>
+    </div>
+    <div class="cov-card cov3">
+      <div class="cov-card-head"><span class="cov-flag">🌎</span><h3 class="cov-card-title">Centroamérica</h3></div>
+      <div class="cov-divider"></div>
+      <div class="cov-countries">
+        <div class="cov-country"><span class="flag">🇵🇦</span>Panamá</div>
+      </div>
+    </div>
+    <div class="cov-card cov4">
+      <div class="cov-card-head"><span class="cov-flag">🌍</span><h3 class="cov-card-title">Europa</h3></div>
+      <div class="cov-divider"></div>
+      <div class="cov-countries">
+        <div class="cov-country"><span class="flag">🇪🇸</span>España</div>
+        <div class="cov-country"><span class="flag">🇫🇷</span>Francia</div>
+        <div class="cov-country"><span class="flag">🇬🇧</span>Inglaterra</div>
+      </div>
+    </div>
   </div>
+  <div class="cov-strip"><span class="dot-lime"></span>Expandiéndonos a nuevos horizontes</div>
 </div>
 
 <!-- CONÓCENOS -->
@@ -974,7 +1053,7 @@ document.addEventListener('keydown', function(e) {
 
 // REVEAL
 const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:.07,rootMargin:'0px 0px -24px 0px'});
-document.querySelectorAll('.bene-card,.sc,.proc-card,.tc,.stat,.pj-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .65s ease, transform .65s ease';revealObs.observe(el);});
+document.querySelectorAll('.bene-card,.sc,.proc-card,.tc,.stat,.pj-card,.cov-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .65s ease, transform .65s ease';revealObs.observe(el);});
 </script>
 </body>
 </html>
