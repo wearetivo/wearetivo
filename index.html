@@ -88,7 +88,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .nav-ham.open span:nth-child(2) { opacity: 0; }
 .nav-ham.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 .nav-mobile-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-.side-pill { display: flex; align-items: center; gap: 9px; background: var(--white); border-radius: var(--r-pill); box-shadow: var(--shadow-card), 0 2px 16px rgba(0,0,0,0.08); padding: 8px 18px 8px 14px; font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 600, "opsz" 92; font-size: 13px; color: var(--ink); white-space: nowrap; text-decoration: none; flex-shrink: 0; pointer-events: all; transition: opacity .35s ease, transform .35s ease; }
+.side-pill { display: flex; align-items: center; gap: 9px; background: var(--white); border-radius: var(--r-pill); box-shadow: var(--shadow-card), 0 2px 16px rgba(0,0,0,0.08); padding: 8px 18px 8px 14px; font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 600, "opsz" 92; font-size: 13px; color: var(--ink); white-space: nowrap; text-decoration: none; flex-shrink: 0; transition: opacity .35s ease, transform .35s ease; }
 .side-pill.hide { opacity: 0; pointer-events: none; transform: translateY(-6px); }
 .side-pill-left { cursor: default; margin-right: 20px; }
 .side-pill-right { cursor: pointer; margin-left: 20px; transition: opacity .35s ease, transform .35s ease, background .2s, color .2s; }
@@ -273,10 +273,22 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .bene-h3 { font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 750, "opsz" 92; font-size: 26px; letter-spacing: -.2px; line-height: 1.3; color: var(--ink); flex: 1; }
 .bene-divider { width: 100%; height: 4px; opacity: .3; background: repeating-linear-gradient(90deg, var(--ink) 0 3px, transparent 3px 11px); border-radius: 2px; }
 .bene-p { font-family: 'Inter', sans-serif; font-size: 15px; color: var(--muted); line-height: 1.6; letter-spacing: -.1px; }
-#servicios { background: var(--white); }
+#servicios { background: var(--bg); }
 .srv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.sc { background: var(--surface); border-radius: var(--r-xl); padding: 30px 26px 28px; position: relative; overflow: hidden; border: 1.5px solid transparent; transition: transform .35s cubic-bezier(.34,1.56,.64,1), border-color .35s, box-shadow .35s; }
+.sc { background: var(--surface); border-radius: var(--r-xl); padding: 30px 26px 28px; position: relative; overflow: hidden; border: 1.5px solid transparent; border-top: 4px solid transparent; transition: transform .35s cubic-bezier(.34,1.56,.64,1), border-color .35s, box-shadow .35s; }
 .sc:hover { transform: translateY(-8px); border-color: var(--orange); box-shadow: 0 18px 52px rgba(14,8,4,.09); }
+.sc1 { border-top-color: var(--orange); }
+.sc1 .sc-title { color: var(--orange); }
+.sc2 { border-top-color: var(--purple); }
+.sc2 .sc-title { color: var(--purple); }
+.sc3 { border-top-color: var(--blue); }
+.sc3 .sc-title { color: #0d7aaa; }
+.sc4 { border-top-color: var(--pink); }
+.sc4 .sc-title { color: var(--pink); }
+.sc5 { border-top-color: var(--lime); }
+.sc5 .sc-title { color: #4d5a00; }
+.sc6 { border-top-color: var(--green); }
+.sc6 .sc-title { color: #156630; }
 .sc-n { position: absolute; top: 12px; right: 16px; font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 800, "opsz" 92; font-size: 60px; color: rgba(14,8,4,.04); line-height: 1; pointer-events: none; }
 .sc-chip { display: inline-flex; align-items: center; gap: 5px; padding: 5px 13px; border-radius: var(--r-pill); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 16px; }
 .chip-o{background:rgba(240,78,26,.1);color:var(--orange);}
@@ -890,26 +902,12 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
     <p class="section-sub">Todo lo que necesitas para crecer, conectar y destacar. Sin compromisos innecesarios.</p>
   </div>
   <div class="srv-grid">
-    <div class="sc"><div class="sc-n">01</div><div class="sc-chip chip-o">🎨 Identidad</div><h3 class="sc-title">Identidad Visual</h3><p class="sc-desc">Logos, paletas, tipografías y sistemas visuales completos que hacen que tu marca se reconozca al instante y nunca se olvide.</p><div class="sc-tags"><span class="sc-tag">Logo</span><span class="sc-tag">Brand System</span><span class="sc-tag">Guidelines</span></div></div>
-    <div class="sc"><div class="sc-n">02</div><div class="sc-chip chip-p">📱 Social</div><h3 class="sc-title">Redes Sociales</h3><p class="sc-desc">Contenido visual que para el scroll. Estrategia, diseño y plantillas para que tu marca brille en Instagram, TikTok y más.</p><div class="sc-tags"><span class="sc-tag">Contenido</span><span class="sc-tag">Estrategia</span><span class="sc-tag">Templates</span></div></div>
-    <div class="sc"><div class="sc-n">03</div><div class="sc-chip chip-b">🌐 Digital</div><h3 class="sc-title">Diseño Web</h3><p class="sc-desc">Sitios que no son solo bonitos: son experiencias que convierten. Diseño + desarrollo para presencias digitales que impactan.</p><div class="sc-tags"><span class="sc-tag">UI/UX</span><span class="sc-tag">Desarrollo</span><span class="sc-tag">Landing</span></div></div>
-    <div class="sc"><div class="sc-n">04</div><div class="sc-chip chip-pk">📖 Editorial</div><h3 class="sc-title">Editorial</h3><p class="sc-desc">Revistas, catálogos, lookbooks y publicaciones que hacen que la gente quiera quedarse hasta el final.</p><div class="sc-tags"><span class="sc-tag">Print</span><span class="sc-tag">Digital</span><span class="sc-tag">Catálogo</span></div></div>
-    <div class="sc"><div class="sc-n">05</div><div class="sc-chip chip-l">🎬 Motion</div><h3 class="sc-title">Video & Animación</h3><p class="sc-desc">Motion graphics, animaciones y contenido audiovisual que le da vida y movimiento a tu identidad de marca.</p><div class="sc-tags"><span class="sc-tag">Motion</span><span class="sc-tag">Reels</span><span class="sc-tag">Animación</span></div></div>
-    <div class="sc"><div class="sc-n">06</div><div class="sc-chip chip-g">✏️ Ilustración</div><h3 class="sc-title">Ilustración & 3D</h3><p class="sc-desc">Ilustraciones únicas y modelado 3D que le dan un carácter visual irrepetible a tu marca y productos.</p><div class="sc-tags"><span class="sc-tag">Ilustración</span><span class="sc-tag">3D</span><span class="sc-tag">Mockup</span></div></div>
-    <div class="sc-dark">
-      <div class="sd-txt">
-        <div class="sd-chip">✦ Alianza estratégica</div>
-        <h3 class="sd-h">¿Tu marca necesita<br>un <span>equipo completo?</span></h3>
-        <p class="sd-p">Trabajamos como tu departamento creativo in-house. Estrategia, diseño, contenido y desarrollo bajo una sola visión.</p>
-        <a href="#contacto" class="sd-cta">Hablemos</a>
-      </div>
-      <div class="sd-stats">
-        <div class="mstat"><div class="mstat-n">+80<sup>✦</sup></div><div class="mstat-l">Proyectos</div></div>
-        <div class="mstat accent"><div class="mstat-n">3M<sup>+</sup></div><div class="mstat-l">Alcance</div></div>
-        <div class="mstat"><div class="mstat-n">100<sup>%</sup></div><div class="mstat-l">Satisfacción</div></div>
-        <div class="mstat"><div class="mstat-n">6<sup>+</sup></div><div class="mstat-l">Años</div></div>
-      </div>
-    </div>
+    <div class="sc sc1"><div class="sc-n">01</div><div class="sc-chip chip-o">🎨 Identidad</div><h3 class="sc-title">Identidad Visual</h3><p class="sc-desc">Logos, paletas, tipografías y sistemas visuales completos que hacen que tu marca se reconozca al instante y nunca se olvide.</p><div class="sc-tags"><span class="sc-tag">Logo</span><span class="sc-tag">Brand System</span><span class="sc-tag">Guidelines</span></div></div>
+    <div class="sc sc2"><div class="sc-n">02</div><div class="sc-chip chip-p">📱 Social</div><h3 class="sc-title">Redes Sociales</h3><p class="sc-desc">Contenido visual que para el scroll. Estrategia, diseño y plantillas para que tu marca brille en Instagram, TikTok y más.</p><div class="sc-tags"><span class="sc-tag">Contenido</span><span class="sc-tag">Estrategia</span><span class="sc-tag">Templates</span></div></div>
+    <div class="sc sc3"><div class="sc-n">03</div><div class="sc-chip chip-b">🌐 Digital</div><h3 class="sc-title">Diseño Web</h3><p class="sc-desc">Sitios que no son solo bonitos: son experiencias que convierten. Diseño + desarrollo para presencias digitales que impactan.</p><div class="sc-tags"><span class="sc-tag">UI/UX</span><span class="sc-tag">Desarrollo</span><span class="sc-tag">Landing</span></div></div>
+    <div class="sc sc4"><div class="sc-n">04</div><div class="sc-chip chip-pk">📖 Editorial</div><h3 class="sc-title">Editorial</h3><p class="sc-desc">Revistas, catálogos, lookbooks y publicaciones que hacen que la gente quiera quedarse hasta el final.</p><div class="sc-tags"><span class="sc-tag">Print</span><span class="sc-tag">Digital</span><span class="sc-tag">Catálogo</span></div></div>
+    <div class="sc sc5"><div class="sc-n">05</div><div class="sc-chip chip-l">🎬 Motion</div><h3 class="sc-title">Video & Animación</h3><p class="sc-desc">Motion graphics, animaciones y contenido audiovisual que le da vida y movimiento a tu identidad de marca.</p><div class="sc-tags"><span class="sc-tag">Motion</span><span class="sc-tag">Reels</span><span class="sc-tag">Animación</span></div></div>
+    <div class="sc sc6"><div class="sc-n">06</div><div class="sc-chip chip-g">✏️ Ilustración</div><h3 class="sc-title">Ilustración & 3D</h3><p class="sc-desc">Ilustraciones únicas y modelado 3D que le dan un carácter visual irrepetible a tu marca y productos.</p><div class="sc-tags"><span class="sc-tag">Ilustración</span><span class="sc-tag">3D</span><span class="sc-tag">Mockup</span></div></div>
   </div>
 </div>
 
