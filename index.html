@@ -367,6 +367,56 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 .contact-stamp-area { display: flex; justify-content: flex-end; align-items: flex-start; height: 120px; transform: rotate(3deg); }
 .stamp-box { width: 100px; height: 112px; background: var(--orange); border-radius: var(--r-md); overflow: hidden; box-shadow: 0 2px 12px rgba(240,78,26,.3); display: flex; align-items: center; justify-content: center; }
 .stamp-inner { font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 800, "opsz" 92; font-size: 28px; color: var(--beige); text-align: center; line-height: 1.1; }
+.contact-stamp-btn {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--orange);
+  box-shadow: 0 4px 16px rgba(240,78,26,.28);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color .3s, box-shadow .3s;
+}
+.contact-stamp-btn:hover { border-color: var(--purple); box-shadow: 0 4px 16px rgba(155,111,212,.32); }
+.contact-stamp-btn img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  position: absolute; inset: 0;
+  transition: opacity .3s ease, transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+.contact-stamp-btn .stamp-logo-default { opacity: 1; transform: rotate(0deg); }
+.contact-stamp-btn .stamp-logo-hover   { opacity: 0; transform: rotate(-90deg); }
+.contact-stamp-btn:hover .stamp-logo-default { opacity: 0; transform: rotate(90deg); }
+.contact-stamp-btn:hover .stamp-logo-hover   { opacity: 1; transform: rotate(0deg); }
+.contact-stamp-btn {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--orange);
+  box-shadow: 0 4px 16px rgba(240,78,26,.28);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color .3s, box-shadow .3s;
+}
+.contact-stamp-btn:hover { border-color: var(--purple); box-shadow: 0 4px 16px rgba(155,111,212,.32); }
+.contact-stamp-btn img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  position: absolute; inset: 0;
+  transition: opacity .3s ease, transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+.contact-stamp-btn .stamp-logo-default { opacity: 1; transform: rotate(0deg); }
+.contact-stamp-btn .stamp-logo-hover   { opacity: 0; transform: rotate(-90deg); }
+.contact-stamp-btn:hover .stamp-logo-default { opacity: 0; transform: rotate(90deg); }
+.contact-stamp-btn:hover .stamp-logo-hover   { opacity: 1; transform: rotate(0deg); }
 .contact-fields { display: flex; flex-direction: column; gap: 10px; }
 .contact-input,.contact-select { width: 100%; height: 44px; background: rgba(14,8,4,.03); border: 2px solid rgba(14,8,4,.1); border-radius: var(--r-pill); box-shadow: var(--shadow-card); padding: 0 20px; font-family: 'Inter', sans-serif; font-size: 15px; color: var(--ink); outline: none; transition: border-color .15s; appearance: none; }
 .contact-input:focus,.contact-select:focus{border-color:var(--orange);}
@@ -911,11 +961,32 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   </div>
 </div>
 
-<!-- QUOTE -->
-<div class="quote-section">
-  <div class="q-inner">
-    <p class="q-h">Tener un buen producto<br><span class="q-it">ya no es</span> <span class="q-em">suficiente.</span></p>
-    <p class="q-sub">Tu marca es lo que hace que la gente te elija, te recuerde y te recomiende. Eso es exactamente lo que construimos contigo.</p>
+<!-- CONTACTO -->
+<div class="section-wrap" id="contacto">
+  <div class="section-title-wrap">
+    <div class="section-eyebrow"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>Conversemos</div>
+    <h2 class="section-h2">¿Tienes un<br>proyecto en mente?</h2>
+    <p class="section-sub">Cuéntanos todo. Sin formularios eternos, sin compromisos — solo una conversación honesta.</p>
+  </div>
+  <div style="display:flex;justify-content:center;width:100%;">
+    <form class="contact-form-wrap" onsubmit="handleSubmit(event)">
+      <div class="contact-left-panel"><div class="contact-textarea-wrap"><textarea class="contact-ta" name="Message" placeholder="Cuéntanos sobre tu proyecto, marca o idea…" required></textarea></div></div>
+      <div class="contact-divider"></div>
+      <div class="contact-right-panel">
+        <div class="contact-stamp-area">
+          <a href="#" class="contact-stamp-btn" aria-label="TIVO" onclick="return false;">
+            <img class="stamp-logo-default" src="https://raw.githubusercontent.com/wearetivo/wearetivo/7ed42857f784fbc847c815ea9f0d1dad8f41829a/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO.png" alt="TIVO">
+            <img class="stamp-logo-hover" src="https://raw.githubusercontent.com/wearetivo/wearetivo/7ed42857f784fbc847c815ea9f0d1dad8f41829a/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20GLOBAL.png" alt="TIVO Global">
+          </a>
+        </div>
+        <div class="contact-fields">
+          <input class="contact-input" type="text" name="Name" placeholder="Nombre" required>
+          <input class="contact-input" type="email" name="Email" placeholder="Correo electrónico" required>
+          <select class="contact-select" name="Service" required><option value="" disabled selected>¿Qué necesitas?</option><option>Identidad Visual</option><option>Redes Sociales</option><option>Diseño Web</option><option>Editorial</option><option>Alianza estratégica</option><option>Otro</option></select>
+          <button type="submit" class="contact-send-btn">Enviar mensaje</button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -949,30 +1020,6 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
     <div class="tc tc1"><div class="tc-stars">★★★★★</div><p class="tc-q">"El resultado superó todo lo que imaginamos. TIVO entendió nuestra visión desde el primer día y la llevaron a un nivel que no esperábamos. Ahora nuestra marca habla sola."</p><div class="tc-auth"><div class="tcav av1">ML</div><div><div class="tc-nm">María L. Torres</div><div class="tc-rl">Fundadora — Semilla Studio</div></div></div></div>
     <div class="tc tc2"><div class="tc-stars">★★★★★</div><p class="tc-q">"Entienden el negocio antes de diseñar. No solo es bonito — funciona, vende y conecta con nuestra gente. La mejor inversión que hemos hecho en la marca."</p><div class="tc-auth"><div class="tcav av2">CR</div><div><div class="tc-nm">Camilo R. Mora</div><div class="tc-rl">CEO — Arco Café</div></div></div></div>
     <div class="tc tc3"><div class="tc-stars">★★★★★</div><p class="tc-q">"TIVO le dio a nuestra marca la identidad que siempre soñamos. Una experiencia visual completa que va mucho más allá del logo. Profundamente recomendados."</p><div class="tc-auth"><div class="tcav av3">AS</div><div><div class="tc-nm">Ana S. Ríos</div><div class="tc-rl">Directora — BEGO Foods</div></div></div></div>
-  </div>
-</div>
-
-<!-- CONTACTO -->
-<div class="section-wrap" id="contacto">
-  <div class="section-title-wrap">
-    <div class="section-eyebrow"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>Conversemos</div>
-    <h2 class="section-h2">¿Tienes un<br>proyecto en mente?</h2>
-    <p class="section-sub">Cuéntanos todo. Sin formularios eternos, sin compromisos — solo una conversación honesta.</p>
-  </div>
-  <div style="display:flex;justify-content:center;width:100%;">
-    <form class="contact-form-wrap" onsubmit="handleSubmit(event)">
-      <div class="contact-left-panel"><div class="contact-textarea-wrap"><textarea class="contact-ta" name="Message" placeholder="Cuéntanos sobre tu proyecto, marca o idea…" required></textarea></div></div>
-      <div class="contact-divider"></div>
-      <div class="contact-right-panel">
-        <div class="contact-stamp-area"><div class="stamp-box"><div class="stamp-inner">TI<br>VO</div></div></div>
-        <div class="contact-fields">
-          <input class="contact-input" type="text" name="Name" placeholder="Nombre" required>
-          <input class="contact-input" type="email" name="Email" placeholder="Correo electrónico" required>
-          <select class="contact-select" name="Service" required><option value="" disabled selected>¿Qué necesitas?</option><option>Identidad Visual</option><option>Redes Sociales</option><option>Diseño Web</option><option>Editorial</option><option>Alianza estratégica</option><option>Otro</option></select>
-          <button type="submit" class="contact-send-btn">Enviar mensaje</button>
-        </div>
-      </div>
-    </form>
   </div>
 </div>
 
