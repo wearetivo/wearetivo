@@ -416,16 +416,16 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  gap: 20px 18px;
+  gap: 26px 18px;
   max-width: 1080px;
   margin: 0 auto;
   justify-content: center;
 }
 .postal-card {
-  width: 176px;
-  aspect-ratio: 3/4;
+  width: 158px;
+  min-height: 178px;
   border-radius: var(--r-lg);
-  padding: 16px 16px 15px;
+  padding: 14px 15px 13px;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -436,6 +436,10 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .35s;
   cursor: default;
 }
+.postal-card:nth-child(4n+1) { transform: rotate(-2.5deg) translateY(6px); }
+.postal-card:nth-child(4n+2) { transform: rotate(1.5deg) translateY(-8px); }
+.postal-card:nth-child(4n+3) { transform: rotate(-1deg) translateY(4px); }
+.postal-card:nth-child(4n)   { transform: rotate(2deg) translateY(-4px); }
 .postal-card:hover {
   transform: rotate(0deg) translateY(-8px) scale(1.045) !important;
   box-shadow: var(--shadow-card), 0 24px 46px rgba(14,8,4,.2);
@@ -445,18 +449,18 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 .postal-norte  { background: var(--blue); }
 .postal-centro { background: var(--green); }
 .postal-europa { background: var(--purple); }
-.postal-shape { position: absolute; right: -14%; bottom: -6%; width: 78%; opacity: .24; pointer-events: none; z-index: 1; transition: opacity .35s ease, transform .4s ease; }
+.postal-shape { position: absolute; right: -14%; bottom: 4%; width: 78%; opacity: .24; pointer-events: none; z-index: 1; transition: opacity .35s ease, transform .4s ease; }
 .postal-shape svg { width: 100%; height: auto; display: block; }
 .postal-shape svg path { fill: #fff; }
 .postal-card:hover .postal-shape { opacity: .34; transform: scale(1.06); }
 .postal-top { position: relative; z-index: 2; display: flex; align-items: flex-start; justify-content: space-between; }
 .postal-flag { font-size: 24px; line-height: 1; filter: drop-shadow(0 2px 3px rgba(0,0,0,.15)); }
 .postal-stamp {
-  width: 32px; height: 32px;
+  width: 40px; height: 40px;
   background: rgba(255,255,255,.18);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  padding: 6px;
+  padding: 4px;
   transform: rotate(6deg);
   flex-shrink: 0;
 }
@@ -523,7 +527,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .quote-section { padding: 72px 32px; }
   .clients { padding: 56px 32px; }
   .cl-logos { gap: 34px; }
-  .postal-card { width: 156px; }
+  .postal-card { width: 148px; min-height: 168px; }
 }
 
 @media (max-width: 767px) {
@@ -577,10 +581,11 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .cl-mark { width: 34px; height: 34px; font-size: 13px; }
   .cl-name { font-size: 16px; }
   .bigmq { display: none; }
-  .postal-grid { gap: 14px; }
-  .postal-card { width: 42%; min-width: 130px; padding: 13px 14px 12px; }
+  .postal-grid { gap: 18px 14px; }
+  .postal-card { width: 42%; min-width: 128px; min-height: 156px; padding: 12px 13px 11px; }
+  .postal-card:nth-child(n) { transform: none; }
   .postal-name { font-size: 16px; }
-  .postal-stamp { width: 28px; height: 28px; }
+  .postal-stamp { width: 34px; height: 34px; }
 }
 
 @media (max-width: 480px) {
