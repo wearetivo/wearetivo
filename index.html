@@ -11,7 +11,7 @@
 <style>
 :root {
   --orange:   #F04E1A;
-  --purple:   #9B6FD4;
+  --purple:   #9B6FD4;l
   --beige:    #EAD9B8;
   --pink:     #E8477A;
   --lime:     #C4D400;
@@ -982,19 +982,272 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   </div>
 </div>
 
-<!-- TESTIMONIOS -->
-<div class="section-wrap" id="resultados">
-  <div class="section-title-wrap">
-    <div class="section-eyebrow"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>Resultados</div>
-    <h2 class="section-h2">Nuestros clientes<br>hablan por <span class="em">nosotros.</span></h2>
-    <p class="section-sub">Las marcas que construimos generan impacto real — en ventas, alcance y reconocimiento.</p>
-  </div>
-  <div class="testi-grid">
-    <div class="tc tc1"><div class="tc-stars">★★★★★</div><p class="tc-q">"El resultado superó todo lo que imaginamos. TIVO entendió nuestra visión desde el primer día y la llevaron a un nivel que no esperábamos. Ahora nuestra marca habla sola."</p><div class="tc-auth"><div class="tcav av1">ML</div><div><div class="tc-nm">María L. Torres</div><div class="tc-rl">Fundadora — Semilla Studio</div></div></div></div>
-    <div class="tc tc2"><div class="tc-stars">★★★★★</div><p class="tc-q">"Entienden el negocio antes de diseñar. No solo es bonito — funciona, vende y conecta con nuestra gente. La mejor inversión que hemos hecho en la marca."</p><div class="tc-auth"><div class="tcav av2">CR</div><div><div class="tc-nm">Camilo R. Mora</div><div class="tc-rl">CEO — Arco Café</div></div></div></div>
-    <div class="tc tc3"><div class="tc-stars">★★★★★</div><p class="tc-q">"TIVO le dio a nuestra marca la identidad que siempre soñamos. Una experiencia visual completa que va mucho más allá del logo. Profundamente recomendados."</p><div class="tc-auth"><div class="tcav av3">AS</div><div><div class="tc-nm">Ana S. Ríos</div><div class="tc-rl">Directora — BEGO Foods</div></div></div></div>
-  </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIVO — Preview: Testimonios en video</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange:   #F04E1A;
+  --purple:   #9B6FD4;
+  --beige:    #EAD9B8;
+  --lime:     #C4D400;
+  --bg:       #F8F4EC;
+  --white:    #FFFFFF;
+  --ink:      #0E0804;
+  --muted:    rgba(14,8,4,0.45);
+  --border-soft: rgba(14,8,4,0.07);
+  --shadow-card: inset 0 -3px 4px 0 rgba(14,8,4,0.08);
+  --r-xl: 32px;
+  --r-lg: 24px;
+  --r-pill: 100px;
+}
+* { box-sizing: border-box; margin:0; padding:0; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  padding: 60px 40px;
+}
+.section-title-wrap { display:flex; flex-direction:column; align-items:center; gap:16px; text-align:center; margin-bottom:56px; }
+.section-eyebrow { display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--orange); }
+.section-h2 { font-family:'Bricolage Grotesque', sans-serif; font-variation-settings:"wght" 800,"opsz" 92; font-size:clamp(38px,4.5vw,54px); letter-spacing:-.3px; line-height:1.05; }
+.section-h2 .em { color: var(--orange); }
+.section-sub { font-size:17px; color:var(--muted); max-width:480px; margin:0 auto; }
+
+/* ═══════════════════════════════
+   TESTIMONIOS
+═══════════════════════════════ */
+.testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; max-width:1200px; margin:0 auto; }
+
+/* Tarjeta blanca (texto) — pendiente, sin cambios */
+.tc { border-radius: var(--r-xl); padding: 30px 28px; transition: transform .3s ease; }
+.tc:hover { transform: translateY(-6px); }
+.tc2 { background: var(--white); border: 1.5px solid var(--border-soft); }
+.tc-stars { font-size: 12px; letter-spacing: 2px; margin-bottom: 16px; color: var(--orange); }
+.tc-q { font-size: 15px; font-style: italic; line-height: 1.75; margin-bottom: 22px; color: var(--ink); }
+.tc-auth { display: flex; align-items: center; gap: 11px; }
+.tcav { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; flex-shrink: 0; background: var(--beige); color: var(--ink); }
+.tc-nm { font-size: 14px; font-weight: 600; }
+.tc-rl { font-size: 12px; opacity: .45; margin-top: 2px; }
+
+/* Tarjetas de video */
+.tcv {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card), 0 14px 34px rgba(14,8,4,.10);
+  transition: transform .45s cubic-bezier(.34,1.56,.64,1), box-shadow .35s;
+}
+.tcv:nth-child(1) { transform: rotate(-1.4deg) translateY(2px); }
+.tcv:nth-child(3) { transform: rotate(1.2deg) translateY(-4px); }
+.tcv:hover {
+  transform: rotate(0deg) translateY(-10px) scale(1.02) !important;
+  box-shadow: var(--shadow-card), 0 26px 52px rgba(14,8,4,.20);
+  z-index: 3;
+}
+.tcv-purple { background: var(--purple); }
+.tcv-orange { background: var(--orange); }
+
+.tcv-media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: rgba(14,8,4,.25);
+  overflow: hidden;
+}
+.tcv-el {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  background: rgba(0,0,0,.2);
+}
+.tcv-media::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(14,8,4,0) 45%, rgba(14,8,4,.55) 100%);
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+.tcv-media.is-playing::before { opacity: 0; }
+
+.tcv-play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: var(--white);
+  border: none;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(14,8,4,.35);
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), background .2s, opacity .3s;
+  z-index: 2;
+}
+.tcv-play:hover { transform: translate(-50%,-50%) scale(1.08); background: var(--lime); }
+.tcv-play svg { width: 20px; height: 20px; }
+.tcv-play .ic-play { fill: var(--ink); margin-left: 3px; }
+.tcv-play .ic-pause { fill: var(--ink); display: none; }
+.tcv-media.is-playing .tcv-play { opacity: 0; pointer-events: none; }
+.tcv-media:hover .tcv-play { opacity: 1; pointer-events: auto; }
+
+.tcv-stamp {
+  position: absolute;
+  top: 14px; right: 14px;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.92);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  transform: rotate(6deg);
+  box-shadow: 0 4px 12px rgba(14,8,4,.25);
+  z-index: 2;
+}
+
+.tcv-body {
+  padding: 22px 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+.tcv-body .tc-stars { color: var(--lime); }
+.tcv-body .tc-q { color: rgba(255,255,255,.9); margin-bottom: 0; flex: 1; }
+.tcv-body .tc-auth .tcav { background: var(--beige); color: var(--ink); }
+.tcv-body .tc-nm, .tcv-body .tc-rl { color: var(--white); }
+.tcv-body .tc-rl { opacity: .65; }
+
+.tcv-geo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 650, "opsz" 92;
+  font-size: 12px;
+  letter-spacing: .02em;
+  color: rgba(255,255,255,.75);
+  padding-top: 10px;
+  border-top: 1px dashed rgba(255,255,255,.25);
+}
+.tcv-geo i { font-style: normal; opacity: .5; margin: 0 2px; }
+
+@media (max-width: 900px) {
+  .testi-grid { grid-template-columns: 1fr; }
+  .tcv:nth-child(1), .tcv:nth-child(3) { transform: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="section-title-wrap">
+  <div class="section-eyebrow">● Resultados</div>
+  <h2 class="section-h2">Nuestros clientes<br>hablan por <span class="em">nosotros.</span></h2>
+  <p class="section-sub">Las marcas que construimos generan impacto real — en ventas, alcance y reconocimiento.</p>
 </div>
+
+<div class="testi-grid">
+
+  <!-- TESTIMONIO EN VIDEO — IZZY / Estados Unidos -->
+  <div class="tcv tcv-purple">
+    <div class="tcv-media" id="mediaIzzy">
+      <video class="tcv-el" id="videoIzzy" playsinline preload="metadata"
+        src="https://raw.githubusercontent.com/wearetivo/wearetivo/19dfd764c8ef4dec6dda7ea17fd4d61afb7527e7/TESTIMONIO%20IZZY.mp4"></video>
+      <button class="tcv-play" type="button" aria-label="Reproducir testimonio de Juan Manuel Vivas" onclick="toggleTestiVideo('Izzy')">
+        <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="ic-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      </button>
+      <div class="tcv-stamp">🇺🇸</div>
+    </div>
+    <div class="tcv-body">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-q">"[PEGA AQUÍ LA FRASE CORTA DEL VIDEO, EN INGLÉS]"</p>
+      <div class="tc-auth">
+        <div class="tcav">JM</div>
+        <div>
+          <div class="tc-nm">Juan Manuel Vivas</div>
+          <div class="tc-rl">Fundador — Easy Group</div>
+        </div>
+      </div>
+      <div class="tcv-geo"><span>🇺🇸</span>Estados Unidos<i>·</i>Norteamérica</div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIO EN TEXTO — pendiente, sin cambios -->
+  <div class="tc tc2">
+    <div class="tc-stars">★★★★★</div>
+    <p class="tc-q">"Entienden el negocio antes de diseñar. No solo es bonito — funciona, vende y conecta con nuestra gente. La mejor inversión que hemos hecho en la marca."</p>
+    <div class="tc-auth">
+      <div class="tcav">CR</div>
+      <div>
+        <div class="tc-nm">Camilo R. Mora</div>
+        <div class="tc-rl">CEO — Arco Café</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIO EN VIDEO — The Juseco Company / Francia -->
+  <div class="tcv tcv-orange">
+    <div class="tcv-media" id="mediaJuseco">
+      <video class="tcv-el" id="videoJuseco" playsinline preload="metadata"
+        src="https://raw.githubusercontent.com/wearetivo/wearetivo/19dfd764c8ef4dec6dda7ea17fd4d61afb7527e7/TESTIMONIO%20THE%20JUSECO%20COMPANY.mp4"></video>
+      <button class="tcv-play" type="button" aria-label="Reproducir testimonio de Juan Sebastián Cruz" onclick="toggleTestiVideo('Juseco')">
+        <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="ic-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      </button>
+      <div class="tcv-stamp">🇫🇷</div>
+    </div>
+    <div class="tcv-body">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-q">"[PEGA AQUÍ LA FRASE CORTA DEL VIDEO, EN FRANCÉS]"</p>
+      <div class="tc-auth">
+        <div class="tcav">JS</div>
+        <div>
+          <div class="tc-nm">Juan Sebastián Cruz</div>
+          <div class="tc-rl">CEO — The Juseco Company</div>
+        </div>
+      </div>
+      <div class="tcv-geo"><span>🇫🇷</span>Francia<i>·</i>Europa</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleTestiVideo(key){
+  const video = document.getElementById('video'+key);
+  const media = document.getElementById('media'+key);
+  const btn = media.querySelector('.tcv-play');
+
+  // Pausa cualquier otro video de testimonio que esté sonando
+  document.querySelectorAll('.tcv-el').forEach(v=>{
+    if(v !== video && !v.paused){
+      v.pause();
+    }
+  });
+
+  if(video.paused){
+    video.play();
+  } else {
+    video.pause();
+  }
+}
+
+document.querySelectorAll('.tcv-el').forEach(video=>{
+  const media = video.closest('.tcv-media');
+  video.addEventListener('play', ()=> media.classList.add('is-playing'));
+  video.addEventListener('pause', ()=> media.classList.remove('is-playing'));
+  video.addEventListener('ended', ()=> media.classList.remove('is-playing'));
+});
+</script>
+
+</body>
+</html>
 
 <!-- FAQ -->
 <div class="section-wrap" id="faq">
