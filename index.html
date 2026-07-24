@@ -329,9 +329,9 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .q-it { font-style: italic; font-weight: 400; font-size: .76em; color: rgba(234,217,184,.7); }
 .q-sub { font-size: 17px; color: rgba(234,217,184,.5); margin-top: 20px; line-height: 1.75; max-width: 520px; margin-left: auto; margin-right: auto; }
 #procesos { background: var(--bg); }
-.process-cards { display: flex; flex-direction: column; gap: 8px; }
-.process-row { display: flex; gap: 22px; flex-wrap: wrap; justify-content: center; }
-.proc-card { background: var(--surface); border-radius: var(--r-xl); box-shadow: var(--shadow-card); padding: 22px 22px 26px; flex: 1 0 280px; max-width: 336px; display: flex; flex-direction: column; gap: 10px; position: relative; border: 1.5px solid transparent; transition: transform .3s ease, border-color .25s; }
+.process-cards { display: flex; flex-direction: row; gap: 22px; }
+.process-row { display: contents; }
+.proc-card { background: var(--surface); border-radius: var(--r-xl); box-shadow: var(--shadow-card); padding: 22px 22px 26px; flex: 1 1 0; max-width: none; display: flex; flex-direction: column; gap: 10px; position: relative; border: 1.5px solid transparent; transition: transform .3s ease, border-color .25s; }
 .proc-card:hover { border-color: var(--orange); }
 .proc-step-tag { display: inline-flex; align-items: center; padding: 4px 13px; border-radius: var(--r-pill); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; width: fit-content; }
 .pt1{background:var(--orange);color:var(--beige);}.pt2{background:var(--purple);color:var(--white);}.pt3{background:var(--pink);color:var(--white);}.pt4{background:var(--lime);color:var(--ink);}
@@ -367,31 +367,6 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 .contact-stamp-area { display: flex; justify-content: flex-end; align-items: flex-start; height: 120px; transform: rotate(3deg); }
 .stamp-box { width: 100px; height: 112px; background: var(--orange); border-radius: var(--r-md); overflow: hidden; box-shadow: 0 2px 12px rgba(240,78,26,.3); display: flex; align-items: center; justify-content: center; }
 .stamp-inner { font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 800, "opsz" 92; font-size: 28px; color: var(--beige); text-align: center; line-height: 1.1; }
-.contact-stamp-btn {
-  width: 96px; height: 96px;
-  border-radius: 50%;
-  background: var(--white);
-  border: 3px solid var(--orange);
-  box-shadow: 0 4px 16px rgba(240,78,26,.28);
-  display: flex; align-items: center; justify-content: center;
-  position: relative;
-  overflow: hidden;
-  text-decoration: none;
-  cursor: pointer;
-  transition: border-color .3s, box-shadow .3s;
-}
-.contact-stamp-btn:hover { border-color: var(--purple); box-shadow: 0 4px 16px rgba(155,111,212,.32); }
-.contact-stamp-btn img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  position: absolute; inset: 0;
-  transition: opacity .3s ease, transform .4s cubic-bezier(.34,1.56,.64,1);
-}
-.contact-stamp-btn .stamp-logo-default { opacity: 1; transform: rotate(0deg); }
-.contact-stamp-btn .stamp-logo-hover   { opacity: 0; transform: rotate(-90deg); }
-.contact-stamp-btn:hover .stamp-logo-default { opacity: 0; transform: rotate(90deg); }
-.contact-stamp-btn:hover .stamp-logo-hover   { opacity: 1; transform: rotate(0deg); }
 .contact-stamp-btn {
   width: 96px; height: 96px;
   border-radius: 50%;
@@ -590,6 +565,8 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .clients { padding: 56px 32px; }
   .cl-logos { gap: 34px; }
   .postal-card { width: 148px; min-height: 168px; }
+  .process-cards { flex-wrap: wrap; }
+  .proc-card { flex: 1 0 45%; }
 }
 
 @media (max-width: 767px) {
@@ -624,7 +601,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .section-wrap { padding: 56px 20px; }
   .benefits-row { flex-direction: column; align-items: stretch; }
   .bene-card, .proc-card { max-width: 100%; flex: none; }
-  .process-row { flex-direction: column; }
+  .process-cards { flex-direction: column; }
   .footer-grid { grid-template-columns: 1fr; gap: 24px; padding: 30px 20px; }
   .footer-base { flex-direction: column; gap: 12px; text-align: center; padding: 14px 20px 22px; }
   .footer-cta-row { flex-direction: column; align-items: stretch; }
@@ -998,14 +975,10 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
     <p class="section-sub">Sin pasos innecesarios. Solo un proceso enfocado en resultados concretos.</p>
   </div>
   <div class="process-cards">
-    <div class="process-row">
-      <div class="proc-card"><div class="proc-step-tag pt1">01 — Descubrimiento</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(240,78,26,.12);">📞</div><h3 class="proc-h3">Nos conocemos</h3></div><div class="proc-divider"></div><p class="proc-p">Cuanto más sepamos de ti, mejor. Exploramos tu negocio, tus metas y tu audiencia antes de tomar cualquier decisión creativa.</p><div class="proc-deco">01</div></div>
-      <div class="proc-card"><div class="proc-step-tag pt2">02 — Exploración</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(155,111,212,.12);">🎨</div><h3 class="proc-h3">Exploramos</h3></div><div class="proc-divider"></div><p class="proc-p">Investigamos, benchmarkeamos y encontramos la dirección creativa que tiene algo real que decir. Nada genérico, nada de plantillas.</p><div class="proc-deco">02</div></div>
-    </div>
-    <div class="process-row">
-      <div class="proc-card"><div class="proc-step-tag pt3">03 — Diseño</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(232,71,122,.1);">⚡</div><h3 class="proc-h3">Diseñamos</h3></div><div class="proc-divider"></div><p class="proc-p">Ejecutamos con obsesión por el detalle. Presentamos, iteramos y refinamos hasta que quede exactamente como debe ser.</p><div class="proc-deco">03</div></div>
-      <div class="proc-card"><div class="proc-step-tag pt4">04 — Entrega</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(196,212,0,.18);">🚀</div><h3 class="proc-h3">Lanzamos</h3></div><div class="proc-divider"></div><p class="proc-p">Entregamos todo listo para usar y te acompañamos en el lanzamiento. No te dejamos solo con un ZIP y buena suerte.</p><div class="proc-deco">04</div></div>
-    </div>
+    <div class="proc-card"><div class="proc-step-tag pt1">01 — Descubrimiento</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(240,78,26,.12);">📞</div><h3 class="proc-h3">Nos conocemos</h3></div><div class="proc-divider"></div><p class="proc-p">Cuanto más sepamos de ti, mejor. Exploramos tu negocio, tus metas y tu audiencia antes de tomar cualquier decisión creativa.</p><div class="proc-deco">01</div></div>
+    <div class="proc-card"><div class="proc-step-tag pt2">02 — Exploración</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(155,111,212,.12);">🎨</div><h3 class="proc-h3">Exploramos</h3></div><div class="proc-divider"></div><p class="proc-p">Investigamos, benchmarkeamos y encontramos la dirección creativa que tiene algo real que decir. Nada genérico, nada de plantillas.</p><div class="proc-deco">02</div></div>
+    <div class="proc-card"><div class="proc-step-tag pt3">03 — Diseño</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(232,71,122,.1);">⚡</div><h3 class="proc-h3">Diseñamos</h3></div><div class="proc-divider"></div><p class="proc-p">Ejecutamos con obsesión por el detalle. Presentamos, iteramos y refinamos hasta que quede exactamente como debe ser.</p><div class="proc-deco">03</div></div>
+    <div class="proc-card"><div class="proc-step-tag pt4">04 — Entrega</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(196,212,0,.18);">🚀</div><h3 class="proc-h3">Lanzamos</h3></div><div class="proc-divider"></div><p class="proc-p">Entregamos todo listo para usar y te acompañamos en el lanzamiento. No te dejamos solo con un ZIP y buena suerte.</p><div class="proc-deco">04</div></div>
   </div>
 </div>
 
