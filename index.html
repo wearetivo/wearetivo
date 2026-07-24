@@ -11,7 +11,7 @@
 <style>
 :root {
   --orange:   #F04E1A;
-  --purple:   #9B6FD4;l
+  --purple:   #9B6FD4;
   --beige:    #EAD9B8;
   --pink:     #E8477A;
   --lime:     #C4D400;
@@ -343,18 +343,145 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .proc-deco { position: absolute; bottom: 8px; right: 14px; font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 800, "opsz" 92; font-size: 52px; color: rgba(14,8,4,.04); pointer-events: none; line-height: 1; }
 #resultados { background: var(--bg); }
 .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.tc { border-radius: var(--r-xl); padding: 30px 28px; transition: transform .3s ease; }
-.tc:hover { transform: translateY(-6px); }
-.tc1{background:var(--purple);}.tc2{background:var(--white);border:1.5px solid var(--border-soft);}.tc3{background:var(--orange);}
-.tc-stars { font-size: 12px; letter-spacing: 2px; margin-bottom: 16px; }
-.tc1 .tc-stars,.tc3 .tc-stars{color:var(--lime);}.tc2 .tc-stars{color:var(--orange);}
-.tc-q { font-size: 15px; font-style: italic; line-height: 1.75; margin-bottom: 22px; }
-.tc1 .tc-q,.tc3 .tc-q{color:rgba(255,255,255,.85);}.tc2 .tc-q{color:var(--ink);}
-.tc-auth { display: flex; align-items: center; gap: 11px; }
-.tcav { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; flex-shrink: 0; }
-.av1{background:var(--lime);color:var(--ink);}.av2{background:var(--beige);color:var(--ink);}.av3{background:var(--beige);color:var(--ink);}
-.tc-nm{font-size:14px;font-weight:600;}.tc-rl{font-size:12px;opacity:.45;margin-top:2px;}
-.tc1 .tc-nm,.tc1 .tc-rl,.tc3 .tc-nm,.tc3 .tc-rl{color:var(--white);}.tc2 .tc-nm{color:var(--ink);}
+
+/* Tarjeta de video (testimonio en video) */
+.tcv {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card), 0 14px 34px rgba(14,8,4,.10);
+  transition: transform .45s cubic-bezier(.34,1.56,.64,1), box-shadow .35s;
+}
+.tcv:nth-child(1) { transform: rotate(-1.4deg) translateY(2px); }
+.tcv:nth-child(3) { transform: rotate(1.2deg) translateY(-4px); }
+.tcv:hover {
+  transform: rotate(0deg) translateY(-10px) scale(1.02) !important;
+  box-shadow: var(--shadow-card), 0 26px 52px rgba(14,8,4,.20);
+  z-index: 3;
+}
+.tcv-purple { background: var(--purple); }
+.tcv-orange { background: var(--orange); }
+.tcv-pending { background: var(--white); border: 1.5px solid var(--border-soft); box-shadow: none; }
+.tcv-pending:hover { box-shadow: 0 18px 48px rgba(14,8,4,.09); }
+
+.tcv-media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: rgba(14,8,4,.25);
+  overflow: hidden;
+}
+.tcv-el {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  background: rgba(0,0,0,.2);
+}
+.tcv-media::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(14,8,4,0) 45%, rgba(14,8,4,.55) 100%);
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+.tcv-media.is-playing::before { opacity: 0; }
+
+.tcv-play {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--white);
+  border: none;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(14,8,4,.4);
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), background .2s, opacity .3s;
+  z-index: 2;
+}
+.tcv-play:hover { transform: scale(1.08); background: var(--lime); }
+.tcv-play svg { width: 22px; height: 22px; }
+.tcv-play .ic-play { fill: var(--ink); margin-left: 2px; }
+.tcv-play .ic-pause { fill: var(--ink); display: none; }
+.tcv-media.is-playing .tcv-play { opacity: 0; pointer-events: none; }
+.tcv-media:hover .tcv-play { opacity: 1; pointer-events: auto; }
+
+.tcv-media-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--surface);
+  border-bottom: 2px dashed rgba(14,8,4,.14);
+}
+.tcv-media-soon::before { content: none; }
+.tcv-soon-icon { font-size: 34px; animation: pulse 2.2s infinite; }
+.tcv-soon-label {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 650, "opsz" 92;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(14,8,4,.32);
+}
+
+.tcv-body {
+  padding: 22px 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.tcv-country {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 6px 14px 6px 10px;
+  border-radius: var(--r-pill);
+  background: rgba(255,255,255,.18);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 700, "opsz" 92;
+  font-size: 13px;
+  letter-spacing: .01em;
+  color: var(--white);
+}
+.tcv-country .flag { font-size: 17px; line-height: 1; filter: drop-shadow(0 1px 2px rgba(0,0,0,.2)); }
+.tcv-country-soon { background: rgba(14,8,4,.05); color: var(--muted); }
+.tcv-country-soon .flag { opacity: .5; }
+
+.tcv-body .tc-q { font-size: 15px; font-style: italic; line-height: 1.75; color: rgba(255,255,255,.9); flex: 1; margin: 0; }
+.tcv-pending .tc-q { color: var(--muted); }
+
+.tcv-body .tc-auth { display: flex; align-items: center; gap: 11px; }
+.tcv-body .tcav {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+  flex-shrink: 0;
+  background: var(--beige); color: var(--ink);
+}
+.tcv-pending .tcav { background: transparent; border: 1.5px dashed rgba(14,8,4,.2); color: rgba(14,8,4,.35); }
+.tcv-body .tc-nm { font-size: 14px; font-weight: 600; color: var(--white); }
+.tcv-body .tc-rl { font-size: 12px; opacity: .65; margin-top: 2px; color: var(--white); }
+.tcv-pending .tc-nm { color: var(--ink); opacity: .55; }
+.tcv-pending .tc-rl { color: var(--ink); opacity: .35; }
+
+.tcv-geo {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 600, "opsz" 92;
+  font-size: 12px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.65);
+  padding-top: 10px;
+  border-top: 1px dashed rgba(255,255,255,.25);
+}
+.tcv-pending .tcv-geo { color: rgba(14,8,4,.3); border-top: 1px dashed rgba(14,8,4,.12); }
+
 #contact { background: var(--bg); }
 .contact-form-wrap { max-width: 840px; width: 100%; background: var(--white); border-radius: 40px; box-shadow: var(--shadow-card), 0 4px 24px rgba(14,8,4,.08); padding: 14px 24px 18px; display: flex; gap: 24px; position: relative; }
 .contact-left-panel { display: flex; flex-direction: column; gap: 12px; flex: 1 0 1px; }
@@ -549,7 +676,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .srv-grid { grid-template-columns: 1fr 1fr; }
   .sc-dark { grid-column: span 2; grid-template-columns: 1fr; }
   .testi-grid { grid-template-columns: 1fr 1fr; }
-  .tc:last-child { grid-column: span 2; }
+  .tcv:nth-child(1), .tcv:nth-child(3) { transform: none; }
   .stats-row { grid-template-columns: 1fr 1fr; }
   .stat { border-bottom: 1px solid rgba(255,255,255,.15); }
   .stat:nth-child(2){ border-right: none; }
@@ -591,7 +718,6 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   .pj-name { font-size: 11px; }
   .srv-grid, .testi-grid { grid-template-columns: 1fr; }
   .sc-dark { grid-column: span 1; padding: 28px 22px; }
-  .tc:last-child { grid-column: auto; }
   .stats-row { grid-template-columns: 1fr 1fr; }
   .stat:nth-child(1),.stat:nth-child(2){ border-bottom: 1px solid var(--border-soft); }
   .stat:nth-child(1){ border-right: 1px solid var(--border-soft); }
@@ -790,7 +916,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track ticker-left">
-    <span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Branding</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Marketing</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Branding</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Marketing</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span>
+    <span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Branding</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Marketing</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span>
   </div>
   <div class="ticker-track ticker-right">
     <span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Branding</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Marketing</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Branding</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Marketing</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span>
@@ -982,358 +1108,85 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   </div>
 </div>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TIVO — Preview: Testimonios en video</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --orange:   #F04E1A;
-  --purple:   #9B6FD4;
-  --beige:    #EAD9B8;
-  --lime:     #C4D400;
-  --bg:       #F8F4EC;
-  --white:    #FFFFFF;
-  --ink:      #0E0804;
-  --muted:    rgba(14,8,4,0.45);
-  --border-soft: rgba(14,8,4,0.07);
-  --shadow-card: inset 0 -3px 4px 0 rgba(14,8,4,0.08);
-  --r-xl: 32px;
-  --r-lg: 24px;
-  --r-pill: 100px;
-}
-* { box-sizing: border-box; margin:0; padding:0; }
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-  padding: 60px 40px;
-}
-.section-title-wrap { display:flex; flex-direction:column; align-items:center; gap:16px; text-align:center; margin-bottom:56px; }
-.section-eyebrow { display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--orange); }
-.section-h2 { font-family:'Bricolage Grotesque', sans-serif; font-variation-settings:"wght" 800,"opsz" 92; font-size:clamp(38px,4.5vw,54px); letter-spacing:-.3px; line-height:1.05; }
-.section-h2 .em { color: var(--orange); }
-.section-sub { font-size:17px; color:var(--muted); max-width:480px; margin:0 auto; }
+<!-- RESULTADOS -->
+<div class="section-wrap" id="resultados">
+  <div class="section-title-wrap">
+    <div class="section-eyebrow"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>Resultados</div>
+    <h2 class="section-h2">Nuestros clientes<br>hablan por <span class="em">nosotros.</span></h2>
+    <p class="section-sub">Las marcas que construimos generan impacto real — en ventas, alcance y reconocimiento.</p>
+  </div>
+  <div class="testi-grid">
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TIVO — Preview: Testimonios en video</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --orange:   #F04E1A;
-  --purple:   #9B6FD4;
-  --beige:    #EAD9B8;
-  --lime:     #C4D400;
-  --bg:       #F8F4EC;
-  --white:    #FFFFFF;
-  --surface:  #F0EBE1;
-  --ink:      #0E0804;
-  --muted:    rgba(14,8,4,0.45);
-  --border-soft: rgba(14,8,4,0.07);
-  --shadow-card: inset 0 -3px 4px 0 rgba(14,8,4,0.08);
-  --r-xl: 32px;
-  --r-lg: 24px;
-  --r-pill: 100px;
-}
-* { box-sizing: border-box; margin:0; padding:0; }
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-  padding: 60px 40px;
-}
-@keyframes pulse-soft { 0%,100% { opacity:.32; } 50% { opacity:.6; } }
+    <!-- TESTIMONIO EN VIDEO — IZZY / Estados Unidos -->
+    <div class="tcv tcv-purple">
+      <div class="tcv-media" id="mediaIzzy">
+        <video class="tcv-el" id="videoIzzy" playsinline preload="metadata"
+          src="https://raw.githubusercontent.com/wearetivo/wearetivo/19dfd764c8ef4dec6dda7ea17fd4d61afb7527e7/TESTIMONIO%20IZZY.mp4"></video>
+        <button class="tcv-play" type="button" aria-label="Reproducir testimonio de Juan Manuel Vivas" onclick="toggleTestiVideo('Izzy')">
+          <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="ic-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+        </button>
+      </div>
+      <div class="tcv-body">
+        <div class="tcv-country"><span class="flag">🇺🇸</span>Estados Unidos</div>
+        <p class="tc-q">"TIVO didn't just design our brand — they understood exactly where we were going before we did."</p>
+        <div class="tc-auth">
+          <div class="tcav">JM</div>
+          <div>
+            <div class="tc-nm">Juan Manuel Vivas</div>
+            <div class="tc-rl">Fundador — Easy Group</div>
+          </div>
+        </div>
+        <div class="tcv-geo">Norteamérica</div>
+      </div>
+    </div>
 
-.section-title-wrap { display:flex; flex-direction:column; align-items:center; gap:16px; text-align:center; margin-bottom:56px; }
-.section-eyebrow { display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--orange); }
-.section-h2 { font-family:'Bricolage Grotesque', sans-serif; font-variation-settings:"wght" 800,"opsz" 92; font-size:clamp(38px,4.5vw,54px); letter-spacing:-.3px; line-height:1.05; }
-.section-h2 .em { color: var(--orange); }
-.section-sub { font-size:17px; color:var(--muted); max-width:480px; margin:0 auto; }
+    <!-- TESTIMONIO PENDIENTE — video por confirmar -->
+    <div class="tcv tcv-pending">
+      <div class="tcv-media tcv-media-soon" id="mediaPending">
+        <div class="tcv-soon-icon">🎬</div>
+        <div class="tcv-soon-label">Video próximamente</div>
+      </div>
+      <div class="tcv-body">
+        <div class="tcv-country tcv-country-soon"><span class="flag">🌍</span>Por confirmar</div>
+        <p class="tc-q">"[Pega aquí la frase corta del testimonio cuando esté listo]"</p>
+        <div class="tc-auth">
+          <div class="tcav">··</div>
+          <div>
+            <div class="tc-nm">Nombre del cliente</div>
+            <div class="tc-rl">Cargo — Empresa</div>
+          </div>
+        </div>
+        <div class="tcv-geo">Región</div>
+      </div>
+    </div>
 
-/* ═══════════════════════════════
-   TESTIMONIOS
-═══════════════════════════════ */
-.testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; max-width:1200px; margin:0 auto; }
+    <!-- TESTIMONIO EN VIDEO — The Juseco Company / Francia -->
+    <div class="tcv tcv-orange">
+      <div class="tcv-media" id="mediaJuseco">
+        <video class="tcv-el" id="videoJuseco" playsinline preload="metadata"
+          src="https://raw.githubusercontent.com/wearetivo/wearetivo/19dfd764c8ef4dec6dda7ea17fd4d61afb7527e7/TESTIMONIO%20THE%20JUSECO%20COMPANY.mp4"></video>
+        <button class="tcv-play" type="button" aria-label="Reproducir testimonio de Juan Sebastián Cruz" onclick="toggleTestiVideo('Juseco')">
+          <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="ic-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+        </button>
+      </div>
+      <div class="tcv-body">
+        <div class="tcv-country"><span class="flag">🇫🇷</span>Francia</div>
+        <p class="tc-q">"TIVO a su transformer notre marque en quelque chose que nos clients n'oublient plus."</p>
+        <div class="tc-auth">
+          <div class="tcav">JS</div>
+          <div>
+            <div class="tc-nm">Juan Sebastián Cruz</div>
+            <div class="tc-rl">CEO — The Juseco Company</div>
+          </div>
+        </div>
+        <div class="tcv-geo">Europa</div>
+      </div>
+    </div>
 
-/* Tarjeta de video (con testimonio en video) */
-.tcv {
-  border-radius: var(--r-xl);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: var(--shadow-card), 0 14px 34px rgba(14,8,4,.10);
-  transition: transform .45s cubic-bezier(.34,1.56,.64,1), box-shadow .35s;
-}
-.tcv:nth-child(1) { transform: rotate(-1.4deg) translateY(2px); }
-.tcv:nth-child(3) { transform: rotate(1.2deg) translateY(-4px); }
-.tcv:hover {
-  transform: rotate(0deg) translateY(-10px) scale(1.02) !important;
-  box-shadow: var(--shadow-card), 0 26px 52px rgba(14,8,4,.20);
-  z-index: 3;
-}
-.tcv-purple { background: var(--purple); }
-.tcv-orange { background: var(--orange); }
-.tcv-pending { background: var(--white); border: 1.5px solid var(--border-soft); box-shadow: none; }
-.tcv-pending:hover { box-shadow: 0 18px 48px rgba(14,8,4,.09); }
-
-/* Media (video) */
-.tcv-media {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  background: rgba(14,8,4,.25);
-  overflow: hidden;
-}
-.tcv-el {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-  background: rgba(0,0,0,.2);
-}
-.tcv-media::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(14,8,4,0) 45%, rgba(14,8,4,.55) 100%);
-  pointer-events: none;
-  transition: opacity .3s ease;
-}
-.tcv-media.is-playing::before { opacity: 0; }
-
-.tcv-play {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
-  width: 60px; height: 60px;
-  border-radius: 50%;
-  background: var(--white);
-  border: none;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 8px 24px rgba(14,8,4,.35);
-  transition: transform .3s cubic-bezier(.34,1.56,.64,1), background .2s, opacity .3s;
-  z-index: 2;
-}
-.tcv-play:hover { transform: translate(-50%,-50%) scale(1.08); background: var(--lime); }
-.tcv-play svg { width: 20px; height: 20px; }
-.tcv-play .ic-play { fill: var(--ink); margin-left: 3px; }
-.tcv-play .ic-pause { fill: var(--ink); display: none; }
-.tcv-media.is-playing .tcv-play { opacity: 0; pointer-events: none; }
-.tcv-media:hover .tcv-play { opacity: 1; pointer-events: auto; }
-
-/* Media placeholder — "video próximamente" */
-.tcv-media-soon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background: var(--surface);
-  border-bottom: 2px dashed rgba(14,8,4,.14);
-}
-.tcv-media-soon::before { content: none; }
-.tcv-soon-icon { font-size: 34px; animation: pulse-soft 2.2s infinite; }
-.tcv-soon-label {
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-variation-settings: "wght" 650, "opsz" 92;
-  font-size: 12px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: rgba(14,8,4,.32);
-}
-
-/* Cuerpo de la tarjeta */
-.tcv-body {
-  padding: 22px 24px 26px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  flex: 1;
-}
-
-/* Badge de país (reemplaza las estrellas) */
-.tcv-country {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  width: fit-content;
-  padding: 6px 14px 6px 10px;
-  border-radius: var(--r-pill);
-  background: rgba(255,255,255,.18);
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-variation-settings: "wght" 700, "opsz" 92;
-  font-size: 13px;
-  letter-spacing: .01em;
-  color: var(--white);
-}
-.tcv-country .flag {
-  font-size: 17px;
-  line-height: 1;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,.2));
-}
-.tcv-country-soon {
-  background: rgba(14,8,4,.05);
-  color: var(--muted);
-}
-.tcv-country-soon .flag { opacity: .5; }
-
-.tc-q { font-size: 15px; font-style: italic; line-height: 1.75; color: rgba(255,255,255,.9); flex: 1; margin: 0; }
-.tcv-pending .tc-q { color: var(--muted); }
-
-.tc-auth { display: flex; align-items: center; gap: 11px; }
-.tcav {
-  width: 38px; height: 38px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
-  flex-shrink: 0;
-  background: var(--beige); color: var(--ink);
-}
-.tcv-pending .tcav {
-  background: transparent;
-  border: 1.5px dashed rgba(14,8,4,.2);
-  color: rgba(14,8,4,.35);
-}
-.tc-nm { font-size: 14px; font-weight: 600; color: var(--white); }
-.tc-rl { font-size: 12px; opacity: .65; margin-top: 2px; color: var(--white); }
-.tcv-pending .tc-nm { color: var(--ink); opacity: .55; }
-.tcv-pending .tc-rl { color: var(--ink); opacity: .35; }
-
-.tcv-geo {
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-variation-settings: "wght" 600, "opsz" 92;
-  font-size: 12px;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.65);
-  padding-top: 10px;
-  border-top: 1px dashed rgba(255,255,255,.25);
-}
-.tcv-pending .tcv-geo { color: rgba(14,8,4,.3); border-top: 1px dashed rgba(14,8,4,.12); }
-
-@media (max-width: 900px) {
-  .testi-grid { grid-template-columns: 1fr; }
-  .tcv:nth-child(1), .tcv:nth-child(3) { transform: none; }
-}
-</style>
-</head>
-<body>
-
-<div class="section-title-wrap">
-  <div class="section-eyebrow">● Resultados</div>
-  <h2 class="section-h2">Nuestros clientes<br>hablan por <span class="em">nosotros.</span></h2>
-  <p class="section-sub">Las marcas que construimos generan impacto real — en ventas, alcance y reconocimiento.</p>
+  </div>
 </div>
-
-<div class="testi-grid">
-
-  <!-- TESTIMONIO EN VIDEO — IZZY / Estados Unidos -->
-  <div class="tcv tcv-purple">
-    <div class="tcv-media" id="mediaIzzy">
-      <video class="tcv-el" id="videoIzzy" playsinline preload="metadata"
-        src="https://raw.githubusercontent.com/wearetivo/wearetivo/19dfd764c8ef4dec6dda7ea17fd4d61afb7527e7/TESTIMONIO%20IZZY.mp4"></video>
-      <button class="tcv-play" type="button" aria-label="Reproducir testimonio de Juan Manuel Vivas" onclick="toggleTestiVideo('Izzy')">
-        <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        <svg class="ic-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-      </button>
-    </div>
-    <div class="tcv-body">
-      <div class="tcv-country"><span class="flag">🇺🇸</span>Estados Unidos</div>
-      <p class="tc-q">"TIVO didn't just design our brand — they understood exactly where we were going before we did."</p>
-      <div class="tc-auth">
-        <div class="tcav">JM</div>
-        <div>
-          <div class="tc-nm">Juan Manuel Vivas</div>
-          <div class="tc-rl">Izzy Group</div>
-        </div>
-      </div>
-      <div class="tcv-geo">Norteamérica</div>
-    </div>
-  </div>
-
-  <!-- TESTIMONIO PENDIENTE — video por confirmar -->
-  <div class="tcv tcv-pending">
-    <div class="tcv-media tcv-media-soon" id="mediaPending">
-      <div class="tcv-soon-icon">🎬</div>
-      <div class="tcv-soon-label">Video próximamente</div>
-    </div>
-    <div class="tcv-body">
-      <div class="tcv-country tcv-country-soon"><span class="flag">🌍</span>Por confirmar</div>
-      <p class="tc-q">"[Pega aquí la frase corta del testimonio cuando esté listo]"</p>
-      <div class="tc-auth">
-        <div class="tcav">··</div>
-        <div>
-          <div class="tc-nm">Nombre del cliente</div>
-          <div class="tc-rl">Cargo — Empresa</div>
-        </div>
-      </div>
-      <div class="tcv-geo">Región</div>
-    </div>
-  </div>
-
-  <!-- TESTIMONIO EN VIDEO — The Juseco Company / Francia -->
-  <div class="tcv tcv-orange">
-    <div class="tcv-media" id="mediaJuseco">
-      <video class="tcv-el" id="videoJuseco" playsinline preload="metadata"
-        src="https://raw.githubusercontent.com/wearetivo/wearetivo/19dfd764c8ef4dec6dda7ea17fd4d61afb7527e7/TESTIMONIO%20THE%20JUSECO%20COMPANY.mp4"></video>
-      <button class="tcv-play" type="button" aria-label="Reproducir testimonio de Juan Sebastián Cruz" onclick="toggleTestiVideo('Juseco')">
-        <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        <svg class="ic-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-      </button>
-    </div>
-    <div class="tcv-body">
-      <div class="tcv-country"><span class="flag">🇫🇷</span>Francia</div>
-      <p class="tc-q">"TIVO a su transformer notre marque en quelque chose que nos clients n'oublient plus."</p>
-      <div class="tc-auth">
-        <div class="tcav">JS</div>
-        <div>
-          <div class="tc-nm">Juan Sebastián Cruz</div>
-          <div class="tc-rl">The Juseco Company</div>
-        </div>
-      </div>
-      <div class="tcv-geo">Europa</div>
-    </div>
-  </div>
-
-</div>
-
-<script>
-function toggleTestiVideo(key){
-  const video = document.getElementById('video'+key);
-  const media = document.getElementById('media'+key);
-
-  // Pausa cualquier otro video de testimonio que esté sonando
-  document.querySelectorAll('.tcv-el').forEach(v=>{
-    if(v !== video && !v.paused){
-      v.pause();
-    }
-  });
-
-  if(video.paused){
-    video.play();
-  } else {
-    video.pause();
-  }
-}
-
-document.querySelectorAll('.tcv-el').forEach(video=>{
-  const media = video.closest('.tcv-media');
-  video.addEventListener('play', ()=> media.classList.add('is-playing'));
-  video.addEventListener('pause', ()=> media.classList.remove('is-playing'));
-  video.addEventListener('ended', ()=> media.classList.remove('is-playing'));
-});
-</script>
-
-</body>
-</html>
 
 <!-- FAQ -->
 <div class="section-wrap" id="faq">
@@ -1415,6 +1268,30 @@ function handleSubmit(e){
   setTimeout(()=>{btn.textContent='Enviar mensaje';btn.style.background='';btn.style.color='';},3000);
 }
 
+// TESTIMONIOS EN VIDEO
+function toggleTestiVideo(key){
+  const video = document.getElementById('video'+key);
+  const media = document.getElementById('media'+key);
+
+  document.querySelectorAll('.tcv-el').forEach(v=>{
+    if(v !== video && !v.paused){
+      v.pause();
+    }
+  });
+
+  if(video.paused){
+    video.play();
+  } else {
+    video.pause();
+  }
+}
+document.querySelectorAll('.tcv-el').forEach(video=>{
+  const media = video.closest('.tcv-media');
+  video.addEventListener('play', ()=> media.classList.add('is-playing'));
+  video.addEventListener('pause', ()=> media.classList.remove('is-playing'));
+  video.addEventListener('ended', ()=> media.classList.remove('is-playing'));
+});
+
 // PILLS
 const pillLeft=document.getElementById('pillLeft');
 const pillRight=document.getElementById('pillRight');
@@ -1463,7 +1340,7 @@ document.addEventListener('keydown', function(e) {
 
 // REVEAL
 const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:.07,rootMargin:'0px 0px -24px 0px'});
-document.querySelectorAll('.bene-card,.sc,.proc-card,.tc,.stat,.pj-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .65s ease, transform .65s ease';revealObs.observe(el);});
+document.querySelectorAll('.bene-card,.sc,.proc-card,.tcv,.stat,.pj-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .65s ease, transform .65s ease';revealObs.observe(el);});
 
 // Postales: revelado con leve giro para reforzar el efecto "postal esparcida"
 const postalObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.setProperty('--reveal-y','0px');}});},{threshold:.1,rootMargin:'0px 0px -20px 0px'});
