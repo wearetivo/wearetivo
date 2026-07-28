@@ -91,8 +91,12 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .side-pill { display: flex; align-items: center; gap: 9px; background: var(--white); border-radius: var(--r-pill); box-shadow: var(--shadow-card), 0 2px 16px rgba(0,0,0,0.08); padding: 8px 18px 8px 14px; font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 600, "opsz" 92; font-size: 13px; color: var(--ink); white-space: nowrap; text-decoration: none; flex-shrink: 0; transition: opacity .35s ease, transform .35s ease; }
 .side-pill.hide { opacity: 0; pointer-events: none; transform: translateY(-6px); }
 .side-pill-left { cursor: default; margin-right: 20px; }
-.side-pill-right { cursor: pointer; margin-left: 20px; transition: opacity .35s ease, transform .35s ease, background .2s, color .2s; }
-.side-pill-right:hover { background: var(--blue); color: var(--ink); }
+.side-pill-right { cursor: pointer; margin-left: 20px; transition: opacity .35s ease, transform .35s ease, background .2s ease, color .2s ease; }
+.side-pill-right:hover,
+.side-pill-right:focus-visible {
+  background: var(--blue) !important;
+  color: var(--ink) !important;
+}
 .avail-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--lime); flex-shrink: 0; animation: pulse-lime 2s infinite; }
 @keyframes pulse-lime { 0%,100% { box-shadow: 0 0 0 0 rgba(196,212,0,.55); } 50% { box-shadow: 0 0 0 6px rgba(196,212,0,0); } }
 
@@ -102,6 +106,8 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 #mobMenu a { font-family: 'Bricolage Grotesque', sans-serif; font-variation-settings: "wght" 700, "opsz" 92; font-size: 18px; color: var(--ink); text-decoration: none; padding: 13px 18px; width: 100%; text-align: left; border-bottom: 1px solid var(--border-soft); border-radius: var(--r-md); transition: background .15s, color .15s; letter-spacing: -.2px; }
 #mobMenu a:last-child { border-bottom: none; }
 #mobMenu a:hover { background: var(--bg); color: var(--orange); }
+#mobMenu a.mob-cta-link { color: var(--orange); }
+#mobMenu a.mob-cta-link:hover { background: var(--blue); color: var(--ink); }
 
 /* ── TICKER ── */
 .ticker {
@@ -896,6 +902,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   <a href="#servicios" onclick="closeMob()">Servicios</a>
   <a href="#procesos" onclick="closeMob()">Proceso</a>
   <a href="#resultados" onclick="closeMob()">Resultados</a>
+  <a href="#contacto" onclick="closeMob()" class="mob-cta-link">Conversemos</a>
 </div>
 
 <!-- HERO -->
