@@ -213,6 +213,101 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
 .hero-right { position: relative; z-index: 2; display: flex; align-items: stretch; justify-content: flex-end; }
 
 /* ═══════════════════════════════════
+   VESPER-STYLE ENTRANCE MOTION + LIQUID UI
+   (mismo estilo/movimiento; colores y textos son los de TIVO)
+═══════════════════════════════════ */
+
+/* Badge tipo píldora (reemplaza el eyebrow simple) */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  padding: 9px 16px;
+  border: 1px solid rgba(240,78,26,.28);
+  border-radius: var(--r-pill);
+  background: linear-gradient(90deg, rgba(240,78,26,.16) 0%, rgba(240,78,26,.06) 55%, rgba(240,78,26,0) 100%);
+  color: var(--orange);
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.badge-star {
+  width: 15px; height: 15px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 3px rgba(240,78,26,.35));
+}
+
+/* H1 en dos líneas "enmascaradas" */
+.hero-h1 { display: flex; flex-direction: column; }
+.headline-line {
+  display: block;
+  overflow: hidden;
+  padding: .06em .1em .14em;
+}
+
+/* Sistema de aparición (reposo en opacidad 1, nunca queda en blanco) */
+.appear {
+  opacity: 1;
+  animation-duration: 1.05s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-delay: var(--d, 0.08s);
+}
+.appear.is-in { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+
+@keyframes in-scale { from { opacity: 0; transform: scale(.84); } to { opacity: 1; transform: scale(1); } }
+@keyframes in-soft  { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes in-mask  { from { opacity: 0; transform: translateY(40%); } to { opacity: 1; transform: translateY(0); } }
+@keyframes in-pop   { 0% { opacity: 0; transform: scale(.9); } 70% { opacity: 1; transform: scale(1.03); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes in-btn   { from { opacity: 0; transform: translateY(18px) scale(.94); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes in-side  { from { opacity: 0; transform: translateX(22px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes in-stat  { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.appear--scale { animation-name: in-scale; }
+.appear--soft  { animation-name: in-soft; }
+.appear--mask  { animation-name: in-mask; }
+.appear--pop   { animation-name: in-pop; }
+.appear--btn   { animation-name: in-btn; }
+.appear--side  { animation-name: in-side; }
+.appear--stat  { animation-name: in-stat; }
+.appear--lede  { animation-name: in-soft; animation-duration: 1.25s; }
+
+/* Brillo líquido al pasar el mouse por los links de nav */
+.nav-links a { position: relative; overflow: hidden; border-radius: 7px; }
+.nav-links a::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(240,78,26,.14) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform .6s ease;
+  pointer-events: none;
+}
+.nav-links a:hover::before { transform: translateX(120%); }
+
+/* Brillo líquido en los botones del hero */
+.btn-primary, .btn-ghost {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.btn-primary::after, .btn-ghost::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,.55) 48%, transparent 76%);
+  transform: translateX(-130%);
+  transition: transform .65s ease;
+  pointer-events: none;
+}
+.btn-primary:hover::after, .btn-ghost:hover::after { transform: translateX(130%); }
+
+@media (prefers-reduced-motion: reduce) {
+  .appear, .badge-star, .hero-h1 { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+
+/* ═══════════════════════════════════
    RESTO DE ESTILOS (sin cambios)
 ═══════════════════════════════════ */
 .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); }
@@ -811,6 +906,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 .hero-centered .hero-h1 {
   font-size: clamp(42px, 6vw, 74px);
   text-align: center;
+  align-items: center;
 }
 .hero-centered .typing-wrap {
   width: auto;
@@ -880,19 +976,19 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
     Disponibles para trabajar juntos
   </div>
   <div class="nav-center-pill">
-    <a href="#home" class="nav-logo-btn" aria-label="TIVO Inicio">
+    <a href="#home" class="nav-logo-btn appear appear--scale" style="--d:0.08s" aria-label="TIVO Inicio">
       <img class="logo-default" src="https://raw.githubusercontent.com/wearetivo/wearetivo/14e747307c606efe7bec0935988299107f446a28/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO.png" alt="TIVO">
       <img class="logo-hover" src="https://raw.githubusercontent.com/wearetivo/wearetivo/14e747307c606efe7bec0935988299107f446a28/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20GLOBAL.png" alt="TIVO Global">
     </a>
     <ul class="nav-links">
-      <li><a href="#conocenos">Conócenos</a></li>
-      <li><a href="#trabajo">Nuestro Trabajo</a></li>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#procesos">Proceso</a></li>
-      <li><a href="#resultados">Resultados</a></li>
+      <li><a href="#conocenos" class="appear appear--scale" style="--d:0.16s">Conócenos</a></li>
+      <li><a href="#trabajo" class="appear appear--soft" style="--d:0.28s">Nuestro Trabajo</a></li>
+      <li><a href="#servicios" class="appear appear--scale" style="--d:0.40s">Servicios</a></li>
+      <li><a href="#procesos" class="appear appear--soft" style="--d:0.52s">Proceso</a></li>
+      <li><a href="#resultados" class="appear appear--scale" style="--d:0.64s">Resultados</a></li>
     </ul>
     <div class="nav-mobile-actions">
-      <a href="https://calendar.app.google/qaXPyL2TNogRK9uF8" class="nav-cta" target="_blank" rel="noopener">Reservar llamada</a>
+      <a href="https://calendar.app.google/qaXPyL2TNogRK9uF8" class="nav-cta appear appear--scale" style="--d:0.34s" target="_blank" rel="noopener">Reservar llamada</a>
       <button class="nav-ham" id="hamBtn" aria-label="Menú"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -912,18 +1008,24 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 <header id="home">
   <div class="hero-inner hero-centered">
     <div class="hero-left">
-      <div class="hero-eyebrow"><span class="hero-dot"></span>Estudio creativo &amp; aliado estratégico</div>
-      <h1 class="hero-h1">En TIVO, usamos herramientas, pero...<br>Lo que realmente construye es:</h1>
-      <div class="typing-container">
+      <div class="badge appear appear--pop" style="--d:0.22s">
+        <svg class="badge-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6C12.55 2.6 12.88 3.15 13.08 4.7c.62 4.7 1.52 5.6 6.22 6.22 1.55.2 2.1.53 2.1 1.08s-.55.88-2.1 1.08c-4.7.62-5.6 1.52-6.22 6.22-.2 1.55-.53 2.1-1.08 2.1s-.88-.55-1.08-2.1c-.62-4.7-1.52-5.6-6.22-6.22C3.15 12.88 2.6 12.55 2.6 12s.55-.88 2.1-1.08c4.7-.62 5.6-1.52 6.22-6.22C11.12 3.15 11.45 2.6 12 2.6Z"/></svg>
+        Estudio creativo &amp; aliado estratégico
+      </div>
+      <h1 class="hero-h1">
+        <span class="headline-line appear appear--mask" style="--d:0.42s">En TIVO, usamos herramientas, pero...</span>
+        <span class="headline-line appear appear--mask" style="--d:0.62s">Lo que realmente construye es:</span>
+      </h1>
+      <div class="typing-container appear appear--soft" style="--d:0.74s">
         <div class="typing-wrap"><span id="typing"></span><span class="blink"></span></div>
       </div>
-      <p class="hero-tagline">La <em>intención humana</em> detrás de cada decisión.</p>
-      <p class="hero-sub">Transformamos ideas en marcas que la gente no puede ignorar.<br><span class="hero-sub-2">Estrategia, diseño y resultados reales.</span></p>
+      <p class="hero-tagline appear appear--lede" style="--d:0.82s">La <em>intención humana</em> detrás de cada decisión.</p>
+      <p class="hero-sub appear appear--soft" style="--d:0.90s">Transformamos ideas en marcas que la gente no puede ignorar.<br><span class="hero-sub-2">Estrategia, diseño y resultados reales.</span></p>
       <div class="hero-cta-row">
-        <a href="#trabajo" class="btn-primary">Ver nuestro trabajo</a>
-        <a href="#conocenos" class="btn-ghost">Conócenos</a>
+        <a href="#trabajo" class="btn-primary appear appear--btn" style="--d:0.96s">Ver nuestro trabajo</a>
+        <a href="#conocenos" class="btn-ghost appear appear--side" style="--d:1.10s">Conócenos</a>
       </div>
-      <div class="hero-trust">
+      <div class="hero-trust appear appear--stat" style="--d:1.20s">
         <div class="trust-avs">
           <div class="tav tv1">ML</div><div class="tav tv2">CR</div>
           <div class="tav tv3">AS</div><div class="tav tv4">+</div>
@@ -940,7 +1042,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track ticker-right">
-    <span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Branding</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Marketing</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Branding</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Marketing</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span>
+    <span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Branding</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Marketing</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span>
   </div>
 </div>
 
@@ -950,10 +1052,10 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 
 </div>
 <div class="stats-row">
-  <div class="stat"><div class="stat-n" id="s1"><span class="plus-prefix">+</span>90</div><div class="stat-l">Proyectos entregados satisfactoriamente</div></div>
-  <div class="stat"><div class="stat-n" id="s2"><span class="plus-prefix">+</span>80</div><div class="stat-l">Marcas que confían en TIVO</div></div>
-  <div class="stat"><div class="stat-n" id="s3">100%</div><div class="stat-l">Satisfacción de clientes</div></div>
-  <div class="stat"><div class="stat-n" id="s4"><span class="plus-prefix">+</span>6</div><div class="stat-l">Años de experiencia</div></div>
+  <div class="stat appear appear--stat" style="--d:1.12s"><div class="stat-n" id="s1"><span class="plus-prefix">+</span>90</div><div class="stat-l">Proyectos entregados satisfactoriamente</div></div>
+  <div class="stat appear appear--stat" style="--d:1.24s"><div class="stat-n" id="s2"><span class="plus-prefix">+</span>80</div><div class="stat-l">Marcas que confían en TIVO</div></div>
+  <div class="stat appear appear--stat" style="--d:1.36s"><div class="stat-n" id="s3">100%</div><div class="stat-l">Satisfacción de clientes</div></div>
+  <div class="stat appear appear--stat" style="--d:1.48s"><div class="stat-n" id="s4"><span class="plus-prefix">+</span>6</div><div class="stat-l">Años de experiencia</div></div>
 </div>
 
 <!-- COBERTURA -->
@@ -1246,7 +1348,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
     <div class="footer-mini">
       <div class="footer-social">
         <a href="https://instagram.com/wearetivo" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><path d="M12 2c-2.717 0-3.056.013-4.122.06-1.065.049-1.79.218-2.428.465a4.902 4.902 0 0 0-1.772 1.153A4.902 4.902 0 0 0 2.525 5.45c-.247.637-.416 1.363-.465 2.428C2.013 8.944 2 9.283 2 12s.013 3.056.06 4.122c.049 1.065.218 1.79.465 2.428a4.902 4.902 0 0 0 1.153 1.772 4.902 4.902 0 0 0 1.772 1.153c.637.247 1.363.416 2.428.465C8.944 21.987 9.283 22 12 22s3.056-.013 4.122-.06c1.065-.049 1.79-.218 2.428-.465a4.902 4.902 0 0 0 1.772-1.153 4.902 4.902 0 0 0 1.153-1.772c.247-.637.416-1.363.465-2.428.047-1.066.06-1.405.06-4.122s-.013-3.056-.06-4.122c-.049-1.065-.207-1.79-.344-2.428a4.902 4.902 0 0 0-1.153-1.772A4.902 4.902 0 0 0 18.55 2.525c-.637-.247-1.363-.416-2.428-.465C15.056 2.013 14.717 2 12 2zm0 1.802c2.67 0 2.986.01 4.04.058.976.045 1.505.207 1.858.344.467.182.8.399 1.15.748.35.35.566.683.748 1.15.137.353.3.882.344 1.857.048 1.055.058 1.37.058 4.041 0 2.67-.01 2.986-.058 4.04-.045.976-.207 1.505-.344 1.858a3.1 3.1 0 0 1-.748 1.15 3.098 3.098 0 0 1-1.15.748c-.353.137-.882.3-1.857.344-1.054.048-1.37.058-4.041.058-2.67 0-2.987-.01-4.04-.058-.976-.045-1.505-.207-1.858-.344a3.1 3.1 0 0 1-1.15-.748 3.098 3.098 0 0 1-.748-1.15c-.137-.353-.3-.882-.344-1.857-.048-1.055-.058-1.37-.058-4.041 0-2.67.01-2.986.058-4.04.045-.976.207-1.505.344-1.858.182-.467.399-.8.748-1.15.35-.35.683-.566 1.15-.748.353-.137.882-.3 1.857-.344 1.055-.048 1.37-.058 4.041-.058zM12 6.865a5.135 5.135 0 1 0 0 10.27 5.135 5.135 0 0 0 0-10.27zm0 8.468a3.333 3.333 0 1 1 0-6.666 3.333 3.333 0 0 1 0 6.666zm6.538-8.671a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2c-2.717 0-3.056.013-4.122.06-1.065.049-1.79.218-2.428.465a4.902 4.902 0 0 0-1.772 1.153A4.902 4.902 0 0 0 2.525 5.45c-.247.637-.416 1.363-.465 2.428C2.013 8.944 2 9.283 2 12s.013 3.056.06 4.122c.049 1.065.218 1.79.465 2.428a4.902 4.902 0 0 0 1.153 1.772 4.902 4.902 0 0 0 1.772 1.153c.637.247 1.363.416 2.428.465C8.944 21.987 9.283 22 12 22s3.056-.013 4.122-.06c1.065-.049 1.79-.218 2.428-.465a4.902 4.902 0 0 0 1.772-1.153 4.902 4.902 0 0 0 1.153-1.772c.247-.637.416-1.363.465-2.428.047-1.066.06-1.405.06-4.122s-.013-3.056-.06-4.122c-.049-1.065-.218-1.79-.465-2.428a4.902 4.902 0 0 0-1.153-1.772A4.902 4.902 0 0 0 18.55 2.525c-.637-.247-1.363-.416-2.428-.465C15.056 2.013 14.717 2 12 2zm0 1.802c2.67 0 2.986.01 4.04.058.976.045 1.505.207 1.858.344.467.182.8.399 1.15.748.35.35.566.683.748 1.15.137.353.3.882.344 1.857.048 1.055.058 1.37.058 4.041 0 2.67-.01 2.986-.058 4.04-.045.976-.207 1.505-.344 1.858a3.1 3.1 0 0 1-.748 1.15 3.098 3.098 0 0 1-1.15.748c-.353.137-.882.3-1.857.344-1.054.048-1.37.058-4.041.058-2.67 0-2.987-.01-4.04-.058-.976-.045-1.505-.207-1.858-.344a3.1 3.1 0 0 1-1.15-.748 3.098 3.098 0 0 1-.748-1.15c-.137-.353-.3-.882-.344-1.857-.048-1.055-.058-1.37-.058-4.041 0-2.67.01-2.986.058-4.04.045-.976.207-1.505.344-1.858.182-.467.399-.8.748-1.15.35-.35.683-.566 1.15-.748.353-.137.882-.3 1.857-.344 1.055-.048 1.37-.058 4.041-.058zM12 6.865a5.135 5.135 0 1 0 0 10.27 5.135 5.135 0 0 0 0-10.27zm0 8.468a3.333 3.333 0 1 1 0-6.666 3.333 3.333 0 0 1 0 6.666zm6.538-8.671a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>
         </a>
         <a href="https://www.tiktok.com/@wearetivo" target="_blank" rel="noopener" class="footer-social-link" aria-label="TikTok">
           <svg viewBox="0 0 24 24"><path d="M16.6 5.82c-.984-.987-1.492-2.148-1.492-3.42h-3.208v13.98a2.79 2.79 0 0 1-2.79 2.79 2.79 2.79 0 0 1-2.79-2.79 2.79 2.79 0 0 1 2.79-2.79c.284 0 .557.041.816.115V10.5a5.93 5.93 0 0 0-.816-.056A6 6 0 0 0 3.11 16.44 6 6 0 0 0 9.11 22.44a6 6 0 0 0 6-6V9.688a8.02 8.02 0 0 0 4.68 1.492V7.97a4.78 4.78 0 0 1-3.19-2.15z"/></svg>
@@ -1364,7 +1466,7 @@ document.addEventListener('keydown', function(e) {
 
 // REVEAL
 const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:.07,rootMargin:'0px 0px -24px 0px'});
-document.querySelectorAll('.bene-card,.sc,.proc-card,.tcv,.stat,.pj-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .65s ease, transform .65s ease';revealObs.observe(el);});
+document.querySelectorAll('.bene-card,.sc,.proc-card,.tcv,.pj-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .65s ease, transform .65s ease';revealObs.observe(el);});
 
 // Postales: revelado con leve giro para reforzar el efecto "postal esparcida"
 const postalObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.setProperty('--reveal-y','0px');}});},{threshold:.1,rootMargin:'0px 0px -20px 0px'});
@@ -1373,6 +1475,23 @@ document.querySelectorAll('.postal-card').forEach((el,i)=>{
   el.style.transition='opacity .6s ease '+(i*0.05)+'s';
   postalObs.observe(el);
 });
+
+// VESPER-STYLE ENTRANCE FALLBACK (nunca se queda invisible)
+(function(){
+  var appearEls = document.querySelectorAll('.appear');
+  appearEls.forEach(function(el){
+    el.addEventListener('animationend', function(){ el.classList.add('is-in'); }, { once: true });
+  });
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      appearEls.forEach(function(el){
+        var anims = el.getAnimations ? el.getAnimations() : [];
+        var running = anims.some(function(a){ return a.playState === 'running' || a.playState === 'finished'; });
+        if (!running) el.classList.add('is-in');
+      });
+    });
+  });
+})();
 </script>
 </body>
 </html>
