@@ -307,6 +307,158 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink
   .appear, .badge-star, .hero-h1 { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
 }
 
+/* ════════════════════════════════════════════════
+   QUIZ — lado derecho del hero
+   "¿Tu marca está lista para escalar?"
+════════════════════════════════════════════════ */
+.quiz-card {
+  background: var(--white);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-card), 0 20px 60px rgba(14,8,4,.10);
+  padding: 34px 30px 30px;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  min-height: 460px;
+  position: relative;
+  border: 1.5px solid var(--border-soft);
+}
+.quiz-progress-wrap { margin-bottom: 24px; }
+.quiz-progress-label {
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 8px;
+}
+.quiz-progress-bar { width: 100%; height: 6px; background: var(--bg); border-radius: var(--r-pill); overflow: hidden; }
+.quiz-progress-fill { height: 100%; width: 0%; background: var(--orange); border-radius: var(--r-pill); transition: width .4s cubic-bezier(.34,1.56,.64,1); }
+
+.quiz-step { display: flex; flex-direction: column; flex: 1; }
+.quiz-step-intro { align-items: flex-start; justify-content: center; text-align: left; gap: 4px; }
+.quiz-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(240,78,26,.1); color: var(--orange);
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 6px 14px; border-radius: var(--r-pill); margin-bottom: 16px; width: fit-content;
+}
+.quiz-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: clamp(26px, 2.6vw, 34px); line-height: 1.12;
+  color: var(--ink); margin-bottom: 14px;
+}
+.quiz-title .q-hl { color: var(--orange); }
+.quiz-sub { font-size: 14.5px; color: var(--muted); line-height: 1.6; margin-bottom: 26px; }
+.quiz-start-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--orange); color: var(--beige);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 650, "opsz" 92; font-size: 15px;
+  padding: 14px 28px; border: none; border-radius: var(--r-pill);
+  box-shadow: var(--shadow-btn), 0 8px 24px rgba(240,78,26,.28);
+  cursor: pointer; transition: background .2s, color .2s, transform .25s;
+}
+.quiz-start-btn:hover { background: var(--lime); color: var(--ink); transform: translateY(-2px); }
+
+.quiz-step-question { justify-content: center; gap: 20px; }
+.quiz-question {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 750, "opsz" 92;
+  font-size: 21px; line-height: 1.35; color: var(--ink);
+}
+.quiz-options { display: flex; flex-direction: column; gap: 10px; }
+.quiz-option {
+  text-align: left; width: 100%;
+  background: var(--surface); border: 1.5px solid transparent;
+  border-radius: var(--r-md); padding: 15px 18px;
+  font-family: 'Inter', sans-serif; font-size: 14.5px; font-weight: 500;
+  color: var(--ink); cursor: pointer;
+  transition: border-color .2s, background .2s, transform .2s;
+}
+.quiz-option:hover { border-color: var(--orange); background: var(--white); transform: translateX(3px); }
+
+.quiz-step-result { align-items: flex-start; justify-content: center; text-align: left; gap: 2px; }
+.quiz-result-score {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: 56px; line-height: 1; margin-bottom: 2px;
+}
+.quiz-result-maxscore { font-size: 12px; color: var(--subtle); margin-bottom: 16px; }
+.quiz-result-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 800, "opsz" 92;
+  font-size: 23px; line-height: 1.2; color: var(--ink); margin-bottom: 10px;
+}
+.quiz-result-copy { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 22px; }
+.quiz-result-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--white); border: none; border-radius: var(--r-pill);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-variation-settings: "wght" 650, "opsz" 92; font-size: 15px;
+  padding: 14px 26px; cursor: pointer;
+  box-shadow: 0 8px 24px rgba(14,8,4,.18);
+  transition: transform .25s, filter .2s; margin-bottom: 10px;
+}
+.quiz-result-cta:hover { transform: translateY(-2px); filter: brightness(1.06); }
+.quiz-retry {
+  background: none; border: none; text-decoration: underline;
+  font-family: 'Inter', sans-serif; font-size: 12.5px; color: var(--subtle);
+  cursor: pointer; width: fit-content;
+}
+.quiz-retry:hover { color: var(--orange); }
+
+@media (max-width: 1023px) {
+  .hero-right { justify-content: center; margin-top: 8px; }
+  .quiz-card { max-width: 460px; }
+}
+@media (max-width: 480px) {
+  .quiz-card { padding: 26px 20px 22px; min-height: auto; }
+}
+
+/* ════════════════════════════════════════════════
+   MODAL DE RESERVA (mismo booking de Google Calendar
+   que ya usa el sitio, embebido en modal)
+════════════════════════════════════════════════ */
+.booking-modal-overlay {
+  position: fixed; inset: 0; z-index: 3000;
+  background: rgba(14,8,4,.6); backdrop-filter: blur(3px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s ease;
+}
+.booking-modal-overlay.open { opacity: 1; pointer-events: all; }
+.booking-modal {
+  background: var(--white); border-radius: var(--r-xl);
+  width: 100%; max-width: 640px; height: min(720px, 88vh);
+  position: relative; overflow: hidden;
+  box-shadow: 0 30px 80px rgba(14,8,4,.35);
+  transform: translateY(16px) scale(.98);
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.booking-modal-overlay.open .booking-modal { transform: translateY(0) scale(1); }
+.booking-modal iframe { width: 100%; height: 100%; border: none; display: block; }
+.booking-modal-close {
+  position: absolute; top: 14px; right: 14px; z-index: 2;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--white); border: 1.5px solid var(--border);
+  box-shadow: 0 4px 14px rgba(14,8,4,.18);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 18px; color: var(--ink);
+  transition: background .2s, transform .2s;
+}
+.booking-modal-close:hover { background: var(--bg); transform: rotate(90deg); }
+.booking-modal-fallback {
+  position: absolute; bottom: 14px; left: 14px; right: 60px; z-index: 2;
+  font-family: 'Inter', sans-serif; font-size: 12px; color: var(--muted);
+  background: var(--white); padding: 8px 12px; border-radius: var(--r-pill);
+  box-shadow: 0 4px 14px rgba(14,8,4,.14);
+  display: none;
+}
+.booking-modal-fallback.show { display: flex; align-items: center; gap: 6px; }
+.booking-modal-fallback a { color: var(--orange); font-weight: 700; text-decoration: underline; }
+
 /* ═══════════════════════════════════
    RESTO DE ESTILOS (sin cambios)
 ═══════════════════════════════════ */
@@ -1006,7 +1158,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 
 <!-- HERO -->
 <header id="home">
-  <div class="hero-inner hero-centered">
+  <div class="hero-inner">
     <div class="hero-left">
       <div class="badge appear appear--pop" style="--d:0.22s">
         <svg class="badge-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6C12.55 2.6 12.88 3.15 13.08 4.7c.62 4.7 1.52 5.6 6.22 6.22 1.55.2 2.1.53 2.1 1.08s-.55.88-2.1 1.08c-4.7.62-5.6 1.52-6.22 6.22-.2 1.55-.53 2.1-1.08 2.1s-.88-.55-1.08-2.1c-.62-4.7-1.52-5.6-6.22-6.22C3.15 12.88 2.6 12.55 2.6 12s.55-.88 2.1-1.08c4.7-.62 5.6-1.52 6.22-6.22C11.12 3.15 11.45 2.6 12 2.6Z"/></svg>
@@ -1036,8 +1188,37 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
         </div>
       </div>
     </div>
+
+    <div class="hero-right">
+      <div class="quiz-card appear appear--pop" style="--d:0.5s" id="quizCard">
+        <div class="quiz-progress-wrap">
+          <div class="quiz-progress-label" id="quizProgressLabel">Diagnóstico exprés</div>
+          <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgressFill"></div></div>
+        </div>
+
+        <div class="quiz-step quiz-step-intro" id="quizIntro">
+          <div class="quiz-badge">✦ 3 preguntas · 30 segundos</div>
+          <h3 class="quiz-title">¿Tu marca está<br>lista para <span class="q-hl">escalar?</span></h3>
+          <p class="quiz-sub">Responde 3 preguntas rápidas y descubre en qué punto está tu marca hoy.</p>
+          <button class="quiz-start-btn" onclick="quizStart()">Empezar el test →</button>
+        </div>
+
+        <div class="quiz-step" id="quizQuestions" style="display:none;"></div>
+        <div class="quiz-step" id="quizResult" style="display:none;"></div>
+      </div>
+    </div>
   </div>
 </header>
+
+<div class="booking-modal-overlay" id="bookingModalOverlay">
+  <div class="booking-modal">
+    <button class="booking-modal-close" onclick="closeBookingModal()" aria-label="Cerrar">×</button>
+    <iframe id="bookingIframe" src="about:blank" title="Agenda tu llamada con TIVO"></iframe>
+    <div class="booking-modal-fallback" id="bookingFallback">
+      ¿No carga? <a href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener">Ábrelo en una pestaña nueva</a>
+    </div>
+  </div>
+</div>
 
 <!-- TICKER -->
 <div class="ticker">
@@ -1052,7 +1233,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 
 </div>
 <div class="stats-row">
-  <div class="stat appear appear--stat" style="--d:1.12s"><div class="stat-n" id="s1"><span class="plus-prefix">+</span>60</div><div class="stat-l">Proyectos entregados satisfactoriamente</div></div>
+  <div class="stat appear appear--stat" style="--d:1.12s"><div class="stat-n" id="s1"><span class="plus-prefix">+</span>80</div><div class="stat-l">Proyectos entregados satisfactoriamente</div></div>
   <div class="stat appear appear--stat" style="--d:1.24s"><div class="stat-n" id="s2"><span class="plus-prefix">+</span>30</div><div class="stat-l">Marcas que confían en TIVO</div></div>
   <div class="stat appear appear--stat" style="--d:1.36s"><div class="stat-n" id="s3">100%</div><div class="stat-l">Satisfacción de clientes</div></div>
   <div class="stat appear appear--stat" style="--d:1.48s"><div class="stat-n" id="s4"><span class="plus-prefix">+</span>6</div><div class="stat-l">Años de experiencia</div></div>
@@ -1371,7 +1552,7 @@ function type(){
 }
 type();
 
-const targets=[60,30,100,6],ids=['s1','s2','s3','s4'],sups=['','','<sup>%</sup>',''];
+const targets=[90,80,100,6],ids=['s1','s2','s3','s4'],sups=['','','<sup>%</sup>',''];
 let animated=false;
 const sObs=new IntersectionObserver(entries=>{
   if(entries[0].isIntersecting&&!animated){
@@ -1492,6 +1673,156 @@ document.querySelectorAll('.postal-card').forEach((el,i)=>{
     });
   });
 })();
+
+// ============ QUIZ ============
+const QUIZ_QUESTIONS = [
+  {
+    q: "Cuando alguien ve tu logo o tus redes, ¿reconoce tu marca al instante?",
+    opts: [
+      { t: "Sí, es 100% reconocible", p: 3 },
+      { t: "Más o menos, pero no es consistente", p: 2 },
+      { t: "No, cada pieza parece de otra marca", p: 1 }
+    ]
+  },
+  {
+    q: "¿Tu marca publica contenido de forma consistente y con una identidad clara?",
+    opts: [
+      { t: "Sí, tenemos calendario y estilo definido", p: 3 },
+      { t: "A veces, pero sin estrategia", p: 2 },
+      { t: "Casi nunca, publicamos cuando se puede", p: 1 }
+    ]
+  },
+  {
+    q: "Si te comparas con tu competencia directa, ¿tu marca se ve más profesional?",
+    opts: [
+      { t: "Claramente, destacamos", p: 3 },
+      { t: "Estamos parejos", p: 2 },
+      { t: "Sinceramente, no", p: 1 }
+    ]
+  }
+];
+
+const QUIZ_RESULTS = {
+  bajo:  { title:"Tu marca tiene potencial, pero le faltan cimientos", copy:"Hay una gran idea detrás, pero no se está viendo. Es el momento perfecto para construir una base sólida antes de invertir en más pauta o contenido.", cta:"Agenda tu diagnóstico gratis", color:"var(--orange)" },
+  medio: { title:"Estás más cerca de lo que crees", copy:"Tienes piezas buenas, pero no están conectadas bajo una sola estrategia. Con los ajustes correctos, tu marca puede dar el salto.", cta:"Hablemos de tu marca", color:"var(--purple)" },
+  alto:  { title:"Tu marca está lista para escalar", copy:"Ya tienes las bases. Ahora se trata de llevarla al siguiente nivel con una identidad y estrategia que la hagan imposible de ignorar.", cta:"Cuéntanos tu próximo paso", color:"var(--green)" }
+};
+
+let quizCurrentQ = 0;
+let quizScore = 0;
+
+function quizStart(){
+  document.getElementById('quizIntro').style.display = 'none';
+  const qWrap = document.getElementById('quizQuestions');
+  const resWrap = document.getElementById('quizResult');
+  resWrap.style.display = 'none';
+  qWrap.style.display = 'flex';
+  quizCurrentQ = 0;
+  quizScore = 0;
+  quizRenderQuestion();
+}
+
+function quizRenderQuestion(){
+  const q = QUIZ_QUESTIONS[quizCurrentQ];
+  const wrap = document.getElementById('quizQuestions');
+  wrap.innerHTML = '';
+  wrap.className = 'quiz-step quiz-step-question';
+
+  const qEl = document.createElement('h3');
+  qEl.className = 'quiz-question';
+  qEl.textContent = q.q;
+  wrap.appendChild(qEl);
+
+  const optsWrap = document.createElement('div');
+  optsWrap.className = 'quiz-options';
+  q.opts.forEach(function(opt){
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'quiz-option';
+    btn.textContent = opt.t;
+    btn.onclick = function(){ quizAnswer(opt.p); };
+    optsWrap.appendChild(btn);
+  });
+  wrap.appendChild(optsWrap);
+
+  quizUpdateProgress();
+}
+
+function quizUpdateProgress(){
+  const total = QUIZ_QUESTIONS.length;
+  const label = document.getElementById('quizProgressLabel');
+  const fill = document.getElementById('quizProgressFill');
+  label.textContent = 'Pregunta ' + (quizCurrentQ+1) + ' de ' + total;
+  fill.style.width = (((quizCurrentQ) / total) * 100) + '%';
+}
+
+function quizAnswer(points){
+  quizScore += points;
+  quizCurrentQ++;
+  if(quizCurrentQ < QUIZ_QUESTIONS.length){
+    quizRenderQuestion();
+  } else {
+    quizShowResult();
+  }
+}
+
+function quizShowResult(){
+  document.getElementById('quizQuestions').style.display = 'none';
+  const fill = document.getElementById('quizProgressFill');
+  fill.style.width = '100%';
+  document.getElementById('quizProgressLabel').textContent = 'Resultado';
+
+  let tier = quizScore <= 4 ? 'bajo' : (quizScore <= 7 ? 'medio' : 'alto');
+  const r = QUIZ_RESULTS[tier];
+
+  const resWrap = document.getElementById('quizResult');
+  resWrap.style.display = 'flex';
+  resWrap.className = 'quiz-step quiz-step-result';
+  resWrap.innerHTML =
+    '<div class="quiz-result-score" id="quizScoreNum" style="color:'+r.color+'">0</div>' +
+    '<div class="quiz-result-maxscore">de 9 puntos</div>' +
+    '<h3 class="quiz-result-title">'+r.title+'</h3>' +
+    '<p class="quiz-result-copy">'+r.copy+'</p>' +
+    '<button class="quiz-result-cta" style="background:'+r.color+'" onclick="openBookingModal()">'+r.cta+' →</button>' +
+    '<button class="quiz-retry" onclick="quizStart()">Volver a hacer el test</button>';
+
+  const numEl = document.getElementById('quizScoreNum');
+  const target = quizScore;
+  const dur = 900;
+  const t0 = performance.now();
+  function tick(now){
+    const p = Math.min((now - t0) / dur, 1);
+    const eased = 1 - Math.pow(1-p, 3);
+    numEl.textContent = Math.round(target * eased);
+    if(p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+// ============ BOOKING MODAL ============
+function openBookingModal(){
+  const iframe = document.getElementById('bookingIframe');
+  const fallback = document.getElementById('bookingFallback');
+  if(iframe.getAttribute('src') === 'about:blank'){
+    iframe.src = 'https://calendar.app.google/qaXPyL2TNogRK9uF8';
+  }
+  document.getElementById('bookingModalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // si en 2.5s el iframe no ha disparado 'load' (posible bloqueo por X-Frame-Options),
+  // mostramos el link de respaldo para abrir en pestaña nueva.
+  clearTimeout(window._bookingFallbackTimer);
+  fallback.classList.remove('show');
+  window._bookingFallbackTimer = setTimeout(function(){
+    fallback.classList.add('show');
+  }, 2500);
+}
+function closeBookingModal(){
+  document.getElementById('bookingModalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('bookingIframe').addEventListener('load', function(){
+  clearTimeout(window._bookingFallbackTimer);
+});
 </script>
 </body>
 </html>
