@@ -1154,6 +1154,14 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 .sc-price-col{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
 .sc-price-cop{font-size:12px;font-weight:600;color:var(--muted);padding-left:6px}
 .sc-price-chip{font-size:14px;padding:7px 12px}
+@media(min-width:1024px){.duo-grid{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
+.team-grid{flex-wrap:nowrap;gap:16px;align-items:stretch}
+.team-card{flex:1 1 0;min-width:0;max-width:none;padding:26px 16px 22px}
+.team-av{width:92px;height:92px}
+.team-name{font-size:24px}
+.team-role{font-size:10px;letter-spacing:.06em;padding:5px 10px;text-align:center}
+.team-quote{font-size:14px}
+@media(max-width:767px){.team-grid{flex-direction:column;align-items:center}.team-card{flex:none;width:100%;max-width:380px}}
 </style>
 </head>
 <body>
