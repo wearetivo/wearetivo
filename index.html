@@ -1285,6 +1285,10 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 .sc-price-col{gap:8px}
 .qz-badge,.qz-okico{background:var(--white);color:#7A4CC4}
 .qz-opt:hover{border-color:#7A4CC4}
+.qz-back{background:none;border:none;color:rgba(255,255,255,.88);display:inline-flex;align-items:center;gap:7px;font:600 13px 'Inter',sans-serif;cursor:pointer;width:fit-content;padding:2px 0}
+.qz-back:hover{text-decoration:underline}
+.qz-note{text-align:center;font-size:11.5px;line-height:1.3}
+.qz-err:empty{display:none}
 </style>
 </head>
 <body>
@@ -1382,7 +1386,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
           <div class="qz-chips"><span><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg> Claridad</span><span><svg class="ico" aria-hidden="true"><use href="#i-palette"/></svg> Identidad</span><span><svg class="ico" aria-hidden="true"><use href="#i-bolt"/></svg> Constancia</span></div>
           <button type="button" class="qz-btn" onclick="qzStart()">Empezar el diagnóstico <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></button>
         </div>
-        <div class="qz-step" id="qzQ0"><h3 class="qz-q">Cuando alguien ve tu logo o tus redes, ¿reconoce tu marca al instante?</h3><div class="qz-opts"><button type="button" class="qz-opt" onclick="qzPick(3)"><b>A</b><span>Sí, es 100% reconocible</span></button><button type="button" class="qz-opt" onclick="qzPick(2)"><b>B</b><span>Más o menos, pero no es consistente</span></button><button type="button" class="qz-opt" onclick="qzPick(1)"><b>C</b><span>No, cada pieza parece de otra marca</span></button></div></div><div class="qz-step" id="qzQ1"><h3 class="qz-q">¿Tu marca publica contenido de forma constante y con una identidad clara?</h3><div class="qz-opts"><button type="button" class="qz-opt" onclick="qzPick(3)"><b>A</b><span>Sí, tenemos calendario y estilo definido</span></button><button type="button" class="qz-opt" onclick="qzPick(2)"><b>B</b><span>A veces, pero sin estrategia</span></button><button type="button" class="qz-opt" onclick="qzPick(1)"><b>C</b><span>Casi nunca, publicamos cuando se puede</span></button></div></div><div class="qz-step" id="qzQ2"><h3 class="qz-q">Si te comparas con tu competencia directa, ¿tu marca se ve más profesional?</h3><div class="qz-opts"><button type="button" class="qz-opt" onclick="qzPick(3)"><b>A</b><span>Claramente, destacamos</span></button><button type="button" class="qz-opt" onclick="qzPick(2)"><b>B</b><span>Estamos parejos</span></button><button type="button" class="qz-opt" onclick="qzPick(1)"><b>C</b><span>Sinceramente, no</span></button></div></div>
+        <div class="qz-step" id="qzQ0"><h3 class="qz-q">Cuando alguien ve tu logo o tus redes, ¿reconoce tu marca al instante?</h3><div class="qz-opts"><button type="button" class="qz-opt" onclick="qzPick(3)"><b>A</b><span>Sí, es 100% reconocible</span></button><button type="button" class="qz-opt" onclick="qzPick(2)"><b>B</b><span>Más o menos, pero no es consistente</span></button><button type="button" class="qz-opt" onclick="qzPick(1)"><b>C</b><span>No, cada pieza parece de otra marca</span></button></div><button type="button" class="qz-back" onclick="qzBack()"><svg class="ico" style="transform:rotate(180deg)" aria-hidden="true"><use href="#i-arrow"/></svg> Volver al inicio</button></div><div class="qz-step" id="qzQ1"><h3 class="qz-q">¿Tu marca publica contenido de forma constante y con una identidad clara?</h3><div class="qz-opts"><button type="button" class="qz-opt" onclick="qzPick(3)"><b>A</b><span>Sí, tenemos calendario y estilo definido</span></button><button type="button" class="qz-opt" onclick="qzPick(2)"><b>B</b><span>A veces, pero sin estrategia</span></button><button type="button" class="qz-opt" onclick="qzPick(1)"><b>C</b><span>Casi nunca, publicamos cuando se puede</span></button></div><button type="button" class="qz-back" onclick="qzBack()"><svg class="ico" style="transform:rotate(180deg)" aria-hidden="true"><use href="#i-arrow"/></svg> Volver a la pregunta anterior</button></div><div class="qz-step" id="qzQ2"><h3 class="qz-q">Si te comparas con tu competencia directa, ¿tu marca se ve más profesional?</h3><div class="qz-opts"><button type="button" class="qz-opt" onclick="qzPick(3)"><b>A</b><span>Claramente, destacamos</span></button><button type="button" class="qz-opt" onclick="qzPick(2)"><b>B</b><span>Estamos parejos</span></button><button type="button" class="qz-opt" onclick="qzPick(1)"><b>C</b><span>Sinceramente, no</span></button></div><button type="button" class="qz-back" onclick="qzBack()"><svg class="ico" style="transform:rotate(180deg)" aria-hidden="true"><use href="#i-arrow"/></svg> Volver a la pregunta anterior</button></div>
         <div class="qz-step" id="qzResult">
           <div class="qz-res-head"><div class="qz-ring"><svg viewBox="0 0 100 100" width="112" height="112"><circle class="qz-ring-bg" cx="50" cy="50" r="44" fill="none" stroke-width="9"/><circle class="qz-ring-fg" id="qzRing" cx="50" cy="50" r="44" fill="none" stroke-width="9"/></svg><div class="qz-ring-n"><span id="qzNum">0</span><small>de 9 puntos</small></div></div>
           <div class="qz-res-box"><div class="qz-res" data-tier="bajo"><h3 class="qz-title sm">Tu marca tiene potencial, pero le faltan cimientos</h3><p class="qz-sub">Hay una gran idea detrás, pero aún no se ve.</p></div><div class="qz-res" data-tier="medio"><h3 class="qz-title sm">Estás más cerca de lo que crees</h3><p class="qz-sub">Tienes buenas piezas, pero sin una estrategia que las una.</p></div><div class="qz-res" data-tier="alto"><h3 class="qz-title sm">Tu marca está lista para escalar</h3><p class="qz-sub">Ya tienes las bases: toca llevarla al siguiente nivel.</p></div></div></div>
@@ -1393,7 +1397,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
             <input class="qz-in" id="qzTel" type="tel" placeholder="Tu teléfono o WhatsApp" autocomplete="tel">
             <div class="qz-err" id="qzErr"></div>
             <button type="submit" class="qz-btn">Descargar mi guía <svg class="ico" aria-hidden="true"><use href="#i-download"/></svg></button>
-            <p class="qz-note">Usaremos tus datos solo para enviarte la guía y contactarte sobre tu marca.</p>
+            <p class="qz-note">Usaremos tus datos solo para enviarte la guía.</p>
           </form>
           <button type="button" class="qz-link" onclick="qzStart()">Volver a hacer el diagnóstico</button>
         </div>
@@ -1907,13 +1911,18 @@ document.querySelectorAll('.postal-card').forEach((el,i)=>{
 // ============ DIAGNÓSTICO ============
 const LEAD_ENDPOINT=''; // pega aquí la URL (Formspree, Apps Script...) para recibir los datos
 function sendLead(d){ if(!LEAD_ENDPOINT) return; try{ fetch(LEAD_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)}).catch(function(){}); }catch(e){} }
-let qzI=0,qzS=0,qzTier='bajo';
+let qzI=0,qzS=0,qzTier='bajo',qzA=[0,0,0];
 function qzShow(id){ document.querySelectorAll('.qz-step').forEach(function(s){ s.classList.toggle('on',s.id===id); }); }
 function qzSegs(n){ document.querySelectorAll('.qz-seg').forEach(function(s,i){ s.classList.toggle('on',i<n); }); }
 function qzLabel(){ var l=document.getElementById('qzLabel'); if(qzI<3) l.textContent='Pregunta '+(qzI+1)+' de 3'; }
-function qzStart(){ qzI=0; qzS=0; qzShow('qzQ0'); qzSegs(0); qzLabel(); }
-function qzPick(p){ qzS+=p; qzI++; qzSegs(qzI); if(qzI<3){ qzShow('qzQ'+qzI); qzLabel(); } else qzResult(); }
+function qzStart(){ qzI=0; qzS=0; qzA=[0,0,0]; qzShow('qzQ0'); qzSegs(0); qzLabel(); }
+function qzPick(p){ qzA[qzI]=p; qzI++; qzSegs(qzI); if(qzI<3){ qzShow('qzQ'+qzI); qzLabel(); } else qzResult(); }
+function qzBack(){
+  if(qzI===0){ qzShow('qzIntro'); document.getElementById('qzLabel').textContent='Diagnóstico exprés'; qzSegs(0); return; }
+  qzI--; qzSegs(qzI); qzShow('qzQ'+qzI); qzLabel();
+}
 function qzResult(){
+  qzS=qzA[0]+qzA[1]+qzA[2];
   qzTier=qzS<=4?'bajo':(qzS<=7?'medio':'alto');
   document.getElementById('qzLabel').textContent='Tu resultado';
   document.querySelectorAll('.qz-res').forEach(function(r){ r.classList.toggle('on',r.dataset.tier===qzTier); });
