@@ -1205,9 +1205,98 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 .team-card.t2 .team-in:hover{background:var(--purple);color:var(--white)}
 /* Conócenos: hover según el color de su icono */
 .benefits-row:nth-child(2) .bene-card:hover{border-color:var(--green)}
+
+.ico{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;vertical-align:-.14em}
+.bene-icon .ico,.proc-icon .ico{width:20px;height:20px}
+.sc-chip .ico{width:14px;height:14px;vertical-align:-.2em}
+.tcv-soon-icon .ico{width:40px;height:40px;color:rgba(14,8,4,.3)}
+.btn-footer-secondary .ico{width:18px;height:18px}
+.flag-ico{width:17px;height:17px;vertical-align:-.2em}
+/* equipo */
+.team-quote{font-size:13.5px;min-height:3.4em}
+/* servicios */
+.sc1 .sc-price-chip{background:rgba(240,78,26,.14);color:var(--orange)}
+.sc2 .sc-price-chip{background:rgba(155,111,212,.16);color:var(--purple)}
+.sc3 .sc-price-chip{background:rgba(77,184,232,.2);color:#0d7aaa}
+.sc4 .sc-price-chip{background:rgba(232,71,122,.14);color:var(--pink)}
+.sc5 .sc-price-chip{background:rgba(196,212,0,.28);color:#4d5a00}
+.sc6 .sc-price-chip{background:rgba(77,189,116,.2);color:#156630}
+.sc-price-cop{font-size:19px;font-weight:800;color:var(--ink);padding-left:6px;letter-spacing:-.2px}
+/* formulario */
+.contact-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23F04E1A' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 20px center;padding-right:46px}
+.contact-select.has{color:var(--ink)}
+/* diagnóstico */
+.hero-right{align-items:center}
+.qz{position:relative;width:100%;max-width:440px;background:linear-gradient(155deg,#AB84E8 0%,#8657C9 100%);border-radius:var(--r-xl);padding:26px 24px 24px;color:var(--white);overflow:hidden;box-shadow:var(--shadow-card),0 26px 60px rgba(155,111,212,.4);display:flex;flex-direction:column;gap:18px}
+.qz::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent 0 22px,rgba(255,255,255,.05) 22px 44px);pointer-events:none}
+.qz>*{position:relative;z-index:1}
+.qz>.qz-burst{position:absolute;right:-48px;top:-48px;width:130px;height:130px;color:var(--lime);opacity:.7;animation:qzspin 40s linear infinite;z-index:0}
+@keyframes qzspin{to{transform:rotate(360deg)}}
+.qz-top{display:flex;align-items:center;gap:14px;padding-right:70px}
+.qz-label{font:700 11px 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85);white-space:nowrap}
+.qz-segs{display:flex;gap:6px;flex:1}
+.qz-seg{flex:1;height:6px;border-radius:9px;background:rgba(255,255,255,.28);transition:background .3s}
+.qz-seg.on{background:var(--lime)}
+.qz-step{display:none;flex-direction:column;gap:16px}
+.qz-step.on{display:flex}
+.qz-badge{display:inline-flex;align-items:center;gap:7px;width:fit-content;background:var(--lime);color:var(--ink);padding:7px 14px;border-radius:100px;font:700 11px 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.qz-title{font-family:'Bricolage Grotesque',sans-serif;font-variation-settings:"wght" 800,"opsz" 92;font-size:clamp(30px,3vw,40px);line-height:1.05;color:var(--white)}
+.qz-title.sm{font-size:23px;line-height:1.15}
+.qz-title em{font-style:normal;color:var(--lime)}
+.qz-sub{font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.88)}
+.qz-chips{display:flex;flex-wrap:wrap;gap:8px}
+.qz-chips span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);padding:8px 13px;border-radius:100px;font:600 13px 'Inter',sans-serif}
+.qz-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--lime);color:var(--ink);border:none;cursor:pointer;height:52px;padding:0 26px;border-radius:100px;font-family:'Bricolage Grotesque',sans-serif;font-variation-settings:"wght" 700,"opsz" 92;font-size:16px;box-shadow:var(--shadow-btn),0 10px 26px rgba(196,212,0,.35);transition:transform .25s,background .2s,color .2s;text-decoration:none}
+.qz-btn:hover{transform:translateY(-2px);background:var(--white)}
+.qz-btn.ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.55);box-shadow:none}
+.qz-btn.ghost:hover{background:var(--white);color:var(--purple)}
+.qz-q{font-family:'Bricolage Grotesque',sans-serif;font-variation-settings:"wght" 750,"opsz" 92;font-size:23px;line-height:1.25;color:var(--white)}
+.qz-opts{display:flex;flex-direction:column;gap:10px}
+.qz-opt{display:flex;align-items:center;gap:13px;text-align:left;background:var(--white);color:var(--ink);border:2px solid transparent;border-radius:18px;padding:13px 15px;font:600 15px 'Inter',sans-serif;cursor:pointer;transition:transform .2s,border-color .2s;box-shadow:0 6px 16px rgba(14,8,4,.14)}
+.qz-opt:hover{transform:translateX(4px);border-color:var(--lime)}
+.qz-opt b{flex-shrink:0;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font:800 14px 'Bricolage Grotesque',sans-serif;background:var(--green)}
+.qz-opt:nth-child(2) b{background:var(--yellow);color:var(--ink)}
+.qz-opt:nth-child(3) b{background:var(--pink)}
+.qz-res-head{display:flex;align-items:center;gap:16px}
+.qz-ring{position:relative;width:112px;height:112px;flex-shrink:0}
+.qz-ring svg{transform:rotate(-90deg);display:block}
+.qz-ring-bg{stroke:rgba(255,255,255,.26)}
+.qz-ring-fg{stroke:var(--lime);stroke-linecap:round;stroke-dasharray:276.5;stroke-dashoffset:276.5;transition:stroke-dashoffset 1.1s cubic-bezier(.2,.8,.2,1)}
+.qz-ring-n{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-variation-settings:"wght" 800,"opsz" 92;font-size:36px;line-height:1}
+.qz-ring-n small{font:600 10px 'Inter',sans-serif;opacity:.85;margin-top:3px}
+.qz-res{display:none;flex-direction:column;gap:6px}.qz-res.on{display:flex}
+.qz-form{display:flex;flex-direction:column;gap:10px;background:rgba(14,8,4,.24);border-radius:22px;padding:16px}
+.qz-form h4{display:flex;align-items:center;gap:8px;font-family:'Bricolage Grotesque',sans-serif;font-variation-settings:"wght" 750,"opsz" 92;font-size:17px;color:var(--lime)}
+.qz-in{height:46px;border-radius:100px;border:2px solid transparent;background:var(--white);padding:0 18px;font:500 15px 'Inter',sans-serif;color:var(--ink);outline:none;width:100%}
+.qz-in:focus{border-color:var(--lime)}
+.qz-err{font-size:12.5px;color:#FFE08A;min-height:1.1em;font-weight:600}
+.qz-note{font-size:11.5px;color:rgba(255,255,255,.72);line-height:1.5}
+.qz-link{background:none;border:none;color:rgba(255,255,255,.8);text-decoration:underline;font:500 12.5px 'Inter',sans-serif;cursor:pointer;width:fit-content}
+.qz-okico{width:64px;height:64px;border-radius:50%;background:var(--lime);color:var(--ink);display:flex;align-items:center;justify-content:center}
+.qz-okico .ico{width:32px;height:32px;stroke-width:2.6}
+@media(max-width:480px){.qz{padding:22px 18px 20px}.qz-res-head{flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+<symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-1 1.6-2.2-.4-1.2.4-2.3 1.7-2.3H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M9 7h6"/></symbol>
+<symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></symbol>
+<symbol id="i-pencil" viewBox="0 0 24 24"><path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19z"/><path d="M14.5 6.5l3 3"/></symbol>
+<symbol id="i-call" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="i-rocket" viewBox="0 0 24 24"><path d="M5 15c-1.5 1.5-2 4-2 6 2 0 4.5-.5 6-2"/><path d="M14 4c3-1 6-1 6-1s0 3-1 6l-6 6-5-5z"/><circle cx="15" cy="9" r="1.2"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3c.5 4.5 1.5 6.5 6 7-4.5.5-5.5 2.5-6 7-.5-4.5-1.5-6.5-6-7 4.5-.5 5.5-2.5 6-7z"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</defs></svg>
+
 
 <div class="cstrip">
   <div class="cs1"></div><div class="cs2"></div><div class="cs3"></div><div class="cs4"></div>
@@ -1273,21 +1362,38 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
     </div>
 
     <div class="hero-right">
-      <div class="quiz-card appear appear--pop" style="--d:0.5s" id="quizCard">
-        <div class="quiz-progress-wrap">
-          <div class="quiz-progress-label" id="quizProgressLabel">Diagnóstico exprés</div>
-          <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgressFill"></div></div>
+      <div class="qz appear appear--pop" style="--d:0.5s" id="quizCard">
+        <svg class="qz-burst" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" stroke-width="10" stroke-linecap="round"><path d="M50 8v22M50 70v22M8 50h22M70 50h22M20 20l16 16M64 64l16 16M80 20L64 36M36 64L20 80"/></g></svg>
+        <div class="qz-top"><span class="qz-label" id="qzLabel">Diagnóstico exprés</span><div class="qz-segs"><i class="qz-seg"></i><i class="qz-seg"></i><i class="qz-seg"></i></div></div>
+        <div class="qz-step on" id="qzIntro">
+          <span class="qz-badge"><svg class="ico" aria-hidden="true"><use href="#i-spark"/></svg> 3 preguntas · 30 segundos</span>
+          <h3 class="qz-title">¿Tu marca está lista para <em>escalar?</em></h3>
+          <p class="qz-sub">Responde 3 preguntas rápidas, conoce en qué punto está tu marca y descarga gratis tu guía personalizada.</p>
+          <div class="qz-chips"><span><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg> Claridad</span><span><svg class="ico" aria-hidden="true"><use href="#i-palette"/></svg> Identidad</span><span><svg class="ico" aria-hidden="true"><use href="#i-bolt"/></svg> Constancia</span></div>
+          <button type="button" class="qz-btn" onclick="qzStart()">Empezar el diagnóstico <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></button>
         </div>
-
-        <div class="quiz-step quiz-step-intro" id="quizIntro">
-          <div class="quiz-badge">✦ 3 preguntas · 30 segundos</div>
-          <h3 class="quiz-title">¿Tu marca está<br>lista para <span class="q-hl">escalar?</span></h3>
-          <p class="quiz-sub">Responde 3 preguntas rápidas y descubre en qué punto está tu marca hoy.</p>
-          <button class="quiz-start-btn" onclick="quizStart()">Empezar el test →</button>
+        <div class="qz-step" id="qzQ0"><h3 class="qz-q">Cuando alguien ve tu logo o tus redes, ¿reconoce tu marca al instante?</h3><div class="qz-opts"><button type="button" class="qz-opt" onclick="qzPick(3)"><b>A</b><span>Sí, es 100% reconocible</span></button><button type="button" class="qz-opt" onclick="qzPick(2)"><b>B</b><span>Más o menos, pero no es consistente</span></button><button type="button" class="qz-opt" onclick="qzPick(1)"><b>C</b><span>No, cada pieza parece de otra marca</span></button></div></div><div class="qz-step" id="qzQ1"><h3 class="qz-q">¿Tu marca publica contenido de forma constante y con una identidad clara?</h3><div class="qz-opts"><button type="button" class="qz-opt" onclick="qzPick(3)"><b>A</b><span>Sí, tenemos calendario y estilo definido</span></button><button type="button" class="qz-opt" onclick="qzPick(2)"><b>B</b><span>A veces, pero sin estrategia</span></button><button type="button" class="qz-opt" onclick="qzPick(1)"><b>C</b><span>Casi nunca, publicamos cuando se puede</span></button></div></div><div class="qz-step" id="qzQ2"><h3 class="qz-q">Si te comparas con tu competencia directa, ¿tu marca se ve más profesional?</h3><div class="qz-opts"><button type="button" class="qz-opt" onclick="qzPick(3)"><b>A</b><span>Claramente, destacamos</span></button><button type="button" class="qz-opt" onclick="qzPick(2)"><b>B</b><span>Estamos parejos</span></button><button type="button" class="qz-opt" onclick="qzPick(1)"><b>C</b><span>Sinceramente, no</span></button></div></div>
+        <div class="qz-step" id="qzResult">
+          <div class="qz-res-head"><div class="qz-ring"><svg viewBox="0 0 100 100" width="112" height="112"><circle class="qz-ring-bg" cx="50" cy="50" r="44" fill="none" stroke-width="9"/><circle class="qz-ring-fg" id="qzRing" cx="50" cy="50" r="44" fill="none" stroke-width="9"/></svg><div class="qz-ring-n"><span id="qzNum">0</span><small>de 9 puntos</small></div></div>
+          <div class="qz-res-box"><div class="qz-res" data-tier="bajo"><h3 class="qz-title sm">Tu marca tiene potencial, pero le faltan cimientos</h3><p class="qz-sub">Hay una gran idea detrás, pero aún no se ve.</p></div><div class="qz-res" data-tier="medio"><h3 class="qz-title sm">Estás más cerca de lo que crees</h3><p class="qz-sub">Tienes buenas piezas, pero sin una estrategia que las una.</p></div><div class="qz-res" data-tier="alto"><h3 class="qz-title sm">Tu marca está lista para escalar</h3><p class="qz-sub">Ya tienes las bases: toca llevarla al siguiente nivel.</p></div></div></div>
+          <form class="qz-form" onsubmit="qzLead(event)" novalidate>
+            <h4><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg> Descarga gratis tu guía de marca</h4>
+            <input class="qz-in" id="qzName" type="text" placeholder="Tu nombre" autocomplete="name">
+            <input class="qz-in" id="qzMail" type="email" placeholder="Tu correo electrónico" autocomplete="email">
+            <input class="qz-in" id="qzTel" type="tel" placeholder="Tu teléfono o WhatsApp" autocomplete="tel">
+            <div class="qz-err" id="qzErr"></div>
+            <button type="submit" class="qz-btn">Descargar mi guía <svg class="ico" aria-hidden="true"><use href="#i-download"/></svg></button>
+            <p class="qz-note">Usaremos tus datos solo para enviarte la guía y contactarte sobre tu marca.</p>
+          </form>
+          <button type="button" class="qz-link" onclick="qzStart()">Volver a hacer el diagnóstico</button>
         </div>
-
-        <div class="quiz-step" id="quizQuestions" style="display:none;"></div>
-        <div class="quiz-step" id="quizResult" style="display:none;"></div>
+        <div class="qz-step" id="qzDone">
+          <div class="qz-okico"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></div>
+          <h3 class="qz-title sm">¡Listo, <span id="qzWho">amigo</span>! Tu guía ya se está descargando.</h3>
+          <p class="qz-sub">Si no empezó sola, descárgala de nuevo. Y si quieres aterrizarla con tu marca, agenda una llamada con nosotros.</p>
+          <a class="qz-btn ghost" href="Guia-de-marca-TIVO.pdf" download><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg> Descargar de nuevo</a>
+          <button type="button" class="qz-btn" onclick="openBookingModal()"><svg class="ico" aria-hidden="true"><use href="#i-call"/></svg> Agendar llamada con TIVO</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1306,7 +1412,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track ticker-right">
-<span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Branding</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Marketing</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Branding</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Marketing</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span>
+<span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Estrategia de marca</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Mercadeo</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Web</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">UX/UI</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Video</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Animación</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Ilustración</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Modelado 3D</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Identidad Visual</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Estrategia de marca</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Redes Sociales</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Mercadeo</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span><span class="ti-item"><span class="ti-txt">Editorial</span><img class="ti-logo" src="https://raw.githubusercontent.com/wearetivo/wearetivo/51612c85b1c4991db123a8f7b43d440c140c6695/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO%20EN%20BLANCO.png" alt=""></span>
   </div>
 </div>
 
@@ -1402,10 +1508,10 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
   </div>
   <div class="benefits-rows">
     <div class="benefits-row">
-      <div class="bene-card"><div class="bene-card-title-row"><div class="bene-icon" style="background:rgba(240,78,26,.12);">🎯</div><h3 class="bene-h3">¿Quiénes somos?</h3></div><div class="bene-divider"></div><p class="bene-p">Somos un estudio creativo y aliado estratégico con más de 6 años construyendo marcas que conectan. Un equipo multidisciplinario apasionado por el diseño con propósito.</p></div>
+      <div class="bene-card"><div class="bene-card-title-row"><div class="bene-icon" style="background:rgba(240,78,26,.12);color:var(--orange);"><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg></div><h3 class="bene-h3">¿Quiénes somos?</h3></div><div class="bene-divider"></div><p class="bene-p">Somos un estudio creativo y aliado estratégico con más de 6 años construyendo marcas que conectan. Un equipo multidisciplinario apasionado por el diseño con propósito.</p></div>
     </div>
     <div class="benefits-row">
-      <div class="bene-card"><div class="bene-card-title-row"><div class="bene-icon" style="background:rgba(77,189,116,.12);">🤝</div><h3 class="bene-h3">Nuestra filosofía</h3></div><div class="bene-divider"></div><p class="bene-p">No creemos en fórmulas genéricas. Cada decisión tiene una razón de ser. Somos aliados, no proveedores — tu éxito es, literalmente, el nuestro.</p></div>
+      <div class="bene-card"><div class="bene-card-title-row"><div class="bene-icon" style="background:rgba(77,189,116,.12);color:#156630;"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></div><h3 class="bene-h3">Nuestra filosofía</h3></div><div class="bene-divider"></div><p class="bene-p">No creemos en fórmulas genéricas. Cada decisión tiene una razón de ser. Somos aliados, no proveedores — tu éxito es, literalmente, el nuestro.</p></div>
     </div>
   </div>
 </div>
@@ -1430,8 +1536,8 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
     <div class="team-card t2">
       <div class="team-av"><img src="https://raw.githubusercontent.com/wearetivo/wearetivo/ff44520cec43beb37a84074b169a5559879deeb1/FOTO%20DE%20PERFIL%20SANTI%20CON%20FONDO%20MORADO.png" alt="Santiago" loading="lazy"></div>
       <h3 class="team-name">Santiago</h3>
-      <span class="team-role tr2">Director de Marketing</span>
-      <p class="team-quote">“Una buena idea necesita estrategia para llegar a quien la está buscando.”</p>
+      <span class="team-role tr2">Director de Mercadeo</span>
+      <p class="team-quote">“Una buena idea necesita estrategia para llegar a su público.”</p>
       <!-- Pega aquí el LinkedIn de Santiago en href -->
       <a class="team-in" href="https://www.linkedin.com/in/markanttivo/" target="_blank" rel="noopener" aria-label="LinkedIn de Santiago"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
     </div>
@@ -1477,12 +1583,12 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
     <p class="srv-note">Precios de referencia en COP, con equivalente aproximado en USD. Cada proyecto se cotiza a medida.</p>
   </div>
   <div class="srv-grid">
-    <div class="sc sc1"><div class="sc-n">01</div><div class="sc-chip chip-o">🎨 Identidad</div><h3 class="sc-title">Identidad Visual</h3><p class="sc-desc">Logos, paletas, tipografías y sistemas visuales completos que hacen que tu marca se reconozca al instante y nunca se olvide.</p><div class="sc-tags"><span class="sc-tag">Logo</span><span class="sc-tag">Brand System</span><span class="sc-tag">Guidelines</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $1.999.999 COP</span><span class="sc-price-cop">≈ $669 USD</span></div><a class="sc-quote" href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener">Cotízanos →</a></div></div>
-    <div class="sc sc2"><div class="sc-n">02</div><div class="sc-chip chip-p">📱 Social</div><h3 class="sc-title">Redes Sociales</h3><p class="sc-desc">Contenido visual que para el scroll. Estrategia, diseño y plantillas para que tu marca brille en Instagram, TikTok y más.</p><div class="sc-tags"><span class="sc-tag">Contenido</span><span class="sc-tag">Estrategia</span><span class="sc-tag">Templates</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $999.999 COP/mes</span><span class="sc-price-cop">≈ $349 USD/mes</span></div><a class="sc-quote" href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener">Cotízanos →</a></div></div>
-    <div class="sc sc3"><div class="sc-n">03</div><div class="sc-chip chip-b">🌐 Digital</div><h3 class="sc-title">Diseño Web</h3><p class="sc-desc">Sitios que no son solo bonitos: son experiencias que convierten. Diseño + desarrollo para presencias digitales que impactan.</p><div class="sc-tags"><span class="sc-tag">UI/UX</span><span class="sc-tag">Desarrollo</span><span class="sc-tag">Landing</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $2.999.999 COP</span><span class="sc-price-cop">≈ $999 USD</span></div><a class="sc-quote" href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener">Cotízanos →</a></div></div>
-    <div class="sc sc4"><div class="sc-n">04</div><div class="sc-chip chip-pk">📖 Editorial</div><h3 class="sc-title">Editorial</h3><p class="sc-desc">Revistas, catálogos, lookbooks y publicaciones que hacen que la gente quiera quedarse hasta el final.</p><div class="sc-tags"><span class="sc-tag">Print</span><span class="sc-tag">Digital</span><span class="sc-tag">Catálogo</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $149.999 COP</span><span class="sc-price-cop">≈ $59 USD</span></div><a class="sc-quote" href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener">Cotízanos →</a></div></div>
-    <div class="sc sc5"><div class="sc-n">05</div><div class="sc-chip chip-l">🎬 Motion</div><h3 class="sc-title">Video & Animación</h3><p class="sc-desc">Motion graphics, animaciones y contenido audiovisual que le da vida y movimiento a tu identidad de marca.</p><div class="sc-tags"><span class="sc-tag">Motion</span><span class="sc-tag">Reels</span><span class="sc-tag">Animación</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $99.999 COP</span><span class="sc-price-cop">≈ $29 USD</span></div><a class="sc-quote" href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener">Cotízanos →</a></div></div>
-    <div class="sc sc6"><div class="sc-n">06</div><div class="sc-chip chip-g">✏️ Ilustración</div><h3 class="sc-title">Ilustración & 3D</h3><p class="sc-desc">Ilustraciones únicas y modelado 3D que le dan un carácter visual irrepetible a tu marca y productos.</p><div class="sc-tags"><span class="sc-tag">Ilustración</span><span class="sc-tag">3D</span><span class="sc-tag">Mockup</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $249.999 COP</span><span class="sc-price-cop">≈ $89 USD</span></div><a class="sc-quote" href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener">Cotízanos →</a></div></div>
+    <div class="sc sc1"><div class="sc-n">01</div><div class="sc-chip chip-o"><svg class="ico" aria-hidden="true"><use href="#i-palette"/></svg> Identidad</div><h3 class="sc-title">Identidad Visual</h3><p class="sc-desc">Logos, paletas, tipografías y sistemas visuales completos que hacen que tu marca se reconozca al instante y nunca se olvide.</p><div class="sc-tags"><span class="sc-tag">Logo</span><span class="sc-tag">Sistema de marca</span><span class="sc-tag">Manual de marca</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $1.999.999 COP</span><span class="sc-price-cop">≈ $669 USD</span></div><a class="sc-quote" href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener">Quiero mi propuesta →</a></div></div>
+    <div class="sc sc2"><div class="sc-n">02</div><div class="sc-chip chip-p"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Redes</div><h3 class="sc-title">Redes Sociales</h3><p class="sc-desc">Contenido visual que frena el desplazamiento. Estrategia, diseño y plantillas para que tu marca brille en Instagram, TikTok y más.</p><div class="sc-tags"><span class="sc-tag">Contenido</span><span class="sc-tag">Estrategia</span><span class="sc-tag">Plantillas</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $999.999 COP/mes</span><span class="sc-price-cop">≈ $349 USD/mes</span></div><a class="sc-quote" href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener">Quiero mi propuesta →</a></div></div>
+    <div class="sc sc3"><div class="sc-n">03</div><div class="sc-chip chip-b"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg> Digital</div><h3 class="sc-title">Diseño Web</h3><p class="sc-desc">Sitios que no son solo bonitos: son experiencias que convierten. Diseño + desarrollo para presencias digitales que impactan.</p><div class="sc-tags"><span class="sc-tag">UI/UX</span><span class="sc-tag">Desarrollo</span><span class="sc-tag">Páginas de destino</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $2.999.999 COP</span><span class="sc-price-cop">≈ $999 USD</span></div><a class="sc-quote" href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener">Quiero mi propuesta →</a></div></div>
+    <div class="sc sc4"><div class="sc-n">04</div><div class="sc-chip chip-pk"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg> Editorial</div><h3 class="sc-title">Editorial</h3><p class="sc-desc">Revistas, catálogos, portafolios y publicaciones que hacen que la gente quiera quedarse hasta el final.</p><div class="sc-tags"><span class="sc-tag">Impresos</span><span class="sc-tag">Digital</span><span class="sc-tag">Catálogo</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $149.999 COP</span><span class="sc-price-cop">≈ $59 USD</span></div><a class="sc-quote" href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener">Quiero mi propuesta →</a></div></div>
+    <div class="sc sc5"><div class="sc-n">05</div><div class="sc-chip chip-l"><svg class="ico" aria-hidden="true"><use href="#i-film"/></svg> Animación</div><h3 class="sc-title">Video & Animación</h3><p class="sc-desc">Gráficos en movimiento, animaciones y contenido audiovisual que le da vida y movimiento a tu identidad de marca.</p><div class="sc-tags"><span class="sc-tag">Movimiento</span><span class="sc-tag">Videos cortos</span><span class="sc-tag">Animación</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $99.999 COP</span><span class="sc-price-cop">≈ $29 USD</span></div><a class="sc-quote" href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener">Quiero mi propuesta →</a></div></div>
+    <div class="sc sc6"><div class="sc-n">06</div><div class="sc-chip chip-g"><svg class="ico" aria-hidden="true"><use href="#i-pencil"/></svg> Ilustración</div><h3 class="sc-title">Ilustración & 3D</h3><p class="sc-desc">Ilustraciones únicas y modelado 3D que le dan un carácter visual irrepetible a tu marca y productos.</p><div class="sc-tags"><span class="sc-tag">Ilustración</span><span class="sc-tag">3D</span><span class="sc-tag">Maquetas</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $249.999 COP</span><span class="sc-price-cop">≈ $89 USD</span></div><a class="sc-quote" href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener">Quiero mi propuesta →</a></div></div>
   </div>
 </div>
 
@@ -1507,7 +1613,8 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
         <div class="contact-fields">
           <input class="contact-input" type="text" name="Name" placeholder="Nombre" required>
           <input class="contact-input" type="email" name="Email" placeholder="Correo electrónico" required>
-          <select class="contact-select" name="Service" required><option value="" disabled selected>¿Qué necesitas?</option><option>Identidad Visual</option><option>Redes Sociales</option><option>Diseño Web</option><option>Editorial</option><option>Alianza estratégica</option><option>Otro</option></select>
+          <select class="contact-select" name="Service" required onchange="svcChange(this)"><option value="" disabled selected>¿Qué necesitas?</option><option>Identidad Visual</option><option>Redes Sociales</option><option>Diseño Web</option><option>Editorial</option><option>Video y Animación</option><option>Ilustración y 3D</option><option>Alianza estratégica</option><option value="Otro">Otro (escríbelo aquí)</option></select>
+          <input class="contact-input" id="otherSvc" type="text" name="OtherService" placeholder="Cuéntanos qué necesitas" style="display:none">
           <button type="submit" class="contact-send-btn">Enviar mensaje</button>
         </div>
       </div>
@@ -1523,10 +1630,10 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
     <p class="section-sub">Sin pasos innecesarios. Solo un proceso enfocado en resultados concretos.</p>
   </div>
   <div class="process-cards">
-    <div class="proc-card"><div class="proc-step-tag pt1">01 — Descubrimiento</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(240,78,26,.12);">📞</div><h3 class="proc-h3" style="white-space:nowrap;">Nos conocemos</h3></div><div class="proc-divider"></div><p class="proc-p">Cuanto más sepamos de ti, mejor. Exploramos tu negocio, tus metas y tu audiencia antes de tomar cualquier decisión creativa.</p><div class="proc-deco">01</div></div>
-    <div class="proc-card"><div class="proc-step-tag pt2">02 — Exploración</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(155,111,212,.12);">🎨</div><h3 class="proc-h3">Exploramos</h3></div><div class="proc-divider"></div><p class="proc-p">Investigamos, benchmarkeamos y encontramos la dirección creativa que tiene algo real que decir. Nada genérico, nada de plantillas.</p><div class="proc-deco">02</div></div>
-    <div class="proc-card"><div class="proc-step-tag pt3">03 — Diseño</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(232,71,122,.1);">⚡</div><h3 class="proc-h3">Diseñamos</h3></div><div class="proc-divider"></div><p class="proc-p">Ejecutamos con obsesión por el detalle. Presentamos, iteramos y refinamos hasta que quede exactamente como debe ser.</p><div class="proc-deco">03</div></div>
-    <div class="proc-card"><div class="proc-step-tag pt4">04 — Entrega</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(196,212,0,.18);">🚀</div><h3 class="proc-h3">Lanzamos</h3></div><div class="proc-divider"></div><p class="proc-p">Entregamos todo listo para usar y te acompañamos en el lanzamiento. No te dejamos solo con un ZIP y buena suerte.</p><div class="proc-deco">04</div></div>
+    <div class="proc-card"><div class="proc-step-tag pt1">01 — Descubrimiento</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(240,78,26,.12);color:var(--orange);"><svg class="ico" aria-hidden="true"><use href="#i-call"/></svg></div><h3 class="proc-h3" style="white-space:nowrap;">Nos conocemos</h3></div><div class="proc-divider"></div><p class="proc-p">Cuanto más sepamos de ti, mejor. Exploramos tu negocio, tus metas y tu audiencia antes de tomar cualquier decisión creativa.</p><div class="proc-deco">01</div></div>
+    <div class="proc-card"><div class="proc-step-tag pt2">02 — Exploración</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(155,111,212,.12);color:var(--purple);"><svg class="ico" aria-hidden="true"><use href="#i-palette"/></svg></div><h3 class="proc-h3">Exploramos</h3></div><div class="proc-divider"></div><p class="proc-p">Investigamos, analizamos referentes y encontramos la dirección creativa que tiene algo real que decir. Nada genérico, nada de plantillas.</p><div class="proc-deco">02</div></div>
+    <div class="proc-card"><div class="proc-step-tag pt3">03 — Diseño</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(232,71,122,.1);color:var(--pink);"><svg class="ico" aria-hidden="true"><use href="#i-bolt"/></svg></div><h3 class="proc-h3">Diseñamos</h3></div><div class="proc-divider"></div><p class="proc-p">Ejecutamos con obsesión por el detalle. Presentamos, iteramos y refinamos hasta que quede exactamente como debe ser.</p><div class="proc-deco">03</div></div>
+    <div class="proc-card"><div class="proc-step-tag pt4">04 — Entrega</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(196,212,0,.18);color:#4d5a00;"><svg class="ico" aria-hidden="true"><use href="#i-rocket"/></svg></div><h3 class="proc-h3">Lanzamos</h3></div><div class="proc-divider"></div><p class="proc-p">Entregamos todo listo para usar y te acompañamos en el lanzamiento. No te dejamos solo con una carpeta de archivos y buena suerte.</p><div class="proc-deco">04</div></div>
   </div>
 </div>
 
@@ -1566,11 +1673,11 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
     <!-- TESTIMONIO PENDIENTE — video por confirmar -->
     <div class="tcv tcv-pending">
       <div class="tcv-media tcv-media-soon" id="mediaPending">
-        <div class="tcv-soon-icon">🎬</div>
+        <div class="tcv-soon-icon"><svg class="ico" aria-hidden="true"><use href="#i-film"/></svg></div>
         <div class="tcv-soon-label">Video próximamente</div>
       </div>
       <div class="tcv-body">
-        <div class="tcv-country tcv-country-soon"><span class="flag">🌍</span>País en camino</div>
+        <div class="tcv-country tcv-country-soon"><svg class="ico flag-ico" aria-hidden="true"><use href="#i-globe"/></svg>País en camino</div>
         <p class="tc-q">Muy pronto compartiremos aquí el testimonio de otra marca que confió en nosotros.</p>
         <div class="tc-auth">
           <div class="tcav">··</div>
@@ -1637,7 +1744,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
     <p class="footer-sub">Sin formularios eternos, sin compromisos. Solo una conversación honesta entre creativos sobre lo que quieres construir.</p>
     <div class="footer-cta-row">
       <a href="https://calendar.app.google/qaXPyL2TNogRK9uF8" target="_blank" rel="noopener" class="btn-footer-cta">Reservar llamada</a>
-      <a href="mailto:wearetivo@gmail.com" class="btn-footer-secondary">✉️ wearetivo@gmail.com</a>
+      <a href="mailto:wearetivo@gmail.com" class="btn-footer-secondary"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg> wearetivo@gmail.com</a>
     </div>
     <div class="footer-mini">
       <div class="footer-social">
@@ -1648,7 +1755,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
           <svg viewBox="0 0 24 24"><path d="M16.6 5.82c-.984-.987-1.492-2.148-1.492-3.42h-3.208v13.98a2.79 2.79 0 0 1-2.79 2.79 2.79 2.79 0 0 1-2.79-2.79 2.79 2.79 0 0 1 2.79-2.79c.284 0 .557.041.816.115V10.5a5.93 5.93 0 0 0-.816-.056A6 6 0 0 0 3.11 16.44 6 6 0 0 0 9.11 22.44a6 6 0 0 0 6-6V9.688a8.02 8.02 0 0 0 4.68 1.492V7.97a4.78 4.78 0 0 1-3.19-2.15z"/></svg>
         </a>
       </div>
-      <span class="footer-mini-copy">© 2026 We Are TIVO — Bogotá, Colombia ✦</span>
+      <span class="footer-mini-copy">© 2026 We Are TIVO — Bogotá, Colombia</span>
     </div>
   </div>
 </footer>
@@ -1679,13 +1786,13 @@ const sr=document.querySelector('.stats-row');if(sr)sObs.observe(sr);
 
 function toggleFaq(btn){btn.closest('.faq-item').classList.toggle('open');}
 
+function svcChange(s){ s.classList.add('has'); var o=document.getElementById('otherSvc'), on=s.value==='Otro'; o.style.display=on?'block':'none'; o.required=on; if(on) o.focus(); }
 function handleSubmit(e){
   e.preventDefault();
-  const btn=e.target.querySelector('.contact-send-btn');
-  btn.textContent='✓ Mensaje enviado';
-  btn.style.background='var(--green)';
-  btn.style.color='var(--white)';
-  setTimeout(()=>{btn.textContent='Enviar mensaje';btn.style.background='';btn.style.color='';},3000);
+  var f=e.target, d=Object.fromEntries(new FormData(f)); d.origen='contacto'; d.fecha=new Date().toISOString(); sendLead(d);
+  var btn=f.querySelector('.contact-send-btn');
+  btn.textContent='¡Mensaje enviado!'; btn.style.background='var(--green)'; btn.style.color='var(--white)';
+  setTimeout(function(){ btn.textContent='Enviar mensaje'; btn.style.background=''; btn.style.color=''; f.reset(); document.getElementById('otherSvc').style.display='none'; f.querySelector('.contact-select').classList.remove('has'); },3000);
 }
 
 // TESTIMONIOS EN VIDEO
@@ -1787,129 +1894,37 @@ document.querySelectorAll('.postal-card').forEach((el,i)=>{
   });
 })();
 
-// ============ QUIZ ============
-const QUIZ_QUESTIONS = [
-  {
-    q: "Cuando alguien ve tu logo o tus redes, ¿reconoce tu marca al instante?",
-    opts: [
-      { t: "Sí, es 100% reconocible", p: 3 },
-      { t: "Más o menos, pero no es consistente", p: 2 },
-      { t: "No, cada pieza parece de otra marca", p: 1 }
-    ]
-  },
-  {
-    q: "¿Tu marca publica contenido de forma consistente y con una identidad clara?",
-    opts: [
-      { t: "Sí, tenemos calendario y estilo definido", p: 3 },
-      { t: "A veces, pero sin estrategia", p: 2 },
-      { t: "Casi nunca, publicamos cuando se puede", p: 1 }
-    ]
-  },
-  {
-    q: "Si te comparas con tu competencia directa, ¿tu marca se ve más profesional?",
-    opts: [
-      { t: "Claramente, destacamos", p: 3 },
-      { t: "Estamos parejos", p: 2 },
-      { t: "Sinceramente, no", p: 1 }
-    ]
-  }
-];
-
-const QUIZ_RESULTS = {
-  bajo:  { title:"Tu marca tiene potencial, pero le faltan cimientos", copy:"Hay una gran idea detrás, pero no se está viendo. Es el momento perfecto para construir una base sólida antes de invertir en más pauta o contenido.", cta:"Agenda tu diagnóstico gratis", color:"var(--orange)" },
-  medio: { title:"Estás más cerca de lo que crees", copy:"Tienes piezas buenas, pero no están conectadas bajo una sola estrategia. Con los ajustes correctos, tu marca puede dar el salto.", cta:"Hablemos de tu marca", color:"var(--purple)" },
-  alto:  { title:"Tu marca está lista para escalar", copy:"Ya tienes las bases. Ahora se trata de llevarla al siguiente nivel con una identidad y estrategia que la hagan imposible de ignorar.", cta:"Cuéntanos tu próximo paso", color:"var(--green)" }
-};
-
-let quizCurrentQ = 0;
-let quizScore = 0;
-
-function quizStart(){
-  document.getElementById('quizIntro').style.display = 'none';
-  const qWrap = document.getElementById('quizQuestions');
-  const resWrap = document.getElementById('quizResult');
-  resWrap.style.display = 'none';
-  qWrap.style.display = 'flex';
-  quizCurrentQ = 0;
-  quizScore = 0;
-  quizRenderQuestion();
+// ============ DIAGNÓSTICO ============
+const LEAD_ENDPOINT=''; // pega aquí la URL (Formspree, Apps Script...) para recibir los datos
+function sendLead(d){ if(!LEAD_ENDPOINT) return; try{ fetch(LEAD_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)}).catch(function(){}); }catch(e){} }
+let qzI=0,qzS=0,qzTier='bajo';
+function qzShow(id){ document.querySelectorAll('.qz-step').forEach(function(s){ s.classList.toggle('on',s.id===id); }); }
+function qzSegs(n){ document.querySelectorAll('.qz-seg').forEach(function(s,i){ s.classList.toggle('on',i<n); }); }
+function qzLabel(){ var l=document.getElementById('qzLabel'); if(qzI<3) l.textContent='Pregunta '+(qzI+1)+' de 3'; }
+function qzStart(){ qzI=0; qzS=0; qzShow('qzQ0'); qzSegs(0); qzLabel(); }
+function qzPick(p){ qzS+=p; qzI++; qzSegs(qzI); if(qzI<3){ qzShow('qzQ'+qzI); qzLabel(); } else qzResult(); }
+function qzResult(){
+  qzTier=qzS<=4?'bajo':(qzS<=7?'medio':'alto');
+  document.getElementById('qzLabel').textContent='Tu resultado';
+  document.querySelectorAll('.qz-res').forEach(function(r){ r.classList.toggle('on',r.dataset.tier===qzTier); });
+  qzShow('qzResult');
+  var ring=document.getElementById('qzRing'), num=document.getElementById('qzNum'), C=276.5;
+  ring.style.strokeDashoffset=C; num.textContent='0';
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){ ring.style.strokeDashoffset=C*(1-qzS/9); }); });
+  var t0=performance.now();
+  (function tick(now){ var p=Math.min((now-t0)/900,1); num.textContent=Math.round(qzS*(1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(tick); })(t0);
 }
-
-function quizRenderQuestion(){
-  const q = QUIZ_QUESTIONS[quizCurrentQ];
-  const wrap = document.getElementById('quizQuestions');
-  wrap.innerHTML = '';
-  wrap.className = 'quiz-step quiz-step-question';
-
-  const qEl = document.createElement('h3');
-  qEl.className = 'quiz-question';
-  qEl.textContent = q.q;
-  wrap.appendChild(qEl);
-
-  const optsWrap = document.createElement('div');
-  optsWrap.className = 'quiz-options';
-  q.opts.forEach(function(opt){
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'quiz-option';
-    btn.textContent = opt.t;
-    btn.onclick = function(){ quizAnswer(opt.p); };
-    optsWrap.appendChild(btn);
-  });
-  wrap.appendChild(optsWrap);
-
-  quizUpdateProgress();
-}
-
-function quizUpdateProgress(){
-  const total = QUIZ_QUESTIONS.length;
-  const label = document.getElementById('quizProgressLabel');
-  const fill = document.getElementById('quizProgressFill');
-  label.textContent = 'Pregunta ' + (quizCurrentQ+1) + ' de ' + total;
-  fill.style.width = (((quizCurrentQ) / total) * 100) + '%';
-}
-
-function quizAnswer(points){
-  quizScore += points;
-  quizCurrentQ++;
-  if(quizCurrentQ < QUIZ_QUESTIONS.length){
-    quizRenderQuestion();
-  } else {
-    quizShowResult();
-  }
-}
-
-function quizShowResult(){
-  document.getElementById('quizQuestions').style.display = 'none';
-  const fill = document.getElementById('quizProgressFill');
-  fill.style.width = '100%';
-  document.getElementById('quizProgressLabel').textContent = 'Resultado';
-
-  let tier = quizScore <= 4 ? 'bajo' : (quizScore <= 7 ? 'medio' : 'alto');
-  const r = QUIZ_RESULTS[tier];
-
-  const resWrap = document.getElementById('quizResult');
-  resWrap.style.display = 'flex';
-  resWrap.className = 'quiz-step quiz-step-result';
-  resWrap.innerHTML =
-    '<div class="quiz-result-score" id="quizScoreNum" style="color:'+r.color+'">0</div>' +
-    '<div class="quiz-result-maxscore">de 9 puntos</div>' +
-    '<h3 class="quiz-result-title">'+r.title+'</h3>' +
-    '<p class="quiz-result-copy">'+r.copy+'</p>' +
-    '<button class="quiz-result-cta" style="background:'+r.color+'" onclick="openBookingModal()">'+r.cta+' →</button>' +
-    '<button class="quiz-retry" onclick="quizStart()">Volver a hacer el test</button>';
-
-  const numEl = document.getElementById('quizScoreNum');
-  const target = quizScore;
-  const dur = 900;
-  const t0 = performance.now();
-  function tick(now){
-    const p = Math.min((now - t0) / dur, 1);
-    const eased = 1 - Math.pow(1-p, 3);
-    numEl.textContent = Math.round(target * eased);
-    if(p < 1) requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
+function qzLead(e){
+  e.preventDefault();
+  var n=document.getElementById('qzName').value.trim(), m=document.getElementById('qzMail').value.trim(), t=document.getElementById('qzTel').value.trim(), err=document.getElementById('qzErr');
+  if(n.length<2){ err.textContent='Escribe tu nombre.'; return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m)){ err.textContent='Escribe un correo válido.'; return; }
+  if(t.replace(/\D/g,'').length<7){ err.textContent='Escribe un teléfono válido.'; return; }
+  err.textContent='';
+  sendLead({origen:'diagnostico',nombre:n,correo:m,telefono:t,puntaje:qzS,nivel:qzTier,fecha:new Date().toISOString()});
+  document.getElementById('qzWho').textContent=n.split(' ')[0];
+  var a=document.createElement('a'); a.href='Guia-de-marca-TIVO.pdf'; a.download='Guia-de-marca-TIVO.pdf'; document.body.appendChild(a); a.click(); a.remove();
+  document.getElementById('qzLabel').textContent='¡Gracias!'; qzShow('qzDone');
 }
 
 // ============ BOOKING MODAL ============
