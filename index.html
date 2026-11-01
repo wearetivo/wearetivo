@@ -1391,7 +1391,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
       <li><a href="#resultados" class="appear appear--scale" style="--d:0.64s">Resultados</a></li>
     </ul>
     <div class="nav-mobile-actions">
-      <a href="https://calendar.app.google/rYaDpCXJpYnfg6sq6" class="nav-cta appear appear--scale" style="--d:0.34s" target="_blank" rel="noopener">Reservar llamada</a>
+      <a href="https://calendar.app.google/rYaDpCXJpYnfg6sq6" class="nav-cta appear appear--scale" style="--d:0.34s" target="_blank" rel="noopener" onclick="openBookingModal();return false;">Reservar llamada</a>
       <button class="nav-ham" id="hamBtn" aria-label="Menú"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -1815,7 +1815,7 @@ textarea.contact-ta::placeholder { color: var(--subtle); }
     <h2 class="footer-h2">Hagamos algo<br><span class="fl">increíble</span> <span class="fo">juntos.</span></h2>
     <p class="footer-sub">Sin formularios eternos, sin compromisos. Solo una conversación honesta entre creativos sobre lo que quieres construir.</p>
     <div class="footer-cta-row">
-      <a href="https://calendar.app.google/rYaDpCXJpYnfg6sq6" target="_blank" rel="noopener" class="btn-footer-cta">Reservar llamada</a>
+      <a href="https://calendar.app.google/rYaDpCXJpYnfg6sq6" target="_blank" rel="noopener" class="btn-footer-cta" onclick="openBookingModal();return false;">Reservar llamada</a>
       <a href="mailto:wearetivo@gmail.com" class="btn-footer-secondary"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg> wearetivo@gmail.com</a>
     </div>
     <div class="footer-mini">
@@ -2055,6 +2055,9 @@ function closeBookingModal(){
 document.getElementById('bookingIframe').addEventListener('load', function(){
   clearTimeout(window._bookingFallbackTimer);
 });
+
+document.addEventListener('keydown',function(ev){ if(ev.key==='Escape') closeBookingModal(); });
+document.getElementById('bookingModalOverlay').addEventListener('click',function(ev){ if(ev.target===this) closeBookingModal(); });
 </script>
 <script>
 /* País: cerrado = bandera + código; abierto = lista completa */
