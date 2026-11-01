@@ -2156,7 +2156,7 @@ function submitProposal(e){
   err.textContent='';
   var card=document.getElementById('ppCard'), cc=(f.elements.Country.value||'').split('|');
   var note=g('Message');
-  sendContact({origen:'contacto',Name:g('Name'),Email:g('Email'),Pais:cc[0],Codigo:cc[1]||'',Phone:g('Phone'),Brand:'',Service:card.dataset.service||'',OtherService:'',Message:'COTIZACIÓN · '+(card.dataset.price||'')+(note?' — '+note:''),fecha:new Date().toISOString()});
+  sendContact({origen:'propuesta',Name:g('Name'),Email:g('Email'),Pais:cc[0],Codigo:cc[1]||'',Phone:g('Phone'),Service:card.dataset.service||'',Price:card.dataset.price||'',Message:note,fecha:new Date().toISOString()});
   var first=g('Name').split(/\s+/)[0];
   closeProposal(); f.reset(); if(window.tivoCompactCC) tivoCompactCC();
   openThanks(first);
