@@ -1335,6 +1335,13 @@ body{top:0!important}
 .ct-row{display:flex;gap:8px}
 .ct-row .contact-input{flex:1;min-width:0}
 .ct-row .ct-cc{flex:0 0 34%;min-width:108px;width:auto;padding:0 30px 0 14px;font-family:'Twemoji Country Flags','Inter',sans-serif;cursor:pointer;color:var(--ink)}
+
+/* Idioma: zona de clic más grande (el contenedor del menú ignora clics, por eso se activa aquí) */
+.lang-pill{pointer-events:all;min-height:44px;padding:5px;cursor:pointer;position:relative;z-index:2}
+.lang-pill span{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:34px;padding:0 12px;font-size:13px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.lang-pill--in{min-height:40px}
+.lang-pill--in span{min-width:36px;height:30px;padding:0 8px;font-size:12px}
+@media(max-width:480px){.lang-pill--in span{min-width:32px;padding:0 6px;font-size:11px}}
 </style>
 </head>
 <body>
@@ -1383,11 +1390,11 @@ body{top:0!important}
     </ul>
     <div class="nav-mobile-actions">
       <a href="https://calendar.app.google/rYaDpCXJpYnfg6sq6" class="nav-cta appear appear--scale" style="--d:0.34s" target="_blank" rel="noopener">Reservar llamada</a>
-      <button type="button" class="lang-pill lang-pill--in notranslate" translate="no" onclick="tivoLang()" aria-label="Cambiar idioma / Change language"><span data-l="es">ES</span><span data-l="en">EN</span></button>
+      <button type="button" class="lang-pill lang-pill--in notranslate" translate="no" onclick="tivoLang(event)" aria-label="Cambiar idioma / Change language"><span data-l="es">ES</span><span data-l="en">EN</span></button>
       <button class="nav-ham" id="hamBtn" aria-label="Menú"><span></span><span></span><span></span></button>
     </div>
   </div>
-  <button type="button" class="lang-pill lang-pill--out notranslate" translate="no" onclick="tivoLang()" aria-label="Cambiar idioma / Change language"><span data-l="es">ES</span><span data-l="en">EN</span></button>
+  <button type="button" class="lang-pill lang-pill--out notranslate" translate="no" onclick="tivoLang(event)" aria-label="Cambiar idioma / Change language"><span data-l="es">ES</span><span data-l="en">EN</span></button>
   <a href="#contacto" class="side-pill side-pill-right" id="pillRight">Conversemos</a>
 </div>
 
@@ -2055,9 +2062,10 @@ window.tivoCompactCC=function(){sels.forEach(compact);};})();
     if(!document.getElementById('gt-script')){ var s=document.createElement('script'); s.id='gt-script'; s.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'; document.head.appendChild(s); }
   }
   mark(en?'en':'es'); if(en) load();
-  window.tivoLang=function(){
-    if(!en){ en=true; try{ localStorage.setItem(KEY,'en'); }catch(e){} mark('en'); load(); }
-    else { try{ localStorage.removeItem(KEY); }catch(e){} var h=location.hostname, g='expires=Thu, 01 Jan 1970 00:00:00 GMT'; document.cookie='googtrans=;'+g+';path=/'; document.cookie='googtrans=;'+g+';path=/;domain='+h; location.reload(); }
+  window.tivoLang=function(ev){
+    var l=ev&&ev.target&&ev.target.closest?ev.target.closest('span[data-l]'):null; l=l?l.getAttribute('data-l'):(en?'es':'en');
+    if(l==='en'&&!en){ en=true; try{ localStorage.setItem(KEY,'en'); }catch(e){} mark('en'); load(); }
+    else if(l==='es'&&en){ try{ localStorage.removeItem(KEY); }catch(e){} var h=location.hostname, g='expires=Thu, 01 Jan 1970 00:00:00 GMT'; document.cookie='googtrans=;'+g+';path=/'; document.cookie='googtrans=;'+g+';path=/;domain='+h; location.reload(); }
   };
 })();
 </script>
