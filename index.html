@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="https://raw.githubusercontent.com/wearetivo/wearetivo/e853f6a46597e22d3eb40f25f2eb9e4d0a657c08/FOTO%20DE%20PERFIL%20DE%20WE%20ARE%20TIVO.png">
-<title>TIVO — Estudio Creativo</title>
+<title>TIVO · Estudio Creativo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -1416,6 +1416,20 @@ textarea.pp-in{height:auto;min-height:78px;padding:13px 20px;border-radius:22px;
 .footer-social-link:nth-child(4):hover,.footer-social-link:nth-child(4):focus-visible{background:var(--blue);color:var(--ink)}
 .footer-social-link:nth-child(5):hover,.footer-social-link:nth-child(5):focus-visible{background:var(--green);color:#fff}
 .footer-social-link:nth-child(6):hover,.footer-social-link:nth-child(6):focus-visible{background:var(--orange);color:#fff}
+.stat-rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .8s cubic-bezier(.16,1,.3,1),filter .3s}
+.stats-row.in .stat-rv{opacity:1;transform:none;transition-delay:calc(var(--i,0)*.14s),calc(var(--i,0)*.14s),0s}
+@media(max-width:767px){
+ .qz-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+ .qz-chips span{flex-direction:column;justify-content:center;gap:7px;padding:13px 6px;border-radius:18px;font-size:12.5px;text-align:center}
+ .qz-chips .ico{width:22px;height:22px}
+ p,.section-sub,.bene-p,.proc-p,.sc-desc,.faq-a,.tc-q,.footer-sub,.qz-sub{text-wrap:pretty}
+ .section-sub,.hero-sub,.hero-tagline,.footer-sub,.qz-sub,.srv-note,.cl-sub{text-wrap:balance}
+ h1,h2,h3,.faq-q,.qz-title,.qz-q,.cl-label{text-wrap:balance}
+ .sc-tags{flex-wrap:nowrap;overflow:hidden}
+ .sc-tag{white-space:nowrap;padding:4px 10px;font-size:11px}
+ .faq-q{font-size:17px;line-height:1.35}
+ .footer-eyebrow{flex-direction:column;gap:10px;text-align:center;max-width:270px;margin-left:auto;margin-right:auto;line-height:1.5;text-wrap:balance}
+}
 </style>
 </head>
 <body>
@@ -1588,10 +1602,10 @@ textarea.pp-in{height:auto;min-height:78px;padding:13px 20px;border-radius:22px;
 
 </div>
 <div class="stats-row">
-  <div class="stat appear appear--stat" style="--d:1.12s"><div class="stat-n" id="s1"><span class="plus-prefix">+</span>80</div><div class="stat-l">Proyectos entregados satisfactoriamente</div></div>
-  <div class="stat appear appear--stat" style="--d:1.24s"><div class="stat-n" id="s2"><span class="plus-prefix">+</span>30</div><div class="stat-l">Marcas que confían en TIVO</div></div>
-  <div class="stat appear appear--stat" style="--d:1.36s"><div class="stat-n" id="s3">100%</div><div class="stat-l">Satisfacción de clientes</div></div>
-  <div class="stat appear appear--stat" style="--d:1.48s"><div class="stat-n" id="s4"><span class="plus-prefix">+</span>6</div><div class="stat-l">Años de experiencia</div></div>
+  <div class="stat stat-rv" style="--i:0"><div class="stat-n" id="s1"><span class="plus-prefix">+</span>80</div><div class="stat-l">Proyectos entregados satisfactoriamente</div></div>
+  <div class="stat stat-rv" style="--i:1"><div class="stat-n" id="s2"><span class="plus-prefix">+</span>30</div><div class="stat-l">Marcas que confían en TIVO</div></div>
+  <div class="stat stat-rv" style="--i:2"><div class="stat-n" id="s3">100%</div><div class="stat-l">Satisfacción de clientes</div></div>
+  <div class="stat stat-rv" style="--i:3"><div class="stat-n" id="s4"><span class="plus-prefix">+</span>6</div><div class="stat-l">Años de experiencia</div></div>
 </div>
 
 <!-- COBERTURA -->
@@ -1677,7 +1691,7 @@ textarea.pp-in{height:auto;min-height:78px;padding:13px 20px;border-radius:22px;
       <div class="bene-card"><div class="bene-card-title-row"><div class="bene-icon" style="background:rgba(240,78,26,.12);color:var(--orange);"><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg></div><h3 class="bene-h3">¿Quiénes somos?</h3></div><div class="bene-divider"></div><p class="bene-p">Somos un estudio creativo y aliado estratégico con más de 6 años construyendo marcas que conectan. Un equipo multidisciplinario apasionado por el diseño con propósito.</p></div>
     </div>
     <div class="benefits-row">
-      <div class="bene-card"><div class="bene-card-title-row"><div class="bene-icon" style="background:rgba(77,189,116,.12);color:#156630;"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></div><h3 class="bene-h3">Nuestra filosofía</h3></div><div class="bene-divider"></div><p class="bene-p">No creemos en fórmulas genéricas. Cada decisión tiene una razón de ser. Somos aliados, no proveedores — tu éxito es, literalmente, el nuestro.</p></div>
+      <div class="bene-card"><div class="bene-card-title-row"><div class="bene-icon" style="background:rgba(77,189,116,.12);color:#156630;"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></div><h3 class="bene-h3">Nuestra filosofía</h3></div><div class="bene-divider"></div><p class="bene-p">No creemos en fórmulas genéricas. Cada decisión tiene una razón de ser. Somos aliados, no proveedores: tu éxito es, literalmente, el nuestro.</p></div>
     </div>
   </div>
 </div>
@@ -1749,11 +1763,11 @@ textarea.pp-in{height:auto;min-height:78px;padding:13px 20px;border-radius:22px;
     <p class="srv-note">Precios de referencia en COP, con equivalente aproximado en USD. Cada proyecto se cotiza a medida.</p>
   </div>
   <div class="srv-grid">
-    <div class="sc sc1"><div class="sc-n">01</div><div class="sc-chip chip-o"><svg class="ico" aria-hidden="true"><use href="#i-palette"/></svg> Identidad</div><h3 class="sc-title">Identidad Visual</h3><p class="sc-desc">Logos, paletas, tipografías y sistemas visuales completos que hacen que tu marca se reconozca al instante y nunca se olvide.</p><div class="sc-tags"><span class="sc-tag">Logo</span><span class="sc-tag">Sistema de marca</span><span class="sc-tag">Manual de marca</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $1.999.999 COP</span><span class="sc-price-cop">≈ $669 USD</span></div><a class="sc-quote" href="#contacto" onclick="openProposal(this);return false;">Quiero mi propuesta →</a></div></div>
+    <div class="sc sc1"><div class="sc-n">01</div><div class="sc-chip chip-o"><svg class="ico" aria-hidden="true"><use href="#i-palette"/></svg> Identidad</div><h3 class="sc-title">Identidad Visual</h3><p class="sc-desc">Logos, paletas, tipografías y sistemas visuales completos que hacen que tu marca se reconozca al instante y nunca se olvide.</p><div class="sc-tags"><span class="sc-tag">Logo</span><span class="sc-tag">Sistema</span><span class="sc-tag">Manual</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $1.999.999 COP</span><span class="sc-price-cop">≈ $669 USD</span></div><a class="sc-quote" href="#contacto" onclick="openProposal(this);return false;">Quiero mi propuesta →</a></div></div>
     <div class="sc sc2"><div class="sc-n">02</div><div class="sc-chip chip-p"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Redes</div><h3 class="sc-title">Redes Sociales</h3><p class="sc-desc">Contenido visual que frena el desplazamiento. Estrategia, diseño y plantillas para que tu marca brille en Instagram, TikTok y más.</p><div class="sc-tags"><span class="sc-tag">Contenido</span><span class="sc-tag">Estrategia</span><span class="sc-tag">Plantillas</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $999.999 COP/mes</span><span class="sc-price-cop">≈ $349 USD/mes</span></div><a class="sc-quote" href="#contacto" onclick="openProposal(this);return false;">Quiero mi propuesta →</a></div></div>
-    <div class="sc sc3"><div class="sc-n">03</div><div class="sc-chip chip-b"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg> Digital</div><h3 class="sc-title">Diseño Web</h3><p class="sc-desc">Sitios que no son solo bonitos: son experiencias que convierten. Diseño + desarrollo para presencias digitales que impactan.</p><div class="sc-tags"><span class="sc-tag">UI/UX</span><span class="sc-tag">Desarrollo</span><span class="sc-tag">Páginas de destino</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $2.999.999 COP</span><span class="sc-price-cop">≈ $999 USD</span></div><a class="sc-quote" href="#contacto" onclick="openProposal(this);return false;">Quiero mi propuesta →</a></div></div>
+    <div class="sc sc3"><div class="sc-n">03</div><div class="sc-chip chip-b"><svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg> Digital</div><h3 class="sc-title">Diseño Web</h3><p class="sc-desc">Sitios que no son solo bonitos: son experiencias que convierten. Diseño + desarrollo para presencias digitales que impactan.</p><div class="sc-tags"><span class="sc-tag">UI/UX</span><span class="sc-tag">Desarrollo</span><span class="sc-tag">Páginas</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $2.999.999 COP</span><span class="sc-price-cop">≈ $999 USD</span></div><a class="sc-quote" href="#contacto" onclick="openProposal(this);return false;">Quiero mi propuesta →</a></div></div>
     <div class="sc sc4"><div class="sc-n">04</div><div class="sc-chip chip-pk"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg> Editorial</div><h3 class="sc-title">Editorial</h3><p class="sc-desc">Revistas, catálogos, portafolios y publicaciones que hacen que la gente quiera quedarse hasta el final.</p><div class="sc-tags"><span class="sc-tag">Impresos</span><span class="sc-tag">Digital</span><span class="sc-tag">Catálogo</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $149.999 COP</span><span class="sc-price-cop">≈ $59 USD</span></div><a class="sc-quote" href="#contacto" onclick="openProposal(this);return false;">Quiero mi propuesta →</a></div></div>
-    <div class="sc sc5"><div class="sc-n">05</div><div class="sc-chip chip-l"><svg class="ico" aria-hidden="true"><use href="#i-film"/></svg> Animación</div><h3 class="sc-title">Video & Animación</h3><p class="sc-desc">Gráficos en movimiento, animaciones y contenido audiovisual que le da vida y movimiento a tu identidad de marca.</p><div class="sc-tags"><span class="sc-tag">Movimiento</span><span class="sc-tag">Videos cortos</span><span class="sc-tag">Animación</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $99.999 COP</span><span class="sc-price-cop">≈ $29 USD</span></div><a class="sc-quote" href="#contacto" onclick="openProposal(this);return false;">Quiero mi propuesta →</a></div></div>
+    <div class="sc sc5"><div class="sc-n">05</div><div class="sc-chip chip-l"><svg class="ico" aria-hidden="true"><use href="#i-film"/></svg> Animación</div><h3 class="sc-title">Video & Animación</h3><p class="sc-desc">Gráficos en movimiento, animaciones y contenido audiovisual que le da vida y movimiento a tu identidad de marca.</p><div class="sc-tags"><span class="sc-tag">Gráficos</span><span class="sc-tag">Videos</span><span class="sc-tag">Animación</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $99.999 COP</span><span class="sc-price-cop">≈ $29 USD</span></div><a class="sc-quote" href="#contacto" onclick="openProposal(this);return false;">Quiero mi propuesta →</a></div></div>
     <div class="sc sc6"><div class="sc-n">06</div><div class="sc-chip chip-g"><svg class="ico" aria-hidden="true"><use href="#i-pencil"/></svg> Ilustración</div><h3 class="sc-title">Ilustración & 3D</h3><p class="sc-desc">Ilustraciones únicas y modelado 3D que le dan un carácter visual irrepetible a tu marca y productos.</p><div class="sc-tags"><span class="sc-tag">Ilustración</span><span class="sc-tag">3D</span><span class="sc-tag">Maquetas</span></div><div class="sc-price"><div class="sc-price-col"><span class="sc-price-chip">Desde $249.999 COP</span><span class="sc-price-cop">≈ $89 USD</span></div><a class="sc-quote" href="#contacto" onclick="openProposal(this);return false;">Quiero mi propuesta →</a></div></div>
   </div>
 </div>
@@ -1763,7 +1777,7 @@ textarea.pp-in{height:auto;min-height:78px;padding:13px 20px;border-radius:22px;
   <div class="section-title-wrap">
     <div class="section-eyebrow"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>Conversemos</div>
     <h2 class="section-h2">¿Tienes un<br>proyecto en mente?</h2>
-    <p class="section-sub">Cuéntanos todo. Sin formularios eternos, sin compromisos — solo una conversación honesta.</p>
+    <p class="section-sub">Cuéntanos todo. Sin formularios eternos, sin compromisos. Solo una conversación honesta.</p>
   </div>
   <div style="display:flex;justify-content:center;width:100%;">
     <form class="contact-form-wrap" onsubmit="handleSubmit(event)">
@@ -1798,10 +1812,10 @@ textarea.pp-in{height:auto;min-height:78px;padding:13px 20px;border-radius:22px;
     <p class="section-sub">Sin pasos innecesarios. Solo un proceso enfocado en resultados concretos.</p>
   </div>
   <div class="process-cards">
-    <div class="proc-card"><div class="proc-step-tag pt1">01 — Descubrimiento</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(240,78,26,.12);color:var(--orange);"><svg class="ico" aria-hidden="true"><use href="#i-call"/></svg></div><h3 class="proc-h3" style="white-space:nowrap;">Nos conocemos</h3></div><div class="proc-divider"></div><p class="proc-p">Cuanto más sepamos de ti, mejor. Exploramos tu negocio, tus metas y tu audiencia antes de tomar cualquier decisión creativa.</p><div class="proc-deco">01</div></div>
-    <div class="proc-card"><div class="proc-step-tag pt2">02 — Exploración</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(155,111,212,.12);color:var(--purple);"><svg class="ico" aria-hidden="true"><use href="#i-palette"/></svg></div><h3 class="proc-h3">Exploramos</h3></div><div class="proc-divider"></div><p class="proc-p">Investigamos, analizamos referentes y encontramos la dirección creativa que tiene algo real que decir. Nada genérico, nada de plantillas.</p><div class="proc-deco">02</div></div>
-    <div class="proc-card"><div class="proc-step-tag pt3">03 — Diseño</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(232,71,122,.1);color:var(--pink);"><svg class="ico" aria-hidden="true"><use href="#i-bolt"/></svg></div><h3 class="proc-h3">Diseñamos</h3></div><div class="proc-divider"></div><p class="proc-p">Ejecutamos con obsesión por el detalle. Presentamos, iteramos y refinamos hasta que quede exactamente como debe ser.</p><div class="proc-deco">03</div></div>
-    <div class="proc-card"><div class="proc-step-tag pt4">04 — Entrega</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(196,212,0,.18);color:#4d5a00;"><svg class="ico" aria-hidden="true"><use href="#i-rocket"/></svg></div><h3 class="proc-h3">Lanzamos</h3></div><div class="proc-divider"></div><p class="proc-p">Entregamos todo listo para usar y te acompañamos en el lanzamiento. No te dejamos solo con una carpeta de archivos y buena suerte.</p><div class="proc-deco">04</div></div>
+    <div class="proc-card"><div class="proc-step-tag pt1">01 · Descubrimiento</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(240,78,26,.12);color:var(--orange);"><svg class="ico" aria-hidden="true"><use href="#i-call"/></svg></div><h3 class="proc-h3" style="white-space:nowrap;">Nos conocemos</h3></div><div class="proc-divider"></div><p class="proc-p">Cuanto más sepamos de ti, mejor. Exploramos tu negocio, tus metas y tu audiencia antes de tomar cualquier decisión creativa.</p><div class="proc-deco">01</div></div>
+    <div class="proc-card"><div class="proc-step-tag pt2">02 · Exploración</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(155,111,212,.12);color:var(--purple);"><svg class="ico" aria-hidden="true"><use href="#i-palette"/></svg></div><h3 class="proc-h3">Exploramos</h3></div><div class="proc-divider"></div><p class="proc-p">Investigamos, analizamos referentes y encontramos la dirección creativa que tiene algo real que decir. Nada genérico, nada de plantillas.</p><div class="proc-deco">02</div></div>
+    <div class="proc-card"><div class="proc-step-tag pt3">03 · Diseño</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(232,71,122,.1);color:var(--pink);"><svg class="ico" aria-hidden="true"><use href="#i-bolt"/></svg></div><h3 class="proc-h3">Diseñamos</h3></div><div class="proc-divider"></div><p class="proc-p">Ejecutamos con obsesión por el detalle. Presentamos, iteramos y refinamos hasta que quede exactamente como debe ser.</p><div class="proc-deco">03</div></div>
+    <div class="proc-card"><div class="proc-step-tag pt4">04 · Entrega</div><div class="proc-title-row"><div class="proc-icon" style="background:rgba(196,212,0,.18);color:#4d5a00;"><svg class="ico" aria-hidden="true"><use href="#i-rocket"/></svg></div><h3 class="proc-h3">Lanzamos</h3></div><div class="proc-divider"></div><p class="proc-p">Entregamos todo listo para usar y te acompañamos en el lanzamiento. No te dejamos solo con una carpeta de archivos y buena suerte.</p><div class="proc-deco">04</div></div>
   </div>
 </div>
 
@@ -1810,7 +1824,7 @@ textarea.pp-in{height:auto;min-height:78px;padding:13px 20px;border-radius:22px;
   <div class="section-title-wrap">
     <div class="section-eyebrow"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><circle cx="4.5" cy="4.5" r="4.5" fill="currentColor"/></svg>Resultados</div>
     <h2 class="section-h2">Nuestros clientes<br>hablan por <span class="em">nosotros.</span></h2>
-    <p class="section-sub">Las marcas que construimos generan impacto real — en ventas, alcance y reconocimiento.</p>
+    <p class="section-sub">Las marcas que construimos generan impacto real: en ventas, alcance y reconocimiento.</p>
   </div>
   <div class="testi-grid">
 
@@ -1826,7 +1840,7 @@ textarea.pp-in{height:auto;min-height:78px;padding:13px 20px;border-radius:22px;
       </div>
       <div class="tcv-body">
         <div class="tcv-country"><span class="flag">🇺🇸</span>Estados Unidos</div>
-        <p class="tc-q">"TIVO didn't just design our brand — they understood exactly where we were going before we did."</p>
+        <p class="tc-q">"TIVO didn't just design our brand. They understood exactly where we were going before we did."</p>
         <div class="tc-auth">
           <div class="tcav">JM</div>
           <div>
@@ -1893,13 +1907,13 @@ textarea.pp-in{height:auto;min-height:78px;padding:13px 20px;border-radius:22px;
     <p class="section-sub">Si algo no está aquí, puedes escribirnos directamente.</p>
   </div>
   <div class="faq-list">
-    <div class="faq-item open"><button class="faq-q" onclick="toggleFaq(this)">¿Cómo puedo empezar a trabajar con TIVO?<span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span></button><div class="faq-a">Puedes agendar una llamada, contarnos sobre tu proyecto en la caja de "Conversemos" del formulario, o escribirnos directamente a wearetivo@gmail.com. Lo que te sea más cómodo — lo importante es que empecemos a conversar.</div></div>
+    <div class="faq-item open"><button class="faq-q" onclick="toggleFaq(this)">¿Cómo puedo empezar a trabajar con TIVO?<span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span></button><div class="faq-a">Puedes agendar una llamada, contarnos sobre tu proyecto en la caja de "Conversemos" del formulario, o escribirnos directamente a wearetivo@gmail.com. Lo que te sea más cómodo. Lo importante es que empecemos a conversar.</div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Qué servicio es el más adecuado para mi marca?<span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span></button><div class="faq-a">Depende de la etapa en la que estés. Si vas empezando, la Identidad Visual es el punto de partida. Si ya tienes marca y quieres escalar, Redes Sociales o una Alianza Estratégica pueden ser el camino. Y si tu marca ya está consolidada, podemos enfocarnos en un servicio puntual como Web o Editorial. Cuéntanos y te orientamos.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Ya tengo un logo/marca, ¿pueden trabajar sobre eso?<span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span></button><div class="faq-a">Sí. Podemos partir de lo que ya existe — identificamos qué funciona y qué no, y construimos o refinamos desde ahí, sin empezar de cero si no es necesario.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Ya tengo un logo/marca, ¿pueden trabajar sobre eso?<span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span></button><div class="faq-a">Sí. Podemos partir de lo que ya existe: identificamos qué funciona y qué no, y construimos o refinamos desde ahí, sin empezar de cero si no es necesario.</div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Ya tengo una página web, ¿pueden rediseñarla?<span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span></button><div class="faq-a">Claro. Evaluamos tu sitio actual y proponemos mejoras de diseño, experiencia y rendimiento, o lo reconstruimos por completo si es lo que tu marca necesita.</div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Trabajan con marcas fuera de Colombia?<span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span></button><div class="faq-a">Sí. Nacimos en Colombia, pero hoy trabajamos con marcas en toda Latinoamérica, Estados Unidos y Europa. La creatividad no tiene fronteras.</div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cuántas revisiones incluye el proceso?<span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span></button><div class="faq-a">No contamos revisiones de forma genérica: cada servicio tiene definida su propia ronda de ajustes según el alcance del proyecto. Nuestro objetivo siempre es entregar algo que ames.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Qué herramientas y software usan?<span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span></button><div class="faq-a">Trabajamos con software y herramientas netamente profesionales, que adaptamos según la necesidad específica de cada proyecto — no seguimos una fórmula fija, sino lo que mejor sirva al resultado.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Qué herramientas y software usan?<span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span></button><div class="faq-a">Trabajamos con software y herramientas netamente profesionales, que adaptamos según la necesidad específica de cada proyecto. No seguimos una fórmula fija, sino lo que mejor sirva al resultado.</div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Qué pasa si mi proyecto cambia de alcance a mitad de camino?<span class="faq-icon"><svg viewBox="0 0 26 26"><path d="M17.657 14.291L13.757 14.291 13.757 18.191C13.757 18.729 13.32 19.166 12.782 19.166 12.243 19.166 11.807 18.729 11.807 18.191L11.807 14.291 7.907 14.291C7.368 14.291 6.932 13.854 6.932 13.316 6.932 12.777 7.368 12.341 7.907 12.341L11.807 12.341 11.807 8.441C11.807 7.902 12.243 7.466 12.782 7.466 13.32 7.466 13.757 7.902 13.757 8.441L13.757 12.341 17.657 12.341C18.195 12.341 18.632 12.777 18.632 13.316 18.632 13.854 18.195 14.291 17.657 14.291Z" fill="white"/></svg></span></button><div class="faq-a">Es normal que los proyectos evolucionen. Conversamos, ajustamos el plan y el presupuesto según el nuevo alcance, y seguimos avanzando juntos sin perder el rumbo.</div></div>
   </div>
 </div>
@@ -1935,7 +1949,7 @@ textarea.pp-in{height:auto;min-height:78px;padding:13px 20px;border-radius:22px;
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
         </a>
       </div>
-      <span class="footer-mini-copy">© 2026 We Are TIVO — Bogotá, Colombia</span>
+      <span class="footer-mini-copy">© 2026 We Are TIVO · Bogotá, Colombia</span>
     </div>
   </div>
 </footer>
@@ -1956,12 +1970,12 @@ const targets=[80,30,100,6],ids=['s1','s2','s3','s4'],sups=['','','<sup>%</sup>'
 let animated=false;
 const sObs=new IntersectionObserver(entries=>{
   if(entries[0].isIntersecting&&!animated){
-    animated=true;
+    animated=true;document.querySelector('.stats-row').classList.add('in');
     ids.forEach((id,i)=>{const el=document.getElementById(id);let v=0;const run=()=>{v+=targets[i]/55;const pfx = (i===2) ? '' : '<span class="plus-prefix">+</span>';
       const sfx_map = ['','','%',''];
       if(v>=targets[i]){el.innerHTML=pfx+targets[i]+sfx_map[i];return;}el.innerHTML=pfx+Math.round(v)+sfx_map[i];requestAnimationFrame(run);};run();});
   }
-},{threshold:.3});
+},{threshold:.15});
 const sr=document.querySelector('.stats-row');if(sr)sObs.observe(sr);
 
 function toggleFaq(btn){btn.closest('.faq-item').classList.toggle('open');}
@@ -2060,7 +2074,7 @@ document.addEventListener('keydown', function(e) {
 
 // REVEAL
 const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';revealObs.unobserve(e.target);}});},{threshold:.01,rootMargin:'0px 0px 120px 0px'});
-document.querySelectorAll('.bene-card,.sc,.proc-card,.tcv,.pj-card,.team-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .5s ease, transform .5s ease';el.style.willChange='opacity,transform';revealObs.observe(el);});
+document.querySelectorAll('.bene-card,.sc,.proc-card,.tcv,.pj-card,.team-card,.stats-title').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .5s ease, transform .5s ease';el.style.willChange='opacity,transform';revealObs.observe(el);});
 
 // Postales: revelado con leve giro para reforzar el efecto "postal esparcida"
 const postalObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.setProperty('--reveal-y','0px');}});},{threshold:.1,rootMargin:'0px 0px -20px 0px'});
@@ -2084,6 +2098,24 @@ document.querySelectorAll('.postal-card').forEach((el,i)=>{
         if (!running) el.classList.add('is-in');
       });
     });
+  });
+})();
+
+// PAUSAR VIDEOS AL SALIR DE PANTALLA
+(function(){
+  var vs=document.querySelectorAll('.tcv-el'); if(!vs.length) return;
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting && !e.target.paused) e.target.pause(); }); },{threshold:.25});
+    vs.forEach(function(v){ io.observe(v); });
+  }
+  document.addEventListener('visibilitychange',function(){ if(document.hidden) vs.forEach(function(v){ if(!v.paused) v.pause(); }); });
+})();
+// EVITAR PALABRAS SUELTAS AL FINAL DE LOS PÁRRAFOS
+(function(){
+  document.querySelectorAll('p,.section-sub,.bene-p,.proc-p,.sc-desc,.faq-a,.tc-q,.footer-sub,.qz-sub').forEach(function(el){
+    if(el.childNodes.length!==1 || el.firstChild.nodeType!==3) return;
+    var t=el.firstChild.nodeValue, i=t.trimEnd().lastIndexOf(' ');
+    if(i>0) el.firstChild.nodeValue=t.slice(0,i)+'\u00A0'+t.slice(i+1);
   });
 })();
 
